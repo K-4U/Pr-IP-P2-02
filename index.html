@@ -20,90 +20,149 @@
     <!-- end: JS -->
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <div class="head">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="span6">
-                                <h1 class="muted">EenmaalAndermaal</h1>
-                            </div>
+    <div class="row headerrow">
+        <div class="container">
+            <div class="col-md-8">
+                <h1 class="muted">EenmaalAndermaal</h1>
+            </div>
+            <div class="col-md-4 hidden-xs btn-group">
+                <button class="btn btn-default btn-sm">Login</button>
+                <button class="btn btn-default btn-sm">Registreren</button>
+            </div>
+        </div>
+    </div>
 
-                            <div class="span4 offset2">
-                                <button class="btn pull-right" type="button">Sign In</button>
-                            </div>
-                        </div>
+    <nav class="navbar navbar-inverse headerrow headernav">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Kavel aanbieden</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Over ons</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Voorwaarden</a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
+                    <button type="submit" class="btn btn-default"><div class="glyphicon glyphicon-search"></div></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Registreer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-                    <nav class="navbar navbar-inverse">
-                        <div class="navbar-inner">
-                            <div class="container-fluid">
-                                <ul class="nav navbar-nav">
-                                    <li>
-                                        <a href="#">Explore Product</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Search</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Features</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">Blog</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav tree">
+                    <li><label class="tree-toggler nav-header">Header 1</label>
+                        <ul class="nav tree">
+                            <li><label class="tree-toggler nav-header">Header 1.1</label>
+                                <ul class="nav tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 1.1.1</label>
+                                        <ul class="nav tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                    </nav>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><label class="tree-toggler nav-header">Header 2</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="tree-toggler nav-header">Header 2.1</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.1.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><label class="tree-toggler nav-header">Header 2.2</label>
+                                <ul class="nav nav-list tree">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                    <li><label class="tree-toggler nav-header">Header 2.2.1</label>
+                                        <ul class="nav nav-list tree">
+                                            <li><a href="#">Link</a></li>
+                                            <li><a href="#">Link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="panel panel-default row">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Uitgelicht</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4 well" style="height:200px;"></div>
+                        <div class="col-md-4 well"></div>
+                        <div class="col-md-4 well"></div>
+                    </div>
+                </div>
+                <div class="panel panel-default row">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Bijna aflopende veilingen</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4 well" style="height:200px;"></div>
+                        <div class="col-md-4 well"></div>
+                        <div class="col-md-4 well"></div>
+                    </div>
+                </div>
+                <div class="panel panel-default row">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Nieuw!</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-md-4 well" style="height:200px;"></div>
+                        <div class="col-md-4 well"></div>
+                        <div class="col-md-4 well"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <p>
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi hendrerit nunc aliquet ullamcorper lacinia. Fusce luctus maximus tincidunt. Etiam vulputate tempor eros ut viverra. Duis ut porttitor elit, nec mattis enim. Donec tempor mauris laoreet, volutpat nisl nec, ornare est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec nulla at ante semper facilisis. Sed at aliquet diam, et lacinia leo. In nec euismod tortor.<br />
-            <br />
-        Maecenas id mi eget justo cursus mattis id vitae ligula. Pellentesque ac massa id risus vulputate consectetur a at elit. Vivamus suscipit metus ac arcu fermentum elementum. Nunc malesuada leo metus, vel pulvinar erat porttitor at. Maecenas eu maximus risus. Nulla leo felis, tempor vitae posuere sit amet, blandit a eros. Aenean ac blandit tellus. Nam condimentum, ligula vel tempor laoreet, nisl libero ultrices erat, sed porttitor tellus ex nec velit. Cras lorem lacus, facilisis ac libero eu, convallis fermentum lectus.<br />
-            <br />
-        Nunc commodo lacinia egestas. Quisque semper faucibus pulvinar. Nullam lorem ante, faucibus sit amet odio vitae, efficitur sollicitudin est. Nulla at lacus nisl. Praesent dictum rutrum metus vitae fringilla. Sed ultricies eleifend finibus. Fusce non eros justo. Quisque vitae justo eget velit laoreet tempus ut eget elit. Ut quis eros vel nulla tristique fringilla. Donec ornare pharetra nulla nec gravida. Duis gravida, metus quis pharetra fringilla, libero neque luctus leo, nec vehicula arcu dui faucibus felis. Quisque lobortis scelerisque tortor eu molestie. Praesent suscipit sem et molestie laoreet. Vestibulum posuere orci vitae arcu tempor rutrum a aliquet libero. Sed aliquet justo at mauris ornare aliquet. Aliquam a rhoncus enim.<br />
-            <br />
-        Nam sit amet magna a libero posuere congue sed eget augue. Nam est nisi, congue quis placerat id, pharetra vitae magna. Pellentesque rhoncus neque at est molestie blandit. Quisque ultricies condimentum libero vitae mollis. Donec quis viverra lorem. Nullam ornare elit magna, non volutpat turpis eleifend sit amet. Nam nisl diam, euismod a ipsum at, convallis finibus ligula. Pellentesque non eleifend nisl.<br />
-            <br />
-        Nullam vel enim eu enim sagittis fringilla. Pellentesque sed ante fringilla, tempor nisl at, faucibus arcu. Etiam vel erat at dui ullamcorper varius. Nulla tortor felis, rutrum a sodales sed, suscipit aliquet elit. Morbi ac vehicula mauris. Fusce porta aliquet mauris, non ultricies quam. In fringilla est in auctor volutpat. Phasellus venenatis orci sed congue vulputate.<br />
-            <br />
-        Vestibulum ornare aliquam maximus. Maecenas laoreet in nunc eu commodo. Donec quis lorem tellus. Pellentesque vitae blandit tellus. Aliquam varius pretium ante, vitae luctus dui dictum quis. In hac habitasse platea dictumst. Proin nec felis lacus. Mauris nec erat eu odio aliquet efficitur nec vitae tellus. Nam eu placerat sem. Vivamus in erat nec odio scelerisque maximus. Vestibulum condimentum mollis nunc et tempor. Mauris et placerat nunc. Suspendisse vehicula odio at augue consequat sollicitudin.<br />
-            <br />
-        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris elit nisi, sollicitudin id lectus ac, molestie aliquet ex. Praesent ut mauris tempus, dignissim est vitae, accumsan purus. Ut ac leo nec sapien pharetra elementum id eu mauris. Mauris sapien quam, ullamcorper a blandit sit amet, luctus ac ex. Proin consectetur augue enim. Vestibulum vitae commodo elit, lobortis porttitor ipsum. Donec facilisis non justo at molestie. Vivamus elementum felis non tortor interdum, ut aliquet odio gravida. Curabitur dolor tellus, mattis vitae velit ac, porta facilisis mauris. Curabitur nunc ex, consectetur id lectus id, iaculis euismod justo. Maecenas sollicitudin vel sem semper tincidunt. Vivamus egestas lacus eros, a commodo neque molestie et. Aliquam sodales sodales viverra. Proin sed orci venenatis, scelerisque tortor eu, tincidunt ligula.<br />
-            <br />
-        Donec efficitur sem ac volutpat porta. Phasellus quis tincidunt ex. Integer bibendum arcu nibh, sit amet lacinia urna scelerisque vel. Fusce mauris justo, vehicula sit amet dapibus in, commodo ac ligula. Donec ut porttitor massa, ut euismod dolor. Maecenas semper quam at bibendum pulvinar. Nam tristique neque eu est fermentum, ac consectetur massa convallis. Cras vel tortor neque. Mauris sit amet varius velit. Suspendisse potenti. Sed nec sem nibh. Vestibulum eget metus sed sapien scelerisque condimentum nec id enim. Maecenas sed tortor porta, malesuada tellus ut, molestie augue. Nunc neque enim, dictum at sagittis eu, vulputate at dui. Fusce vitae dolor lectus. Proin dolor dolor, blandit id placerat et, rhoncus id magna.<br />
-            <br />
-        Sed leo neque, gravida viverra neque ac, bibendum rutrum dui. Ut non pulvinar orci. Vestibulum velit dolor, mattis sit amet ullamcorper quis, tempor in magna. Sed pretium blandit vestibulum. Nam consectetur ex non neque tincidunt, mollis cursus felis elementum. Ut congue, quam id faucibus vulputate, quam elit imperdiet leo, ut lacinia nulla quam tempus nulla. Phasellus pellentesque blandit erat quis commodo. Praesent sagittis est nec venenatis mattis. Integer in dolor elit. Quisque eu aliquam tellus. Cras porttitor, eros eu lobortis vulputate, lacus odio ornare odio, id placerat enim augue vel urna. Nam id accumsan quam. In hac habitasse platea dictumst. Fusce vel nibh est.<br />
-            <br />
-        Curabitur quis sagittis ipsum. Integer non leo nisi. Etiam accumsan maximus neque quis tincidunt. Quisque condimentum, ex vitae dictum venenatis, ex urna consectetur metus, a sollicitudin ante nisl ac magna. Curabitur porttitor sem tellus, id imperdiet ex pharetra non. Duis libero libero, imperdiet sed risus nec, varius feugiat elit. Aenean iaculis massa ac ornare egestas. Suspendisse sit amet diam commodo, mollis arcu ut, luctus est. Vivamus fringilla, mauris a dignissim dictum, massa diam tincidunt urna, nec bibendum nisl ligula eu justo. Aliquam erat volutpat. Vestibulum sapien massa, interdum ac felis ut, euismod tincidunt est. Donec condimentum libero molestie, euismod urna ac, blandit erat. Etiam in dictum eros. Pellentesque sodales egestas dolor, eget feugiat ipsum euismod at. Mauris convallis dolor et viverra tincidunt. Nunc tristique faucibus orci id eleifend.<br />
-            <br />
-        Aenean vestibulum mi at hendrerit tristique. Duis condimentum aliquam est, non scelerisque sapien elementum nec. Curabitur leo massa, bibendum sed auctor eu, consequat nec lorem. Mauris vel erat quis lacus dictum tempus. Maecenas a bibendum eros. Morbi maximus orci eget lacus interdum, et maximus massa facilisis. Duis tristique metus augue, ut semper justo vestibulum in. Suspendisse laoreet ut erat in vehicula. Ut id justo eget arcu euismod dictum vitae eget sapien. Suspendisse iaculis ornare hendrerit. Etiam mattis nisl ut hendrerit dictum. Phasellus aliquam elit ut elit gravida faucibus. Proin ante quam, feugiat vitae magna a, malesuada lacinia purus. Nunc porta a tortor in aliquam.<br />
-            <br />
-        Aenean nec sem venenatis, pharetra mi dapibus, eleifend felis. Fusce congue, mauris non feugiat faucibus, leo tellus luctus erat, vel interdum nisl lectus et dui. Integer viverra porta tortor sit amet euismod. Nam mollis vel tortor et imperdiet. Vestibulum condimentum elit at euismod dictum. Vivamus pharetra tempus lorem, et ultrices ligula sollicitudin quis. Proin non porttitor magna. Phasellus convallis est dui, venenatis pharetra ligula tempor eu. Quisque tellus massa, vehicula nec quam rutrum, elementum commodo erat. Fusce rhoncus tristique lectus id aliquet. Curabitur vehicula a erat non tempor. Aenean lobortis, lectus id rutrum tempor, risus lorem venenatis erat, id rhoncus lorem tortor in nisi. Praesent enim ligula, semper eget semper quis, egestas et turpis.<br />
-            <br />
-        Morbi arcu elit, elementum ut nulla sed, pharetra dignissim ex. Fusce consequat dolor sit amet ante pellentesque, nec tristique neque auctor. Cras quis rhoncus dolor, eu mollis nunc. Nullam efficitur malesuada mi. Duis vestibulum ut velit id rhoncus. Nullam dictum neque ac ipsum sagittis, in aliquam neque aliquet. Duis non felis ac nisi mollis egestas. Sed ullamcorper risus quis elementum tempus. Nam lobortis eu sapien suscipit euismod. Aenean vulputate vehicula nibh, ut hendrerit ante hendrerit egestas. Fusce id purus vel tellus fermentum interdum. Integer posuere neque eget augue hendrerit congue et vel nibh. Aliquam mauris odio, rhoncus id neque a, facilisis lacinia massa. Mauris cursus lacus sed ante rutrum tristique.<br />
-            <br />
-        Ut ullamcorper auctor fringilla. In cursus, quam ac pretium iaculis, dui felis congue odio, vel mollis risus orci ut urna. Sed turpis risus, lobortis in tellus ac, sodales facilisis odio. Mauris pharetra congue nulla, ac finibus ante tristique nec. Nullam quis metus rutrum, viverra nibh id, venenatis leo. Praesent vel dui rutrum, mattis urna sed, rhoncus urna. Cras vel neque vitae purus porta lacinia. Pellentesque id nisi augue. Donec at elit vitae enim gravida malesuada.<br />
-            <br />
-        Vestibulum ut blandit erat, vel rhoncus arcu. Ut vitae semper diam, eget eleifend augue. Sed non nisi maximus, scelerisque eros et, placerat erat. Nunc fermentum volutpat nisl non aliquam. Sed at nulla id lorem facilisis lacinia. Integer in libero vitae elit congue bibendum ac a eros. In hac habitasse platea dictumst. Morbi in auctor erat. Suspendisse non orci at ipsum tristique vehicula vel in felis.<br />
-            <br />
-        Nunc eu aliquam felis. Fusce nec aliquet tellus. Morbi fringilla sit amet nisi et tincidunt. Fusce sit amet augue eu massa tincidunt porttitor eu eu lacus. Fusce eu enim sed quam elementum vestibulum. Nulla facilisi. Donec volutpat sem quis mauris egestas, eget efficitur dolor blandit. Integer ultricies nunc id ultricies commodo. Integer pretium arcu eu turpis interdum tempor vitae tincidunt tellus. In nec tincidunt massa. Aliquam erat volutpat. Sed eu ullamcorper enim, non tristique dolor. Vestibulum eros justo, ultricies sit amet facilisis at, placerat ac orci. Suspendisse maximus vehicula massa, non finibus lectus varius posuere. Duis consequat, libero quis ultrices pellentesque, risus ante convallis arcu, a molestie felis nisi et massa. Suspendisse eu porta felis.<br />
-            <br />
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et tincidunt purus, vitae commodo sem. Cras sodales nunc nec magna eleifend, eu aliquet justo ultrices. Suspendisse tincidunt elit mauris, et lobortis turpis sollicitudin at. Vestibulum finibus arcu vel posuere placerat. Etiam vulputate vehicula nisi, vitae aliquam arcu dictum vel. In euismod urna et arcu mollis feugiat. In dictum consequat commodo. Donec semper diam et diam ullamcorper aliquet. Mauris nulla eros, molestie in enim non, ornare condimentum urna. Cras egestas leo ut laoreet gravida. Nam pellentesque eros sit amet velit tincidunt dictum. Sed at elementum augue, venenatis gravida urna. Aliquam ullamcorper eros at ornare rhoncus. Duis quis magna non eros dapibus posuere. Integer eget leo ante.<br />
-            <br />
-        Donec pretium est sit amet risus suscipit rhoncus. Fusce nec eros accumsan, mattis neque sit amet, sollicitudin elit. Donec vitae laoreet enim. Sed eleifend blandit orci vitae tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse ac tortor magna. Nulla facilisi. Donec in dignissim turpis. Sed porta arcu at massa pretium mollis.<br />
-            <br />
-        Vivamus ac imperdiet mi. Nunc mollis lorem ut elit pellentesque ultrices. Quisque eu tempor nibh. Nam mollis orci eget dolor condimentum laoreet. Nulla ut ligula lacus. Proin efficitur leo nulla, sit amet auctor ex consequat id. Donec a lectus vitae ex bibendum consectetur. Cras vitae neque tempus, tempus orci nec, bibendum nulla. Vestibulum non nulla sed enim placerat rutrum. Morbi placerat sem maximus, feugiat ante et, congue orci. Cras vitae ante arcu. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.<br />
-            <br />
-        Ut et pellentesque elit. Aliquam consequat mollis augue sit amet bibendum. Cras facilisis magna ac enim laoreet, eget aliquam felis laoreet. Nam libero magna, luctus vel egestas in, suscipit eu lacus. Proin molestie pellentesque nisi at feugiat. Ut efficitur nulla lectus, quis pellentesque nibh imperdiet at. Nunc consectetur urna quis leo accumsan, non rutrum odio gravida. Cras in tempor ante.<br />
-        </p>
     </div>
 </body>
 </html>
