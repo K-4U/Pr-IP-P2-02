@@ -12,7 +12,16 @@
     margin-left:10px;
 }
 
+.sticky {
+    position:fixed;
+    top:0;
+    right:0;
+    left:0;
+}
 
+.menu {
+    z-index: 5;
+}
 
 .sub-header {
     border-bottom: 1px solid #eee;
