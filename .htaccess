@@ -1,0 +1,53 @@
+Options +FollowSymLinks
+
+RewriteEngine on
+
+# We want to rewrite requests to "/page/name" (with an optional trailing slash)
+# to "index.php?p=name"
+#
+# The input to the RewriteRule does not have a leading slash, so the beginning
+# of the input must start with "page/". We check that with "^page/", which
+# anchors the test for "page/" at the beginning of the string.
+#
+# After "page/", we need to capture "name", which will be stored in the
+# backreference $1. "name" could be anything, but we know it won't have a
+# forward slash in it, so check for any character other than a forward slash
+# with the negated character class "[^/]", and make sure that there is at least
+# one such character with "+". Capture that as a backreference with the
+# parenthesis.
+#
+# Finally, there may or may not be a trailing slash at the end of the input, so
+# check if there are zero or one slashes with "/?", and make sure that's the end
+# of the pattern with the anchor "$"
+#
+# Rewrite the input to index.php?p=$1, where $1 gets replaced with the
+# backreference from the input test pattern
+# RewriteRule ^page/([^/]+)/?$ index.php?p=$1
+
+#Ajax rewrite rules
+
+RewriteRule ^Ajax/([^/]+)/([^/]+)/(.+) ajax.php?pg=$1&ac=$2&args=$3
+
+
+#Admin rewrite rules
+RewriteRule ^Static/?$           index.php?ac=main
+RewriteRule ^Static/([^/]+)/?$   index.php?ac=$1
+RewriteRule ^Static/([^/]+)/(.+) index.php?ac=$1&args=$2
+
+
+#Teacher rewrite rules
+RewriteRule ^Teacher/?$           teacher.php?ac=dashboard
+RewriteRule ^Teacher/([^/]+)/?$   teacher.php?ac=$1
+RewriteRule ^Teacher/([^/]+)/(.+) teacher.php?ac=$1&args=$2
+
+
+
+#Pupil rewrite rules
+RewriteRule ^Pupil/?$           pupil.php?ac=dashboard
+RewriteRule ^Pupil/([^/]+)/?$   pupil.php?ac=$1
+RewriteRule ^Pupil/([^/]+)/(.+) pupil.php?ac=$1&args=$2
+
+
+
+#Users rewrite rules
+RewriteRule ^Users/([^/]+)/?$ users.php?ac=$1
