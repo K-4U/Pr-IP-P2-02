@@ -1,4 +1,9 @@
 
+body {
+    font-size: 11px;
+}
+
+
 .headerrow {
     margin-left: 0px !important;
     margin-right: 0px !important;
