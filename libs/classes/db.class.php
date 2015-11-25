@@ -28,7 +28,7 @@ class db {
      */
     private $password = "";
     /**
-     * The databse to select
+     * The database to select
      * @var string
      */
     private $db = "";
@@ -274,16 +274,9 @@ class db {
         $values = array();
 
         foreach ($array as $key => $value) {
-            //This does not exist for mssql :(
             $key = $this->sqlEscape($key);
             $value = $this->sqlEscape($value);
             $columns[] = $key;
-            //This only works for mysql
-            /*if (($type = getSqlType($table, $key))) {
-                if ($type == "date") {
-                    $value = parseDate($value, "sql");
-                }
-            }*/
 
             if ($value != "") {
                 if ($this->type == SQLTYPES::SQLSRV) {
@@ -309,6 +302,89 @@ class db {
             return $this->query($sql, true, $values);
         }
     }
+
+
+    /**
+     * Updates a $table with the given $array where $whereKey equals $whereValue
+     * @param $table
+     * @param $array
+     * @param $whereKey
+     * @param $whereValue
+     * @return bool|mixed|resource
+     */
+    public function update($table, $array, $whereKey, $whereValue){
+        $data = array();
+        $values = array();
+
+        foreach ($array as $key => $value) {
+            $key = $this->sqlEscape($key);
+            $value = $this->sqlEscape($value);
+
+            //Because empty() may not yield the proper results.
+            if ($value != "") {
+                if ($this->type == SQLTYPES::SQLSRV) {
+                    $data[] = $key . "=?";
+                    $values[] = $value;
+                } else {
+                    $data[] = $key . "='" . $value . "'";
+                }
+            }
+        }
+        $vals = implode(",", $data);
+
+
+        //Add the where value to the values array
+        $values[] = $whereValue;
+
+        $sql = sprintf("UPDATE %s SET %s WHERE %s=?", $table, $vals, $whereKey);
+
+        if ($this->type == SQLTYPES::MSSQL) {
+            return $this->query($sql);
+        }
+        if ($this->type == SQLTYPES::SQLSRV) {
+            return $this->query($sql, true, $values);
+        }
+    }
+
+
+    /**
+     * Function to call a function on the SQL server.
+     * @param $functionName
+     * @param ...$args
+     * @return bool|mixed|resource
+     */
+    public function executeFunction($functionName, ...$args){
+        $data = array();
+        $values = array();
+
+        foreach ($args as $value) {
+            $value = $this->sqlEscape($value);
+
+            if ($value != "") {
+                if ($this->type == SQLTYPES::SQLSRV) {
+                    $data[] = "?";
+                    $values[] = $value;
+                } else {
+                    $data[] = "'" . $value . "'";
+                }
+            } else {
+                $data[] = "''";
+            }
+
+        }
+        $vals = implode(",", $data);
+
+        $sql = sprintf("SELECT %s (%s)", $functionName, $vals);
+        //echo $sql . "<br />";
+        if ($this->type == SQLTYPES::MSSQL) {
+            return $this->query($sql);
+        }
+        if ($this->type == SQLTYPES::SQLSRV) {
+            return $this->query($sql, true, $values);
+        }
+    }
+
+
 
     /**
      * Closes the database object
