@@ -3,11 +3,11 @@ global $config;
 
 $config = Array(
     "SQL"   => Array(
-        "host" => "SQLserver",
+        "host" => "localhost",
         "user" => "veiling",
         "pass" => "v31l1ng#1",
         "db"   => "veiling",
-        "type" => "mssql" //See libs/classes/db.class.php for the possible entries here
+        "type" => "sqlsrv" //See libs/classes/db.class.php for the possible entries here
     ),
     "email" => Array(
         "fromName" => "EenmaalAndermaal",
