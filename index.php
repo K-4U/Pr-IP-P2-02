@@ -30,7 +30,7 @@ if($user->isLoggedIn()) {
 $argsRaw = explode('/', $args);
 
 if(empty(strtolower($ac))) {
-    $ac = "news";
+    $ac = "main";
 }
 
 if(file_exists('pages/static/' . strtolower($ac) . '/index.php')) {
