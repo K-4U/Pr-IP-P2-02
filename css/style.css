@@ -1,8 +1,18 @@
 
 body {
+    background-color: #eee;
     font-size: 11px;
 }
 
+div.headerrow {
+    background-color: #413a70;
+    color: #ffffff;
+}
+
+nav.headerrow{
+    background-color: #12094d;
+    color: #ffffff;
+}
 
 .headerrow {
     margin-left: 0px !important;
@@ -82,4 +92,28 @@ body {
 
 .main .page-header {
     margin-top: 0;
+}
+
+
+fieldset {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+legend {
+    width: auto;
+    border: none;
+    margin-bottom: initial;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn-cta {
+    background-color: #ff8c00;
+    border-color: #ffa332;
+    color: #333;
 }
