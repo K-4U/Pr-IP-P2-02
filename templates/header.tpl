@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- start: Mobile Specific -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- end: Mobile Specific -->
+
+    <!-- start: CSS -->
+    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
+    <link id="base-style" href="css/style.css" rel="stylesheet">
+    <!-- end: CSS -->
+
+    <!-- start: JS -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="js/jq.js"></script>
+    <!-- end: JS -->
+</head>
+<body>
+<div class="row headerrow">
+    <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
+        <div class="col-md-8">
+            <h1 class="muted">EenmaalAndermaal</h1>
+        </div>
+        {if !$user.loggedIn}
+        <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
+            <button class="btn btn-cta btn-sm">Login</button>
+            <button class="btn btn-cta btn-sm">Registreren</button>
+        </div>
+        {/if}
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse headerrow headernav menu">
+    <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">Kavel aanbieden</a>
+                </li>
+                <li>
+                    <a href="#">Veilingen</a>
+                </li>
+                <li>
+                    <a href="#">Over ons</a>
+                </li>
+
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+
+                <li>
+                    <a href="#">Voorwaarden</a>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><img src="{$gravatarUrl}" class="avatar" /></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Registreer</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid content">

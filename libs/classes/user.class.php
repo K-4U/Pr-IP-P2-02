@@ -113,6 +113,10 @@ class user {
         return $this->loggedIn;
     }
 
+    public function getEmail() {
+        return "koen@k-4u.nl";
+    }
+
 
 }
 

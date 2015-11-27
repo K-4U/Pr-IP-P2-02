@@ -106,14 +106,31 @@ fieldset {
 
 legend {
     width: auto;
-    border: none;
     margin-bottom: initial;
-    margin-left: 10px;
-    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .btn-cta {
     background-color: #ff8c00;
     border-color: #ffa332;
     color: #333;
+}
+
+.login-register {
+    margin-top: 20px;
+}
+
+.avatar {
+    margin-top: 5px;
+    border-radius: 10px;
+    transition: border-radius 0.25s ease-out 0s;
+}
+
+.avatar:hover {
+    border-radius: 2px;
+    transition: border-radius 0.25s ease-out 0s;
 }

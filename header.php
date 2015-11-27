@@ -32,6 +32,7 @@ $db->setType($config['SQL']['type']);
 $db->connect();
 
 $user = new user($db);
+$website->assign("gravatarUrl", get_gravatar($user->getEmail(), 34));
 
 if($user->isLoggedIn()) {
     $website->assign("user", $user->getInfo());
@@ -49,6 +50,7 @@ if($user->isLoggedIn()) {
     $monthNames["10"] = "Oktober";
     $monthNames["11"] = "November";
     $monthNames["12"] = "December";
+
 
     $website->assign("monthNames", $monthNames);
 }
