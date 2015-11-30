@@ -137,7 +137,6 @@ class db {
      */
     public function query($sql, $die = true, $args = Array()) {
 
-        //fb($sql);
         $return = false;
         switch ($this->type) {
             case SQLTYPES::MSSQL:
@@ -165,6 +164,30 @@ class db {
                 break;
             case SQLTYPES::SQLSRV:
                 $return = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC);
+                break;
+        }
+
+        return $return;
+    }
+
+    /**
+     * Fetches an associative array of the given query $result
+     * @param $result
+     * @return array|false|null
+     */
+    public function fetchAllAssoc($result) {
+
+        $return = Array();
+        switch ($this->type) {
+            case SQLTYPES::MSSQL:
+                $return = mssql_fetch_assoc($result);
+                break;
+            case SQLTYPES::SQLSRV:
+
+                $return = array();
+                while($row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC)) {
+                    $return[] = $row;
+                }
                 break;
         }
 

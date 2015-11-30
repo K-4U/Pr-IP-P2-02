@@ -55,10 +55,14 @@ class user {
      */
     public function doLogin($username, $password) {
         
-        $password = hash('sha512', substr($username, 0, 2) . $password . substr($username, 2));
+        $password = hash('sha512',$password);
 
-        $loginResult = $this->db->buildQuery("SELECT username FROM users WHERE password='%s' AND username LIKE '%s'", $password, $username);
+        var_dump($username);
+        $loginResult = $this->db->buildQuery("SELECT * FROM users WHERE username='%s'", $username);
+        var_dump($loginResult);
+        var_dump($this->db->fetchAllAssoc($loginResult));
 
+        var_dump($this->db->getNumRows($loginResult));// . "<--ROW";
         if($this->db->getNumRows($loginResult) == 0) {
             return 1;
         } else {

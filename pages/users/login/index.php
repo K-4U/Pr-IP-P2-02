@@ -7,7 +7,7 @@ class usersLogin extends cmsPage {
         if($this->user->isLoggedIn() == false) {
             $showLogin = true;
             if(isset($_POST['username'])) {
-                $login = $this->user->doLogin($_POST['username'], $_POST['pass'], $_POST['rememberme']);
+                $login = $this->user->doLogin($_POST['username'], $_POST['password']);
                 if($login == 0) {
                     $showLogin = false;
                 } elseif($login == 1) {
