@@ -9,14 +9,14 @@
     <!-- end: Mobile Specific -->
 
     <!-- start: CSS -->
-    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-    <link id="base-style" href="css/style.css" rel="stylesheet">
+    {csstag url='bootstrap.min.css'}
+    {csstag url='style.css'}
     <!-- end: CSS -->
 
     <!-- start: JS -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="js/jq.js"></script>
+    {jstag url='bootstrap.min.js'}
+    {jstag url='jq.js'}
     <!-- end: JS -->
 </head>
 <body>

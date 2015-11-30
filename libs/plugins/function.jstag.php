@@ -9,7 +9,7 @@
  * -------------------------------------------------------------
  */
 
-function smarty_function_jsscript($params, &$smarty) {
+function smarty_function_jstag($params, &$smarty) {
     return "<script type='text/javascript' src='" . baseurl("js/" . $params['url']) . "'></script>";
 
 }
