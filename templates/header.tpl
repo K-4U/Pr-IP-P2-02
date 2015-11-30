@@ -20,6 +20,9 @@
     <!-- end: JS -->
 </head>
 <body>
+<div class="login">
+    {include file="dialogs/login.tpl"}
+</div>
 <div class="row headerrow">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <div class="col-md-8">
@@ -27,14 +30,14 @@
         </div>
         {if !$user.loggedIn}
         <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
-            <button class="btn btn-cta btn-sm">Login</button>
-            <button class="btn btn-cta btn-sm">Registreren</button>
+            <button class="btn btn-cta btn-sm loginBtn">Login</button>
+            <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
         </div>
         {/if}
     </div>
 </div>
 
-<nav class="navbar navbar-inverse headerrow headernav menu">
+<nav class="navbar navbar-s headerrow headernav menu">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">

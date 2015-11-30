@@ -25,4 +25,12 @@ $(document).ready(function () {
 
     document.onscroll = scroll;
 
+    $(".loginBtn").click(function(){
+        $(".login").css('display', 'block');
+    });
+
+    $(".login").click(function() {
+        /*$(".login").css('display', 'none');*/
+    })
+
 });
