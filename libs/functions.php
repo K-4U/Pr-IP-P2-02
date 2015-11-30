@@ -27,8 +27,14 @@ function baseurl($dir) {
         if($dirParts[0] == "Static") {
             $dir = "index.php?ac=" . $dirParts[1];
         }
-        if($dirParts[0] == "Shop") {
-            $dir = "webshop.php?ac=" . $dirParts[1];
+        if($dirParts[0] == "Kavel") {
+            $dir = "lots.php?ac=" . $dirParts[1];
+            if(count($dirParts) == 3) {
+                $dir .= "&amp;args=" . $dirParts[2];
+            }
+        }
+        if($dirParts[0] == "Users") {
+            $dir = "users.php?ac=" . $dirParts[1];
             if(count($dirParts) == 3) {
                 $dir .= "&amp;args=" . $dirParts[2];
             }
