@@ -66,6 +66,11 @@
                     <a href="#">Voorwaarden</a>
                 </li>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><img src="{$gravatarUrl}" class="avatar" /></li>
+            </ul>
+
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
@@ -73,14 +78,12 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><img src="{$gravatarUrl}" class="avatar" /></li>
-            </ul>
-
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Registreer</a></li>
             </ul>
+
+
         </div>
     </div>
 </nav>
