@@ -5,7 +5,7 @@ class user {
     public $lastError = 0;
     private $loggedIn = false;
     private $userName = "";
-    private $userInfo = Array("GEBRUIKERSNAAM" => "", "EMAIL" => "", "VOORNAAM" => "", "TUSSENVOEGSEL" => "", "ACHTERNAAM" => "");
+    private $userInfo = Array("username" => "", "email" => "", "firstname" => "", "lastname" => "");
     private $db;
 
     /**
@@ -30,7 +30,7 @@ class user {
      */
     private function updateInfo() {
 
-        $infoResult = $this->db->buildQuery("SELECT * FROM GEBRUIKER WHERE GEBRUIKERSNAAM LIKE '%s'", $this->userName);
+        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE '%s'", $this->userName);
         if($this->db->getNumRows($infoResult) > 0) {
             $this->userInfo = $this->db->fetchAssoc($infoResult);
         } else {
@@ -53,11 +53,11 @@ class user {
      * @param bool|false $remember
      * @return int
      */
-    public function doLogin($username, $password, $remember = false) {
+    public function doLogin($username, $password) {
         
         $password = hash('sha512', substr($username, 0, 2) . $password . substr($username, 2));
 
-        $loginResult = $this->db->buildQuery("SELECT GEBRUIKERSNAAM FROM GEBRUIKER WHERE WACHTWOORD='%s' AND GEBRUIKERSNAAM LIKE '%s'", $password, $username);
+        $loginResult = $this->db->buildQuery("SELECT username FROM users WHERE password='%s' AND username LIKE '%s'", $password, $username);
 
         if($this->db->getNumRows($loginResult) == 0) {
             return 1;
@@ -66,14 +66,12 @@ class user {
             //Logged in!
             $_SESSION['loggedIn'] = true;
             $_SESSION['user'] = $this;
-            $_SESSION['userName'] = $user['GEBRUIKERSNAAM'];
+            $_SESSION['userName'] = $user['username'];
 
             $this->loggedIn = true;
-            $this->userName = $user['GEBRUIKERSNAAM'];
+            $this->userName = $user['username'];
             $this->updateInfo();//This looks stupid to do..
-            if($remember !== false) {
-                setcookie("username", $username, time() + (60 * 60 * 24 * 365), "/");
-            }
+
 
             return 0;
         }
@@ -86,7 +84,7 @@ class user {
         unset($_SESSION['loggedIn']);
         unset($_SESSION['user']);
         $this->loggedIn = false;
-        $this->userInfo = Array("GEBRUIKERSNAAM" => "", "EMAIL" => "", "VOORNAAM" => "", "TUSSENVOEGSEL" => "", "ACHTERNAAM" => "");
+        $this->userInfo = Array("username" => "", "email" => "", "firstname" => "", "lastname" => "");
     }
 
     /**
@@ -102,7 +100,7 @@ class user {
      */
     public function getName() {
 
-        return $this->userInfo['GEBRUIKERSNAAM'];
+        return $this->userInfo['username'];
     }
 
     /**
@@ -114,7 +112,7 @@ class user {
     }
 
     public function getEmail() {
-        return "koen@k-4u.nl";
+        return $this->userInfo['email'];
     }
 
 
