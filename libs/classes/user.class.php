@@ -30,8 +30,8 @@ class user {
      */
     private function updateInfo() {
 
-        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE '%s'", $this->userName);
-        if($this->db->getNumRows($infoResult) > 0) {
+        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE %s", $this->userName);
+        if($this->db->getHasRows($infoResult)) {
             $this->userInfo = $this->db->fetchAssoc($infoResult);
         } else {
             //We didn't find him!
@@ -57,13 +57,10 @@ class user {
         
         $password = hash('sha512',$password);
 
-        var_dump($username);
-        $loginResult = $this->db->buildQuery("SELECT * FROM users WHERE username='%s'", $username);
-        var_dump($loginResult);
-        var_dump($this->db->fetchAllAssoc($loginResult));
+        $loginResult = $this->db->buildQuery("SELECT * FROM users WHERE username=%s", $username);
 
-        var_dump($this->db->getNumRows($loginResult));// . "<--ROW";
-        if($this->db->getNumRows($loginResult) == 0) {
+        /*var_dump($this->db->getHasRows($loginResult));*/
+        if(!$this->db->getHasRows($loginResult)) {
             return 1;
         } else {
             $user = $this->db->fetchAssoc($loginResult);
@@ -75,7 +72,6 @@ class user {
             $this->loggedIn = true;
             $this->userName = $user['username'];
             $this->updateInfo();//This looks stupid to do..
-
 
             return 0;
         }

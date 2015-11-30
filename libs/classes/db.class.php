@@ -226,6 +226,25 @@ class db {
         return $return;
     }
 
+
+    /**
+     * Checks if the result has rows
+     * @param $result
+     * @return bool
+     */
+    function getHasRows($result) {
+        $return = false;
+        switch($this->type){
+            case SQLTYPES::MSSQL:
+                $return = (mssql_num_rows($result) > 0);
+                break;
+            case SQLTYPES::SQLSRV:
+                $return = sqlsrv_has_rows($result);
+                break;
+        }
+        return $return;
+    }
+
     /**
      * @param $result
      * @return bool|int
@@ -238,7 +257,7 @@ class db {
                 $return = mssql_num_rows($result);
                 break;
             case SQLTYPES::SQLSRV:
-                $return = sqlsrv_num_rows($result);
+                $return = sqlsrv_num_rows($result) or die($this->getLastError());
                 break;
         }
 
