@@ -36,9 +36,9 @@ RewriteRule ^Static/([^/]+)/(.+) index.php?ac=$1&args=$2
 
 
 #Teacher rewrite rules
-RewriteRule ^Teacher/?$           teacher.php?ac=dashboard
-RewriteRule ^Teacher/([^/]+)/?$   teacher.php?ac=$1
-RewriteRule ^Teacher/([^/]+)/(.+) teacher.php?ac=$1&args=$2
+RewriteRule ^Kavel/?$           lots.php?ac=dashboard
+RewriteRule ^Kavel/([^/]+)/?$   lots.php?ac=$1
+RewriteRule ^Kavel/([^/]+)/(.+) lots.php?ac=$1&args=$2
 
 
 
