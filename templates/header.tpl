@@ -9,17 +9,20 @@
     <!-- end: Mobile Specific -->
 
     <!-- start: CSS -->
-    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-    <link id="base-style" href="css/style.css" rel="stylesheet">
+    {csstag url='bootstrap.min.css'}
+    {csstag url='style.css'}
     <!-- end: CSS -->
 
     <!-- start: JS -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="application/javascript" src="js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="js/jq.js"></script>
+    {jstag url='bootstrap.min.js'}
+    {jstag url='jq.js'}
     <!-- end: JS -->
 </head>
 <body>
+<div class="login">
+    {include file="dialogs/login.tpl"}
+</div>
 <div class="row headerrow">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <div class="col-md-8">
@@ -27,14 +30,14 @@
         </div>
         {if !$user.loggedIn}
         <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
-            <button class="btn btn-cta btn-sm">Login</button>
-            <button class="btn btn-cta btn-sm">Registreren</button>
+            <button class="btn btn-cta btn-sm loginBtn">Login</button>
+            <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
         </div>
         {/if}
     </div>
 </div>
 
-<nav class="navbar navbar-inverse headerrow headernav menu">
+<nav class="navbar navbar-s headerrow headernav menu">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -66,6 +69,11 @@
                     <a href="#">Voorwaarden</a>
                 </li>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><img src="{$gravatarUrl}" class="avatar" /></li>
+            </ul>
+
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
@@ -73,14 +81,12 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><img src="{$gravatarUrl}" class="avatar" /></li>
-            </ul>
-
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Registreer</a></li>
             </ul>
+
+
         </div>
     </div>
 </nav>

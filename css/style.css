@@ -1,7 +1,7 @@
 
 body {
     background-color: #eee;
-    font-size: 11px;
+    font-size: 13px;
 }
 
 div.headerrow {
@@ -12,6 +12,7 @@ div.headerrow {
 nav.headerrow{
     background-color: #12094d;
     color: #ffffff;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
 }
 
 .headerrow {
@@ -45,6 +46,7 @@ nav.headerrow{
 
 .sidebar {
     display: none;
+
 }
 
 @media (min-width: 768px) {
@@ -60,6 +62,7 @@ nav.headerrow{
         position: fixed;
         top: 122px;
         z-index: 1000;
+        box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.5);
     }
 }
 
@@ -125,12 +128,33 @@ legend {
 }
 
 .avatar {
-    margin-top: 5px;
-    border-radius: 10px;
+    margin-top: 8px;
+    border-radius: 17px;
     transition: border-radius 0.25s ease-out 0s;
+    background-color: #fff;
+    margin-right: 20px;
 }
 
 .avatar:hover {
     border-radius: 2px;
     transition: border-radius 0.25s ease-out 0s;
+}
+
+.login {
+    display: none;
+    transition: display 0.25s ease-out 0s;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.loginBox {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
