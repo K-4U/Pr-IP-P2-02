@@ -30,7 +30,7 @@ class user {
      */
     private function updateInfo() {
 
-        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE %s", $this->userName);
+        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname, city, country FROM users WHERE username LIKE %s", $this->userName);
         if($this->db->getHasRows($infoResult)) {
             $this->userInfo = $this->db->fetchAssoc($infoResult);
         } else {
@@ -57,7 +57,7 @@ class user {
         
         $password = hash('sha512',$password);
 
-        $loginResult = $this->db->buildQuery("SELECT * FROM users WHERE username=%s", $username);
+        $loginResult = $this->db->buildQuery("SELECT username, password FROM users WHERE username=%s AND password=%s", $username, $password);
 
         /*var_dump($this->db->getHasRows($loginResult));*/
         if(!$this->db->getHasRows($loginResult)) {

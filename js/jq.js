@@ -33,4 +33,7 @@ $(document).ready(function () {
         /*$(".login").css('display', 'none');*/
     })
 
+    $(".avatar").click(function(){
+        $(".usermenu").toggle(600,'swing');
+    });
 });
