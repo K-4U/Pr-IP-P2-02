@@ -11,6 +11,9 @@
     <!-- start: CSS -->
     {csstag url='bootstrap.min.css'}
     {csstag url='style.css'}
+    {if $extracss}
+        {csstag url=$extracss}
+    {/if}
     <!-- end: CSS -->
 
     <!-- start: JS -->

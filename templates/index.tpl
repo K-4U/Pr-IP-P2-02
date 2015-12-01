@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header.tpl" extracss='index.css'}
 
 <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
@@ -63,9 +63,9 @@
         </fieldset>
         <fieldset class="row">
             <legend>Bijna aflopende veilingen</legend>
-            <div class="col-md-4 well" style="height:200px;"></div>
-            <div class="col-md-4 well"></div>
-            <div class="col-md-4 well"></div>
+            {foreach $soonEndingObjects as $object}
+                {include file="entries/object.tpl"}
+            {/foreach}
         </fieldset>
         <fieldset class="row">
             <legend>Nieuw!</legend>
