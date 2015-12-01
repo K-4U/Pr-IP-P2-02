@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-s headerrow headernav menu">
+<nav class="navbar navbar-inverse headerrow headernav menu">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -70,6 +70,7 @@
                 </li>
             </ul>
 
+            {if $user.loggedIn}
             <ul class="nav navbar-nav navbar-right">
                 <li><img src="{$gravatarUrl}" class="avatar"/>
                     <ul class="usermenu">
@@ -82,6 +83,7 @@
                 </li>
 
             </ul>
+            {/if}
 
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
@@ -89,13 +91,12 @@
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
-
+            {if !$user.loggedIn}
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Registreer</a></li>
             </ul>
-
-
+            {/if}
         </div>
     </div>
 </nav>
