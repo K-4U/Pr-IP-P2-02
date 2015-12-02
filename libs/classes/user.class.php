@@ -30,7 +30,7 @@ class user {
      */
     private function updateInfo() {
 
-        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname, city, country FROM users WHERE username LIKE %s", $this->userName);
+        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE %s", $this->userName);
         if($this->db->getHasRows($infoResult)) {
             $this->userInfo = $this->db->fetchAssoc($infoResult);
         } else {
