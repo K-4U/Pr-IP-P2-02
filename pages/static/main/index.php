@@ -31,6 +31,22 @@ class staticMain extends cmsPage {
         return $objects;
     }
 
+    function getCategory($parentId = null){
+        if($parentId == null){
+            $result = $this->db->query("SELECT * FROM categories WHERE parent is NULL");
+        }else{
+            $result = $this->db->buildQuery("SELECT * FROM categories WHERE parent=%d", $parentId);
+        }
+
+        $categories = Array();
+        while($row = $this->db->fetchAssoc($result)){
+
+            $row['sub'] = $this->getCategory($row['id']);
+            $categories[] = $row;
+        }
+        return $categories;
+    }
+
     function parse() {
 
         $displayName = "Hoofdpagina";
@@ -44,6 +60,9 @@ class staticMain extends cmsPage {
         $result = $this->db->query($sql);
         $newObjects = $this->parseObjects($result);
 
+        $categories = $this->getCategory();
+
+        $this->website->assign("categories", $categories);
         $this->website->assign("newObjects", $newObjects);
         $this->website->assign("soonEndingObjects", $soonEndingObjects);
         $this->render($displayName, 'index.tpl');

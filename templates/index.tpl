@@ -2,7 +2,8 @@
 
 <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav tree">
+        {include file="entries/category.tpl"}
+        <!--<ul class="nav tree">
             <li><label class="tree-toggler nav-header">Header 1</label>
                 <ul class="nav tree">
                     <li><label class="tree-toggler nav-header">Header 1.1</label>
@@ -50,7 +51,7 @@
                     </li>
                 </ul>
             </li>
-        </ul>
+        </ul>-->
     </div>
 
 
