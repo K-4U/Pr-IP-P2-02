@@ -32,10 +32,10 @@
             <h1 class="muted">EenmaalAndermaal</h1>
         </div>
         {if !$user.loggedIn}
-        <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
-            <button class="btn btn-cta btn-sm loginBtn">Login</button>
-            <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
-        </div>
+            <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
+                <button class="btn btn-cta btn-sm loginBtn">Login</button>
+                <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
+            </div>
         {/if}
     </div>
 </div>
@@ -75,7 +75,16 @@
 
             {if $user.loggedIn}
             <ul class="nav navbar-nav navbar-right">
-                <li><img src="{$gravatarUrl}" class="avatar" /></li>
+                <li><img src="{$gravatarUrl}" class="avatar"/>
+                    <ul class="usermenu">
+                        <li><a href="{baseurl url="Users/CP"}">Mijn Gegevens</a></li>
+                        <li><a href="#">Mijn Feedback</a></li>
+                        <li><a href="#">Mijn Kavels</a></li>
+                        <li><a href="#">Mijn Biedingen</a></li>
+                        <li><a href="{baseurl url="Users/Logout"}">Uitloggen</a></li>
+                    </ul>
+                </li>
+
             </ul>
             {/if}
 

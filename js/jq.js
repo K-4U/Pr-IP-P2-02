@@ -88,4 +88,7 @@ $(document).ready(function () {
         setTimeout(timeFunc, 1000);
     });
 
+    $(".avatar").click(function(){
+        $(".usermenu").toggle(600,'swing');
+    });
 });
