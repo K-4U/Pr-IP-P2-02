@@ -5,7 +5,7 @@
             <label class="tree-toggler nav-header">{$category.name}</label>
             {include file="entries/category.tpl" categories=$category.sub}
         {else}
-            <a href="{baseurl url="Category/`$category.id`"}">{$category.name}</a>
+            <a href="{baseurl url="Rubriek/`$category.id`"}">{$category.name}</a>
         {/if}
         </li>
     {/foreach}
