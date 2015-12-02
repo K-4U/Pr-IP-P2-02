@@ -1,5 +1,12 @@
 
+@font-face {
+    font-family: "Ubuntu";
+    src: local("Ubuntu"), url("../fonts/Ubuntu-R.ttf") format("truetype");
+}
+
+
 body {
+    font-family: "Ubuntu", sans-serif;
     background-color: #eee;
     font-size: 13px;
 }
