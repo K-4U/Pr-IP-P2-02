@@ -9,6 +9,11 @@ div.headerrow {
     color: #ffffff;
 }
 
+div.headerrow a {
+    color: #fff;
+    text-decoration: none;
+}
+
 nav.headerrow{
     background-color: #12094d;
     color: #ffffff;
