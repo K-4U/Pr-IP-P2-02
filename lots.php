@@ -21,7 +21,7 @@ if(file_exists('pages/kavel/' . strtolower($ac) . '/index.php')){
     include('pages/kavel/' . strtolower($ac) . '/index.php');
     $className = "kavel" . ucfirst($ac);
 
-    $tClass = new $className($sqlConn, $website, $user, $argsRaw);
+    $tClass = new $className($website, $user, $argsRaw, $db);
     $tClass->parse();
 }else{
     //Return 404;
