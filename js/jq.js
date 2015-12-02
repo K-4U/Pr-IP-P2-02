@@ -85,7 +85,8 @@ $(document).ready(function () {
             time+=1;
             setTimeout(timeFunc, 1000);
         };
-        setTimeout(timeFunc, 1000);
+
+        timeFunc();
     });
 
     $(".avatar").click(function(){
