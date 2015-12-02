@@ -29,7 +29,7 @@
 <div class="row headerrow">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <div class="col-md-8">
-            <h1 class="muted">EenmaalAndermaal</h1>
+            <h1 class="muted"><a href="{baseurl url=""}">EenmaalAndermaal</a></h1>
         </div>
         {if !$user.loggedIn}
             <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">

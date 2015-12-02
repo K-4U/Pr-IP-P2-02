@@ -167,4 +167,60 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
     return $url;
 }
 
+
+/**
+ * Fetches the objects given in $result
+ * @param $result
+ * @return array
+ */
+function parseObjects($result) {
+    global $db;
+
+    $objects = Array();
+    while ($row = $db->fetchAssoc($result)) {
+        //Fetch latest bid
+        $bidResult = $db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
+        if($db->getHasRows($bidResult)) {
+            $row['currentBid'] = $db->fetchAssoc($bidResult);
+        } else {
+            $row['currentBid'] = $row['start_bid'];
+        }
+
+        $imageResult = $db->buildQuery("SELECT TOP 1 filename FROM files WHERE objectid=%d", $row['id']);
+        if($db->getHasRows($bidResult)) {
+            $row['image'] = $db->fetchAssoc($imageResult)['filename'];
+        } else {
+            $row['image'] = "https://placehold.it/150x150";
+        }
+
+        $row['timeRemaining'] = $row['end_moment']->getTimeStamp() - time();
+        $objects[] = $row;
+    }
+
+    return $objects;
+}
+
+/**
+ * Fetches the category given by $parentId and its subs
+ * @param null $parentId
+ * @return array
+ */
+function getCategory($parentId = null){
+    global $db;
+
+    if($parentId == null){
+        $result = $db->query("SELECT * FROM categories WHERE parent is NULL");
+    }else{
+        $result = $db->buildQuery("SELECT * FROM categories WHERE parent=%d", $parentId);
+    }
+
+    $categories = Array();
+    while($row = $db->fetchAssoc($result)){
+
+        $row['sub'] = getCategory($row['id']);
+        $categories[] = $row;
+    }
+    return $categories;
+}
+
 ?>

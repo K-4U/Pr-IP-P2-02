@@ -40,7 +40,7 @@ RewriteRule ^Kavel/?$           lots.php?ac=dashboard
 RewriteRule ^Kavel/([^/]+)/?$   lots.php?ac=$1
 RewriteRule ^Kavel/([^/]+)/(.+) lots.php?ac=$1&args=$2
 
-
+RewriteRule ^Rubriek/([^/]+)/?$ category.php?id=$1
 
 #Pupil rewrite rules
 RewriteRule ^Pupil/?$           pupil.php?ac=dashboard

@@ -2,7 +2,7 @@
 include("header.php");
 
 //Register the variables needed from GET
-$varsToRegister = Array("ac"=>"string", "args"=>"string");
+$varsToRegister = Array("id"=>"integer","args"=>"string");
 foreach($varsToRegister as $var=>$type){
     if(array_key_exists($var,$_GET)){
         $$var = $_GET[$var];
@@ -14,18 +14,12 @@ foreach($varsToRegister as $var=>$type){
         }
     }
 }
+
 //Parse args:
 $argsRaw = explode('/', $args);
 
-if(file_exists('pages/kavel/' . strtolower($ac) . '/index.php')){
-    include('pages/kavel/' . strtolower($ac) . '/index.php');
-    $className = "kavel" . ucfirst($ac);
-
-    $tClass = new $className($website, $user, $argsRaw, $db);
-    $tClass->parse();
-}else{
-    //Return 404;
-    echo "404 not found.";
-}
+include("pages/category/index.php");
+$tClass = new categories($website, $user, $argsRaw, $db);
+$tClass->parse($id);
 
 ?>

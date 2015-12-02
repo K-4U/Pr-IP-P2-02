@@ -12,20 +12,16 @@ class staticMain extends cmsPage {
         //Fetch all from SQL.
         $sql = "SELECT TOP 3 id,title,end_moment,start_bid FROM objects ORDER BY end_moment DESC";
         $result = $this->db->query($sql);
-        $soonEndingObjects = Array();
-        while($row = $this->db->fetchAssoc($result)){
-            //Fetch latest bid
-            $bidResult = $this->db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
-            if($this->db->getHasRows($bidResult)) {
-                $row['currentBid'] = $this->db->fetchAssoc($bidResult);
-            }else{
-                $row['currentBid'] = $row['start_bid'];
-            }
+        $soonEndingObjects = parseObjects($result);
 
-            $row['timeRemaining'] = $row['end_moment']->getTimeStamp() - time();
-            $soonEndingObjects[] = $row;
-        }
+        $sql = "SELECT TOP 3 id,title,end_moment,start_bid FROM objects ORDER BY start_moment DESC";
+        $result = $this->db->query($sql);
+        $newObjects = parseObjects($result);
 
+        $categories = getCategory();
+
+        $this->website->assign("categories", $categories);
+        $this->website->assign("newObjects", $newObjects);
         $this->website->assign("soonEndingObjects", $soonEndingObjects);
         $this->render($displayName, 'index.tpl');
     }

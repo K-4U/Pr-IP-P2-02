@@ -1,5 +1,12 @@
 
+@font-face {
+    font-family: "Ubuntu";
+    src: local("Ubuntu"), url("../fonts/Ubuntu-R.ttf") format("truetype");
+}
+
+
 body {
+    font-family: "Ubuntu", sans-serif;
     background-color: #eee;
     font-size: 13px;
 }
@@ -7,6 +14,11 @@ body {
 div.headerrow {
     background-color: #413a70;
     color: #ffffff;
+}
+
+div.headerrow a {
+    color: #fff;
+    text-decoration: none;
 }
 
 nav.headerrow{

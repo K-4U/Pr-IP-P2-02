@@ -85,10 +85,15 @@ $(document).ready(function () {
             time+=1;
             setTimeout(timeFunc, 1000);
         };
-        setTimeout(timeFunc, 1000);
+
+        timeFunc();
     });
 
     $(".avatar").click(function(){
         $(".usermenu").toggle(600,'swing');
     });
+
+    $(".clickable").click(function(){
+        window.location.href = $(this).data('link');
+    })
 });
