@@ -92,4 +92,8 @@ $(document).ready(function () {
     $(".avatar").click(function(){
         $(".usermenu").toggle(600,'swing');
     });
+
+    $(".clickable").click(function(){
+        window.location.href = $(this).data('link');
+    })
 });

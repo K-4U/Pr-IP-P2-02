@@ -1,0 +1,16 @@
+.objectTime {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.objectBidsSet {
+    margin-top: -15px;
+    max-height: 357px;
+}
+
+.objectBids{
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 295px;
+    border-top: 1px #000 solid;
+}
