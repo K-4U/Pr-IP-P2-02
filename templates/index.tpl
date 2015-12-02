@@ -55,12 +55,12 @@
 
 
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
-        <fieldset class="row">
+        <!--<fieldset class="row">
             <legend>Uitgelicht</legend>
             <div class="col-md-4 well" style="height:200px;"></div>
             <div class="col-md-4 well"></div>
             <div class="col-md-4 well"></div>
-        </fieldset>
+        </fieldset>-->
         <fieldset class="row">
             <legend>Bijna aflopende veilingen</legend>
             {foreach $soonEndingObjects as $object}
@@ -69,16 +69,16 @@
         </fieldset>
         <fieldset class="row">
             <legend>Nieuw!</legend>
-            <div class="col-md-4 well" style="height:200px;"></div>
-            <div class="col-md-4 well"></div>
-            <div class="col-md-4 well"></div>
+            {foreach $newObjects as $object}
+                {include file="entries/object.tpl"}
+            {/foreach}
         </fieldset>
-        <fieldset class="row">
+        <!--<fieldset class="row">
             <legend>Populaire rubrieken</legend>
             <div class="col-md-4 well" style="height:200px;"></div>
             <div class="col-md-4 well"></div>
             <div class="col-md-4 well"></div>
-        </fieldset>
+        </fieldset>-->
     </div>
 </div>
 

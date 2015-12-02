@@ -3,6 +3,6 @@
     <div class="col-md-6">
         <div class="objectTitle">{$object.title}</div>
         <div class="objectTime countdown">{$object.timeRemaining}</div>
-        <div class="objectBid">Huidig bod:<br /> &euro;{$object.currentBid}</div>
+        <div class="objectBid"><h6>Huidig bod:</h6>&euro;{$object.currentBid}</div>
     </div>
 </div>
