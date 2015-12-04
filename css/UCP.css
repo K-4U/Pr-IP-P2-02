@@ -1,0 +1,23 @@
+.UCP {
+    font-size: 24px;
+}
+
+.accountActies {
+    padding-top: 20px;
+}
+
+.userLocation {
+    font-size: 16px;
+}
+
+.labelsGegevens {
+    font-size: 16px;
+}
+
+label{
+    padding-top:3px;
+}
+
+.huisnrLabel{
+    padding-top: 7px;
+}
