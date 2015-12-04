@@ -60,7 +60,7 @@
                     <a href="#">Kavel aanbieden</a>
                 </li>
                 <li>
-                    <a href="#">Veilingen</a>
+                    <a href="{baseurl url=""}">Veilingen</a>
                 </li>
                 <li>
                     <a href="#">Over ons</a>
