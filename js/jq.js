@@ -70,9 +70,11 @@ $(document).ready(function () {
     });
 
     $(".countdown").each(function(index, element){
-        var startTime = parseInt($(this).text());
+        var startTime = parseInt($(this).text(), 10);
         var time = 0;
         var obj = $(this);
+
+
 
         var timeFunc = function(){
             var v = (startTime - time);
@@ -86,7 +88,12 @@ $(document).ready(function () {
             setTimeout(timeFunc, 1000);
         };
 
-        timeFunc();
+        var days = Math.floor(startTime / 86400);
+        if(days == 0) {
+            timeFunc();
+        }else{
+            obj.text(days + " dag" + (days > 1 ? "en" : ""));
+        }
     });
 
     $(".avatar").click(function(){
