@@ -200,3 +200,25 @@ legend {
     cursor: pointer;
     cursor: hand;
 }
+
+.row-spacing {
+    padding-top: 5px;
+}
+
+.well .no-rounded-corners {
+    border-radius: 0;
+}
+
+.well .no-rounded-corners-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.well .no-rounded-corners-bottom {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.rating {
+    color: #FF8C00;
+}
