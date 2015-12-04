@@ -3,14 +3,14 @@
 <div class="col-md-offset-2 col-md-8 well">
     <div class="row">
         <div class="col-md-8">
-            <h2>{$object.title}</h2>
+            <h2 class="objectName">{$object.title}</h2>
         </div>
         <div class="pull-right col-md-2">objectnummer {$object.id}</div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
-            <img src="{$object.image}" class="col-md-12" />
+            <img src="{$object.image}" class="col-md-12 col-xs-12 col-sm-12" />
         </div>
         <div class="col-md-3 col-md-offset-1">
             <div class="row">
@@ -19,6 +19,7 @@
                     <span class="objectTime">Resterend: <span class="countdown">{$object.timeRemaining}</span></span>
                 </div>
             </div>
+            {if $user.loggedIn}
             <div class="row">
                 <div class="col-md-12 well form-group">
                     <label for="exampleInputAmount">Plaats bod:</label>
@@ -31,6 +32,7 @@
                     </div>
                 </div>
             </div>
+            {/if}
         </div>
         <fieldset class="col-md-3 col-md-offset-1 objectBidsSet">
             <legend>Geschiedenis</legend>
@@ -47,8 +49,37 @@
             </div>
         </fieldset>
     </div>
-    <div class="row">
-
+    <div class="row row-spacing">
+        <div class="col-md-12">
+            <img src="{$object.user.gravatarUrl}" class="col-md-1" />
+            <div class="col-md-2">
+                <div class="username">{$object.user.username}&nbsp;</div>
+                <div class="userLocation">{$object.user.city}&nbsp;</div>
+                <div class="rating" data-rate-value="{$object.user.rating}">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-spacing">
+        <div class="col-md-12">
+            <ul class="nav nav-tabs info">
+                <li class="active"><a data-toggle="tab" href="#description">Beschrijving</a></li>
+                <li><a data-toggle="tab" href="#payment">Betaling</a></li>
+                <li><a data-toggle="tab" href="#shipment">Verzending</a></li>
+            </ul>
+            <div class="tab-content well no-rounded-corners-top">
+                <div class="tab-pane fade in active" id="description">{$object.description}</div>
+                <div class="tab-pane fade in" id="payment">{$object.payment_instructions}</div>
+                <div class="tab-pane fade in" id="shipment">{$object.shipment_instructions}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-spacing">
+        <fieldset class="col-md-12">
+            <legend>Gerelateerde producten</legend>
+            {foreach $object.related as $related}
+                {include file="entries/object.tpl" object=$related}
+            {/foreach}
+        </fieldset>
     </div>
 </div>
 
