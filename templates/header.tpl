@@ -67,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="{baseurl url="Static/contact"}">Contact</a>
                 </li>
 
                 <li>
