@@ -66,6 +66,17 @@ class kavelItem extends cmsPage {
         //$relatedObjectsResult = $this->db->buildQuery("SELECT TOP 3 * FROM objects");
         //$object['related'] = $this->db->fetchAllAssoc($relatedObjectsResult);
 
+        //Fetch category this object is in
+        $catId = $this->db->fetchAssoc($this->db->buildQuery("SELECT category_id FROM object_in_category WHERE object_id=%i", $object['id']))['category_id'];
+
+        $categories = Array();
+        getCategoryFromBottom($categories, $catId);
+        $this->addToBreadcrumbs("Home", baseurl(""));
+        foreach($categories as $cat){
+            $this->addToBreadcrumbs($cat['name'], baseurl("Rubriek/" . $cat['id']));
+        }
+        $this->addToBreadcrumbs($object['title']);
+
         $this->website->assign("object", $object);
 
         $this->render($displayName, 'lot.tpl');

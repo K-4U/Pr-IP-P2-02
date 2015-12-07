@@ -223,4 +223,15 @@ function getCategory($parentId = null){
     return $categories;
 }
 
+function getCategoryFromBottom(&$array, $childId){
+    global $db;
+
+    $category = $db->fetchAssoc($db->buildQuery("SELECT id,name, parent FROM categories WHERE id=%i", $childId));
+
+    if($category['parent'] != null){
+        getCategoryFromBottom($array, $category['parent']);
+    }
+    $array[] = $category;
+}
+
 ?>
