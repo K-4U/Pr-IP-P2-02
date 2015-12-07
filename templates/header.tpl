@@ -63,7 +63,7 @@
                     <a href="{baseurl url=""}">Veilingen</a>
                 </li>
                 <li>
-                    <a href="#">Over ons</a>
+                    <a href="{baseurl url="Static/about"}">Over ons</a>
                 </li>
 
                 <li>
