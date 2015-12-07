@@ -65,11 +65,14 @@
                         <div>
                             {foreach $object.bids as $bid}
                                 <div class="row">
-                                    {*//TODO: Add link to username*}
-                                    <div class="col-md-8 col-sm-8 col-xs-8">{$bid.username}</div>
+                                    <div class="col-md-8 col-sm-8 col-xs-8"><a href="{baseurl url="Users/Profile/`$bid.username`"}">{$bid.username}</a></div>
                                     <div class="col-md-4 col-sm-4 col-xs-4">&euro; {$bid.bidvalue|string_format:"%.2f"}</div>
                                 </div>
                             {/foreach}
+                            <div class="row">
+                                <div class="col-md-8 col-sm-8 col-xs-8">Startbod</div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">&euro; {$object.start_bid|string_format:"%.2f"}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,7 +85,7 @@
         <div class="col-md-12">
             <img src="{$object.user.gravatarUrl}" class="col-md-1" />
             <div class="col-md-2">
-                <div class="username">{$object.user.username}</div>
+                <div class="username"><a href="{baseurl url="Users/Profile/`$object.user.username`"}">{$object.user.username}</a></div>
                 <div class="userLocation">{$object.user.city}</div>
                 <div class="rating" data-rate-value="{$object.user.rating}"></div>
             </div>
@@ -97,7 +100,7 @@
                 <li><a data-toggle="tab" href="#payment">Betaling</a></li>
                 <li><a data-toggle="tab" href="#shipment">Verzending</a></li>
             </ul>
-            <div class="tab-content well-upper no-rounded-corners-top no-border-top">
+            <div class="tab-content well-upper no-rounded-corners-top no-border-top objectDescription">
                 <div class="tab-pane fade in active" id="description">{$object.description}</div>
                 <div class="tab-pane fade in" id="payment">{$object.payment_instructions}</div>
                 <div class="tab-pane fade in" id="shipment">{$object.shipment_instructions}</div>

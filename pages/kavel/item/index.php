@@ -44,11 +44,11 @@ class kavelItem extends cmsPage {
 
         $object['timeRemaining'] = $object['end_moment']->getTimeStamp() - time();
 
+        $object['description'] = nl2br(str_replace('\n', "\n", $object['description']));
+
         //Fetch bids
         $bidsResult = $this->db->buildQuery("SELECT * FROM bids WHERE objectid=%i ORDER BY bidmoment DESC", $this->argsIndexed[0]);
         $object['bids'] = $this->db->fetchAllAssoc($bidsResult);
-
-        $object['bids'][] = Array("bidvalue" => $object['start_bid'], "username" => "Startbod");
 
         //Get minimal new bid:
         $object['nextBid'] = $this->db->fetchIndex($this->db->executeFunction('dbo.fnMinimalNewBid', $object['id']))[0];
