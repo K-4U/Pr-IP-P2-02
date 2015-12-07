@@ -205,20 +205,34 @@ legend {
     padding-top: 5px;
 }
 
-.well .no-rounded-corners {
+.no-rounded-corners {
     border-radius: 0;
 }
 
-.well .no-rounded-corners-top {
+.no-rounded-corners-top {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.well .no-rounded-corners-bottom {
+.no-rounded-corners-bottom {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 .rating {
     color: #FF8C00;
+}
+
+.well-upper {
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+}
+
+.no-border-top {
+    border-top: none;
 }
