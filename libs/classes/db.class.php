@@ -345,7 +345,7 @@ class db {
             return $this->query($sql);
         }
         if ($this->type == SQLTYPES::SQLSRV) {
-            return $this->query($sql, true, $values);
+            return $this->query($sql, false, $values);
         }
     }
 
@@ -388,7 +388,7 @@ class db {
             return $this->query($sql);
         }
         if ($this->type == SQLTYPES::SQLSRV) {
-            return $this->query($sql, true, $values);
+            return $this->query($sql, false, $values);
         }
     }
 
