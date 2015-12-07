@@ -10,7 +10,7 @@ class staticMain extends cmsPage {
         $displayName = "Hoofdpagina";
 
         //Fetch all from SQL.
-        $sql = "SELECT TOP 3 id,title,end_moment,start_bid FROM objects ORDER BY end_moment DESC";
+        $sql = "SELECT TOP 3 id,title,end_moment,start_bid FROM objects WHERE end_moment > GETDATE() ORDER BY end_moment ASC";
         $result = $this->db->query($sql);
         $soonEndingObjects = parseObjects($result);
 
