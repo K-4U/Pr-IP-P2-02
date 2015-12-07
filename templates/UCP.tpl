@@ -77,7 +77,7 @@
 
                         <div class="col-md-8 col-sm-8">
                             <input type="text" value="{$user.firstname}" id="firstname" name="firstname"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
@@ -85,7 +85,7 @@
 
                         <div class="col-md-8 col-sm-8">
                             <input type="text" value="{$user.lastname}" id="lastname" name="lastname"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
@@ -94,7 +94,7 @@
 
                         <div class="col-md-8 col-sm-8">
                             <input type="text" value="{$CP.adress_street1}" id="adress_street1" name="adress_street1"
-                                   class="form-control"></div>
+                                   class="form-control" required></div>
                     </div>
                     <div class="row">
                         <div class=" col-md-offset-4 col-sm-offset-4 col-md-8 col-sm-8">
@@ -107,14 +107,14 @@
 
                         <div class=" col-md-2 col-sm-4">
                             <input type="text" value="{$CP.postalcode}" id="postalcode" name="postalcode"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
 
                         <label for="adress_number" class="col-md-2 col-sm-2 huisnrLabel labelsGegevens">Huisnr:</label>
 
                         <div class="col-md-2 col-sm-4">
                             <input type="text" value="{$CP.adress_number}" id="adress_number" name="adress_number"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
@@ -122,7 +122,7 @@
 
                         <div class="col-md-8 col-sm-8">
                             <input type="text" value="{$phonenumber.phonenumber}" id="phonenumber" name="phonenumber"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                     </div>
                     <br>
@@ -137,7 +137,7 @@
 
                                 <div class="col-md-6 col-sm-6">
                                     <input type="password" placeholder="huidige wachtwoord" id="currentPassword"
-                                           name="currentPassword" class="form-control">
+                                           name="currentPassword" class="form-control" >
                                 </div>
                             </div>
                             <div class="row">
