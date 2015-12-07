@@ -20,6 +20,7 @@ class staticMain extends cmsPage {
 
         $categories = getCategory();
 
+        $this->addToBreadcrumbs("Home");
         $this->website->assign("categories", $categories);
         $this->website->assign("newObjects", $newObjects);
         $this->website->assign("soonEndingObjects", $soonEndingObjects);

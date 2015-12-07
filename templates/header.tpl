@@ -57,7 +57,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Kavel aanbieden</a>
+                    <a href="{baseurl url="Kavel/New"}">Kavel aanbieden</a>
                 </li>
                 <li>
                     <a href="{baseurl url=""}">Veilingen</a>
@@ -107,3 +107,12 @@
 </nav>
 
 <div class="container-fluid content">
+    <ol class="breadcrumb col-md-offset-2 col-md-8">
+        {foreach $breadcrumbs as $breadcrumb}
+            {if $breadcrumb.link}
+                <li><a href="{$breadcrumb.link}">{$breadcrumb.name}</a></li>
+            {else}
+                <li class="active">{$breadcrumb.name}</li>
+            {/if}
+        {/foreach}
+    </ol>

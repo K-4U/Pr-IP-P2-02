@@ -10,6 +10,7 @@ class cmsPage {
     protected $argsIndexed = Array();
     protected $menu = Array();
     protected $rendered = false;
+    protected $breadcrumbs = Array();
 
     function __construct($website, $user, $argsRaw, $db) {
 
@@ -30,6 +31,10 @@ class cmsPage {
         }
     }
 
+    function addToBreadcrumbs($title, $link=""){
+        $this->breadcrumbs[] = Array("name"=>$title, "link"=>$link);
+    }
+
     /**
      * Renders a page of $template
      * @param $displayName
@@ -41,6 +46,7 @@ class cmsPage {
             $this->website->assign("self", $_SERVER['REQUEST_URI']);
             $this->website->assign("displayName", $displayName);
             $this->website->assign("menu", $this->menu);
+            $this->website->assign("breadcrumbs", $this->breadcrumbs);
             $this->website->display($template);
             $this->db->close();
             $this->rendered = true;
