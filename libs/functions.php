@@ -181,13 +181,13 @@ function parseObjects($result) {
         //Fetch latest bid
         $bidResult = $db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
         if($db->getHasRows($bidResult)) {
-            $row['currentBid'] = $db->fetchAssoc($bidResult);
+            $row['currentBid'] = $db->fetchAssoc($bidResult)['bidvalue'];
         } else {
             $row['currentBid'] = $row['start_bid'];
         }
 
         $imageResult = $db->buildQuery("SELECT TOP 1 filename FROM files WHERE objectid=%d", $row['id']);
-        if($db->getHasRows($bidResult)) {
+        if($db->getHasRows($imageResult)) {
             $row['image'] = $db->fetchAssoc($imageResult)['filename'];
         } else {
             $row['image'] = "https://placehold.it/150x150";
