@@ -5,39 +5,73 @@ Class usersCP extends cmsPage {
     function parse() {
 
         if($this->user->isLoggedIn()) {
-
-            if(isset($_POST ['submit'])){
+            $Errors = false;
+            $updateComplete = false;
+            if(isset($_POST ['submit'])) {
 //                var_dump($_POST);
                 $userInfoArray = Array(
-                    'firstname' => $_POST['firstname'],
-                    'lastname' => $_POST['lastname'],
+                    'firstname'      => $_POST['firstname'],
+                    'lastname'       => $_POST['lastname'],
 //                    'city' => $_POST['city'],
 //                    'country' => $_POST['country'],
                     'adress_street1' => $_POST['adress_street1'],
                     'adress_street2' => $_POST['adress_street2'],
-                    'adress_number' => $_POST['adress_number'],
-                    'postalcode' => $_POST['postalcode']);
-                $phonenumberArray= array(
+                    'adress_number'  => $_POST['adress_number'],
+                    'postalcode'     => $_POST['postalcode']);
+                $phonenumberArray = array(
                     'phonenumber' => $_POST['phonenumber']);
 
-                if(isset($_POST ['securityQuestions'])){
-                    if($_POST ['securityQuestions'] >=0){
+                if(isset($_POST ['securityQuestions'])) {
+                    if($_POST ['securityQuestions'] >= 0) {
+
                         $userInfoArray['security_question'] = $_POST['securityQuestions'];
-                        $userInfoArray['security_awnser'] = $_POST['securityAwnser'];
+                        $userInfoArray['security_answer'] = $_POST['questionAnswer'];
                     }
 
                 }
-                if(isset($_POST ['newPassword2'])){
-                    $newPassword = hash('sha512',$_POST['newPassword']);
-                    $userInfoArray['password'] = $newPassword;
+                if(!empty($_POST['currentPassword'])|| !empty($_POST['newPassword']) || !empty($_POST['newPassword2'])) {
+
+                    $password = hash('sha512', $_POST ['currentPassword']);
+
+                    $currentPassword = $this->db->buildQuery("SELECT username, password FROM users WHERE username=%s AND password=%s", $this->user->getName(), $password);
+                    if(!$this->db->getHasRows($currentPassword)) {
+                        $errors = true;
+                        $errorMsg = "Het ingevulde huidige wachtwoord komt niet overeen met het huidige wachtwoord, wachtwoord is niet veranderd.";
+                    } else {
+                        if($_POST ['newPassword'] == $_POST ['newPassword2']) {
+                            $newPassword = hash('sha512', $_POST['newPassword']);
+                            $userInfoArray['password'] = $newPassword;
+                        } else {
+                            $errors = true;
+                            $errorMsg = "De opgegeven nieuwe wachtwoorden komen niet overeen met elkaar, wachtwoord is niet veranderd.";
+                        }
+                    }
+                } else if(!empty($_POST['currentPassword']) && !empty($_POST['newPassword']) && !empty($_POST['newPassword2'])) {
+                    $errorMsg = "Een of meer benodigde variabelen zijn niet ingevuld.";
                 }
-                $updatePhonenumber = $this->db->update('phonenumbers', $phonenumberArray ,'username', $this->user->getName());
-                $update = $this->db->update('users', $userInfoArray, 'username', $this->user->getName());
-                $lastError = $this->db->getLastError();
-                if($lastError!= null){
+                $x = 0;
+                $y = 0;
+                foreach($userInfoArray as $key => $value) {
+                    if($key != 'adress_street2') {
+                        if($value != null) {
+                            $x += 1; //adds 1 if the value is not null
+                        }
+                        $y += 1; //adds 1 for each key in the array
+                    }
+                }
+                if($x == $y) {
+                    $updatePhonenumber = $this->db->update('phonenumbers', $phonenumberArray, 'username', $this->user->getName());
+                    $update = $this->db->update('users', $userInfoArray, 'username', $this->user->getName());
+                    $lastError = $this->db->getLastError();
+                    $updateComplete = true;
+                    if($lastError != null) {
+                        $updateInfoError = "De ingevulde data geeft een fout terug, vul de velden goed in en probeer het opnieuw.";
+                        $this->website->assign("updateInfoError", $updateInfoError);
+//                    var_dump($lastError);
+                    }
+                } else {
                     $updateInfoError = "De ingevulde data geeft een fout terug, vul de velden goed in en probeer het opnieuw.";
                     $this->website->assign("updateInfoError", $updateInfoError);
-//                    var_dump($lastError);
                 }
 
             }
@@ -69,8 +103,11 @@ Class usersCP extends cmsPage {
             $questions = $this->db->fetchAllAssoc($questionResult);
             $this->website->assign("questions", $questions);
 
+            $this->website->assign("updateComplete", $updateComplete);
+            $this->website->assign("errorMsg", $errorMsg);
+//            $this->addToBreadcrumbs("naampagina" baseurl("/") )
             $this->render("UCP", "UCP.tpl");
-        }else{
+        } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat uw controle paneel bekeken kan worden.");
             $this->render("login", "login.tpl");
         }
