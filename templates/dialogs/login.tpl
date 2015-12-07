@@ -1,4 +1,4 @@
-<div class="col-md-4 loginBox well">
+<div class="col-md-4 col-xs-12 loginBox well">
     {if $loginError}
         <div class=" alert alert-danger"> {$loginError} </div>
     {/if}
@@ -7,7 +7,7 @@
         <form action="{baseurl url="Users/Login"}" method="post">
             <input type="text" placeholder="Gebruikersnaam" id="username" name="username" class="form-control"><br>
             <input type="password" placeholder="Wachtwoord" id="password" name="password" class="form-control"><br>
-            <div style="text-align:center"><button class="btn btn-primary" type="submit"><img src="/ic/lock.png"> Login</button></div>
+            <div style="text-align:center"><button class="btn btn-primary" type="submit"><span class="fa fa-lock"></span> Login</button></div>
         </form>
     </div>
 </div>

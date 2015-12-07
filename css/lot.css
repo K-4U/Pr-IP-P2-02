@@ -14,3 +14,13 @@
     max-height: 295px;
     border-top: 1px #000 solid;
 }
+
+.objectName {
+    color: #413a70;
+}
+
+.username{
+    font-size: 14px;
+    font-weight: bold;
+    color: #413a70;
+}

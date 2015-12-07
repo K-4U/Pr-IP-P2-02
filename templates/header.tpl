@@ -11,6 +11,7 @@
     <!-- start: CSS -->
     {csstag url='bootstrap.min.css'}
     {csstag url='style.css'}
+    {csstag url='font-awesome.min.css'}
     {if $extracss}
         {csstag url=$extracss}
     {/if}
@@ -20,6 +21,7 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     {jstag url='bootstrap.min.js'}
     {jstag url='jq.js'}
+    {jstag url='plugins/rater.min.js'}
     <!-- end: JS -->
 </head>
 <body>
@@ -96,7 +98,7 @@
             </form>
             {if !$user.loggedIn}
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                <li><a href="#">Login</a></li>
+                <li><a href="{baseurl url="Users/Login"}">Login</a></li>
                 <li><a href="#">Registreer</a></li>
             </ul>
             {/if}
