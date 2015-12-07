@@ -90,7 +90,7 @@ class db {
     /**
      * @return string
      */
-    public function getLastError() {
+    public function getLastError($raw=true) {
 
         $return = "";
         switch ($this->type) {
@@ -98,7 +98,11 @@ class db {
                 $return = mssql_get_last_message();
                 break;
             case SQLTYPES::SQLSRV:
-                $return = $this->formatSqlSrvError(sqlsrv_errors());
+                if($raw) {
+                    $return = sqlsrv_errors();
+                } else {
+                    $return = $this->formatSqlSrvError(sqlsrv_errors());
+                }
                 break;
         }
 
@@ -341,7 +345,7 @@ class db {
             return $this->query($sql);
         }
         if ($this->type == SQLTYPES::SQLSRV) {
-            return $this->query($sql, true, $values);
+            return $this->query($sql, false, $values);
         }
     }
 
@@ -384,7 +388,7 @@ class db {
             return $this->query($sql);
         }
         if ($this->type == SQLTYPES::SQLSRV) {
-            return $this->query($sql, true, $values);
+            return $this->query($sql, false, $values);
         }
     }
 

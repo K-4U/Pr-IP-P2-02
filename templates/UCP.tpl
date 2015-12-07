@@ -1,5 +1,7 @@
 {include file="header.tpl" extracss="UCP.css"}
-
+{if $lastError!= null}
+<div class=" alert alert-danger col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2"> {$updateInfoError} </div>
+{/if}
 <div class="well col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 ">
     <div class="col-md-5 col-sm-5 ">
         <div class="row">
@@ -42,7 +44,7 @@
         </div>
     </div>
     <div class="col-md-7 col-sm-7 ">
-        <form action="{baseurl url="Users/CP"}" method="post">
+        <form action="{$self}" method="post">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">Uw gegevens</div>
@@ -76,28 +78,28 @@
                         <label for="adress_street1" class="col-md-4 col-sm-4 labelsGegevens">Adres:</label>
 
                         <div class="col-md-8 col-sm-8">
-                            <input type="text" value="{$CP.adress_street1}" id="adress_street1" class="form-control"></div>
+                            <input type="text" value="{$CP.adress_street1}" id="adress_street1" name="adress_street1" class="form-control"></div>
                     </div>
                     <div class="row">
                         <div class=" col-md-offset-4 col-sm-offset-4 col-md-8 col-sm-8">
-                            <input type="text" value="{$CP.adress_street2}" id="adress_street2" class="form-control">
+                            <input type="text" value="{$CP.adress_street2}" id="adress_street2" name="adress_street2"class="form-control">
                         </div>
                     </div>
                     <div class=" row">
                         <label for="postalcode" class="col-md-4 col-sm-4 labelsGegevens">Postcode:</label>
                         <div class=" col-md-2 col-sm-4">
-                            <input type="text" value="{$CP.postalcode}" id="postalcode" class="form-control">
+                            <input type="text" value="{$CP.postalcode}" id="postalcode" name="postalcode" class="form-control">
                         </div>
 
                         <label for="adress_number" class="col-md-2 col-sm-2 huisnrLabel labelsGegevens">Huisnr:</label>
                         <div class="col-md-2 col-sm-4">
-                            <input type="text" value="{$CP.adress_number}" id="huisnummer" class="form-control">
+                            <input type="text" value="{$CP.adress_number}" id="adress_number" name="adress_number" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <label for="phonenumber" class="col-md-4 col-sm-4 labelsGegevens">Telefoonnummer:</label>
                         <div class="col-md-8 col-sm-8">
-                            <input type="text" value="{$phonenumber.phonenumber}" id="phonenumber" class="form-control">
+                            <input type="text" value="{$phonenumber.phonenumber}" id="phonenumber" name="phonenumber" class="form-control">
                         </div>
                     </div>
                     <br>
@@ -111,7 +113,7 @@
                                 <label for="currentPassword" class="col-md-6 col-sm-6">Uw huidige wachtwoord:</label>
 
                                 <div class="col-md-6 col-sm-6">
-                                    <input type="password" placeholder="huidige wachtwoord" id="currentPassword" class="form-control">
+                                    <input type="password" placeholder="huidige wachtwoord" id="currentPassword" name="currentPassword" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
@@ -121,11 +123,11 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <input type="password" placeholder="nieuw wachtwoord"
-                                           id="newPassword" class="form-control">
+                                           id="newPassword" name="newPassword" class="form-control">
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <input type="password" placeholder="herhaling nieuw wachtwoord"
-                                           id="newPassword2" class="form-control"><br>
+                                           id="newPassword2" name="newPassword2" class="form-control"><br>
                                 </div>
                             </div>
                         </div>
@@ -142,7 +144,7 @@
                                 {/foreach}
                             </select>
                             <br><br>
-                            <input type="text" id="questionAwnser" class="form-control"><br>
+                            <input type="text" id="questionAwnser" name="questionAwnser" class="form-control"><br>
                         </div>
                         <button class="btn" type="submit" name="submit">Opslaan</button>
                     </div>

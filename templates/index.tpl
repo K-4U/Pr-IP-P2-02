@@ -13,18 +13,30 @@
             <div class="col-md-4 well"></div>
             <div class="col-md-4 well"></div>
         </fieldset>-->
-        <fieldset class="row">
-            <legend>Bijna aflopende veilingen</legend>
-            {foreach $soonEndingObjects as $object}
-                {include file="entries/object.tpl"}
-            {/foreach}
-        </fieldset>
-        <fieldset class="row">
-            <legend>Nieuw!</legend>
-            {foreach $newObjects as $object}
-                {include file="entries/object.tpl"}
-            {/foreach}
-        </fieldset>
+        <div class="row">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <div class="panel-title">Bijna aflopende veilingen</div>
+                </div>
+                <div class="panel-body">
+                    {foreach $soonEndingObjects as $object}
+                        {include file="entries/object.tpl"}
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title">Nieuw!</div>
+                </div>
+                <div class="panel-body">
+                    {foreach $newObjects as $object}
+                        {include file="entries/object.tpl"}
+                    {/foreach}
+                </div>
+            </div>
+        </div>
         <!--<fieldset class="row">
             <legend>Populaire rubrieken</legend>
             <div class="col-md-4 well" style="height:200px;"></div>

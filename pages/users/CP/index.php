@@ -7,18 +7,39 @@ Class usersCP extends cmsPage {
         if($this->user->isLoggedIn()) {
 
             if(isset($_POST ['submit'])){
-//                $saveChanges = $this->db->sqlEscape("UPDATE users SET firstname, lastname, city, country, adress_street1, adress_street2, adress_number, postalcode, birthdate WHERE username=%s)"); AANPASSEN! update function
+//                var_dump($_POST);
+                $userInfoArray = Array(
+                    'firstname' => $_POST['firstname'],
+                    'lastname' => $_POST['lastname'],
+//                    'city' => $_POST['city'],
+//                    'country' => $_POST['country'],
+                    'adress_street1' => $_POST['adress_street1'],
+                    'adress_street2' => $_POST['adress_street2'],
+                    'adress_number' => $_POST['adress_number'],
+                    'postalcode' => $_POST['postalcode']);
+                $phonenumberArray= array(
+                    'phonenumber' => $_POST['phonenumber']);
 
-                $changesResult = $this->db->buildQuery($saveChanges, $this->user->getName());
                 if(isset($_POST ['securityQuestions'])){
                     if($_POST ['securityQuestions'] >=0){
-                        echo "hoi";
+                        $userInfoArray['security_question'] = $_POST['securityQuestions'];
+                        $userInfoArray['security_awnser'] = $_POST['securityAwnser'];
                     }
 
                 }
                 if(isset($_POST ['newPassword2'])){
-
+                    $newPassword = hash('sha512',$_POST['newPassword']);
+                    $userInfoArray['password'] = $newPassword;
                 }
+                $updatePhonenumber = $this->db->update('phonenumbers', $phonenumberArray ,'username', $this->user->getName());
+                $update = $this->db->update('users', $userInfoArray, 'username', $this->user->getName());
+                $lastError = $this->db->getLastError();
+                if($lastError!= null){
+                    $updateInfoError = "De ingevulde data geeft een fout terug, vul de velden goed in en probeer het opnieuw.";
+                    $this->website->assign("updateInfoError", $updateInfoError);
+//                    var_dump($lastError);
+                }
+
             }
 
             $this->website->assign("userGravatar", get_gravatar($this->user->getEmail(), 200));
