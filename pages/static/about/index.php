@@ -7,10 +7,10 @@ class staticAbout extends cmsPage {
 
     function parse() {
 
-        $displayName = "Vacatures";
+        $displayName = "about";
 
 
-        $this->render($displayName, 'vacancies.tpl');
+        $this->render($displayName, 'about.tpl');
     }
 }
 
