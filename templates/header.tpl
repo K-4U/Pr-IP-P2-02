@@ -98,7 +98,7 @@
             </form>
             {if !$user.loggedIn}
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                <li><a href="#">Login</a></li>
+                <li><a href="{baseurl url="Users/Login"}">Login</a></li>
                 <li><a href="#">Registreer</a></li>
             </ul>
             {/if}

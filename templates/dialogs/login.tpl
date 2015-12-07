@@ -1,4 +1,4 @@
-<div class="col-md-4 loginBox well">
+<div class="col-md-4 col-xs-12 loginBox well">
     {if $loginError}
         <div class=" alert alert-danger"> {$loginError} </div>
     {/if}
