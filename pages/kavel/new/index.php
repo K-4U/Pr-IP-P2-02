@@ -10,6 +10,8 @@ class kavelNew extends cmsPage {
         $displayName = "Kavel aanbieden";
 
 
+        $this->addToBreadcrumbs("Home", baseurl(""));
+        $this->addToBreadcrumbs("Kavel aanbieden");
         $this->render($displayName, 'newlot.tpl');
     }
 }

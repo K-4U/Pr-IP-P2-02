@@ -256,3 +256,8 @@ legend {
     cursor: inherit;
     display: block;
 }
+
+
+.breadcrumb > li + li::before {
+    content: "> ";
+}

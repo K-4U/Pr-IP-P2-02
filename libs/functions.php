@@ -231,6 +231,9 @@ function getCategoryFromBottom(&$array, $childId){
     if($category['parent'] != null){
         getCategoryFromBottom($array, $category['parent']);
     }
+    if($category['name'] == null){
+        return;
+    }
     $array[] = $category;
 }
 
