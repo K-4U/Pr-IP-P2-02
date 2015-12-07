@@ -65,8 +65,13 @@ $(document).ready(function () {
         $(".login").css('display', 'block');
     });
 
+
     $(".login").click(function() {
         /*$(".login").css('display', 'none');*/
+    });
+
+    $(".RegisterBtn").click(function(){
+        $(".register").css('display', 'block');
     });
 
     $(".countdown").each(function(index, element){
