@@ -27,18 +27,28 @@
             </div>
             {if $user.loggedIn}
             <div class="row">
-                <div class="panel panel-default form-group">
-                    <div class="panel-heading">
-                        <div class="panel-title">Bieden</div>
+                <form action="{$self}" method="post">
+                    <div class="panel panel-default form-group">
+                        <div class="panel-heading">
+                            <div class="panel-title">Bieden</div>
+                        </div>
+                        <div class="panel-body">
+                            {if $bidError}
+                                <div class="alert alert-danger alert-dismissable col-md-12 col-sm-12 col-xs-12">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {$bidError}
+                                </div>
+                            {/if}
+                            <div class="input-group col-md-12 col-sm-12 col-xs-12">
+                                <div class="input-group-addon">&euro;</div>
+                                <input type="text" class="form-control" id="exampleInputAmount" name="bid" value="{$object.nextBid}">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-cta" type="submit" name="submit">Go!</button>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-body input-group">
-                        <div class="input-group-addon">&euro;</div>
-                        <input type="text" class="form-control" id="exampleInputAmount" value="{$object.nextBid}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default btn-cta" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
+                </form>
             </div>
             {/if}
         </div>
