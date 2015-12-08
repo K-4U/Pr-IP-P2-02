@@ -79,7 +79,7 @@
                             <div class="col-md-8">
                                 <div class="input-group">
                                     <div class="input-group-addon">&euro;</div>
-                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name="shipment_costs" maxlength="11" required placeholder="Verzendkosten">
+                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name="shipment_costs" maxlength="11" placeholder="Verzendkosten">
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                         <div class="panel-body">
-                            <button class="btn btn-default btn-cta">Aanbieden</button>
+                            <button class="btn btn-default btn-cta" type="submit" name="submit">Aanbieden</button>
                         </div>
                     </div>
                 </div>
