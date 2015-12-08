@@ -61,9 +61,10 @@
                                 <select class="form-control" name="payment_method" id="payment_method" required>
                                     <option selected disabled hidden>Betalingswijze</option>
                                     <option value="Overschrijving">Overschrijving</option>
-                                    <option value="Contant">Contact</option>
+                                    <option value="Contant">Contant</option>
                                     <option value="PayPal">PayPal</option>
                                     <option value="Bitcoin">Bitcoin</option>
+                                    <option value="Anders">Anders</option>
                                 </select>
                             </div>
                         </div>
@@ -92,17 +93,35 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        Kavel afbeeldingen
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Kavel afbeeldingen
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <span class="btn btn-default btn-file">
+                                    Browse <input type="file">
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <span class="btn btn-default btn-file">
-                            Browse <input type="file">
-                        </span>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Acties
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <button class="btn btn-default btn-cta">Aanbieden</button>
+                        </div>
                     </div>
                 </div>
             </div>
