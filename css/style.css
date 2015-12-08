@@ -152,7 +152,7 @@ legend {
     transition: border-radius 0.25s ease-out 0s;
 }
 
-.login {
+.login, .register {
     display: none;
     transition: display 0.25s ease-out 0s;
     background-color: rgba(0, 0, 0, 0.5);

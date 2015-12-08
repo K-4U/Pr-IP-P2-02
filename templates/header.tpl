@@ -28,6 +28,9 @@
 <div class="login">
     {include file="dialogs/login.tpl"}
 </div>
+<div class="register">
+    {include file="dialogs/register.tpl"}
+</div>
 <div class="row headerrow">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
         <div class="col-md-8">

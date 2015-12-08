@@ -70,7 +70,7 @@ $(document).ready(function () {
         /*$(".login").css('display', 'none');*/
     });
 
-    $(".RegisterBtn").click(function(){
+    $(".registerBtn").click(function(){
         $(".register").css('display', 'block');
     });
 
