@@ -25,7 +25,7 @@
                             <div class="col-md-4 text-right"><label for="start_bid">Startprijs</label></div>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <div class="input-group-addon">&euro;</div>
+                                    <div class="input-group-addon"><i class="fa fa-eur"></i></div>
                                     <input type="text" class="form-control numeric_only" id="start_bid" name="start_bid" maxlength="11" required placeholder="Startprijs">
                                 </div>
                             </div>
@@ -78,7 +78,7 @@
                             <div class="col-md-4 text-right"><label for="shipment_costs">Verzendkosten</label></div>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <div class="input-group-addon">&euro;</div>
+                                    <div class="input-group-addon"><i class="fa fa-eur"></i></div>
                                     <input type="text" class="form-control numeric_only" id="shipment_costs" name="shipment_costs" maxlength="11" required placeholder="Verzendkosten">
                                 </div>
                             </div>

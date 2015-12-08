@@ -267,3 +267,19 @@ legend {
 .breadcrumb > li + li::before {
     content: "> ";
 }
+.object {
+    min-height: 190px;
+    max-height: 190px;
+}
+
+.object .objectTitle {
+    font-size: 15px;
+    font-weight: bold;
+    color: #413a70;
+}
+
+.object .objectBid h6 {
+    font-size: 13px;
+    font-weight: bold;
+    color: #413a70;
+}

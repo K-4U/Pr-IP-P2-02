@@ -40,7 +40,7 @@
                                 </div>
                             {/if}
                             <div class="input-group col-md-12 col-sm-12 col-xs-12">
-                                <div class="input-group-addon">&euro;</div>
+                                <div class="input-group-addon"><i class="fa fa-eur"></i></div>
                                 <input type="text" class="form-control numeric_only" id="exampleInputAmount" name="bid" value="{$object.nextBid}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-cta" type="submit" name="submit">Go!</button>
