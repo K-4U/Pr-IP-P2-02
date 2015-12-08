@@ -71,7 +71,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Voorwaarden</a>
+                    <a href="{baseurl url="Static/terms"}">Voorwaarden</a>
                 </li>
             </ul>
 

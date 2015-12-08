@@ -1,7 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: info
- * Date: 8-12-2015
- * Time: 09:35
- */
+
+
+//Naming convention:
+//<cat><page>
+class staticTerms extends cmsPage {
+
+    function parse() {
+
+        $displayName = "terms";
+
+        $this->addToBreadcrumbs("Home", baseurl(""));
+        $this->addToBreadcrumbs("Terms");
+
+
+        $this->render($displayName, 'terms.tpl');
+    }
+}
+
+?>
