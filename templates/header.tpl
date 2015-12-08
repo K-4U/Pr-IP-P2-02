@@ -91,10 +91,12 @@
             {/if}
 
             <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
+                <div class="form-group input-group">
                     <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
             {if !$user.loggedIn}
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
@@ -117,4 +119,4 @@
             {/if}
         {/foreach}
     </ol>
-{/if}
+    {/if}
