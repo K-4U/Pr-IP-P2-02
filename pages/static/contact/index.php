@@ -9,6 +9,9 @@ class staticContact extends cmsPage {
 
         $displayName = "contact";
 
+        $this->addToBreadcrumbs("Home", baseurl(""));
+        $this->addToBreadcrumbs("Contact");
+
 
         $this->render($displayName, 'contact.tpl');
     }
