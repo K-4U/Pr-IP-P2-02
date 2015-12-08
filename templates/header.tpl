@@ -107,6 +107,7 @@
 </nav>
 
 <div class="container-fluid content">
+    {if $breadcrumbs|sizeof > 0}
     <ol class="breadcrumb col-md-offset-2 col-md-8">
         {foreach $breadcrumbs as $breadcrumb}
             {if $breadcrumb.link}
@@ -116,3 +117,4 @@
             {/if}
         {/foreach}
     </ol>
+{/if}
