@@ -74,7 +74,7 @@
                 </li>
 
                 <li>
-                    <a href="#">Voorwaarden</a>
+                    <a href="{baseurl url="Static/terms"}">Voorwaarden</a>
                 </li>
             </ul>
 
@@ -94,10 +94,12 @@
             {/if}
 
             <form class="navbar-form navbar-right" role="search">
-                <div class="form-group">
+                <div class="form-group input-group">
                     <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
-                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </form>
             {if !$user.loggedIn}
             <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
@@ -110,6 +112,7 @@
 </nav>
 
 <div class="container-fluid content">
+    {if $breadcrumbs|sizeof > 0}
     <ol class="breadcrumb col-md-offset-2 col-md-8">
         {foreach $breadcrumbs as $breadcrumb}
             {if $breadcrumb.link}
@@ -119,3 +122,4 @@
             {/if}
         {/foreach}
     </ol>
+    {/if}

@@ -5,7 +5,7 @@ class user {
     public $lastError = 0;
     private $loggedIn = false;
     private $userName = "";
-    private $userInfo = Array("username" => "", "email" => "", "firstname" => "", "lastname" => "");
+    private $userInfo = Array("username" => "", "email" => "", "firstname" => "", "lastname" => "", "isseller"=>false);
     private $db;
 
     /**
@@ -30,7 +30,7 @@ class user {
      */
     private function updateInfo() {
 
-        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname FROM users WHERE username LIKE %s", $this->userName);
+        $infoResult = $this->db->buildQuery("SELECT username, email, firstname, lastname, isseller FROM users WHERE username LIKE %s", $this->userName);
         if($this->db->getHasRows($infoResult)) {
             $this->userInfo = $this->db->fetchAssoc($infoResult);
         } else {
@@ -113,6 +113,10 @@ class user {
 
     public function getEmail() {
         return $this->userInfo['email'];
+    }
+
+    public function isSeller(){
+        return $this->userInfo['isseller'];
     }
 
 
