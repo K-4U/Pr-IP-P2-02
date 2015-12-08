@@ -135,6 +135,12 @@ legend {
     color: #333;
 }
 
+.btn-cta:hover {
+    background-color: #ffba66;
+    border-color: #ffdcb2;
+    color: #333;
+}
+
 .login-register {
     margin-top: 20px;
 }
