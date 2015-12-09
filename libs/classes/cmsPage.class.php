@@ -3,8 +3,11 @@
 
 class cmsPage {
 
+    /** @var Smarty */
     protected $website; //Smarty object
+    /** @var user.class */
     protected $user;    //User object
+    /** @var db.class */
     protected $db;      //Database object
     protected $argsNamed = Array();
     protected $argsIndexed = Array();
