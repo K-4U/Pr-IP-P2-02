@@ -8,7 +8,7 @@ class categories extends cmsPage {
 
 
 
-        $this->render($displayName, 'objects.tpl');
+        $this->render($displayName, 'lot/objects.tpl');
     }
 }
 

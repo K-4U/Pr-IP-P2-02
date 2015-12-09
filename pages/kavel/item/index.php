@@ -79,7 +79,7 @@ class kavelItem extends cmsPage {
 
         $this->website->assign("object", $object);
 
-        $this->render($displayName, 'lot.tpl');
+        $this->render($displayName, 'lot/lot.tpl');
     }
 }
 

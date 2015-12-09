@@ -13,7 +13,7 @@ class staticContact extends cmsPage {
         $this->addToBreadcrumbs("Contact");
 
 
-        $this->render($displayName, 'contact.tpl');
+        $this->render($displayName, 'static/contact.tpl');
     }
 }
 

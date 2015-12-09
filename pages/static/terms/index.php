@@ -13,7 +13,7 @@ class staticTerms extends cmsPage {
         $this->addToBreadcrumbs("Terms");
 
 
-        $this->render($displayName, 'terms.tpl');
+        $this->render($displayName, 'static/terms.tpl');
     }
 }
 

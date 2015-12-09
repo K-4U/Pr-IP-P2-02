@@ -11,7 +11,7 @@ class staticAbout extends cmsPage {
         $this->addToBreadcrumbs("Home", baseurl(""));
         $this->addToBreadcrumbs("Over ons");
 
-        $this->render($displayName, 'about.tpl');
+        $this->render($displayName, 'static/about.tpl');
     }
 }
 

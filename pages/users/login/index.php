@@ -15,7 +15,7 @@ class usersLogin extends cmsPage {
                 }
             }
             if($showLogin) {
-                $this->website->display("login.tpl");
+                $this->website->display("users/login.tpl");
             } else {
                 $this->website->assign("user", $this->user->getInfo());
                 header("location: " . baseurl(""));

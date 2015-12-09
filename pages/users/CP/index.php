@@ -108,10 +108,10 @@ Class usersCP extends cmsPage {
 //            $this->addToBreadcrumbs("naampagina", baseurl("/") )
             $this->addToBreadcrumbs("Home", baseurl("/"));
             $this->addToBreadcrumbs("UCP");
-            $this->render("UCP", "UCP.tpl");
+            $this->render("UCP", "users/UCP.tpl");
         } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat uw controle paneel bekeken kan worden.");
-            $this->render("login", "login.tpl");
+            $this->render("login", "users/login.tpl");
         }
     }
 }
