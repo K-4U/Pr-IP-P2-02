@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Eenmaal Andermaal</title>
 
     <!-- start: Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +80,7 @@
 
             {if $user.loggedIn}
             <ul class="nav navbar-nav navbar-right">
-                <li><img src="{$gravatarUrl}" class="avatar"/>
+                <li><img src="{$gravatarUrl}" class="avatar" alt="Info"/>
                     <ul class="usermenu">
                         <li><a href="{baseurl url="Users/CP"}">Mijn Gegevens</a></li>
                         <li><a href="#">Mijn Feedback</a></li>
@@ -93,7 +93,7 @@
             </ul>
             {/if}
 
-            <form class="navbar-form navbar-right" role="search">
+            <form class="navbar-form navbar-right">
                 <div class="form-group input-group">
                     <input type="text" class="form-control" placeholder="Search">
                     <span class="input-group-btn">

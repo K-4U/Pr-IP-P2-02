@@ -157,7 +157,7 @@ function sprintf3($str, $vars, $char = '%') {
 function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5( strtolower( trim( $email ) ) );
-    $url .= "?s=$s&d=$d&r=$r";
+    $url .= "?s=$s&amp;d=$d&amp;r=$r";
     if ( $img ) {
         $url = '<img src="' . $url . '"';
         foreach ( $atts as $key => $val )
@@ -190,7 +190,7 @@ function parseObjects($result) {
         if($db->getHasRows($imageResult)) {
             $row['image'] = baseurl("images/uploads/" . $db->fetchAssoc($imageResult)['filename']);
         } else {
-            $row['image'] = "https://placehold.it/150x150";
+            $row['image'] = "https://placehold.it/150x110";
         }
 
         $row['timeRemaining'] = $row['end_moment']->getTimeStamp() - time();

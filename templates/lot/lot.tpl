@@ -10,9 +10,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <img src="{$object.image}" class="col-md-12 col-sm-12" />
-        </div>
+        <img src="{$object.image}" class="col-md-4 col-xs-4 visible-sm visible-xs visible-md visible-lg" alt="{$object.title}" />
         <div class="col-md-3 col-md-offset-1">
             <div class="row">
                 <div class="panel panel-default">
@@ -83,7 +81,7 @@
     {*Info about the seller*}
     <div class="row row-spacing">
         <div class="col-md-12">
-            <img src="{$object.user.gravatarUrl}" class="col-md-1" />
+            <img src="{$object.user.gravatarUrl}" class="col-md-1" alt="Avatar van {$object.user.username}" />
             <div class="col-md-2">
                 <div class="username"><a href="{baseurl url="Users/Profile/`$object.user.username`"}">{$object.user.username}</a></div>
                 <div class="userLocation">{$object.user.city}</div>
