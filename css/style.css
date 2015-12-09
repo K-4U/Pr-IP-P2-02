@@ -158,7 +158,7 @@ legend {
     transition: border-radius 0.25s ease-out 0s;
 }
 
-.login {
+.login, .register {
     display: none;
     transition: display 0.25s ease-out 0s;
     background-color: rgba(0, 0, 0, 0.5);
@@ -266,4 +266,20 @@ legend {
 
 .breadcrumb > li + li::before {
     content: "> ";
+}
+.object {
+    min-height: 190px;
+    max-height: 190px;
+}
+
+.object .objectTitle {
+    font-size: 15px;
+    font-weight: bold;
+    color: #413a70;
+}
+
+.object .objectBid h6 {
+    font-size: 13px;
+    font-weight: bold;
+    color: #413a70;
 }
