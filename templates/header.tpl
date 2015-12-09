@@ -37,7 +37,7 @@
             <h1 class="muted"><a href="{baseurl url=""}">EenmaalAndermaal</a></h1>
         </div>
         {if !$user.loggedIn}
-            <div class="col-md-2 col-md-offset-2 hidden-xs btn-group login-register">
+            <div class="col-md-3 pull-right hidden-xs btn-group login-register">
                 <button class="btn btn-cta btn-sm loginBtn">Login</button>
                 <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
             </div>

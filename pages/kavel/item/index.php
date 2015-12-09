@@ -21,6 +21,7 @@ class kavelItem extends cmsPage {
                     "bidvalue"  => $_POST['bid'],
                     "username"  => $this->user->getName(),
                     "bidmoment" => date('Y-m-d H:i:s')
+                );
 
                 $this->db->insert("bids", $insertArray);
                 $error = $this->db->getLastError();

@@ -109,26 +109,6 @@ nav.headerrow{
     margin-top: 0;
 }
 
-
-fieldset {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-    padding: 10px;
-}
-
-legend {
-    width: auto;
-    margin-bottom: initial;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
 .btn-cta {
     background-color: #ff8c00;
     border-color: #ffa332;
@@ -154,7 +134,7 @@ legend {
 }
 
 .avatar:hover {
-    border-radius: 2px;
+    border-radius: 0;
     transition: border-radius 0.25s ease-out 0s;
 }
 
@@ -182,7 +162,7 @@ legend {
     display: none;
     list-style-type: none;
     border: 1px solid;
-    border-radius: 5px;
+    border-radius: 0;
     z-index: 1000;
     border-color: #000000;
     background: #f5f5f5;
@@ -232,7 +212,6 @@ legend {
 .well-upper {
     background-color: #fff;
     border: 1px solid #e3e3e3;
-    border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
     min-height: 20px;
@@ -263,13 +242,12 @@ legend {
     display: block;
 }
 
-
-.breadcrumb > li + li::before {
-    content: "> ";
-}
 .object {
-    min-height: 190px;
+    min-height: 165px;
     max-height: 190px;
+}
+.object img {
+    padding: 0;
 }
 
 .object .objectTitle {
@@ -282,4 +260,27 @@ legend {
     font-size: 13px;
     font-weight: bold;
     color: #413a70;
+}
+
+/** BOOTSTRAP OVERRIDES */
+.panel,
+.panel-heading,
+.well,
+.btn,
+.btn-group-sm,
+.form-control,
+.breadcrumb,
+.nav-tabs > li > a,
+.alert,
+.input-group-addon {
+    border-radius: 0;
+}
+
+
+.breadcrumb {
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+.breadcrumb > li + li::before {
+    content: "> ";
 }

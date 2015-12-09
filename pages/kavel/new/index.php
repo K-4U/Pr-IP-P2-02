@@ -6,7 +6,7 @@
 class kavelNew extends cmsPage {
 
     function parse() {
-
+/*
         if(isset($_POST['submit']{               );
                 if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['start_bid']) && isset($_POST['location']) && isset($_POST['']) isset($_POST))
             $insertArray = array(
@@ -19,7 +19,7 @@ class kavelNew extends cmsPage {
             "payment_method"" => $_POST[['payment_method'],
             "payment_instructions" => $_POST['payment_instructions']
     }
-    );
+    );*/
 
 
 
