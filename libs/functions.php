@@ -45,6 +45,12 @@ function baseurl($dir) {
                 $dir .= "&amp;id=" . $dirParts[2];
             }
         }
+        if($dirParts[0] == "Register") {
+            $dir = "register.php?ac=" . $dirParts[1];
+            if(count($dirParts) == 3) {
+                $dir .= "&amp;args=" . $dirParts[2];
+            }
+        }
 
         return $config['misc']['baseurl'] . $dir;
     }
