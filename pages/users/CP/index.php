@@ -60,8 +60,14 @@ Class usersCP extends cmsPage {
                     }
                 }
                 if($x == $y) {
-                    $updatePhonenumber = $this->db->update('phonenumbers', $phonenumberArray, 'username', $this->user->getName());
-                    $update = $this->db->update('users', $userInfoArray, 'username', $this->user->getName());
+                    $insertPhonenumber = $this->db->buildQuery("SELECT username FROM phonenumbers WHERE username=%s", $this->user->getName());
+                    if(!$this->db->getHasRows($insertPhonenumber)) {
+                        $phonenumberArray['username'] = $this->user->getName();
+                        $this->db->insert("phonenumbers", $phonenumberArray);
+                    }else {
+                        $this->db->update('phonenumbers', $phonenumberArray, 'username', $this->user->getName());
+                    }
+                    $this->db->update('users', $userInfoArray, 'username', $this->user->getName());
                     $lastError = $this->db->getLastError();
                     $updateComplete = true;
                     if($lastError != null) {
