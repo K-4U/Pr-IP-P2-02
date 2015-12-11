@@ -179,7 +179,7 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
  * @param $result
  * @return array
  */
-function parseObjects($result) {
+function parseObjects($result, $username = null) {
     global $db;
 
     $objects = Array();
@@ -197,6 +197,11 @@ function parseObjects($result) {
             $row['image'] = baseurl("images/uploads/" . $db->fetchAssoc($imageResult)['filename']);
         } else {
             $row['image'] = "https://placehold.it/150x110";
+        }
+
+        if ($username != null) {
+            $ownBidResult = $db->buildQuery("SELECT TOP 1 bidvalue FROM bids WHERE username =%s AND objectid=%d ORDER BY bidvalue DESC", $username, $row['id']);
+            $row['ownBid'] = $db->fetchAssoc($ownBidResult)['bidvalue'];
         }
 
         $row['timeRemaining'] = $row['end_moment']->getTimeStamp() - time();
