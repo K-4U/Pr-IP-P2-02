@@ -35,7 +35,7 @@ if($cp){
 
 if(file_exists('pages/users/' . strtolower($ac) . '/index.php')){
     include('pages/users/' . strtolower($ac) . '/index.php');
-    $className = "users" . ucfirst($ac);
+    $className = "users" . str_replace("/","",ucfirst($ac));
 
     $tClass = new $className($website, $user, $argsRaw, $db);
     $tClass->parse();
