@@ -274,7 +274,11 @@ class db {
      * @param ...$args
      * @return bool|mixed|resource
      */
-    function buildQuery($sql, ...$args) {
+    function buildQuery($sql) {
+
+        //PHP 5.4
+        $args = func_get_args();
+        array_shift($args);
 
         switch ($this->type) {
             case SQLTYPES::MSSQL:
@@ -283,7 +287,7 @@ class db {
                     $nArgs[] = $this->sqlEscape($arg);
                 }
 
-                return $this->query(sprintf($sql, ...$nArgs));
+                return $this->query(sprintf($sql, $nArgs));
             case SQLTYPES::SQLSRV:
                 $sql = preg_replace("/\\%[dis]/", "?", $sql);
 
