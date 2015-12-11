@@ -12,7 +12,7 @@ include("header.php");
 
 
 //Register the variables needed from GET
-$varsToRegister = Array("ac"=>"string", "args"=>"string");
+$varsToRegister = Array("ac"=>"string", "args"=>"string","cp"=>"boolean");
 foreach($varsToRegister as $var=>$type){
     if(array_key_exists($var,$_GET)){
         $$var = $_GET[$var];
@@ -21,11 +21,17 @@ foreach($varsToRegister as $var=>$type){
             $$var = "";
         }elseif($type == "integer"){
             $$var = 0;
+        }elseif($type == "boolean"){
+            $$var = false;
         }
     }
 }
+
 //Parse args:
 $argsRaw = explode('/', $args);
+if($cp){
+    $ac = "cp/" . $ac;
+}
 
 if(file_exists('pages/users/' . strtolower($ac) . '/index.php')){
     include('pages/users/' . strtolower($ac) . '/index.php');
@@ -35,7 +41,7 @@ if(file_exists('pages/users/' . strtolower($ac) . '/index.php')){
     $tClass->parse();
 }else{
     //Return 404;
-    echo "404 not found.";
+    echo "404 not found.(" . $ac . ")";
 }
 
 ?>
