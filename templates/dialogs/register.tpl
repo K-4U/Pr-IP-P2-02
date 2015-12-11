@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="text-center login-register">
-                <button class="btn-default btn" name="saveEmail">E-mail verifiëren</button>
+                <button class="btn-default btn" type="submit" name="saveEmail">E-mail verifiëren</button>
             </div>
 
         </form>
