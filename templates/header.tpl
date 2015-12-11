@@ -83,9 +83,9 @@
                 <li><img src="{$gravatarUrl}" class="avatar" alt="Info"/>
                     <ul class="usermenu">
                         <li><a href="{baseurl url="Users/CP"}">Mijn Gegevens</a></li>
-                        <li><a href="#">Mijn Feedback</a></li>
+                        <li><a href="{baseurl url="Users/CP/feedback"}">Mijn Feedback</a></li>
                         <li><a href="#">Mijn Kavels</a></li>
-                        <li><a href="#">Mijn Biedingen</a></li>
+                        <li><a href="{baseurl url="Users/CP/feedback"}">Mijn Biedingen</a></li>
                         <li><a href="{baseurl url="Users/Logout"}">Uitloggen</a></li>
                     </ul>
                 </li>

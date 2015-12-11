@@ -147,7 +147,7 @@ class db {
                 $return = mssql_query($sql) or ($die ? die($this->getLastError()) : false);
                 break;
             case SQLTYPES::SQLSRV:
-                $return = sqlsrv_query($this->dbo, $sql, $args) or ($die ? die($this->getLastError()) : "");;
+                $return = sqlsrv_query($this->dbo, $sql, $args) or ($die ? die($this->getLastError(false)) : "");
                 break;
         }
 
@@ -287,7 +287,7 @@ class db {
             case SQLTYPES::SQLSRV:
                 $sql = preg_replace("/\\%[dis]/", "?", $sql);
 
-                return $this->query($sql, false, $args);
+                return $this->query($sql, true, $args);
         }
     }
 
