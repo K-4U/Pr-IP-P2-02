@@ -3,22 +3,22 @@
         <div class=" alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-            Het opgegeven emailadres is niet valide.
+            {$emailError}
         </div>
     {/if}
     <div class="col-md-offset-2 col-sm-offset-2 col-md-8 col-sm-8 listPadding">
-        <form action="{baseurl url="/emailVerification"}" method="post">
+        <form action={baseurl url="Register/emailVerification"} method="post">
             <div class="row">
                 <label for="email" class=" col-md-4 col-sm-4">Email:</label>
 
                 <div class="col-md-8 col-sm-8">
-                    <input type="text" id="email" name="email"
+                    <input type="email" id="email" name="email"
                            class="form-control" required>
                 </div>
             </div>
-                <div class="text-center login-register">
-                    <button class="btn-default btn" name="saveEmail">E-mail verifiëren</button>
-                </div>
+            <div class="text-center login-register">
+                <button class="btn-default btn" name="saveEmail">E-mail verifiëren</button>
+            </div>
 
         </form>
     </div>

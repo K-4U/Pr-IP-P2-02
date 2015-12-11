@@ -51,3 +51,8 @@ RewriteRule ^Pupil/([^/]+)/(.+) pupil.php?ac=$1&args=$2
 
 #Users rewrite rules
 RewriteRule ^Users/([^/]+)/?$ users.php?ac=$1
+
+#Register rewrite rules
+RewriteRule ^Register/?$           register.php?ac=dashboard
+RewriteRule ^Register/([^/]+)/?$   register.php?ac=$1
+RewriteRule ^Register/([^/]+)/(.+) register.php?ac=$1&args=$2
