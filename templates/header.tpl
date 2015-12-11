@@ -17,6 +17,10 @@
     {/if}
     <!-- end: CSS -->
 
+    <!-- start: reCaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!-- end: reCaptcha -->
+
     <!-- start: JS -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     {jstag url='bootstrap.min.js'}
