@@ -17,15 +17,11 @@ Class usersCPbids extends cmsPage {
                 $catId = $this->db->fetchAssoc($catIdResult)['category_id'];
                 getCategoryFromBottom($categories, $catId);
                 foreach($categories as $cat){
-                    $temp = Array("name"=> $cat['name'], "link"=> baseurl("Rubriek/" . $cat['id']));
+                    $temp = Array("name"=> $cat['name'], "link"=> baseurl("Rubriek/" . $cat['id']), "parent"=>$cat['parent']);
                     $categoryTree[] = $temp;
                 }
                 $object['categoryTree'] = $categoryTree;
             }
-
-            echo "<pre>" ;
-            var_dump($objects);
-            echo "</pre>";
 
             $this->website->assign("objects", $objects);
             $this->render("Bids", "users/bids.tpl");

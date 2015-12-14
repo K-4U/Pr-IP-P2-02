@@ -110,7 +110,7 @@ $(document).ready(function () {
 
     $(".clickable").click(function(){
         window.location.href = $(this).data('link');
-    })
+    });
 
     // Options
     var options = {
