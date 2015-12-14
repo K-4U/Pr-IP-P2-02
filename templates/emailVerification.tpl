@@ -5,6 +5,7 @@
     <form action="{baseurl url="Register/Info"}" method="post">
         <label for="emailVerificationCode">Ge-e-mailde code:</label>
         <input type="text" name="emailVerificationCode" class="form-control" required><br>
+        <input type="hidden" name="email" value="{$email}">
         <button class="btn btn-default" type="submit" name="validateCode">Check verification code</button>
     </form>
     </div>

@@ -10,6 +10,88 @@ Class registerInfo extends cmsPage {
             if(isset($_POST['validateCode'])) {
                 if($_SESSION['emailCode'] == $_POST['emailVerificationCode']) {
 
+                    $errors = Array();
+                    if(isset($_POST['registerInfo'])) { //lets check if every required field is actually filled in correctly
+
+                        if(strlen($_POST['username']) > 4 && strlen($_POST['username']) < 12) {
+                        } else {
+                            $errors['usernameErr'] = "De lengte van uw username voldoet niet aan onze waarden.";
+                        }
+
+                        if(!isset($_POST['firstname']) && !isset($_POST['lastname'])) {
+                            $errors['nameErr'] = "Vul uw voornaam en achternaam in.";
+                        }
+
+                        if(ctype_digit(substr($_POST['postalcode'], 0, 4)) && ctype_alpha(substr($_POST['postalcode'], -2))) {
+                        } else {
+                            $errors['postalcodeErr'] = "De postcode moet als volgt gegeven zijn, 4 cijfers gevolgd door 2 letters. Bijvoorbeeld: 1234AB.";
+                        }
+
+                        if(ctype_digit(substr($_POST['adress_number'], 0, 1))) {
+
+                        } else {
+                            $errors['adress_numberErr'] = "De eerste character van uw adress moet een nummer zijn.";
+                        }
+
+                        if($_POST['password'] == $_POST['password2']) {
+                            $hashedPassword = hash("sha512", $_POST['password']);
+                            $_POST['password']=$hashedPassword;
+                        } else {
+                            $errors['passwordErr'] = "De opgegeven wachtwoorden komen niet overeen.";
+                        }
+
+                        if($_POST ['securityQuestions'] >= 0) {
+                        } else {
+                            $errors['securityQuestionsErr'] = "U heeft geen geheime vraag gekozen.";
+                        }
+
+                        if(isset($_POST['questionAnswer'])) {
+                        } else {
+                            $errors['questionAnswerErr'] = "U heeft geen antwoord voor uw geheime vraag opgegeven.";
+                        }
+
+                        if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response']) {
+                            $sCaptcha = "6LcL4xITAAAAAHuArX4fZ4eMjr25H2TfLiKq8mNR";
+                            $ip = $_SERVER['REMOTE_ADDR'];
+                            $captcha = $_POST['g-recaptcha-response'];
+                            $resp = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$sCaptcha&response=$captcha&remoteip=$ip");;
+                            $arr = json_decode($resp, true);
+                            if($arr['success']) {
+                                if(isset($errors)) {
+                                    $noErrs = true;
+                                }
+                            } else {
+                                $errors['captchaErr'] = "De reCaptcha is niet door de validatie gekomen.";
+                            }
+                        }
+                    }
+
+                    $infoInsert = Array(
+                        'username'         => $_POST['username'],
+                        'firstname'        => $_POST['firstname'],
+                        'lastname'         => $_POST['lastname'],
+                        'adress_street1'   => $_POST['adress_street1'],
+                        'adress_street2'   => $_POST['adress_street2'],
+                        'adress_number'    => $_POST['adress_number'],
+                        'postalcode'       => $_POST['postalcode'],
+                        'password'         => $_POST['password'],
+                        'securityQuestion' => $_POST['securityQuestions'],
+                        'securityAnswer'   => $_POST['questionAnswer'],
+                        'email'            => $_POST['email']);
+
+
+                    $phonenumberArray = array(
+                        'phonenumber' => $_POST['phonenumber'],
+                        'username'    => $_POST['username']);
+
+
+                    if($noErrs) {
+                        $this->db->insert("users", $infoInsert);
+                        $this->db->insert("phonenumbers", $phonenumberArray);
+                        $this->user->doLogin($_POST['username'], $_POST['password2']);
+                        $this->render("info", "info.tpl");
+                    }
+
                     $sqlQuestion = "SELECT id, question FROM security_questions";
 
                     $questionResult = $this->db->query($sqlQuestion);
@@ -17,20 +99,29 @@ Class registerInfo extends cmsPage {
                     $questions = Array();
                     $questions = $this->db->fetchAllAssoc($questionResult);
                     $this->website->assign("questions", $questions);
+                    $this->website->assign("emailVerificationCode", $_POST['emailVerificationCode']);
+                    $this->website->assign("previousInfo", $_POST);
+                    $this->website->assign("email",$_POST['email']);
+                    if(isset($errors)) {
+                        $this->website->assign("errors", $errors);
+                    }
 
                     $this->addToBreadcrumbs("Home", baseurl("/"));
                     $this->addToBreadcrumbs("Register");
                     $this->addToBreadcrumbs(Info);
-                    $this->render("info","info.tpl");
+                    $this->render("info", "info.tpl");
                 } else {
                     $wrongCode = "De validatie code komt niet overeen met de gestuurde code, probeer opnieuw te registreren.";
                     $this->website->assign("wrongCode", $wrongCode);
                     $this->addToBreadcrumbs("Home", baseurl("/"));
                     $this->addToBreadcrumbs("Register");
                     $this->addToBreadcrumbs(Info);
-                    $this->render("info","info.tpl");
+                    $this->render("info", "info.tpl");
 
                 }
+
+            } else {
+                header("location: " . baseurl(""));
             }
         }
     }

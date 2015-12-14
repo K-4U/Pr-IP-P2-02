@@ -7,6 +7,8 @@ Class registerEmailVerification extends cmsPage {
         if($this->user->isLoggedIn()) {
             header("location: " . baseurl(""));
         } else {
+            $emailCode = md5($_POST['email'] . date("U"));
+            $_SESSION['emailCode'] = $emailCode;
             echo $_SESSION['emailCode'];
             if(isset($_POST ['saveEmail'])) {
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === true) {
@@ -14,8 +16,8 @@ Class registerEmailVerification extends cmsPage {
                     $this->website->assign("emailError", "Ingevulde email was niet valide, ga naar de hoofdpagina en probeer opnieuw te registreren.");
                 } else {
 
-
-                    //sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
+                    $this->website->assign("email",$_POST['email']);
+                    sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
                 }
             }
             $this->addToBreadcrumbs("Home", baseurl("/"));
