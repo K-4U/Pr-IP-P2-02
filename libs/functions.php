@@ -192,7 +192,7 @@ function parseObjects($result, $username = null) {
 
     $objects = Array();
     while ($row = $db->fetchAssoc($result)) {
-        $row['description'] = nl2br(str_replace("\\n", "\n",$row['description']));
+        $row['description'] = bb2html(nl2br(str_replace("\\n", "\n",$row['description'])));
         //Fetch latest bid
         $bidResult = $db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
         if($db->getHasRows($bidResult)) {
