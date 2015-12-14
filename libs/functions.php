@@ -229,8 +229,10 @@ function getCategory($activeArray, $parentId = null){
     while($row = $db->fetchAssoc($result)){
 
         $row['sub'] = getCategory($activeArray, $row['id']);
-        if(in_array($row['id'], $activeArray)){
-            $row['active'] = true;
+        foreach($activeArray as $entry){
+            if($entry['id'] == $row['id']){
+                $row['active'] = true;
+            }
         }
         $categories[] = $row;
     }
