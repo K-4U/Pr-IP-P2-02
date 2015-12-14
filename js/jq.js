@@ -39,7 +39,10 @@ $(document).ready(function () {
     $('label.tree-toggler').click(function () {
         $(this).parent().children('ul.tree').toggle(300);
     }).each(function(index, element){
-        $(this).parent().children('ul.tree').toggle(300);
+        console.log($(this).data('active'));
+        if(!$(this).data('active')){
+            $(this).parent().children('ul.tree').toggle(300);
+        }
     });
 
     var menu = $('.menu');

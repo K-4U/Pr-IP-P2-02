@@ -211,7 +211,7 @@ function parseObjects($result) {
  * @param null $parentId
  * @return array
  */
-function getCategory($parentId = null){
+function getCategory($activeArray, $parentId = null){
     global $db;
 
     if($parentId == null){
@@ -223,7 +223,10 @@ function getCategory($parentId = null){
     $categories = Array();
     while($row = $db->fetchAssoc($result)){
 
-        $row['sub'] = getCategory($row['id']);
+        $row['sub'] = getCategory($activeArray, $row['id']);
+        if(in_array($row['id'], $activeArray)){
+            $row['active'] = true;
+        }
         $categories[] = $row;
     }
     return $categories;
