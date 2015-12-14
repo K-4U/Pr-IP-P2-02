@@ -439,6 +439,15 @@ class db {
     }
 
 
+    /**
+     * Finds the last inserted id
+     * @return mixed
+     */
+    public function getLastInsertedId() {
+        $result = $this->fetchAssoc($this->query("select @@IDENTITY as id"));
+        return $result['id'];
+    }
+
 
     /**
      * Closes the database object
