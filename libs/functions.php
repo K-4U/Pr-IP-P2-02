@@ -196,7 +196,9 @@ function parseObjects($result, $username = null) {
         //Fetch latest bid
         $bidResult = $db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
         if($db->getHasRows($bidResult)) {
-            $row['currentBid'] = $db->fetchAssoc($bidResult)['bidvalue'];
+            $res = $db->fetchAssoc($bidResult);
+            $row['currentBid'] = $res['bidvalue'];
+            $row['currentBidName'] = $res['username'];
         } else {
             $row['currentBid'] = $row['start_bid'];
         }
