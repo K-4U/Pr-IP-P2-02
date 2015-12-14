@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="accountActies row">
+        <div class="accountActions row">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-info">
@@ -70,7 +70,7 @@
 
                         <div class="row ">
 
-                            <label for="username" class="col-md-4 col-sm-4 labelsGegevens">Gebruikersnaam:</label>
+                            <label for="username" class="col-md-4 col-sm-4 labelsData">Gebruikersnaam:</label>
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" disabled value="{$user.username}" id="username" name="username"
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="firstname" class=" col-md-4 col-sm-4 labelsGegevens">Voornaam:</label>
+                            <label for="firstname" class=" col-md-4 col-sm-4 labelsData">Voornaam:</label>
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" value="{$user.firstname}" id="firstname" name="firstname"
@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="lastname" class=" col-md-4 col-sm-4 labelsGegevens">Achternaam:</label>
+                            <label for="lastname" class=" col-md-4 col-sm-4 labelsData">Achternaam:</label>
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" value="{$user.lastname}" id="lastname" name="lastname"
@@ -95,7 +95,7 @@
                         </div>
                         <div class="row">
 
-                            <label for="adress_street1" class="col-md-4 col-sm-4 labelsGegevens">Adres:</label>
+                            <label for="adress_street1" class="col-md-4 col-sm-4 labelsData">Adres:</label>
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" value="{$CP.adress_street1}" id="adress_street1" name="adress_street1"
@@ -108,14 +108,14 @@
                             </div>
                         </div>
                         <div class=" row">
-                            <label for="postalcode" class="col-md-4 col-sm-4 labelsGegevens">Postcode:</label>
+                            <label for="postalcode" class="col-md-4 col-sm-4 labelsData">Postcode:</label>
 
                             <div class=" col-md-2 col-sm-4">
                                 <input type="text" value="{$CP.postalcode}" id="postalcode" name="postalcode"
                                        class="form-control" required>
                             </div>
 
-                            <label for="adress_number" class="col-md-2 col-sm-2 huisnrLabel labelsGegevens">Huisnr:</label>
+                            <label for="adress_number" class="col-md-2 col-sm-2 huisnrLabel labelsData">Huisnr:</label>
 
                             <div class="col-md-2 col-sm-4">
                                 <input type="text" value="{$CP.adress_number}" id="adress_number" name="adress_number"
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="phonenumber" class="col-md-4 col-sm-4 labelsGegevens">Telefoonnummer:</label>
+                            <label for="phonenumber" class="col-md-4 col-sm-4 labelsData">Telefoonnummer:</label>
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" value="{$phonenumber.phonenumber}" id="phonenumber" name="phonenumber"
