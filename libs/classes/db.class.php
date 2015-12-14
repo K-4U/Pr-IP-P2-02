@@ -403,7 +403,11 @@ class db {
      * @param ...$args
      * @return bool|mixed|resource
      */
-    public function executeFunction($functionName, ...$args){
+    public function executeFunction($functionName){
+        //PHP 5.4
+        $args = func_get_args();
+        array_shift($args);
+
         $data = array();
         $values = array();
 

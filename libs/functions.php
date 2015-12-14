@@ -34,10 +34,18 @@ function baseurl($dir) {
             }
         }
         if($dirParts[0] == "Users") {
-            $dir = "users.php?ac=" . $dirParts[1];
-            if(count($dirParts) == 3) {
-                $dir .= "&amp;args=" . $dirParts[2];
+            $b = false;
+            $str = "";
+            foreach($dirParts as $dirPart){
+                if($b){
+                    $str .=  $dirPart . "/";
+                }
+                $b = true;
             }
+            $dir = "users.php?ac=" . $str;
+            /*if(count($dirParts) == 3) {
+                $dir .= "&amp;args=" . $dirParts[2];
+            }*/
         }
         if($dirParts[0] == "Image") {
             $dir = "image.php?size=" . $dirParts[1];
@@ -220,7 +228,7 @@ function getCategory($activeArray, $parentId = null){
     global $db;
 
     if($parentId == null){
-        $result = $db->query("SELECT * FROM categories WHERE parent is NULL");
+        $result = $db->query("SELECT * FROM categories WHERE parent is NULL ORDER BY priority ASC");
     }else{
         $result = $db->buildQuery("SELECT * FROM categories WHERE parent=%d", $parentId);
     }
