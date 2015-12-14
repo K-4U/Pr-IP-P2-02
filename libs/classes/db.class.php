@@ -147,7 +147,7 @@ class db {
                 $return = mssql_query($sql) or ($die ? die($this->getLastError()) : false);
                 break;
             case SQLTYPES::SQLSRV:
-                $return = sqlsrv_query($this->dbo, $sql, $args) or ($die ? die($this->getLastError()) : "");;
+                $return = sqlsrv_query($this->dbo, $sql, $args) or ($die ? die($this->getLastError(false)) : "");
                 break;
         }
 
@@ -274,7 +274,11 @@ class db {
      * @param ...$args
      * @return bool|mixed|resource
      */
-    function buildQuery($sql, ...$args) {
+    function buildQuery($sql) {
+
+        //PHP 5.4
+        $args = func_get_args();
+        array_shift($args);
 
         switch ($this->type) {
             case SQLTYPES::MSSQL:
@@ -283,11 +287,11 @@ class db {
                     $nArgs[] = $this->sqlEscape($arg);
                 }
 
-                return $this->query(sprintf($sql, ...$nArgs));
+                return $this->query(sprintf($sql, $nArgs));
             case SQLTYPES::SQLSRV:
                 $sql = preg_replace("/\\%[dis]/", "?", $sql);
 
-                return $this->query($sql, false, $args);
+                return $this->query($sql, true, $args);
         }
     }
 
@@ -399,7 +403,11 @@ class db {
      * @param ...$args
      * @return bool|mixed|resource
      */
-    public function executeFunction($functionName, ...$args){
+    public function executeFunction($functionName){
+        //PHP 5.4
+        $args = func_get_args();
+        array_shift($args);
+
         $data = array();
         $values = array();
 
@@ -430,6 +438,15 @@ class db {
         }
     }
 
+
+    /**
+     * Finds the last inserted id
+     * @return mixed
+     */
+    public function getLastInsertedId() {
+        $result = $this->fetchAssoc($this->query("select @@IDENTITY as id"));
+        return $result['id'];
+    }
 
 
     /**

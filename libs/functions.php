@@ -34,10 +34,18 @@ function baseurl($dir) {
             }
         }
         if($dirParts[0] == "Users") {
-            $dir = "users.php?ac=" . $dirParts[1];
-            if(count($dirParts) == 3) {
-                $dir .= "&amp;args=" . $dirParts[2];
+            $b = false;
+            $str = "";
+            foreach($dirParts as $dirPart){
+                if($b){
+                    $str .=  $dirPart . "/";
+                }
+                $b = true;
             }
+            $dir = "users.php?ac=" . $str;
+            /*if(count($dirParts) == 3) {
+                $dir .= "&amp;args=" . $dirParts[2];
+            }*/
         }
         if($dirParts[0] == "Image") {
             $dir = "image.php?size=" . $dirParts[1];
@@ -179,15 +187,18 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
  * @param $result
  * @return array
  */
-function parseObjects($result) {
+function parseObjects($result, $username = null) {
     global $db;
 
     $objects = Array();
     while ($row = $db->fetchAssoc($result)) {
+        $row['description'] = nl2br(str_replace("\\n", "\n",$row['description']));
         //Fetch latest bid
         $bidResult = $db->buildQuery("SELECT TOP 1 * FROM bids WHERE objectid=%d ORDER BY bidvalue DESC", $row['id']);
         if($db->getHasRows($bidResult)) {
-            $row['currentBid'] = $db->fetchAssoc($bidResult)['bidvalue'];
+            $res = $db->fetchAssoc($bidResult);
+            $row['currentBid'] = $res['bidvalue'];
+            $row['currentBidName'] = $res['username'];
         } else {
             $row['currentBid'] = $row['start_bid'];
         }
@@ -197,6 +208,11 @@ function parseObjects($result) {
             $row['image'] = baseurl("images/uploads/" . $db->fetchAssoc($imageResult)['filename']);
         } else {
             $row['image'] = "https://placehold.it/150x110";
+        }
+
+        if ($username != null) {
+            $ownBidResult = $db->buildQuery("SELECT TOP 1 bidvalue FROM bids WHERE username =%s AND objectid=%d ORDER BY bidvalue DESC", $username, $row['id']);
+            $row['ownBid'] = $db->fetchAssoc($ownBidResult)['bidvalue'];
         }
 
         $row['timeRemaining'] = $row['end_moment']->getTimeStamp() - time();
@@ -211,11 +227,11 @@ function parseObjects($result) {
  * @param null $parentId
  * @return array
  */
-function getCategory($parentId = null){
+function getCategory($activeArray, $parentId = null){
     global $db;
 
     if($parentId == null){
-        $result = $db->query("SELECT * FROM categories WHERE parent is NULL");
+        $result = $db->query("SELECT * FROM categories WHERE parent is NULL ORDER BY priority ASC");
     }else{
         $result = $db->buildQuery("SELECT * FROM categories WHERE parent=%d", $parentId);
     }
@@ -223,7 +239,12 @@ function getCategory($parentId = null){
     $categories = Array();
     while($row = $db->fetchAssoc($result)){
 
-        $row['sub'] = getCategory($row['id']);
+        $row['sub'] = getCategory($activeArray, $row['id']);
+        foreach($activeArray as $entry){
+            if($entry['id'] == $row['id']){
+                $row['active'] = true;
+            }
+        }
         $categories[] = $row;
     }
     return $categories;
