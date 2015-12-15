@@ -7,11 +7,11 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =8503
+    Width =8103
     DatasheetFontHeight =11
     ItemSuffix =14
-    Right =18105
-    Bottom =12510
+    Right =25335
+    Bottom =12810
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x22e5009733ade440
@@ -167,7 +167,7 @@ Begin Form
                     TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst0"
+                    Name ="txtNumber"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
@@ -199,7 +199,7 @@ Begin Form
                     Top =402
                     Width =4520
                     Height =2327
-                    TabIndex =2
+                    TabIndex =5
                     BorderColor =10921638
                     Name ="Kader2"
                     GridlineColor =10921638
@@ -230,15 +230,17 @@ Begin Form
                 End
                 Begin TextBox
                     OverlapFlags =247
+                    FilterLookup =0
                     IMESentenceMode =3
                     Left =2374
                     Top =1204
                     Width =2256
                     Height =315
-                    TabIndex =3
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst4"
+                    Name ="txtTitle"
+                    DefaultValue ="\"\""
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
@@ -268,10 +270,11 @@ Begin Form
                     OverlapFlags =247
                     Left =2945
                     Top =2265
-                    TabIndex =4
+                    TabIndex =6
                     ForeColor =4210752
-                    Name ="Command9"
+                    Name ="cmdReset"
                     Caption ="Reset"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2945
@@ -294,10 +297,11 @@ Begin Form
                     OverlapFlags =247
                     Left =507
                     Top =2265
-                    TabIndex =5
+                    TabIndex =4
                     ForeColor =4210752
-                    Name ="Command12"
+                    Name ="cmdSearch"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =507
@@ -323,10 +327,10 @@ Begin Form
                     Top =1699
                     Width =2256
                     Height =315
-                    TabIndex =6
+                    TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst9"
+                    Name ="txtCategory"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
@@ -393,7 +397,9 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT OB.title AS Productnaam, OB.id AS Productnummer, CA.name AS Rubrieknaam F"
                         "ROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) L"
-                        "EFT JOIN categories AS CA ON OC.category_id = CA.id; "
+                        "EFT JOIN categories AS CA ON OC.category_id = CA.id GROUP BY OB.title, OB.id, CA"
+                        ".name HAVING (((OB.title) Like '**') AND ((OB.id) Like '**')  AND ((CA.name) Lik"
+                        "e '**')); "
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
 
@@ -413,6 +419,40 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
+
+Private Sub cmdReset_Click()
+    Me.txtNumber.Value = ""
+    Me.txtTitle.Value = ""
+    Me.txtCategory.Value = ""
+    cmdSearch_Click
+End Sub
+
+Private Sub cmdSearch_Click()
+    Dim searchNumber As String
+    Dim searchTitle As String
+    Dim searchCategory As String
+    Dim query As String
+    
+    If Not IsNull(Me.txtNumber.Value) Then
+        searchNumber = Me.txtNumber.Value
+    End If
+    If Not IsNull(Me.txtTitle.Value) Then
+        searchTitle = Me.txtTitle.Value
+    End If
+    If Not IsNull(Me.txtCategory.Value) Then
+        searchCategory = Me.txtCategory.Value
+    End If
+    
+    
+    query = "SELECT OB.title AS Productnaam, OB.id AS Productnummer, CA.name AS Rubrieknaam" & vbCrLf & _
+            "FROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id" & vbCrLf & _
+            "GROUP BY OB.title, OB.id, CA.name" & vbCrLf & _
+            "HAVING (([OB.title] Like ""*" & searchTitle & "*"") AND ([OB.id] Like '*" & searchNumber & "*') AND ([CA.name] Like ""*" & searchCategory & "*""));"
+    
+    Me.lstProducts.RowSource = query
+    Me.lstProducts.Requery
+    
+End Sub
 
 Private Sub Form_Load()
 End Sub
