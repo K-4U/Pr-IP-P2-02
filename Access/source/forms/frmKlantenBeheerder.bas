@@ -226,7 +226,7 @@ Begin Form
                     TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst15"
+                    Name ="txtPostalcode"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -262,7 +262,7 @@ Begin Form
                     TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst17"
+                    Name ="txtAdressnumber"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -322,6 +322,7 @@ Begin Form
                     ForeColor =4210752
                     Name ="Command12"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =469
@@ -376,7 +377,7 @@ Begin Form
                     TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst26"
+                    Name ="txtUsername"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -417,7 +418,9 @@ Begin Form
                     Name ="lstUsers"
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.p"
-                        "ostalcode AS Postcode, users.adress_number AS Nummer FROM users; "
+                        "ostalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE (((users.u"
+                        "sername) Like '%%') AND ((users.postalcode) Like '%%') AND ((users.adress_number"
+                        ") Like '%%')); "
                     ColumnWidths ="1701;2835;1134;851"
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
@@ -439,6 +442,65 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
+
+Private Sub Command12_Click()
+'    Dim searchQuery As String
+'    Dim placeAND As Boolean
+'
+'    placeAND = False
+'
+'    If (Not IsNull(Me.txtUsername) And Not (Me.txtUsername.Value = "")) Then
+'        searchQuery = searchQuery & "[username] LIKE '%" & Me.txtUsername.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'    If (Not IsNull(Me.txtPostalcode) And Not (Me.txtPostalcode.Value = "")) Then
+'        If (placeAND) Then
+'            searchQuery = searchQuery & " AND "
+'        End If
+'        searchQuery = searchQuery & "[postalcode] LIKE '%" & Me.txtPostalcode.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'    If (Not IsNull(Me.txtAdressNumber) And Not (Me.txtAdressNumber.Value = "")) Then
+'        If (placeAND) Then
+'            searchQuery = searchQuery & " AND "
+'        End If
+'        searchQuery = searchQuery & "[adress_number] LIKE '%" & Me.txtAdressNumber.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'
+'    Me.lstUsers.RowSource = "SELECT users.username AS Gebruikersnaam, users.firstname+' '+users.lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE " & searchQuery & " "
+'    Me.lstUsers.Requery
+
+'Koen zijn query manier:
+
+Dim searchNumber As String
+    Dim searchTitle As String
+    Dim searchCategory As String
+    Dim query As String
+    
+    If Not IsNull(Me.txtAdressNumber.Value) Then
+        searchAdressNumber = Me.txtAdressNumber.Value
+    End If
+    If Not IsNull(Me.txtUsername.Value) Then
+        searchUsername = Me.txtUsername.Value
+    End If
+    If Not IsNull(Me.txtPostalcode.Value) Then
+        searchPostalcode = Me.txtPostalcode.Value
+    End If
+    
+    
+    query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer" & vbCrLf & _
+            "FROM users" & vbCrLf & _
+            "WHERE (((users.username) Like '%" & searchUsername & "%') AND ((users.postalcode) Like '%" & searchPostalcode & "%') AND ((users.adress_number) Like '%" & searchAdressNumber & "%'));"
+    
+    Me.lstUsers.RowSource = query
+    
+    Me.lstUsers.Requery
+             
+End Sub
 
 Private Sub lstUsers_DblClick(Cancel As Integer)
     Dim username_selected As String
