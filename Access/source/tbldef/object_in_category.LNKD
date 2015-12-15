@@ -1,0 +1,4 @@
+﻿object_in_category
+ODBC;DSN=Veiling k-4u;APP=Microsoft Office 2013;DATABASE=veiling
+dbo.object_in_category
+object_id;+category_id

@@ -1,0 +1,4 @@
+﻿minimal_bids
+ODBC;DSN=Veiling k-4u;APP=Microsoft Office 2013;DATABASE=veiling
+dbo.minimal_bids
+upper_limit

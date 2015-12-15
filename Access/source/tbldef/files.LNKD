@@ -1,0 +1,4 @@
+﻿files
+ODBC;DSN=Veiling k-4u;APP=Microsoft Office 2013;DATABASE=veiling
+dbo.files
+filename
