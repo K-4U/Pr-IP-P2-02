@@ -50,7 +50,7 @@
             </div>
             {/if}
         </div>
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-0">
             <div class="objectBidsSet panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">

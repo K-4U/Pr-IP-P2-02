@@ -1,14 +1,13 @@
 <?php
 
-Class usersCPbids extends cmsPage {
+Class usersCPLots extends cmsPage {
 
     function parse() {
 
         if($this->user->isLoggedIn()) {
-            $result = $this->db->buildQuery("SELECT * FROM objects WHERE id IN (SELECT objectid FROM bids WHERE username =%s GROUP BY objectid)",$this->user->getName());
+            $result = $this->db->buildQuery("SELECT * FROM objects WHERE seller=%s",$this->user->getName());
 
             $objects = parseObjects($result, $this->user->getName());
-
 
             foreach ($objects as &$object) {
                 $categoryTree = Array();
@@ -24,7 +23,7 @@ Class usersCPbids extends cmsPage {
             }
 
             $this->website->assign("objects", $objects);
-            $this->render("Bids", "users/bids.tpl");
+            $this->render("Mijn kavels", "users/myLots.tpl");
         } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat u uw biedingen kunt bekijken.");
             $this->render("login", "users/login.tpl");

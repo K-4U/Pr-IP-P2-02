@@ -2,7 +2,7 @@
     font-size: 24px;
 }
 
-.accountActies {
+.accountActions {
     padding-top: 20px;
 }
 
@@ -10,14 +10,23 @@
     font-size: 16px;
 }
 
-.labelsGegevens {
+.labelsData {
     font-size: 16px;
 }
 
-label{
-    padding-top:3px;
+label {
+    padding-top: 3px;
 }
 
-.huisnrLabel{
+.huisnrLabel {
     padding-top: 7px;
+}
+
+.bid .time-remaining {
+    color: #ff8c00;
+}
+
+.bid .title {
+    font-weight: bold;
+    font-size: 125%;
 }

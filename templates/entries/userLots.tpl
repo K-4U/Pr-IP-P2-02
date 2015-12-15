@@ -13,10 +13,9 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2"><b>Startbod:</b><br />&euro; {$object.start_bid}</div>
         <div class="col-md-2"><b>Huidig bod:</b><br />&euro; {$object.currentBid}</div>
-        <div class="col-md-2"><b>Uw bod:</b><br />&euro; {$object.ownBid}</div>
-        <div class="col-md-2"><b>Verkoper:</b><br />{$object.seller}</div>
-        <div class="col-md-2"><b>Verkoper:</b><br />{$object.seller}</div>
+        <div class="col-md-2"><b>Geboden door:</b><br />{$object.currentBidName}</div>
 
         <ul class="category col-md-2">
             {foreach $object.categoryTree as $cat}
@@ -24,9 +23,9 @@
             {/foreach}
         </ul>
         <div class="col-md-2">
-        {if $object.auction_closed && $object.seller == $user.username}
-            <a href="#">Geef verkoper feedback</a>
-        {/if}
+            {if $object.auction_closed}
+                <a href="#">Geef Koper feedback</a>
+            {/if}
         </div>
     </div>
 </div>

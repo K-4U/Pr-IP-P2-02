@@ -18,7 +18,7 @@ class staticMain extends cmsPage {
         $result = $this->db->query($sql);
         $newObjects = parseObjects($result);
 
-        $categories = getCategory();
+        $categories = getCategory(Array());
 
         //$this->addToBreadcrumbs("Home");
         $this->website->assign("categories", $categories);

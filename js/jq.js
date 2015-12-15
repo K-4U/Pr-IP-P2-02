@@ -39,7 +39,10 @@ $(document).ready(function () {
     $('label.tree-toggler').click(function () {
         $(this).parent().children('ul.tree').toggle(300);
     }).each(function(index, element){
-        $(this).parent().children('ul.tree').toggle(300);
+        console.log($(this).data('active'));
+        if(!$(this).data('active')){
+            $(this).parent().children('ul.tree').toggle(300);
+        }
     });
 
     var menu = $('.menu');
@@ -107,7 +110,7 @@ $(document).ready(function () {
 
     $(".clickable").click(function(){
         window.location.href = $(this).data('link');
-    })
+    });
 
     // Options
     var options = {
@@ -134,6 +137,28 @@ $(document).ready(function () {
         // Ensure that it is a number and stop the keypress
         if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
             e.preventDefault();
+        }
+    });
+
+    $(".alpha-only").on("keydown", function(e){
+        // Allow controls such as backspace
+        var arr = [8,16,17,20,32,35,36,37,38,39,40,45,46];
+
+        // Allow letters
+        for(var i = 65; i <= 90; i++){
+            arr.push(i);
+        }
+
+        // Prevent default if not in array
+        if(jQuery.inArray(e.which, arr) === -1){
+            e.preventDefault();
+        }
+    });
+
+    $(".alpha-only").on("input", function(){
+        var regexp = /[^a-zA-Z]/g;
+        if($(this).val().match(regexp)){
+            $(this).val( $(this).val().replace(regexp,'') );
         }
     });
 });

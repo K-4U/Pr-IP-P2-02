@@ -262,6 +262,10 @@ nav.headerrow{
     color: #413a70;
 }
 
+.object .objectTime {
+    color: #ff8c00;
+}
+
 /** BOOTSTRAP OVERRIDES */
 .panel,
 .panel-heading,
