@@ -3,3 +3,4 @@ templates_c/*
 config.php
 *.laccdb
 Access/Beheerapplicatie.accdb
+Web/.idea/
