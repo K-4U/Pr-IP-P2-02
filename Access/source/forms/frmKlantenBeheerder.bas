@@ -10,15 +10,19 @@ Begin Form
     Width =7370
     DatasheetFontHeight =11
     ItemSuffix =46
-    Right =25335
-    Bottom =12480
+    Right =6600
+    Bottom =12435
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0x7cf2892232ade440
+        0x1229b93333aee440
     End
     RecordSource ="SELECT username, firstname + ' ' + lastname AS naam, postalcode, adress_number F"
         "ROM users; "
     DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -55,7 +59,6 @@ Begin Form
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
-            UseTheme =1
             Shape =1
             Gradient =12
             BackThemeColorIndex =4
@@ -65,14 +68,6 @@ Begin Form
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
-            HoverThemeColorIndex =4
-            HoverTint =40.0
-            PressedThemeColorIndex =4
-            PressedShade =75.0
-            HoverForeThemeColorIndex =0
-            HoverForeTint =75.0
-            PressedForeThemeColorIndex =0
-            PressedForeTint =75.0
         End
         Begin OptionButton
             BorderLineStyle =0
@@ -171,10 +166,6 @@ Begin Form
                     LayoutCachedHeight =508
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -304,10 +295,6 @@ Begin Form
                     LayoutCachedHeight =6688
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -320,7 +307,7 @@ Begin Form
                     Top =2265
                     TabIndex =5
                     ForeColor =4210752
-                    Name ="Command12"
+                    Name ="cmdSearchUser"
                     Caption ="Zoeken"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
@@ -331,10 +318,6 @@ Begin Form
                     LayoutCachedHeight =2548
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -347,8 +330,9 @@ Begin Form
                     Top =2265
                     TabIndex =6
                     ForeColor =4210752
-                    Name ="Knop25"
+                    Name ="cmdResetUser"
                     Caption ="Reset"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2434
@@ -357,10 +341,6 @@ Begin Form
                     LayoutCachedHeight =2548
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -419,8 +399,8 @@ Begin Form
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.p"
                         "ostalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE (((users.u"
-                        "sername) Like '%%') AND ((users.postalcode) Like '%%') AND ((users.adress_number"
-                        ") Like '%%')); "
+                        "sername) Like '%%') AND ((users.postalcode) Like '%5677GK%') AND ((users.adress_"
+                        "number) Like '%%')); "
                     ColumnWidths ="1701;2835;1134;851"
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
@@ -443,7 +423,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 
-Private Sub Command12_Click()
+Private Sub cmdSearchUser_Click()
 '    Dim searchQuery As String
 '    Dim placeAND As Boolean
 '
@@ -500,6 +480,19 @@ Dim searchNumber As String
     
     Me.lstUsers.Requery
              
+End Sub
+
+Private Sub cmdResetUser_Click()
+
+Dim query As String
+
+Me.txtPostalcode.Value = ""
+Me.txtAdressNumber.Value = ""
+Me.txtUsername.Value = ""
+
+cmdSearchUser_Click
+             
+
 End Sub
 
 Private Sub lstUsers_DblClick(Cancel As Integer)
