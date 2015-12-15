@@ -41,15 +41,15 @@
                             <ul class="listTypeNone">
                                 <li class="listPadding">Verkopersaccount
                                     <ul class="listTypeNone">
-                                        <li class="listPadding"><a href="#">Verkopersaccount aanmaken</a></li>
+                                        <li class="listPadding"><a href="{baseurl url="Users/CP/SellerRequest"}">Verkopersaccount aanmaken</a></li>
                                         <li class="listPadding"><a href="#">Authenticatiecode invoeren</a></li>
                                     </ul>
                                 </li>
                                 <li class="listPadding">Veilingen
                                     <ul class="listTypeNone">
-                                        <li class="listPadding"><a href="#">Mijn feedback</a></li>
-                                        <li class="listPadding"><a href="#">Mijn biedingen</a></li>
-                                        <li class="listPadding"><a href="#">Mijn kavels</a></li>
+                                        <li class="listPadding"><a href="{baseurl url="Users/CP/Feedback"}">Mijn feedback</a></li>
+                                        <li class="listPadding"><a href="{baseurl url="Users/CP/Bids"}">Mijn biedingen</a></li>
+                                        <li class="listPadding"><a href="{baseurl url="Users/CP/Lots"}">Mijn kavels</a></li>
                                     </ul>
                                 </li>
                             </ul>
