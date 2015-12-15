@@ -10,15 +10,19 @@ Begin Form
     Width =7370
     DatasheetFontHeight =11
     ItemSuffix =46
-    Right =25335
-    Bottom =12480
+    Right =6600
+    Bottom =12435
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0x7cf2892232ade440
+        0x1229b93333aee440
     End
     RecordSource ="SELECT username, firstname + ' ' + lastname AS naam, postalcode, adress_number F"
         "ROM users; "
     DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -55,7 +59,6 @@ Begin Form
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
-            UseTheme =1
             Shape =1
             Gradient =12
             BackThemeColorIndex =4
@@ -65,14 +68,6 @@ Begin Form
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
-            HoverThemeColorIndex =4
-            HoverTint =40.0
-            PressedThemeColorIndex =4
-            PressedShade =75.0
-            HoverForeThemeColorIndex =0
-            HoverForeTint =75.0
-            PressedForeThemeColorIndex =0
-            PressedForeTint =75.0
         End
         Begin OptionButton
             BorderLineStyle =0
@@ -171,10 +166,6 @@ Begin Form
                     LayoutCachedHeight =508
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -226,7 +217,7 @@ Begin Form
                     TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst15"
+                    Name ="txtPostalcode"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -262,7 +253,7 @@ Begin Form
                     TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst17"
+                    Name ="txtAdressnumber"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -304,10 +295,6 @@ Begin Form
                     LayoutCachedHeight =6688
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -320,8 +307,9 @@ Begin Form
                     Top =2265
                     TabIndex =5
                     ForeColor =4210752
-                    Name ="Command12"
+                    Name ="cmdSearchUser"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =469
@@ -330,10 +318,6 @@ Begin Form
                     LayoutCachedHeight =2548
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -346,8 +330,9 @@ Begin Form
                     Top =2265
                     TabIndex =6
                     ForeColor =4210752
-                    Name ="Knop25"
+                    Name ="cmdResetUser"
                     Caption ="Reset"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2434
@@ -356,10 +341,6 @@ Begin Form
                     LayoutCachedHeight =2548
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -376,7 +357,7 @@ Begin Form
                     TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst26"
+                    Name ="txtUsername"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2160
@@ -417,7 +398,9 @@ Begin Form
                     Name ="lstUsers"
                     RowSourceType ="Table/Query"
                     RowSource ="SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.p"
-                        "ostalcode AS Postcode, users.adress_number AS Nummer FROM users; "
+                        "ostalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE (((users.u"
+                        "sername) Like '%%') AND ((users.postalcode) Like '%5677GK%') AND ((users.adress_"
+                        "number) Like '%%')); "
                     ColumnWidths ="1701;2835;1134;851"
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
@@ -439,6 +422,78 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
+
+Private Sub cmdSearchUser_Click()
+'    Dim searchQuery As String
+'    Dim placeAND As Boolean
+'
+'    placeAND = False
+'
+'    If (Not IsNull(Me.txtUsername) And Not (Me.txtUsername.Value = "")) Then
+'        searchQuery = searchQuery & "[username] LIKE '%" & Me.txtUsername.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'    If (Not IsNull(Me.txtPostalcode) And Not (Me.txtPostalcode.Value = "")) Then
+'        If (placeAND) Then
+'            searchQuery = searchQuery & " AND "
+'        End If
+'        searchQuery = searchQuery & "[postalcode] LIKE '%" & Me.txtPostalcode.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'    If (Not IsNull(Me.txtAdressNumber) And Not (Me.txtAdressNumber.Value = "")) Then
+'        If (placeAND) Then
+'            searchQuery = searchQuery & " AND "
+'        End If
+'        searchQuery = searchQuery & "[adress_number] LIKE '%" & Me.txtAdressNumber.Value & "%'"
+'        placeAND = True
+'    End If
+'
+'
+'    Me.lstUsers.RowSource = "SELECT users.username AS Gebruikersnaam, users.firstname+' '+users.lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE " & searchQuery & " "
+'    Me.lstUsers.Requery
+
+'Koen zijn query manier:
+
+Dim searchNumber As String
+    Dim searchTitle As String
+    Dim searchCategory As String
+    Dim query As String
+    
+    If Not IsNull(Me.txtAdressNumber.Value) Then
+        searchAdressNumber = Me.txtAdressNumber.Value
+    End If
+    If Not IsNull(Me.txtUsername.Value) Then
+        searchUsername = Me.txtUsername.Value
+    End If
+    If Not IsNull(Me.txtPostalcode.Value) Then
+        searchPostalcode = Me.txtPostalcode.Value
+    End If
+    
+    
+    query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer" & vbCrLf & _
+            "FROM users" & vbCrLf & _
+            "WHERE (((users.username) Like '%" & searchUsername & "%') AND ((users.postalcode) Like '%" & searchPostalcode & "%') AND ((users.adress_number) Like '%" & searchAdressNumber & "%'));"
+    
+    Me.lstUsers.RowSource = query
+    
+    Me.lstUsers.Requery
+             
+End Sub
+
+Private Sub cmdResetUser_Click()
+
+Dim query As String
+
+Me.txtPostalcode.Value = ""
+Me.txtAdressNumber.Value = ""
+Me.txtUsername.Value = ""
+
+cmdSearchUser_Click
+             
+
+End Sub
 
 Private Sub lstUsers_DblClick(Cancel As Integer)
     Dim username_selected As String

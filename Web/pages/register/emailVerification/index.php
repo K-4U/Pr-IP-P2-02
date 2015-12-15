@@ -9,7 +9,6 @@ Class registerEmailVerification extends cmsPage {
         } else {
             $emailCode = md5($_POST['email'] . date("U"));
             $_POST['emailCode'] = $emailCode;
-            echo $_POST['emailCode'];
             if(isset($_POST ['saveEmail'])) {
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === true) {
                     $_POST['email'] = null;
@@ -27,7 +26,6 @@ Class registerEmailVerification extends cmsPage {
             $this->addToBreadcrumbs("EmailVerification");
 
             $this->render("emailVerification", "emailVerification.tpl");
-
         }
     }
 }

@@ -1,6 +1,13 @@
 {include file="header.tpl"}
 
 <div class="col-md-offset-2 col-md-8 well">
+    {if $errors}
+        {foreach $errors as $key => $value}
+            <div class=" alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>{$value} </div>
+        {/foreach}
+    {/if}
     <form action="{$self}" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
             <div class="panel panel-default">
