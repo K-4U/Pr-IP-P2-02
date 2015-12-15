@@ -1,22 +1,22 @@
 {include file="header.tpl"}
 
 <div class="col-md-offset-2 col-md-8 well">
-    <form action="{$self}" method="post">
+    <form action="{$self}" method="post" enctype="multipart/form-data">
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
                         Kavel info
                     </div>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-4 text-right"><label for="title">Titel</label></div>
-                            <div class="col-md-8"><input type="text" id="title" name="title" class="form-control" required maxlength="60" placeholder="Titel"></div>
                         </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-4 text-right"><label for="title">Titel</label></div>
+                                    <div class="col-md-8"><input type="text" id="title" name="title" class="form-control" required maxlength="60" placeholder="Titel"></div>
+                                </div>
 
-                        <div class="row">
+                                <div class="row">
                             <div class="col-md-4 text-right"><label for="description">Beschrijving</label></div>
                             <div class="col-md-8"><textarea maxlength="4000" name="description" id="description" class="form-control" placeholder="Beschrijving"></textarea></div>
                         </div>
@@ -80,7 +80,7 @@
                                 <div class="input-group">
 
                                     <div class="input-group-addon"><i class="fa fa-eur"></i></div>
-                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name="shipment_costs" maxlength="11" placeholder="Verzendkosten">
+                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name="" maxlength="11" placeholder="Verzendkosten">
 
                                 </div>
                             </div>
@@ -104,11 +104,13 @@
                             </div>
                         </div>
                         <div class="panel-body">
+
                             <div class="form-group">
                                 <span class="btn btn-default btn-file">
-                                    Browse <input type="file">
+                                    Browse <input type="file" name="fileToUpload">
                                 </span>
                             </div>
+
                         </div>
                     </div>
                 </div>

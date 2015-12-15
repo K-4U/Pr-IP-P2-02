@@ -8,8 +8,8 @@ Class registerEmailVerification extends cmsPage {
             header("location: " . baseurl(""));
         } else {
             $emailCode = md5($_POST['email'] . date("U"));
-            $_SESSION['emailCode'] = $emailCode;
-            echo $_SESSION['emailCode'];
+            $_POST['emailCode'] = $emailCode;
+            echo $_POST['emailCode'];
             if(isset($_POST ['saveEmail'])) {
                 if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === true) {
                     $_POST['email'] = null;
@@ -17,6 +17,8 @@ Class registerEmailVerification extends cmsPage {
                 } else {
 
                     $this->website->assign("email",$_POST['email']);
+                    $this->website->assign("emailCode", $_POST['emailCode']);
+                    $this->website->assign("emailVerificationCode", $_POST['emailVerificationCode']);
                     sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
                 }
             }

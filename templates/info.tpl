@@ -46,7 +46,7 @@
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" id="lastname" name="lastname" value="{$previousInfo.lastname}"
-                                       class="form-control alpha-only" required>
+                                       class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
@@ -83,8 +83,32 @@
                             <label for="phonenumber" class="col-md-4 col-sm-4 labelsGegevens">Telefoonnummer:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="phonenumber" name="phonenumber" value="{$previousInfo.phonenumber}"
+                                <input type="number" id="phonenumber" name="phonenumber" value="{$previousInfo.phonenumber}"
                                        class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="birthdate" class="col-md-4 col-sm-4 labelsGegevens">Geboortedatum:</label>
+
+                            <div class="col-md-8 col-sm-8">
+                                <input type="date" id="birthdate" name="birthdate" value="{$previousInfo.birthdate}"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="city" class="col-md-4 col-sm-4 labelsGegevens">Plaatsnaam:</label>
+
+                            <div class="col-md-8 col-sm-8">
+                                <input type="text" id="city" name="city" value="{$previousInfo.city}"
+                                       class="form-control alpha-only">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="country" class="col-md-4 col-sm-4 labelsGegevens">Land:</label>
+
+                            <div class="col-md-8 col-sm-8">
+                                <input type="text" id="country" name="country" value="{$previousInfo.country}"
+                                       class="form-control alpha-only">
                             </div>
                         </div>
                         <br>
@@ -133,8 +157,11 @@
                             </div>
                         </div>
                         <input type="hidden" name="validateCode" value="true">
-                        <input type="hidden" name="email" value="{$email}"
+                        <input type="hidden" name="email" value="{$email}">
                         <input type="hidden" name="emailVerificationCode" value="{$emailVerificationCode}">
+                        <input type="hidden" name="emailCode" value="{$emailCode}">
+                        <input type="hidden" name="validateCode" value="{$validateCode}">
+
                         <div class="g-recaptcha" data-sitekey="6LcL4xITAAAAABLF4j9PUpzBP57RlffxPpDU3UcN" required></div><br>
                         <button class="btn btn-default" type="submit" name="registerInfo">Account aanmaken</button>
                     </form>
