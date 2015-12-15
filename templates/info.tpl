@@ -7,13 +7,20 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>{$wrongCode} </div>
         {/if}
+        {if $errors}
+            {foreach $errors as $key => $value}
+                <div class=" alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>{$value} </div>
+            {/foreach}
+        {/if}
         {if !$wrongCode}
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">Registratie gegevens</div>
                 </div>
                 <div class="panel-body">
-                    <form action="" method="post">
+                    <form action="{$self}" method="post" name="registerInfo">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 De gebruikersnaam moet 4 tot 12 characters lang zijn, het is hoofdlettergevoelig en mag
@@ -22,7 +29,7 @@
                             <label for="username" class="col-md-4 col-sm-4 labelsGegevens">Gebruikersnaam:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="username" name="username"
+                                <input type="text" id="username" name="username" value="{$previousInfo.username}"
                                        class="form-control" required>
                             </div>
                         </div>
@@ -30,16 +37,16 @@
                             <label for="firstname" class=" col-md-4 col-sm-4 labelsGegevens">Voornaam:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="firstname" name="firstname"
-                                       class="form-control" required>
+                                <input type="text" id="firstname" name="firstname" value="{$previousInfo.firstname}"
+                                       class="form-control alpha-only" required>
                             </div>
                         </div>
                         <div class="row">
                             <label for="lastname" class=" col-md-4 col-sm-4 labelsGegevens">Achternaam:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="lastname" name="lastname"
-                                       class="form-control" required>
+                                <input type="text" id="lastname" name="lastname" value="{$previousInfo.lastname}"
+                                       class="form-control alpha-only" required>
                             </div>
                         </div>
                         <div class="row">
@@ -47,12 +54,12 @@
                             <label for="adress_street1" class="col-md-4 col-sm-4 labelsGegevens">Adres:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="adress_street1" name="adress_street1"
+                                <input type="text" id="adress_street1" name="adress_street1" value="{$previousInfo.adress_street1}"
                                        class="form-control" required></div>
                         </div>
                         <div class="row">
                             <div class=" col-md-offset-4 col-sm-offset-4 col-md-8 col-sm-8">
-                                <input type="text" id="adress_street2" name="adress_street2"
+                                <input type="text" id="adress_street2" name="adress_street2" value="{$previousInfo.adress_street2}"
                                        class="form-control">
                             </div>
                         </div>
@@ -60,7 +67,7 @@
                             <label for="postalcode" class="col-md-4 col-sm-4 labelsGegevens">Postcode:</label>
 
                             <div class=" col-md-2 col-sm-8">
-                                <input type="text" id="postalcode" name="postalcode"
+                                <input type="text" id="postalcode" name="postalcode" value="{$previousInfo.postalcode}"
                                        class="form-control" required>
                             </div>
 
@@ -68,7 +75,7 @@
                                    class="col-md-2 col-sm-4 col-md-offset-1 huisnrLabel labelsGegevens">Huisnr:</label>
 
                             <div class="col-md-2 col-sm-8 col-md-offset-1">
-                                <input type="text" id="adress_number" name="adress_number"
+                                <input type="text" id="adress_number" name="adress_number" value="{$previousInfo.adress_number}"
                                        class="form-control" required>
                             </div>
                         </div>
@@ -76,7 +83,7 @@
                             <label for="phonenumber" class="col-md-4 col-sm-4 labelsGegevens">Telefoonnummer:</label>
 
                             <div class="col-md-8 col-sm-8">
-                                <input type="text" id="phonenumber" name="phonenumber"
+                                <input type="text" id="phonenumber" name="phonenumber" value="{$previousInfo.phonenumber}"
                                        class="form-control">
                             </div>
                         </div>
@@ -125,8 +132,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LcL4xITAAAAABLF4j9PUpzBP57RlffxPpDU3UcN"></div><br>
-                        <button class="btn btn-default" type="submit">Account aanmaken</button>
+                        <input type="hidden" name="validateCode" value="true">
+                        <input type="hidden" name="email" value="{$email}"
+                        <input type="hidden" name="emailVerificationCode" value="{$emailVerificationCode}">
+                        <div class="g-recaptcha" data-sitekey="6LcL4xITAAAAABLF4j9PUpzBP57RlffxPpDU3UcN" required></div><br>
+                        <button class="btn btn-default" type="submit" name="registerInfo">Account aanmaken</button>
                     </form>
                 </div>
             </div>
