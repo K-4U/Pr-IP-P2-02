@@ -23,6 +23,11 @@ Class usersCPLots extends cmsPage {
             }
 
             $this->website->assign("objects", $objects);
+
+            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
+            $this->addToBreadcrumbs("Mijn kavels");
+
             $this->render("Mijn kavels", "users/myLots.tpl");
         } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat u uw biedingen kunt bekijken.");

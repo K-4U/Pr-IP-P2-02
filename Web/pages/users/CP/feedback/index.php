@@ -14,6 +14,11 @@ Class usersCPfeedback extends cmsPage {
 
             $this->website->assign("feedbackItemsSel", $feedbackItemsSel);
             $this->website->assign("feedbackItemsBuy", $feedbackItemsBuy);
+
+            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
+            $this->addToBreadcrumbs("Mijn feedback");
+
             $this->render("Feedback", "users/feedback.tpl");
         } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat u uw feedback kunt bekijken.");

@@ -24,6 +24,11 @@ Class usersCPbids extends cmsPage {
             }
 
             $this->website->assign("objects", $objects);
+
+            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
+            $this->addToBreadcrumbs("Mijn Biedingen");
+
             $this->render("Bids", "users/bids.tpl");
         } else {
             $this->website->assign("loginError", "U moet ingelogd zijn voordat u uw biedingen kunt bekijken.");
