@@ -106,6 +106,7 @@ Begin Form
                     OverlapFlags =85
                     Left =2040
                     Top =2664
+                    TabIndex =2
                     ForeColor =4210752
                     Name ="btnLogin"
                     Caption ="Login"
@@ -169,7 +170,6 @@ Begin Form
                     Left =2026
                     Top =1530
                     Height =315
-                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtUsername"
