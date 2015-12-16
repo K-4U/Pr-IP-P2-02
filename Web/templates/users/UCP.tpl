@@ -42,7 +42,7 @@
                                 <li class="listPadding">Verkopersaccount
                                     <ul class="listTypeNone">
                                         <li class="listPadding"><a href="{baseurl url="Users/CP/SellerRequest"}">Verkopersaccount aanmaken</a></li>
-                                        <li class="listPadding"><a href="#">Authenticatiecode invoeren</a></li>
+                                        <li class="listPadding"><a href="{baseurl url="Users/CP/SellerCode"}">Authenticatiecode invoeren</a></li>
                                     </ul>
                                 </li>
                                 <li class="listPadding">Veilingen
