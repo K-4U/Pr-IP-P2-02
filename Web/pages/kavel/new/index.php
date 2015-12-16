@@ -6,19 +6,19 @@
 class kavelNew extends cmsPage {
 
     function parse() {
-        echo('tedwdwddst');
+
         if(isset($_POST['submit'])) {
-            echo('test');
+
 
             if(isset($_POST['title']) && isset($_POST['description']) && isset($_POST['start_bid']) && isset($_POST['location']) && isset($_POST['duration']) && isset($_POST['payment_method'])) {
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
                 $errors = Array();
                 if($check !== false) {
-                    echo "File is an image - " . $check["mime"] . ".";
+                    //echo "File is an image - " . $check["mime"] . ".";
                     $uploadOk = 1;
                 } else {
                     $errors['imageErr'] = "U moet een afbeelding uploaden.";
-                    echo "File is not an image.";
+                    //echo "File is not an image.";
                     $uploadOk = 0;
                 }
 
@@ -69,13 +69,13 @@ class kavelNew extends cmsPage {
                 if($errors) {
                     $this->website->assign("errors", $errors);
                 } else {
-                    var_dump($_FILES);
+                    //var_dump($_FILES);
                     $target_dir = getcwd() . "/images/uploads/";
                     $imageFileType = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
                     $target_file = md5_file(date(U) . $this->user->getName()) . '.' . $imageFileType; //md5
                     $uploadOk = 1;
 
-                    var_dump(rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file));
+                    //var_dump(rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file));
                     $objectId = $this->db->getLastInsertedId();
                     $insertFileNameArray = array(
                         "filename" => $target_file,
