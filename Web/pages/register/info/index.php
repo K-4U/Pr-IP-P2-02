@@ -35,7 +35,7 @@ Class registerInfo extends cmsPage {
 
                         if($_POST['password'] == $_POST['password2']) {
                             $hashedPassword = hash("sha512", $_POST['password']);
-                            $_POST['password']=$hashedPassword;
+                            $_POST['password'] = $hashedPassword;
                         } else {
                             $errors['passwordErr'] = "De opgegeven wachtwoorden komen niet overeen.";
                         }
@@ -50,15 +50,15 @@ Class registerInfo extends cmsPage {
                             $errors['questionAnswerErr'] = "U heeft geen antwoord voor uw geheime vraag opgegeven.";
                         }
 
-                        if(!isset($_POST['birthdate'])){
+                        if(!isset($_POST['birthdate'])) {
                             $errors['birthdate'] = "U heeft geen geboortedatum aangegeven.";
                         }
 
-                        if(!isset($_POST['city'])){
+                        if(!isset($_POST['city'])) {
                             $errors['city'] = "U heeft geen plaatsnaam opgegeven.";
                         }
 
-                        if(!isset($_POST['country'])){
+                        if(!isset($_POST['country'])) {
                             $errors['country'] = "U heeft geen land opgegeven.";
                         }
 
@@ -79,23 +79,23 @@ Class registerInfo extends cmsPage {
                     }
 
                     $birthdateFormat = $_POST['birthdate'];
-                    $_POST['birthdate'] = implode("-", array_reverse(explode("/",$birthdateFormat )));
+                    $_POST['birthdate'] = implode("-", array_reverse(explode("/", $birthdateFormat)));
 
                     $infoInsert = Array(
-                        'username'         => $_POST['username'],
-                        'firstname'        => $_POST['firstname'],
-                        'lastname'         => $_POST['lastname'],
-                        'adress_street1'   => $_POST['adress_street1'],
-                        'adress_street2'   => $_POST['adress_street2'],
-                        'adress_number'    => $_POST['adress_number'],
-                        'postalcode'       => $_POST['postalcode'],
-                        'birthdate'        => $_POST['birthdate'],
-                        'password'         => $_POST['password'],
+                        'username'          => $_POST['username'],
+                        'firstname'         => $_POST['firstname'],
+                        'lastname'          => $_POST['lastname'],
+                        'adress_street1'    => $_POST['adress_street1'],
+                        'adress_street2'    => $_POST['adress_street2'],
+                        'adress_number'     => $_POST['adress_number'],
+                        'postalcode'        => $_POST['postalcode'],
+                        'birthdate'         => $_POST['birthdate'],
+                        'password'          => $_POST['password'],
                         'security_question' => $_POST['securityQuestions'],
                         'security_answer'   => $_POST['questionAnswer'],
                         'city'              => $_POST['city'],
-                        'country'            => $_POST['country'],
-                        'email'            => $_POST['email']);
+                        'country'           => $_POST['country'],
+                        'email'             => $_POST['email']);
 
 
                     $phonenumberArray = array(
@@ -105,11 +105,15 @@ Class registerInfo extends cmsPage {
 
                     if($noErrs) {
                         $this->db->insert("users", $infoInsert);
+                        $dbErr = $this->db->getLastError();
                         $this->db->insert("phonenumbers", $phonenumberArray);
-                        $this->user->doLogin($_POST['username'], $_POST['password2']);
-                        header("location: " . baseurl(""));
+                        $dbErr1 = $this->db->getLastError();
+                        if(!isset($dbErr) && !isset($dbErr1)){
+                            $this->user->doLogin($_POST['username'], $_POST['password2']);
+                            header("location: " . baseurl(""));
+                        }
                     }
-                    
+
                     $sqlQuestion = "SELECT id, question FROM security_questions";
 
                     $questionResult = $this->db->query($sqlQuestion);
@@ -119,7 +123,7 @@ Class registerInfo extends cmsPage {
                     $this->website->assign("questions", $questions);
                     $this->website->assign("emailVerificationCode", $_POST['emailVerificationCode']);
                     $this->website->assign("previousInfo", $_POST);
-                    $this->website->assign("email",$_POST['email']);
+                    $this->website->assign("email", $_POST['email']);
                     $this->website->assign("emailCode", $_POST['emailCode']);
                     $this->website->assign("validateCode", $_POST['validateCode']);
                     if(isset($errors)) {
