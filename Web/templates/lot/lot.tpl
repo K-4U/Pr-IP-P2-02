@@ -58,18 +58,18 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div class="row"><div class="col-md-7 col-sm-7 col-xs-7">Gebruikersnaam</div><div class="col-md-4 col-sm-4 col-xs-4">Bod</div></div>
+                    <div class="row"><div class="col-md-7 col-sm-7 col-xs-7">Gebruiker</div><div class="col-md-5 col-sm-5 col-xs-5">Bod</div></div>
                     <div class="objectBids">
                         <div>
                             {foreach $object.bids as $bid}
                                 <div class="row">
                                     <div class="col-md-7 col-sm-7 col-xs-7"><a href="{baseurl url="Users/Profile/`$bid.username`"}">{$bid.username}</a></div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4">&euro;{$bid.bidvalue|string_format:"%.2f"}</div>
+                                    <div class="col-md-5 col-sm-5 col-xs-5">&euro;{$bid.bidvalue|string_format:"%.2f"}</div>
                                 </div>
                             {/foreach}
                             <div class="row">
                                 <div class="col-md-7 col-sm-7 col-xs-7">Startbod</div>
-                                <div class="col-md-4 col-sm-4 col-xs-4">&euro;{$object.start_bid|string_format:"%.2f"}</div>
+                                <div class="col-md-5 col-sm-5 col-xs-5">&euro;{$object.start_bid|string_format:"%.2f"}</div>
                             </div>
                         </div>
                     </div>
