@@ -22,7 +22,7 @@ class usersProfile extends cmsPage {
                 $user['feedback'] = $this->db->fetchAllAssoc($feedbackResult);
 
 
-                $this->website->assign("user", $user);
+                $this->website->assign("profileUser", $user);
             }else{
                 $error = "Deze gebruiker bestaat niet";
                 $userExists = false;

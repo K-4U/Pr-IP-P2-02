@@ -3,19 +3,19 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 well">
     <div class="row">
         <div class="col-md-12">
-            <img src="{$user.gravatarUrl}" class="col-md-2" alt="Avatar van {$user.username}">
+            <img src="{$profileUser.gravatarUrl}" class="col-md-2" alt="Avatar van {$profileUser.username}">
 
             <div class="col-md-3">
                 <div class="row">
-                    <div class="col-md-12 username">{$user.username}</div>
+                    <div class="col-md-12 username">{$profileUser.username}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 username">{$user.city}</div>
+                    <div class="col-md-12 username">{$profileUser.city}</div>
                 </div>
             </div>
             <div class="col-md-2 pull-right">
                 <div class="row">
-                    <div class="col-md-12 rating" data-rate-value="{$user.rating}"></div>
+                    <div class="col-md-12 rating" data-rate-value="{$profileUser.rating}"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -25,15 +25,15 @@
             </div>
         </div>
     </div>
-    {if $user.isseller}
+    {if $profileUser.isseller}
     <div class="row row-spacing">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="panel-title">Huidige kavels van {$user.username}</div>
+                    <div class="panel-title">Huidige kavels van {$profileUser.username}</div>
                 </div>
                 <div class="panel-body">
-                    {foreach $user.objects as $object}
+                    {foreach $profileUser.objects as $object}
                         {include file="entries/object.tpl"}
                     {/foreach}
                 </div>
@@ -46,11 +46,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="panel-title">Reacties op {$user.username}</div>
+                    <div class="panel-title">Reacties op {$profileUser.username}</div>
                 </div>
                 <div class="panel-body">
-                    {if $user.feedback|sizeof > 0}
-                    {foreach $user.feedback as $feedback}
+                    {if $profileUser.feedback|sizeof > 0}
+                    {foreach $profileUser.feedback as $feedback}
                         {include file="entries/feedback.tpl"}
                     {/foreach}
                     {else}

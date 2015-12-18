@@ -127,7 +127,7 @@
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" value="{$phonenumber.phonenumber}" id="phonenumber" name="phonenumber"
-                                       class="form-control" required>
+                                       class="form-control" >
                             </div>
                         </div>
                         <br>

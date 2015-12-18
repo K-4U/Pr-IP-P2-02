@@ -29,6 +29,9 @@
     <!-- end: JS -->
 </head>
 <body>
+<div class="modal">
+
+</div>
 <div class="login">
     {include file="dialogs/login.tpl"}
 </div>
@@ -37,15 +40,15 @@
 </div>
 <div class="row headerrow">
     <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
+        {if !$user.loggedIn}
+            <div class="pull-right hidden-xs btn-group login-register">
+                <button class="btn btn-cta btn-sm registerBtn pull-right">Registreren</button>
+                <button class="btn btn-cta btn-sm loginBtn pull-right">Login</button>
+            </div>
+        {/if}
         <div class="col-md-8">
             <h1 class="muted"><a href="{baseurl url=""}">EenmaalAndermaal</a></h1>
         </div>
-        {if !$user.loggedIn}
-            <div class="col-md-3 pull-right hidden-xs btn-group login-register">
-                <button class="btn btn-cta btn-sm loginBtn">Login</button>
-                <button class="btn btn-cta btn-sm registerBtn">Registreren</button>
-            </div>
-        {/if}
     </div>
 </div>
 

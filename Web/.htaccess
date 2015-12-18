@@ -61,3 +61,5 @@ RewriteRule ^Register/?$           register.php?ac=dashboard
 RewriteRule ^Register/([^/]+)/?$   register.php?ac=$1
 RewriteRule ^Register/([^/]+)/(.+) register.php?ac=$1&args=$2
 
+RewriteRule ^Zoek/([^/]+)/?$   search.php?id=$1
+RewriteRule ^Zoek/([^/]+)/(.+) search.php?id=$1&query=$2
