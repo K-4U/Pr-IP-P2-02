@@ -72,6 +72,7 @@ $(document).ready(function () {
     $(".loginBtn").click(function () {
         $(".login").css('display', 'block');
         $(".modal").css('display','block');
+        $(".loginBox").css('z-index', '9999');
     });
 
 
@@ -79,11 +80,14 @@ $(document).ready(function () {
         $(".login").css('display', 'none');
         $(".register").css('display', 'none');
         $(".modal").css('display', 'none');
+        $(".loginBox").css('z-index', '-3');
+        $(".registerBox").css('z-index', '-3');
     });
 
     $(".registerBtn").click(function () {
         $(".register").css('display', 'block');
         $(".modal").css('display','block');
+        $(".registerBox").css('z-index', '9999');
     });
 
     $(".countdown").each(function (index, element) {
