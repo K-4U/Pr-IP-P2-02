@@ -16,7 +16,6 @@
         <div class="col-md-2"><b>Huidig bod:</b><br />&euro; {$object.currentBid}</div>
         <div class="col-md-2"><b>Uw bod:</b><br />&euro; {$object.ownBid}</div>
         <div class="col-md-2"><b>Verkoper:</b><br />{$object.seller}</div>
-        <div class="col-md-2"><b>Verkoper:</b><br />{$object.seller}</div>
 
         <ul class="category col-md-2">
             {foreach $object.categoryTree as $cat}

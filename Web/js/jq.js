@@ -46,7 +46,7 @@ $(document).ready(function () {
         $(this).parent().children('ul.tree').toggle(300);
     }).each(function (index, element) {
         if (!$(this).data('active')) {
-            $(this).parent().children('ul.tree').toggle(300);
+            $(this).parent().children('ul.tree').toggle(1);
         }
     });
 
@@ -72,6 +72,7 @@ $(document).ready(function () {
     $(".loginBtn").click(function () {
         $(".login").css('display', 'block');
         $(".modal").css('display','block');
+        $(".loginBox").css('z-index', '9999');
     });
 
 
@@ -79,11 +80,14 @@ $(document).ready(function () {
         $(".login").css('display', 'none');
         $(".register").css('display', 'none');
         $(".modal").css('display', 'none');
+        $(".loginBox").css('z-index', '-3');
+        $(".registerBox").css('z-index', '-3');
     });
 
     $(".registerBtn").click(function () {
         $(".register").css('display', 'block');
         $(".modal").css('display','block');
+        $(".registerBox").css('z-index', '9999');
     });
 
     $(".countdown").each(function (index, element) {
@@ -104,16 +108,20 @@ $(document).ready(function () {
             setTimeout(timeFunc, 1000);
         };
 
-        var days = Math.floor(startTime / 86400);
-        if (days == 0) {
-            timeFunc();
-        } else {
-            obj.text(days + " dag" + (days > 1 ? "en" : ""));
+        if(startTime > 0) {
+            var days = Math.floor(startTime / 86400);
+            if (days == 0) {
+                timeFunc();
+            } else {
+                obj.text(days + " dag" + (days > 1 ? "en" : ""));
+            }
+        }else{
+            obj.text("Afgelopen");
         }
     });
 
     $(".avatar").click(function () {
-        $(".usermenu").toggle(600, 'swing');
+        $(".usermenu").toggle(300, 'swing');
     });
 
     $(".clickable").click(function () {

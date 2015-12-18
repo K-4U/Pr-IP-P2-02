@@ -8,7 +8,7 @@ Class registerInfo extends cmsPage {
             header("location: " . baseurl(""));
         } else {
             if(isset($_POST['validateCode'])) {
-                if($_POST['emailCode'] == $_POST['emailVerificationCode']) {
+                if($_SESSION['emailCode'] == $_POST['emailVerificationCode']) {
 
                     foreach ($_POST $key => &$value){
                         $temp = strip_tags($value);
@@ -141,16 +141,16 @@ Class registerInfo extends cmsPage {
                         $this->website->assign("errors", $errors);
                     }
 
-                    $this->addToBreadcrumbs("Home", baseurl("/"));
-                    $this->addToBreadcrumbs("Register");
-                    $this->addToBreadcrumbs(Info);
+                    $this->addToBreadcrumbs("Home", baseurl(""));
+                    $this->addToBreadcrumbs("Registratie");
+                    $this->addToBreadcrumbs("Info");
                     $this->render("info", "info.tpl");
                 } else {
                     $wrongCode = "De validatie code komt niet overeen met de gestuurde code, probeer opnieuw te registreren.";
                     $this->website->assign("wrongCode", $wrongCode);
-                    $this->addToBreadcrumbs("Home", baseurl("/"));
-                    $this->addToBreadcrumbs("Register");
-                    $this->addToBreadcrumbs(Info);
+                    $this->addToBreadcrumbs("Home", baseurl(""));
+                    $this->addToBreadcrumbs("Registratie");
+                    $this->addToBreadcrumbs("Info");
                     $this->render("info", "info.tpl");
 
                 }

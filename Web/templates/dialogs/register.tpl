@@ -1,4 +1,4 @@
-<div class="col-md-4 col-xs-12 loginBox well">
+<div class="col-md-4 col-xs-12 registerBox well">
     {if $emailError}
         <div class=" alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
