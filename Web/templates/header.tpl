@@ -29,6 +29,9 @@
     <!-- end: JS -->
 </head>
 <body>
+<div class="modal">
+
+</div>
 <div class="login">
     {include file="dialogs/login.tpl"}
 </div>
