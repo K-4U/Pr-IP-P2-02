@@ -8,7 +8,7 @@ Class registerInfo extends cmsPage {
             header("location: " . baseurl(""));
         } else {
             if(isset($_POST['validateCode'])) {
-                if($_POST['emailCode'] == $_POST['emailVerificationCode']) {
+                if($_SESSION['emailCode'] == $_POST['emailVerificationCode']) {
 
 //                    $errors = Array();
                     if(isset($_POST['registerInfo'])) { //lets check if every required field is actually filled in correctly
