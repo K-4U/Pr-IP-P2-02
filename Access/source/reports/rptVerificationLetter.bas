@@ -3,6 +3,7 @@ VersionRequired =20
 Begin Report
     LayoutForPrint = NotDefault
     DividingLines = NotDefault
+    FilterOn = NotDefault
     AllowDesignChanges = NotDefault
     DefaultView =0
     DateGrouping =1
@@ -14,6 +15,7 @@ Begin Report
     DatasheetFontHeight =11
     ItemSuffix =13
     DatasheetGridlinesColor =15132391
+    Filter ="[username] = 'Admin'"
     RecSrcDt = Begin
         0xa0ce3d334faee440
     End
