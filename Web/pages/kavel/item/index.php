@@ -16,19 +16,21 @@ class kavelItem extends cmsPage {
         //See if they placed a bid, and if they're logged in
         if(isset($_POST['submit']) && isset($_POST['bid']) && $this->user->isLoggedIn()) {
             if($_POST['bid'] >= $this->db->fetchIndex($this->db->executeFunction('dbo.fnMinimalNewBid', $object['id']))[0]) {
-                $insertArray = Array(
-                    "objectid"  => $object['id'],
-                    "bidvalue"  => $_POST['bid'],
-                    "username"  => $this->user->getName(),
-                    "bidmoment" => date('Y-m-d H:i:s')
-                );
+                if($object['seller'] != $this->user->getName()) {
+                    $insertArray = Array(
+                        "objectid"  => $object['id'],
+                        "bidvalue"  => $_POST['bid'],
+                        "username"  => $this->user->getName(),
+                        "bidmoment" => date('Y-m-d H:i:s')
+                    );
 
-                $this->db->insert("bids", $insertArray);
-                $error = $this->db->getLastError();
-                if($error) {
-                    var_dump($error);
-                } else {
-                    header("Location: " . $_SERVER['REQUEST_URI']);
+                    $this->db->insert("bids", $insertArray);
+                    $error = $this->db->getLastError();
+                    if($error) {
+                        var_dump($error);
+                    } else {
+                        header("Location: " . $_SERVER['REQUEST_URI']);
+                    }
                 }
             } else {
                 $this->website->assign("bidError", "Je bod is niet hoog genoeg.");
