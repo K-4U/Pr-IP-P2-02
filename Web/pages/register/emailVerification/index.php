@@ -14,18 +14,27 @@ Class registerEmailVerification extends cmsPage {
                     $_POST['email'] = null;
                     $this->website->assign("emailError", "Ingevulde email was niet valide, ga naar de hoofdpagina en probeer opnieuw te registreren.");
                 } else {
-
-                    $this->website->assign("email", $_POST['email']);
+                    $emailUsed = $this->db->buildQuery("SELECT email FROM users WHERE email = %s", $_POST['email']);
+                    If($this->db->getHasRows($emailUsed) == 0) {
+                        $this->website->assign("email", $_POST['email']);
                     $_SESSION['emailCode'] = $_POST['emailCode'];
                     $this->website->assign("emailVerificationCode", $_POST['emailVerificationCode']);
-                    sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
+                        sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
+                    } else {
+                        $this->website->assign("emailError", "Uw email is al in gebruik genomen.");
+                        $emailIsAlreadyUsed = true;
+                    }
                 }
             }
             $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("Registratie");
             $this->addToBreadcrumbs("Email Verificatie");
 
-            $this->render("emailVerification", "emailVerification.tpl");
+            if($emailIsAlreadyUsed == false){
+                $this->render("emailVerification", "emailVerification.tpl");
+            }else{
+                header("location: " . baseurl(""));
+            }
         }
     }
 }
