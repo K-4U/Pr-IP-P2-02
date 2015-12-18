@@ -287,8 +287,9 @@ Begin Form
                     Top =1020
                     TabIndex =3
                     ForeColor =4210752
-                    Name ="Command12"
+                    Name ="cmdSearchUser"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =3055
@@ -317,7 +318,7 @@ Begin Form
                     TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst26"
+                    Name ="txtUsername"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =453
@@ -478,6 +479,32 @@ Private Sub butInsert_Click()
         MsgBox "te weinig info"
     End If
     
+    Me.lstUsers.Requery
+    
+End Sub
+
+Private Sub cmdSearchUser_Click()
+    Dim query As String
+    Dim searchUsername As String
+    
+    If Not IsNull(Me.txtUsername.Value) Then
+        searchUsername = Me.txtUsername.Value
+    End If
+    
+    query = "SELECT users.username AS Gebruikersnaam" & vbCrLf & _
+             "FROM users" & vbCrLf & _
+             "WHERE ((users.username) LIKE '%" & searchUsername & "%') ;"
+             
+             
+    Me.lstUsers.RowSource = query
+'    "SELECT users.username AS Gebruikersnaam"
+'             FROM Users
+'             WHERE users.username NOT IN (SELECT username FROM rank"
+    
+'SELECT users.username AS Gebruikersnaam
+'FROM Users
+'WHERE users.username NOT IN (SELECT username FROM ranks)
+
 End Sub
 
 Private Sub Form_Load()

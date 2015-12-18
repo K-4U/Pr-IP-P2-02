@@ -10,11 +10,11 @@ Begin Form
     Width =9921
     DatasheetFontHeight =11
     ItemSuffix =16
-    Right =25335
-    Bottom =12480
+    Right =12465
+    Bottom =7830
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0xc693400c2daee440
+        0x458493ec55aee440
     End
     DatasheetFontName ="Calibri"
     PrtMip = Begin
@@ -65,7 +65,6 @@ Begin Form
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
-            UseTheme =1
             Shape =1
             Gradient =12
             BackThemeColorIndex =4
@@ -75,14 +74,6 @@ Begin Form
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
-            HoverThemeColorIndex =4
-            HoverTint =40.0
-            PressedThemeColorIndex =4
-            PressedShade =75.0
-            HoverForeThemeColorIndex =0
-            HoverForeTint =75.0
-            PressedForeThemeColorIndex =0
-            PressedForeTint =75.0
         End
         Begin OptionButton
             BorderLineStyle =0
@@ -165,29 +156,17 @@ Begin Form
             ForeTint =75.0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
-            UseTheme =1
             Shape =2
             Bevel =1
-            BackColor =-1
+            BackColor =15123357
             BackThemeColorIndex =4
             BackTint =60.0
             OldBorderStyle =0
             BorderLineStyle =0
-            BorderColor =-1
+            BorderColor =15123357
             BorderThemeColorIndex =4
             BorderTint =60.0
             ThemeFontIndex =1
-            HoverColor =0
-            HoverThemeColorIndex =4
-            HoverTint =40.0
-            PressedColor =0
-            PressedThemeColorIndex =4
-            PressedShade =75.0
-            HoverForeColor =0
-            HoverForeThemeColorIndex =0
-            HoverForeTint =75.0
-            PressedForeColor =0
-            PressedForeThemeColorIndex =1
         End
         Begin Tab
             Width =5103
@@ -197,7 +176,6 @@ Begin Form
             ThemeFontIndex =0
             GridlineThemeColorIndex =1
             GridlineShade =65.0
-            UseTheme =1
             Shape =3
             BackThemeColorIndex =1
             BackShade =85.0
@@ -205,12 +183,6 @@ Begin Form
             BorderColor =16777215
             BorderThemeColorIndex =2
             BorderTint =60.0
-            HoverThemeColorIndex =1
-            PressedThemeColorIndex =1
-            HoverForeThemeColorIndex =0
-            HoverForeTint =75.0
-            PressedForeThemeColorIndex =0
-            PressedForeTint =75.0
             ForeThemeColorIndex =0
             ForeTint =75.0
         End
@@ -237,10 +209,6 @@ Begin Form
                     LayoutCachedHeight =853
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -256,7 +224,7 @@ Begin Form
                     TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text10"
+                    Name ="txtUsername"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2490
@@ -271,7 +239,7 @@ Begin Form
                     Width =1251
                     TabIndex =2
                     ForeColor =4210752
-                    Name ="Command12"
+                    Name ="btnReset"
                     Caption ="Reset"
                     GridlineColor =10921638
 
@@ -281,10 +249,6 @@ Begin Form
                     LayoutCachedHeight =1588
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -352,7 +316,7 @@ Begin Form
                     TabIndex =4
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst4"
+                    Name ="txtComment"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2490
@@ -367,8 +331,9 @@ Begin Form
                     Width =1251
                     TabIndex =5
                     ForeColor =4210752
-                    Name ="Knop5"
+                    Name ="btnSearch"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =4980
@@ -377,10 +342,6 @@ Begin Form
                     LayoutCachedHeight =2023
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -491,10 +452,6 @@ Begin Form
                     LayoutCachedHeight =7758
                     BackColor =15123357
                     BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
                     WebImagePaddingLeft =2
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
@@ -510,7 +467,7 @@ Begin Form
                     TabIndex =9
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst12"
+                    Name ="txtDate"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2490
@@ -539,7 +496,7 @@ Begin Form
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =4
-                    Left =566
+                    Left =623
                     Top =4195
                     Width =5841
                     Height =3069
@@ -548,14 +505,13 @@ Begin Form
                     BorderColor =10921638
                     Name ="lstFeedback"
                     RowSourceType ="Table/Query"
-                    RowSource ="SELECT SWITCH(isSeller=0,O.seller, isSeller=1,O.buyer,buyer IS NULL, '<Onbekend>"
-                        "'), rating, date, comment FROM feedback AS F INNER JOIN objects AS O ON F.object"
-                        "id=O.id; "
+                    RowSource ="SELECT seller, rating, date, comment FROM feedback AS F INNER JOIN objects AS O "
+                        "ON F.objectid=O.id; "
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =566
+                    LayoutCachedLeft =623
                     LayoutCachedTop =4195
-                    LayoutCachedWidth =6407
+                    LayoutCachedWidth =6464
                     LayoutCachedHeight =7264
                 End
             End
@@ -568,6 +524,36 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+
+Private Sub btnSearch_Click()
+
+    Dim query As String
+    Dim searchUSername As String
+    Dim searchComment As String
+    Dim searchDate As String
+
+
+    If Not IsNull(Me.txtUsername.Value) Then
+        searchUSername = Me.txtUsername.Value
+    End If
+    If Not IsNull(Me.txtComment.Value) Then
+        searchComment = Me.txtComment.Value
+    End If
+    If Not IsNull(Me.txtDate.Value) Then
+        searchDate = Me.txtDate.Value
+    End If
+
+    query = "SELECT seller AS Verkoper, rating AS Beoordeling, date AS Datum, comment AS Commentaar " & _
+    "FROM feedback LEFT JOIN objects " & _
+    "ON feedback.objectid=objects.id " & _
+    "WHERE seller LIKE '%" & Me.txtUsername & "%' AND comment LIKE '%" & Me.txtComment & " %'"
+    
+    MsgBox query
+    Me.lstFeedback.RowSource = query
+    
+    
+    
+End Sub
 
 Private Sub Form_Load()
 

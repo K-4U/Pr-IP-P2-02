@@ -41,6 +41,7 @@ RewriteRule ^Kavel/([^/]+)/?$   lots.php?ac=$1
 RewriteRule ^Kavel/([^/]+)/(.+) lots.php?ac=$1&args=$2
 
 RewriteRule ^Rubriek/([^/]+)/?$ category.php?id=$1
+RewriteRule ^Rubriek/([^/]+)/(.+) category.php?id=$1&page=$2
 
 #Pupil rewrite rules
 RewriteRule ^Pupil/?$           pupil.php?ac=dashboard
@@ -59,3 +60,4 @@ RewriteRule ^Users/([^/]+)/(.+)     users.php?ac=$1&args=$2
 RewriteRule ^Register/?$           register.php?ac=dashboard
 RewriteRule ^Register/([^/]+)/?$   register.php?ac=$1
 RewriteRule ^Register/([^/]+)/(.+) register.php?ac=$1&args=$2
+

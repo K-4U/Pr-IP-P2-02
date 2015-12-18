@@ -18,17 +18,23 @@ String.prototype.toHHMMSS = function () {
     var dDays = (days > 0);
     var dHours = (hours > 0);
     var dMinutes = (minutes > 0);
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
     var time = "";
-    if(dDays){
+    if (dDays) {
         time += days + ":";
     }
-    if(dHours){
+    if (dHours) {
         time += hours + ":";
     }
-    if(dMinutes){
+    if (dMinutes) {
         time += minutes + ":";
     }
     time += seconds;
@@ -38,9 +44,8 @@ String.prototype.toHHMMSS = function () {
 $(document).ready(function () {
     $('label.tree-toggler').click(function () {
         $(this).parent().children('ul.tree').toggle(300);
-    }).each(function(index, element){
-        console.log($(this).data('active'));
-        if(!$(this).data('active')){
+    }).each(function (index, element) {
+        if (!$(this).data('active')) {
             $(this).parent().children('ul.tree').toggle(300);
         }
     });
@@ -64,51 +69,50 @@ $(document).ready(function () {
 
     document.onscroll = scroll;
 
-    $(".loginBtn").click(function(){
+    $(".loginBtn").click(function () {
         $(".login").css('display', 'block');
     });
 
 
-    $(".login").click(function() {
+    $(".login").click(function () {
         /*$(".login").css('display', 'none');*/
     });
 
-    $(".registerBtn").click(function(){
+    $(".registerBtn").click(function () {
         $(".register").css('display', 'block');
     });
 
-    $(".countdown").each(function(index, element){
+    $(".countdown").each(function (index, element) {
         var startTime = parseInt($(this).text(), 10);
         var time = 0;
         var obj = $(this);
 
 
-
-        var timeFunc = function(){
+        var timeFunc = function () {
             var v = (startTime - time);
-            if(v < (4*3600)){
+            if (v < (4 * 3600)) {
                 obj.css("color", "#ff0d00");
             }
-            var t = (v+'').toHHMMSS();
+            var t = (v + '').toHHMMSS();
             obj.text(t);
 
-            time+=1;
+            time += 1;
             setTimeout(timeFunc, 1000);
         };
 
         var days = Math.floor(startTime / 86400);
-        if(days == 0) {
+        if (days == 0) {
             timeFunc();
-        }else{
+        } else {
             obj.text(days + " dag" + (days > 1 ? "en" : ""));
         }
     });
 
-    $(".avatar").click(function(){
-        $(".usermenu").toggle(600,'swing');
+    $(".avatar").click(function () {
+        $(".usermenu").toggle(600, 'swing');
     });
 
-    $(".clickable").click(function(){
+    $(".clickable").click(function () {
         window.location.href = $(this).data('link');
     });
 
@@ -140,25 +144,87 @@ $(document).ready(function () {
         }
     });
 
-    $(".alpha-only").on("keydown", function(e){
+    $(".alpha-only").on("keydown", function (e) {
         // Allow controls such as backspace
-        var arr = [8,16,17,20,32,35,36,37,38,39,40,45,46];
+        var arr = [8, 16, 17, 20, 32, 35, 36, 37, 38, 39, 40, 45, 46];
 
         // Allow letters
-        for(var i = 65; i <= 90; i++){
+        for (var i = 65; i <= 90; i++) {
             arr.push(i);
         }
 
         // Prevent default if not in array
-        if(jQuery.inArray(e.which, arr) === -1){
+        if (jQuery.inArray(e.which, arr) === -1) {
             e.preventDefault();
         }
     });
 
-    $(".alpha-only").on("input", function(){
+    $(".alpha-only").on("input", function () {
         var regexp = /[^a-zA-Z]/g;
-        if($(this).val().match(regexp)){
-            $(this).val( $(this).val().replace(regexp,'') );
+        if ($(this).val().match(regexp)) {
+            $(this).val($(this).val().replace(regexp, ''));
+        }
+    });
+
+    function toPage(p) {
+        var loc = window.location.pathname.split("/");
+        if(loc.length == 4){
+            loc.pop();
+        }
+        var l = loc.join("/");
+
+        window.location = l + "/" + p;
+    }
+
+    $('.pagination .pagination-prev').click(function () {
+
+        var page = getCurrentPage();
+        if(page > 0) {
+            toPage(parseInt(page) - 1);
+        }
+    }).each(function (){
+        var page = getCurrentPage();
+        if(page == 0){
+            $($(this).parent()).addClass("disabled");
+        }
+    });
+
+    $('.pagination .pagination-next').click(function () {
+
+        var page = getCurrentPage();
+        if(page < parseInt($("#maxPages").val(), 10)){
+            toPage(parseInt(page) + 1);
+        }
+    }).each(function (){
+        var page = getCurrentPage();
+        if(page == parseInt($("#maxPages").val(), 10)){
+            $($(this).parent()).addClass("disabled");
+        }
+    });
+
+    $('.pagination .pagination-button').click(function () {
+        //Get text value
+        var p = parseInt($(this).text());
+        p = p - 1;
+        toPage(p);
+    }).each(function (index) {
+        var p = parseInt($(this).text());
+        p = p - 1;
+        var page = parseInt(getCurrentPage(), 10);
+
+        if (page == p) {
+            $($(this).parent()).addClass("active");
         }
     });
 });
+
+
+function getCurrentPage() {
+    var loc = window.location.pathname.split("/");
+
+    var currentPage = 0;
+    if (loc.length == 4) {
+        currentPage = loc[3];
+    }
+    return currentPage;
+}
