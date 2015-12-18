@@ -8,10 +8,14 @@ class usersCPsellerRequest extends cmsPage {
             $sql = "SELECT username FROM sellers WHERE username=%s";
             $userResult = $this->db->buildQuery($sql, $this->user->getName());
             if($this->db->getHasRows($userResult)) {
-                $errorMsg = "U bent al een verkoper of er is al een verzoek verstuurd";
+                $pageToShow = -2;
+                $errorMsg = "Er is al een verzoek verstuurd";
+            }
+            if($this->user->isSeller() == 1) {
+                $errorMsg = "U bent al een verkoper.";
                 $pageToShow = -2;
             } else {
-                $pageToShow = 0;
+                //$pageToShow = 0;
                 //Page 0 is default.
                 if(isset($_POST ['submit_1'])) {
                     if(strlen($_POST['banknumber']) > 0) {

@@ -49,6 +49,5 @@
         </div>
     </div>
 {/if}
-{$page}
 
 {include file="footer.tpl"}
