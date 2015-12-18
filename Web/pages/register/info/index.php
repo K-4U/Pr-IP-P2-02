@@ -10,6 +10,11 @@ Class registerInfo extends cmsPage {
             if(isset($_POST['validateCode'])) {
                 if($_POST['emailCode'] == $_POST['emailVerificationCode']) {
 
+                    foreach ($_POST $key => &$value){
+                        $temp = strip_tags($value);
+                        $value = $temp;
+                    }
+
 //                    $errors = Array();
                     if(isset($_POST['registerInfo'])) { //lets check if every required field is actually filled in correctly
 
@@ -78,34 +83,35 @@ Class registerInfo extends cmsPage {
                         }
                     }
 
+
                     $birthdate = strtotime($_POST['birthdate']);
                     $_POST['birthdate'] = date("Y-m-d", $birthdate);
 
                     $infoInsert = Array(
-                        'username'          => $_POST['username'],
-                        'firstname'         => $_POST['firstname'],
-                        'lastname'          => $_POST['lastname'],
-                        'adress_street1'    => $_POST['adress_street1'],
-                        'adress_number'     => $_POST['adress_number'],
-                        'postalcode'        => $_POST['postalcode'],
-                        'birthdate'         => $_POST['birthdate'],
-                        'password'          => $_POST['password'],
-                        'security_question' => $_POST['securityQuestions'],
-                        'security_answer'   => $_POST['questionAnswer'],
-                        'city'              => $_POST['city'],
-                        'country'           => $_POST['country'],
-                        'email'             => $_POST['email']);
+                        'username'          => strip_tags($_POST['username']),
+                        'firstname'         => strip_tags($_POST['firstname']),
+                        'lastname'          => strip_tags($_POST['lastname']),
+                        'adress_street1'    => strip_tags($_POST['adress_street1']),
+                        'adress_number'     => strip_tags($_POST['adress_number']),
+                        'postalcode'        => strip_tags($_POST['postalcode']),
+                        'birthdate'         => strip_tags($_POST['birthdate']),
+                        'password'          => strip_tags($_POST['password']),
+                        'security_question' => strip_tags($_POST['securityQuestions']),
+                        'security_answer'   => strip_tags($_POST['questionAnswer']),
+                        'city'              => strip_tags($_POST['city']),
+                        'country'           => strip_tags($_POST['country']),
+                        'email'             => strip_tags($_POST['email']));
 
                     if(strlen($_POST['adress_street2'])>=1){
-                        $infoInsert['adress_street2'] = $_POST['adress_street2'];
+                        $infoInsert['adress_street2'] = strip_tags($_POST['adress_street2');
                     }else{
                         $_POST['adress_street2'] = NULL;
                     }
 
                     if(isset($_POST['phonenumber'])) {
                         $phonenumberArray = array(
-                            'phonenumber' => $_POST['phonenumber'],
-                            'username'    => $_POST['username']);
+                            'phonenumber' => strip_tags($_POST['phonenumber']),
+                            'username'    => strip_tags($_POST['username']));
                     }
 
                     if($noErrs) {
