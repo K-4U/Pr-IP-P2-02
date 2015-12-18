@@ -29,6 +29,11 @@
         <div class="row">
             <div class="col-md-12">
     {/if}
+                {if $objects|sizeof == 0}
+                        <div class=" alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>Deze rubriek heeft nog geen kavels!</div>
+                {/if}
     {foreach $objects as $object}
             {include file="entries/object.tpl"}
     {/foreach}
