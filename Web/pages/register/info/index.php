@@ -78,15 +78,14 @@ Class registerInfo extends cmsPage {
                         }
                     }
 
-                    $birthdateFormat = $_POST['birthdate'];
-                    $_POST['birthdate'] = implode("-", array_reverse(explode("/", $birthdateFormat)));
+                    $birthdate = strtotime($_POST['birthdate']);
+                    $_POST['birthdate'] = date("Y-m-d", $birthdate);
 
                     $infoInsert = Array(
                         'username'          => $_POST['username'],
                         'firstname'         => $_POST['firstname'],
                         'lastname'          => $_POST['lastname'],
                         'adress_street1'    => $_POST['adress_street1'],
-                        'adress_street2'    => $_POST['adress_street2'],
                         'adress_number'     => $_POST['adress_number'],
                         'postalcode'        => $_POST['postalcode'],
                         'birthdate'         => $_POST['birthdate'],
@@ -97,18 +96,24 @@ Class registerInfo extends cmsPage {
                         'country'           => $_POST['country'],
                         'email'             => $_POST['email']);
 
+                    if(strlen($_POST['adress_street2'])>=1){
+                        $infoInsert['adress_street2'] = $_POST['adress_street2'];
+                    }else{
+                        $_POST['adress_street2'] = NULL;
+                    }
 
-                    $phonenumberArray = array(
-                        'phonenumber' => $_POST['phonenumber'],
-                        'username'    => $_POST['username']);
-
+                    if(isset($_POST['phonenumber'])) {
+                        $phonenumberArray = array(
+                            'phonenumber' => $_POST['phonenumber'],
+                            'username'    => $_POST['username']);
+                    }
 
                     if($noErrs) {
                         $this->db->insert("users", $infoInsert);
                         $dbErr = $this->db->getLastError();
                         $this->db->insert("phonenumbers", $phonenumberArray);
                         $dbErr1 = $this->db->getLastError();
-                        if(!isset($dbErr) && !isset($dbErr1)){
+                        if(!isset($dbErr) && !isset($dbErr1)) {
                             $this->user->doLogin($_POST['username'], $_POST['password2']);
                             header("location: " . baseurl(""));
                         }
