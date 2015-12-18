@@ -104,11 +104,15 @@ $(document).ready(function () {
             setTimeout(timeFunc, 1000);
         };
 
-        var days = Math.floor(startTime / 86400);
-        if (days == 0) {
-            timeFunc();
-        } else {
-            obj.text(days + " dag" + (days > 1 ? "en" : ""));
+        if(startTime > 0) {
+            var days = Math.floor(startTime / 86400);
+            if (days == 0) {
+                timeFunc();
+            } else {
+                obj.text(days + " dag" + (days > 1 ? "en" : ""));
+            }
+        }else{
+            obj.text("Afgelopen");
         }
     });
 

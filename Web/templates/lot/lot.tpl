@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            {if $user.loggedIn && $user.username!=$object.seller}
+            {if $user.loggedIn && $user.username!=$object.seller && $object.timeRemaining >= 0}
             <div class="row">
                 <form action="{$self}" method="post">
                     <div class="panel panel-default form-group">
