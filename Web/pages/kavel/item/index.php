@@ -64,13 +64,12 @@ class kavelItem extends cmsPage {
         //Fetch the rating:
         $object['user']['rating'] = $this->db->fetchIndex($this->db->executeFunction('dbo.fnCalculateRating', $object['user']['username'], false))[0];
 
-        //Get related here.
-        //TODO: Insert query here
-        //$relatedObjectsResult = $this->db->buildQuery("SELECT TOP 3 * FROM objects");
-        //$object['related'] = $this->db->fetchAllAssoc($relatedObjectsResult);
-
         //Fetch category this object is in
         $catId = $this->db->fetchAssoc($this->db->buildQuery("SELECT category_id FROM object_in_category WHERE object_id=%i", $object['id']))['category_id'];
+
+        //Get related here.
+        $relatedObjectsResult = $this->db->buildQuery("SELECT TOP 3 * FROM objects WHERE id IN (SELECT object_id FROM object_in_category WHERE category_id=%i AND NOT object_id=%i) AND end_moment > GETDATE() ORDER BY NEWID()", $catId, $object['id']);
+        $object['related'] = parseObjects($relatedObjectsResult);
 
         $categories = Array();
         getCategoryFromBottom($categories, $catId);
