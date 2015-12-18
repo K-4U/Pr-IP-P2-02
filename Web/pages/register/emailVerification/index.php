@@ -21,9 +21,9 @@ Class registerEmailVerification extends cmsPage {
                     sendMail($_POST['email'], "Uw verificatie code is: " . $emailCode, "Eenmaal andermaal verificatie");
                 }
             }
-            $this->addToBreadcrumbs("Home", baseurl("/"));
-            $this->addToBreadcrumbs("Register");
-            $this->addToBreadcrumbs("EmailVerification");
+            $this->addToBreadcrumbs("Home", baseurl(""));
+            $this->addToBreadcrumbs("Registratie");
+            $this->addToBreadcrumbs("Email Verificatie");
 
             $this->render("emailVerification", "emailVerification.tpl");
         }
