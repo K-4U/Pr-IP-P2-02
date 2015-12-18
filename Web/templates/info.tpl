@@ -38,7 +38,7 @@
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" id="firstname" name="firstname" value="{$previousInfo.firstname}"
-                                       class="form-control alpha-only" required>
+                                       class="form-control" required>
                             </div>
                         </div>
                         <div class="row">
@@ -100,7 +100,7 @@
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" id="city" name="city" value="{$previousInfo.city}"
-                                       class="form-control alpha-only">
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="row">
@@ -108,7 +108,7 @@
 
                             <div class="col-md-8 col-sm-8">
                                 <input type="text" id="country" name="country" value="{$previousInfo.country}"
-                                       class="form-control alpha-only">
+                                       class="form-control">
                             </div>
                         </div>
                         <br>
@@ -159,7 +159,6 @@
                         <input type="hidden" name="validateCode" value="true">
                         <input type="hidden" name="email" value="{$email}">
                         <input type="hidden" name="emailVerificationCode" value="{$emailVerificationCode}">
-                        <input type="hidden" name="emailCode" value="{$emailCode}">
                         <input type="hidden" name="validateCode" value="{$validateCode}">
 
                         <div class="g-recaptcha" data-sitekey="6LcL4xITAAAAABLF4j9PUpzBP57RlffxPpDU3UcN" required></div><br>
