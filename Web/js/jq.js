@@ -71,15 +71,19 @@ $(document).ready(function () {
 
     $(".loginBtn").click(function () {
         $(".login").css('display', 'block');
+        $(".modal").css('display','block');
     });
 
 
-    $(".login").click(function () {
-        /*$(".login").css('display', 'none');*/
+    $(".modal").click(function () {
+        $(".login").css('display', 'none');
+        $(".register").css('display', 'none');
+        $(".modal").css('display', 'none');
     });
 
     $(".registerBtn").click(function () {
         $(".register").css('display', 'block');
+        $(".modal").css('display','block');
     });
 
     $(".countdown").each(function (index, element) {

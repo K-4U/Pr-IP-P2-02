@@ -138,23 +138,29 @@ nav.headerrow{
     transition: border-radius 0.25s ease-out 0s;
 }
 
-.login, .register {
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
     transition: display 0.25s ease-out 0s;
-    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 9998;
+}
+.login,
+.register {
+    display: none;
 }
 
+.registerBox,
 .loginBox {
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
 .usermenu {
