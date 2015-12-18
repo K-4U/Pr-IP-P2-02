@@ -10,7 +10,7 @@ Class registerInfo extends cmsPage {
             if(isset($_POST['validateCode'])) {
                 if($_SESSION['emailCode'] == $_POST['emailVerificationCode']) {
 
-                    foreach ($_POST $key => &$value){
+                    foreach ($_POST as $key => &$value){
                         $temp = strip_tags($value);
                         $value = $temp;
                     }
@@ -103,7 +103,7 @@ Class registerInfo extends cmsPage {
                         'email'             => strip_tags($_POST['email']));
 
                     if(strlen($_POST['adress_street2'])>=1){
-                        $infoInsert['adress_street2'] = strip_tags($_POST['adress_street2');
+                        $infoInsert['adress_street2'] = strip_tags($_POST['adress_street2']);
                     }else{
                         $_POST['adress_street2'] = NULL;
                     }
