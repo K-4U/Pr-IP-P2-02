@@ -46,7 +46,7 @@ $(document).ready(function () {
         $(this).parent().children('ul.tree').toggle(300);
     }).each(function (index, element) {
         if (!$(this).data('active')) {
-            $(this).parent().children('ul.tree').toggle(300);
+            $(this).parent().children('ul.tree').toggle(1);
         }
     });
 
@@ -117,7 +117,7 @@ $(document).ready(function () {
     });
 
     $(".avatar").click(function () {
-        $(".usermenu").toggle(600, 'swing');
+        $(".usermenu").toggle(300, 'swing');
     });
 
     $(".clickable").click(function () {
