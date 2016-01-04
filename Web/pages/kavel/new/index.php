@@ -43,7 +43,7 @@ class kavelNew extends cmsPage {
                 } else {
                     $errors['durationErr'] = "Looptijd niet geldig.";
                 }
-                if(!empty($_POST['payment_method']))  {
+                if(!empty($_POST['payment_method'])) {
                 } else {
                     $errors['payment_methodErr'] = "Kies een betaalmethode.";
                 }
@@ -65,7 +65,6 @@ class kavelNew extends cmsPage {
                     "seller"                => $this->user->getName());
 
 
-
                 if($errors) {
                     $this->website->assign("errors", $errors);
                 } else {
@@ -77,6 +76,7 @@ class kavelNew extends cmsPage {
 
                     //var_dump(rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file));
                     $objectId = $this->db->getLastInsertedId();
+
                     $insertFileNameArray = array(
                         "filename" => $target_file,
                         "objectid" => $objectId
@@ -87,8 +87,6 @@ class kavelNew extends cmsPage {
                     $errors['databaseErr1'] = $this->db->getLastError();
                     header("Location: " . baseurl("Kavel/Item/" . $objectId));
                 }
-
-
             }
 
         }
@@ -100,10 +98,33 @@ class kavelNew extends cmsPage {
             $this->render('Login', 'users/login.tpl');
         } else {
 
+            $categoryList = getCategory(Array());
+
+            $endCategoryList = Array();
+            foreach($categoryList as $category) {
+                $this->parseCategoryList($category, $endCategoryList);
+            }
 
             $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("Kavel aanbieden");
+            $this->website->assign("categoryList", $endCategoryList);
             $this->render($displayName, 'lot/newlot.tpl');
+        }
+    }
+
+    function parseCategoryList($category, &$array, $depth = 0) {
+
+        $str = "";
+        for($i = 0; $i < $depth; $i++) {
+            $str .= ".";
+        }
+
+        $str .= htmlspecialchars($category['name']);
+
+
+        $array[] = Array('id' => $category['id'], 'name' => $str, 'disabled' => (sizeof($category['sub']) > 0));
+        foreach($category['sub'] as $categories) {
+            $this->parseCategoryList($categories, $array, $depth + 1);
         }
     }
 }
