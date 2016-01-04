@@ -228,6 +228,19 @@ $(document).ready(function () {
             $($(this).parent()).addClass("active");
         }
     });
+
+    $("#searchButton").click(function () {
+        var search = $("#searchTxt").val();
+        window.location.href = $(this).data('link') + search;
+    });
+
+    $('#searchTxt').on('keypress', function (event) {
+        if(event.which === 13){
+            var search = $("#searchTxt").val();
+            window.location.href = $("#searchButton").data('link') + search;
+            event.preventDefault()
+        }
+    });
 });
 
 

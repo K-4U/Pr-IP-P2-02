@@ -102,9 +102,9 @@
 
             <form class="navbar-form navbar-right">
                 <div class="form-group input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" id="searchTxt">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        <button type="button" class="btn btn-default" id="searchButton" data-link="{baseurl url="Zoek/"}"><i class="fa fa-search"></i></button>
                     </span>
                 </div>
             </form>
