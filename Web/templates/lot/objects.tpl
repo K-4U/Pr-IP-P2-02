@@ -1,10 +1,11 @@
 {include file="header.tpl" extracss='objects.css'}
 
-<input type="hidden" value="{$maxPages}" id="maxPages" />
-<div class="col-sm-3 col-md-2 sidebar">
-    {include file="entries/category.tpl"}
-</div>
-
+<input type="hidden" value="{$maxPages}" id="maxPages"/>
+{if $categories}
+    <div class="col-sm-3 col-md-2 sidebar">
+        {include file="entries/category.tpl"}
+    </div>
+{/if}
 <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
     {if $paginationNeeded}
     <div class="row">
@@ -26,20 +27,22 @@
             </ul>
         </div>
     </div>
-        <div class="row">
-            <div class="col-md-12">
-    {/if}
-                {if $objects|sizeof == 0}
-                        <div class=" alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>Deze rubriek heeft nog geen kavels!</div>
-                {/if}
-    {foreach $objects as $object}
-            {include file="entries/object.tpl"}
-    {/foreach}
-    {if $paginationNeeded}
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            {/if}
+            {if $objects|sizeof == 0}
+                <div class=" alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    Deze rubriek heeft nog geen kavels!
+                </div>
+            {/if}
+            {foreach $objects as $object}
+                {include file="entries/object.tpl"}
+            {/foreach}
         </div>
+    </div>
+    {if $paginationNeeded}
     <div class="row">
         <div class="col-md-2 col-md-offset-10">
             <ul class="pagination">

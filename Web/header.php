@@ -26,6 +26,12 @@ require("libs/classes/cmsPage.class.php");
 require("libs/classes/db.class.php");
 
 $website = new Smarty;
+
+if($_SERVER['HTTP_HOST'] == "veiling.k-4u.nl"){
+    $website->force_compile = true;
+    $website->compile_check = true;
+}
+
 $db = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], $config['SQL']['db']);
 $db->setType($config['SQL']['type']);
 

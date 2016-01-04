@@ -15,32 +15,38 @@
                     <div class="panel-title">
                         Kavel info
                     </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4 text-right"><label for="title">Titel</label></div>
+                            <div class="col-md-8"><input type="text" id="title" name="title" class="form-control"
+                                                         required maxlength="60" placeholder="Titel"></div>
                         </div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-4 text-right"><label for="title">Titel</label></div>
-                                    <div class="col-md-8"><input type="text" id="title" name="title" class="form-control" required maxlength="60" placeholder="Titel"></div>
-                                </div>
 
-                                <div class="row">
+                        <div class="row">
                             <div class="col-md-4 text-right"><label for="description">Beschrijving</label></div>
-                            <div class="col-md-8"><textarea maxlength="4000" name="description" id="description" class="form-control" placeholder="Beschrijving"></textarea></div>
+                            <div class="col-md-8"><textarea maxlength="4000" name="description" id="description"
+                                                            class="form-control" placeholder="Beschrijving"></textarea>
+                            </div>
                         </div>
+
 
                         <div class="row">
                             <div class="col-md-4 text-right"><label for="start_bid">Startprijs</label></div>
                             <div class="col-md-8">
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-eur"></i></div>
-                                    <input type="text" class="form-control numeric_only" id="start_bid" name="start_bid" maxlength="11" required placeholder="Startprijs">
+                                    <input type="text" class="form-control numeric_only" id="start_bid" name="start_bid"
+                                           maxlength="11" required placeholder="Startprijs">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4 text-right"><label for="location">Plaatsnaam</label></div>
-                            <div class="col-md-8"><input type="text" id="location" name="location" class="form-control" required maxlength="163" placeholder="Plaatsnaam"></div>
+                            <div class="col-md-8"><input type="text" id="location" name="location" class="form-control"
+                                                         required maxlength="163" placeholder="Plaatsnaam"></div>
                         </div>
 
                         <!--<div class="row">
@@ -77,8 +83,11 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 text-right"><label for="payment_instructions">Betalingsinstructies</label></div>
-                            <div class="col-md-8"><textarea maxlength="255" name="payment_instructions" id="payment_instructions" class="form-control" placeholder="Betalingsinstructies"></textarea></div>
+                            <div class="col-md-4 text-right"><label
+                                        for="payment_instructions">Betalingsinstructies</label></div>
+                            <div class="col-md-8"><textarea maxlength="255" name="payment_instructions"
+                                                            id="payment_instructions" class="form-control"
+                                                            placeholder="Betalingsinstructies"></textarea></div>
                         </div>
 
                         <div class="row">
@@ -87,15 +96,19 @@
                                 <div class="input-group">
 
                                     <div class="input-group-addon"><i class="fa fa-eur"></i></div>
-                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name="" maxlength="11" placeholder="Verzendkosten">
+                                    <input type="text" class="form-control numeric_only" id="shipment_costs" name=""
+                                           maxlength="11" placeholder="Verzendkosten">
 
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 text-right"><label for="shipment_instructions">Verzendinstructies</label></div>
-                            <div class="col-md-8"><textarea maxlength="255" name="shipment_instructions" id="shipment_instructions" class="form-control" placeholder="Verzendinstructies"></textarea></div>
+                            <div class="col-md-4 text-right"><label
+                                        for="shipment_instructions">Verzendinstructies</label></div>
+                            <div class="col-md-8"><textarea maxlength="255" name="shipment_instructions"
+                                                            id="shipment_instructions" class="form-control"
+                                                            placeholder="Verzendinstructies"></textarea></div>
                         </div>
                     </div>
                 </div>
@@ -122,22 +135,42 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="panel-title">
-                                Acties
-                            </div>
+                            <div class="panel-title">Rubriek</div>
                         </div>
                         <div class="panel-body">
-                            <button class="btn btn-default btn-cta" type="submit" name="submit">Aanbieden</button>
+                        <select class="form-control" name="category" id="category" required size="6">
+                            <option selected disabled hidden>Categorie</option>
+                            {foreach $categoryList as $category}
+                                <option value="{$category.id}" {if $category.disabled}disabled{/if}>{$category.name}</option>
+                            {/foreach}
+                        </select>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Acties
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <button class="btn btn-default btn-cta" type="submit" name="submit">Aanbieden</button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+</div>
+</form>
 </div>
 
 {include file="footer.tpl"}
