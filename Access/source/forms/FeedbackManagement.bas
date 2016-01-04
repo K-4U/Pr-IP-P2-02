@@ -528,13 +528,13 @@ Option Compare Database
 Private Sub btnSearch_Click()
 
     Dim query As String
-    Dim searchUSername As String
+    Dim searchUsername As String
     Dim searchComment As String
     Dim searchDate As String
 
 
     If Not IsNull(Me.txtUsername.Value) Then
-        searchUSername = Me.txtUsername.Value
+        searchUsername = Me.txtUsername.Value
     End If
     If Not IsNull(Me.txtComment.Value) Then
         searchComment = Me.txtComment.Value

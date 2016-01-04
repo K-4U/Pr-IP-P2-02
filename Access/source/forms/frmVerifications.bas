@@ -10,8 +10,8 @@ Begin Form
     Width =8388
     DatasheetFontHeight =11
     ItemSuffix =17
-    Right =21030
-    Bottom =12840
+    Right =25335
+    Bottom =12375
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x506517df50aee440
@@ -408,7 +408,7 @@ End Sub
 
 Private Sub cmdOpenReport_Click()
 
-DoCmd.OpenReport "rptVerificationLetter", acViewPreview, , "[username] = '" & Me.username & "'", , acDialog
+DoCmd.OpenReport "rptVerificationLetter", acViewPreview, , "[username] = '" & Me.username & "'", acDialog
 End Sub
 
 Private Sub Form_Load()

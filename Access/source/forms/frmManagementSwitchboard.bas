@@ -10,9 +10,9 @@ Begin Form
     GridY =10
     Width =5669
     DatasheetFontHeight =11
-    ItemSuffix =2
-    Right =21030
-    Bottom =12840
+    ItemSuffix =4
+    Right =18105
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x70a608eb4caee440
@@ -72,18 +72,70 @@ Begin Form
             Begin
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =1695
-                    Top =1140
+                    Left =566
+                    Top =566
                     ForeColor =4210752
                     Name ="cmdLetters"
                     Caption ="Activatiebrieven"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =1695
-                    LayoutCachedTop =1140
-                    LayoutCachedWidth =3396
-                    LayoutCachedHeight =1423
+                    LayoutCachedLeft =566
+                    LayoutCachedTop =566
+                    LayoutCachedWidth =2267
+                    LayoutCachedHeight =849
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =566
+                    Top =1247
+                    Height =568
+                    TabIndex =1
+                    ForeColor =4210752
+                    Name ="Knop2"
+                    Caption ="Verkochte objecten"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =566
+                    LayoutCachedTop =1247
+                    LayoutCachedWidth =2267
+                    LayoutCachedHeight =1815
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =570
+                    Top =2145
+                    Height =568
+                    TabIndex =2
+                    ForeColor =4210752
+                    Name ="Knop3"
+                    Caption ="Gebruikers statestieken"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =570
+                    LayoutCachedTop =2145
+                    LayoutCachedWidth =2271
+                    LayoutCachedHeight =2713
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -107,5 +159,5 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub cmdLetters_Click()
-
+    DoCmd.OpenForm "frmVerifications", , , , , acDialog
 End Sub
