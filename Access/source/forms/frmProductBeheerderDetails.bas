@@ -10,8 +10,8 @@ Begin Form
     Width =10658
     DatasheetFontHeight =11
     ItemSuffix =15
-    Right =18105
-    Bottom =12510
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     Filter ="[id] = 1"
     RecSrcDt = Begin

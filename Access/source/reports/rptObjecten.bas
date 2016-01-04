@@ -14,12 +14,12 @@ Begin Report
     ItemSuffix =22
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0xd023bc8192aee440
+        0x1428b14daeb0e440
     End
     RecordSource ="SELECT objects.title, Switch(Len(objects.description)>100,Left(objects.descripti"
         "on,100)+'...',Not Len(objects.description)>100,objects.description) AS Beschrijv"
         "ing, objects.end_moment, objects.seller, IIf(objects.buyer Is Null,'Geen',object"
-        "s.buyer) AS buyer, objects.auction_closed, objects.price FROM objects; "
+        "s.buyer) AS buyer, objects.auction_closed, objects.price FROM objects;"
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000ee3e00006f01000001000000 ,

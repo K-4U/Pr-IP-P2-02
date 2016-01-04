@@ -369,8 +369,6 @@ Private Sub Report_Load()
     query = "SELECT city, count(*) FROM Users GROUP BY city ORDER BY count(*) DESC"
     ' Can't get top 3 !!!!
     
-    MsgBox query
-
     Me.lstGeo.RowSource = query
     
     

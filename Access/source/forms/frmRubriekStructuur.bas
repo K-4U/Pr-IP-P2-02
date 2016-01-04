@@ -2,6 +2,7 @@
 VersionRequired =20
 Begin Form
     DividingLines = NotDefault
+    FilterOn = NotDefault
     AllowDesignChanges = NotDefault
     DefaultView =0
     PictureAlignment =2
@@ -11,9 +12,9 @@ Begin Form
     DatasheetFontHeight =11
     ItemSuffix =19
     Right =25335
-    Bottom =12480
+    Bottom =12090
     DatasheetGridlinesColor =15132391
-    Filter ="[id] = 19"
+    Filter ="[id] = 17"
     RecSrcDt = Begin
         0x66f3ae1e0daee440
     End
@@ -198,8 +199,9 @@ Begin Form
                     Top =5160
                     TabIndex =2
                     ForeColor =4210752
-                    Name ="Knop10"
+                    Name ="btnEdit"
                     Caption ="Edit"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =4530
@@ -380,6 +382,19 @@ Private Sub btnDown_Click()
     
     Me.lstCategory.Requery
     
+End Sub
+
+Private Sub btnEdit_Click()
+    Dim id_selected As Integer
+        
+    For Each varItem In Me.lstCategory.ItemsSelected
+        id_selected = Me.lstCategory.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
+    Next varItem
+    
+    DoCmd.OpenForm "frmRubriekData", , , "[id] = " & id_selected, , acDialog
+    
+    Me.lstCategory.Requery
+
 End Sub
 
 Private Sub btnUp_Click()
