@@ -6,7 +6,17 @@
 class kavelNew extends cmsPage {
 
     function parse() {
+        //print_r(getCategory(Array()));
 
+        //var_dump(getCategory(Array()));
+        //var_dump("lol");
+        $categoryList = getCategory(Array());
+        echo"<pre>";
+        var_dump($categoryList);
+echo"</pre>";
+
+
+        $categoryList
         if(isset($_POST['submit'])) {
 
 
@@ -66,6 +76,7 @@ class kavelNew extends cmsPage {
 
 
 
+
                 if($errors) {
                     $this->website->assign("errors", $errors);
                 } else {
@@ -77,6 +88,7 @@ class kavelNew extends cmsPage {
 
                     //var_dump(rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file));
                     $objectId = $this->db->getLastInsertedId();
+
                     $insertFileNameArray = array(
                         "filename" => $target_file,
                         "objectid" => $objectId
