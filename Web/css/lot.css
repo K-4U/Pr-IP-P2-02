@@ -11,7 +11,7 @@
 .objectBids{
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 295px;
+    max-height: 265px;
     border-top: 1px #000 solid;
 }
 
