@@ -127,7 +127,7 @@
 
                             <div class="form-group">
                                 <span class="btn btn-default btn-file">
-                                    Browse <input type="file" name="fileToUpload">
+                                    Browse <input type="file" name="fileToUpload" required>
                                 </span>
                             </div>
 
