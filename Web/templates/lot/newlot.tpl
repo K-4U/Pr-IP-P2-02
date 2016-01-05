@@ -21,13 +21,13 @@
                         <div class="row">
                             <div class="col-md-4 text-right"><label for="title">Titel</label></div>
                             <div class="col-md-8"><input type="text" id="title" name="title" class="form-control"
-                                                         required maxlength="60" placeholder="Titel"></div>
+                                                         required maxlength="60" placeholder="Titel" value="{$values.title}"></div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4 text-right"><label for="description">Beschrijving</label></div>
                             <div class="col-md-8"><textarea maxlength="4000" name="description" id="description"
-                                                            class="form-control" placeholder="Beschrijving"></textarea>
+                                                            class="form-control" placeholder="Beschrijving">{$values.description}</textarea>
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-eur"></i></div>
                                     <input type="text" class="form-control numeric_only" id="start_bid" name="start_bid"
-                                           maxlength="11" required placeholder="Startprijs">
+                                           maxlength="11" required placeholder="Startprijs" value="{$values.start_bid}">
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="col-md-4 text-right"><label for="location">Plaatsnaam</label></div>
                             <div class="col-md-8"><input type="text" id="location" name="location" class="form-control"
-                                                         required maxlength="163" placeholder="Plaatsnaam"></div>
+                                                         required maxlength="163" placeholder="Plaatsnaam" value="{$values.location}"></div>
                         </div>
 
                         <!--<div class="row">
@@ -58,12 +58,12 @@
                             <div class="col-md-4 text-right"><label for="duration">Looptijd</label></div>
                             <div class="col-md-8">
                                 <select class="form-control" name="duration" id="duration" required>
-                                    <option selected disabled hidden>Looptijd</option>
-                                    <option value="1">1</option>
-                                    <option value="3">3</option>
-                                    <option value="5">5</option>
-                                    <option value="7">7</option>
-                                    <option value="10">10</option>
+                                    <option {if !$values.duration}selected{/if}disabled hidden>Looptijd</option>
+                                    <option value="1" {if $values.duration == 1}selected{/if}>1</option>
+                                    <option value="3" {if $values.duration == 3}selected{/if}>3</option>
+                                    <option value="5" {if $values.duration == 5}selected{/if}>5</option>
+                                    <option value="7" {if $values.duration == 7}selected{/if}>7</option>
+                                    <option value="10" {if $values.duration == 10}selected{/if}>10</option>
                                 </select>
                             </div>
                         </div>
@@ -72,12 +72,12 @@
                             <div class="col-md-4 text-right"><label for="payment_method">Betalingswijze</label></div>
                             <div class="col-md-8">
                                 <select class="form-control" name="payment_method" id="payment_method" required>
-                                    <option selected disabled hidden>Betalingswijze</option>
-                                    <option value="Overschrijving">Overschrijving</option>
-                                    <option value="Contant">Contant</option>
-                                    <option value="PayPal">PayPal</option>
-                                    <option value="Bitcoin">Bitcoin</option>
-                                    <option value="Anders">Anders</option>
+                                    <option {if !$values.payment_method}selected {/if}disabled hidden>Betalingswijze</option>
+                                    <option value="Overschrijving" {if $values.payment_method == "Overschrijving"}selected{/if}>Overschrijving</option>
+                                    <option value="Contant" {if $values.payment_method == "Contant"}selected{/if}>Contant</option>
+                                    <option value="PayPal" {if $values.payment_method == "PayPal"}selected{/if}>PayPal</option>
+                                    <option value="Bitcoin" {if $values.payment_method == "Bitcoin"}selected{/if}>Bitcoin</option>
+                                    <option value="Anders" {if $values.payment_method == "Anders"}selected{/if}>Anders</option>
                                 </select>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                         for="payment_instructions">Betalingsinstructies</label></div>
                             <div class="col-md-8"><textarea maxlength="255" name="payment_instructions"
                                                             id="payment_instructions" class="form-control"
-                                                            placeholder="Betalingsinstructies"></textarea></div>
+                                                            placeholder="Betalingsinstructies">{$values.payment_instructions}</textarea></div>
                         </div>
 
                         <div class="row">
@@ -97,7 +97,7 @@
 
                                     <div class="input-group-addon"><i class="fa fa-eur"></i></div>
                                     <input type="text" class="form-control numeric_only" id="shipment_costs" name=""
-                                           maxlength="11" placeholder="Verzendkosten">
+                                           maxlength="11" placeholder="Verzendkosten" value="{$values.shipment_costs}">
 
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                                         for="shipment_instructions">Verzendinstructies</label></div>
                             <div class="col-md-8"><textarea maxlength="255" name="shipment_instructions"
                                                             id="shipment_instructions" class="form-control"
-                                                            placeholder="Verzendinstructies"></textarea></div>
+                                                            placeholder="Verzendinstructies" value="{$values.shipment_instructions}"></textarea></div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
 
                             <div class="form-group">
                                 <span class="btn btn-default btn-file">
-                                    Browse <input type="file" name="fileToUpload">
+                                    Browse <input type="file" name="fileToUpload" required>
                                 </span>
                             </div>
 
@@ -146,7 +146,7 @@
                         <select class="form-control" name="category" id="category" required size="6">
                             <option selected disabled hidden>Categorie</option>
                             {foreach $categoryList as $category}
-                                <option value="{$category.id}" {if $category.disabled}disabled{/if}>{$category.name}</option>
+                                <option value="{$category.id}" {if $category.disabled}disabled{/if} {if $category.id == $values.category}selected{/if}>{$category.name}</option>
                             {/foreach}
                         </select>
                         </div>

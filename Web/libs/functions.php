@@ -264,4 +264,13 @@ function getCategoryFromBottom(&$array, $childId){
     $array[] = $category;
 }
 
+function removeHTMLFromPOST($POST){
+    $NPOST = Array();
+    foreach($POST as $key=>$value){
+        $NPOST[$key] = strip_tags($value);
+    }
+
+    return $NPOST;
+}
+
 ?>

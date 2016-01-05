@@ -7,6 +7,7 @@ Class registerEmailVerification extends cmsPage {
         if($this->user->isLoggedIn()) {
             header("location: " . baseurl(""));
         } else {
+            $_POST = removeHTMLFromPOST($_POST);
             $emailCode = md5($_POST['email'] . date("U"));
             $_POST['emailCode'] = $emailCode;
             if(isset($_POST['saveEmail'])) {
