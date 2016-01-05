@@ -8,11 +8,11 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =5669
+    Width =2948
     DatasheetFontHeight =11
     ItemSuffix =5
-    Right =25335
-    Bottom =12090
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x70a608eb4caee440
@@ -63,7 +63,7 @@ Begin Form
             PressedForeTint =75.0
         End
         Begin Section
-            Height =5102
+            Height =3968
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1

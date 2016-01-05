@@ -7,11 +7,11 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =8103
+    Width =6973
     DatasheetFontHeight =11
     ItemSuffix =14
-    Right =19800
-    Bottom =12120
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x22e5009733ade440
@@ -126,7 +126,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =6973
+            Height =7540
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -135,17 +135,19 @@ Begin Form
             Begin
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =6402
-                    Top =506
+                    Left =4648
+                    Top =283
+                    TabIndex =6
                     ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Logout"
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =6402
-                    LayoutCachedTop =506
-                    LayoutCachedWidth =8103
-                    LayoutCachedHeight =789
+                    LayoutCachedLeft =4648
+                    LayoutCachedTop =283
+                    LayoutCachedWidth =6349
+                    LayoutCachedHeight =566
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -156,29 +158,29 @@ Begin Form
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
+                    Overlaps =1
                 End
                 Begin TextBox
                     OverlapFlags =93
                     IMESentenceMode =3
                     Left =2374
-                    Top =739
+                    Top =1309
                     Width =2256
                     Height =315
-                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtNumber"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
-                    LayoutCachedTop =739
+                    LayoutCachedTop =1309
                     LayoutCachedWidth =4630
-                    LayoutCachedHeight =1054
+                    LayoutCachedHeight =1624
                     Begin
                         Begin Label
                             OverlapFlags =93
                             Left =507
-                            Top =735
+                            Top =1305
                             Width =1650
                             Height =315
                             BorderColor =8355711
@@ -187,33 +189,33 @@ Begin Form
                             Caption ="Productnummer:"
                             GridlineColor =10921638
                             LayoutCachedLeft =507
-                            LayoutCachedTop =735
+                            LayoutCachedTop =1305
                             LayoutCachedWidth =2157
-                            LayoutCachedHeight =1050
+                            LayoutCachedHeight =1620
                         End
                     End
                 End
                 Begin OptionGroup
                     OverlapFlags =255
                     Left =390
-                    Top =402
+                    Top =972
                     Width =4520
                     Height =2327
-                    TabIndex =5
+                    TabIndex =7
                     BorderColor =10921638
                     Name ="Kader2"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =390
-                    LayoutCachedTop =402
+                    LayoutCachedTop =972
                     LayoutCachedWidth =4910
-                    LayoutCachedHeight =2729
+                    LayoutCachedHeight =3299
                     Begin
                         Begin Label
                             BackStyle =1
                             OverlapFlags =247
                             Left =507
-                            Top =285
+                            Top =855
                             Width =2145
                             Height =315
                             BorderColor =8355711
@@ -222,9 +224,9 @@ Begin Form
                             Caption ="Zoeken van producten"
                             GridlineColor =10921638
                             LayoutCachedLeft =507
-                            LayoutCachedTop =285
+                            LayoutCachedTop =855
                             LayoutCachedWidth =2652
-                            LayoutCachedHeight =600
+                            LayoutCachedHeight =1170
                         End
                     End
                 End
@@ -233,10 +235,10 @@ Begin Form
                     FilterLookup =0
                     IMESentenceMode =3
                     Left =2374
-                    Top =1204
+                    Top =1774
                     Width =2256
                     Height =315
-                    TabIndex =2
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtTitle"
@@ -244,14 +246,14 @@ Begin Form
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
-                    LayoutCachedTop =1204
+                    LayoutCachedTop =1774
                     LayoutCachedWidth =4630
-                    LayoutCachedHeight =1519
+                    LayoutCachedHeight =2089
                     Begin
                         Begin Label
                             OverlapFlags =247
                             Left =507
-                            Top =1200
+                            Top =1770
                             Width =1590
                             Height =315
                             BorderColor =8355711
@@ -260,17 +262,18 @@ Begin Form
                             Caption ="Producttitel:"
                             GridlineColor =10921638
                             LayoutCachedLeft =507
-                            LayoutCachedTop =1200
+                            LayoutCachedTop =1770
                             LayoutCachedWidth =2097
-                            LayoutCachedHeight =1515
+                            LayoutCachedHeight =2085
                         End
                     End
                 End
                 Begin CommandButton
+                    Cancel = NotDefault
                     OverlapFlags =247
                     Left =2945
-                    Top =2265
-                    TabIndex =6
+                    Top =2835
+                    TabIndex =4
                     ForeColor =4210752
                     Name ="cmdReset"
                     Caption ="Reset"
@@ -278,9 +281,9 @@ Begin Form
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2945
-                    LayoutCachedTop =2265
+                    LayoutCachedTop =2835
                     LayoutCachedWidth =4646
-                    LayoutCachedHeight =2548
+                    LayoutCachedHeight =3118
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -294,10 +297,11 @@ Begin Form
                     Overlaps =1
                 End
                 Begin CommandButton
+                    Default = NotDefault
                     OverlapFlags =247
                     Left =507
-                    Top =2265
-                    TabIndex =4
+                    Top =2835
+                    TabIndex =3
                     ForeColor =4210752
                     Name ="cmdSearch"
                     Caption ="Zoeken"
@@ -305,9 +309,9 @@ Begin Form
                     GridlineColor =10921638
 
                     LayoutCachedLeft =507
-                    LayoutCachedTop =2265
+                    LayoutCachedTop =2835
                     LayoutCachedWidth =2208
-                    LayoutCachedHeight =2548
+                    LayoutCachedHeight =3118
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -324,24 +328,24 @@ Begin Form
                     OverlapFlags =247
                     IMESentenceMode =3
                     Left =2374
-                    Top =1699
+                    Top =2269
                     Width =2256
                     Height =315
-                    TabIndex =3
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtCategory"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2374
-                    LayoutCachedTop =1699
+                    LayoutCachedTop =2269
                     LayoutCachedWidth =4630
-                    LayoutCachedHeight =2014
+                    LayoutCachedHeight =2584
                     Begin
                         Begin Label
                             OverlapFlags =247
                             Left =507
-                            Top =1695
+                            Top =2265
                             Width =1590
                             Height =315
                             BorderColor =8355711
@@ -350,63 +354,49 @@ Begin Form
                             Caption ="Rubrieknaam:"
                             GridlineColor =10921638
                             LayoutCachedLeft =507
-                            LayoutCachedTop =1695
+                            LayoutCachedTop =2265
                             LayoutCachedWidth =2097
-                            LayoutCachedHeight =2010
+                            LayoutCachedHeight =2580
                         End
                     End
-                End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =6349
-                    Top =6406
-                    TabIndex =7
-                    ForeColor =4210752
-                    Name ="Knop8"
-                    Caption ="Verwijderen"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =6349
-                    LayoutCachedTop =6406
-                    LayoutCachedWidth =8050
-                    LayoutCachedHeight =6689
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
                 End
                 Begin ListBox
                     ColumnHeads = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =3
-                    Left =345
-                    Top =2955
+                    Left =350
+                    Top =4034
                     Width =6407
                     Height =3117
-                    TabIndex =8
+                    TabIndex =5
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstProducts"
                     RowSourceType ="Table/Query"
-                    RowSource ="SELECT OB.title AS Productnaam, OB.id AS Productnummer, CA.name AS Rubrieknaam F"
-                        "ROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) L"
-                        "EFT JOIN categories AS CA ON OC.category_id = CA.id GROUP BY OB.title, OB.id, CA"
-                        ".name HAVING (((OB.title) Like '**') AND ((OB.id) Like '**')  AND ((CA.name) Lik"
-                        "e '**')); "
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
 
+                    LayoutCachedLeft =350
+                    LayoutCachedTop =4034
+                    LayoutCachedWidth =6757
+                    LayoutCachedHeight =7151
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =345
+                    Top =3570
+                    Width =4215
+                    Height =285
+                    BorderColor =8355711
+                    ForeColor =8355711
+                    Name ="Bijschrift46"
+                    Caption ="Dubbelklikken op product voor meer details."
+                    GridlineColor =10921638
                     LayoutCachedLeft =345
-                    LayoutCachedTop =2955
-                    LayoutCachedWidth =6752
-                    LayoutCachedHeight =6072
+                    LayoutCachedTop =3570
+                    LayoutCachedWidth =4560
+                    LayoutCachedHeight =3855
                 End
             End
         End
@@ -420,11 +410,40 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 
+Private Sub btnBack_Click()
+    DoCmd.Close
+End Sub
+
+Private Sub btnDelete_Click()
+    Dim objectid_selected As Integer
+    
+    For Each varItem In Me.lstProducts.ItemsSelected
+        objectid_selected = Me.lstProducts.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
+    Next varItem
+    
+    query = "DELETE FROM Objects WHERE id=" & objectid_selected
+          
+    'DoCmd.SetWarnings False
+    DoCmd.RunSQL query
+    'DoCmd.SetWarnings True
+    
+    Me.lstProducts.Requery
+End Sub
+
 Private Sub cmdReset_Click()
-    Me.txtNumber.Value = ""
-    Me.txtTitle.Value = ""
-    Me.txtCategory.Value = ""
-    cmdSearch_Click
+    Dim query As String
+
+    Me.txtNumber.Value = Null
+    Me.txtCategory.Value = Null
+    Me.txtTitle.Value = Null
+    
+    query = "SELECT OB.id AS Productnummer, OB.title AS Productnaam, CA.name AS Rubrieknaam " & _
+            "FROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id"
+
+    Me.lstProducts.RowSource = query
+    Me.lstProducts.Requery
+    
+    Me.cmdReset.Enabled = False
 End Sub
 
 Private Sub cmdSearch_Click()
@@ -444,27 +463,37 @@ Private Sub cmdSearch_Click()
     End If
     
     
-    query = "SELECT OB.title AS Productnaam, OB.id AS Productnummer, CA.name AS Rubrieknaam" & vbCrLf & _
+    query = "SELECT OB.id AS Productnummer, OB.title AS Productnaam, CA.name AS Rubrieknaam" & vbCrLf & _
             "FROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id" & vbCrLf & _
             "GROUP BY OB.title, OB.id, CA.name" & vbCrLf & _
             "HAVING (([OB.title] Like ""*" & searchTitle & "*"") AND ([OB.id] Like '*" & searchNumber & "*') AND ([CA.name] Like ""*" & searchCategory & "*""));"
     
     Me.lstProducts.RowSource = query
     Me.lstProducts.Requery
+    Me.cmdReset.Enabled = True
     
 End Sub
 
 Private Sub Form_Load()
+    Dim query As String
+    
+    query = "SELECT OB.id AS Productnummer, OB.title AS Productnaam, CA.name AS Rubrieknaam " & _
+            "FROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id"
+
+    Me.lstProducts.RowSource = query
+    Me.lstProducts.Requery
+    
+    Me.cmdReset.Enabled = False
 End Sub
 
 Private Sub lstProducts_DblClick(Cancel As Integer)
     Dim id_selected As String
     
     For Each varItem In Me.lstProducts.ItemsSelected
-        id_selected = Me.lstProducts.Column(1, varItem) 'Change index for different locations e.g. the end of the line.
+        id_selected = Me.lstProducts.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
-    DoCmd.OpenForm "frmProductBeheerderDetails", , , "[id] = " & id_selected, acFormReadOnly, acDialog
+    DoCmd.OpenForm "frmProductBeheerderDetails", , , "[OBID] = " & id_selected, acFormReadOnly, acDialog
     
     Me.lstProducts.Requery
 End Sub

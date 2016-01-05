@@ -9,15 +9,17 @@ Begin Form
     GridY =10
     Width =10658
     DatasheetFontHeight =11
-    ItemSuffix =15
+    ItemSuffix =27
     Right =25335
     Bottom =12090
     DatasheetGridlinesColor =15132391
-    Filter ="[id] = 1"
     RecSrcDt = Begin
-        0xc44bacd333ade440
+        0xbf1e2654d5b0e440
     End
-    RecordSource ="objects"
+    RecordSource ="SELECT OB.id AS OBID, OB.title, OB.description, OB.buyer, OB.seller, OB.payment_"
+        "method, OB.shipment_instructions, OB.city, OB.country, CA.id AS CatID, CA.name, "
+        "OC.category_id AS OCID FROM (objects AS OB LEFT JOIN object_in_category AS OC ON"
+        " OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id; "
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
@@ -79,6 +81,31 @@ Begin Form
             PressedForeThemeColorIndex =0
             PressedForeTint =75.0
         End
+        Begin OptionGroup
+            SpecialEffect =3
+            BorderLineStyle =0
+            Width =1701
+            Height =1701
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin BoundObjectFrame
+            AddColon = NotDefault
+            SizeMode =3
+            SpecialEffect =2
+            BorderLineStyle =0
+            Width =4536
+            Height =2835
+            LabelX =-1701
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
         Begin TextBox
             AddColon = NotDefault
             FELineBreak = NotDefault
@@ -92,6 +119,24 @@ Begin Form
             BorderThemeColorIndex =1
             BorderShade =65.0
             ThemeFontIndex =1
+            ForeThemeColorIndex =0
+            ForeTint =75.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin ListBox
+            BorderLineStyle =0
+            Width =1701
+            Height =1417
+            LabelX =-1701
+            FontSize =11
+            FontName ="Calibri"
+            AllowValueListEdits =1
+            InheritValueList =1
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
             ForeThemeColorIndex =0
             ForeTint =75.0
             GridlineThemeColorIndex =1
@@ -115,8 +160,31 @@ Begin Form
             GridlineThemeColorIndex =1
             GridlineShade =65.0
         End
+        Begin Attachment
+            BackStyle =0
+            BorderLineStyle =0
+            PictureSizeMode =3
+            Width =1701
+            Height =1701
+            LabelX =-1701
+            AddColon =0
+            ThemeFontIndex =1
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            BorderShade =65.0
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
+        Begin NavigationControl
+            BorderWidth =1
+            BorderLineStyle =0
+            BackThemeColorIndex =1
+            BorderThemeColorIndex =1
+            GridlineThemeColorIndex =1
+            GridlineShade =65.0
+        End
         Begin Section
-            Height =9751
+            Height =10022
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -346,35 +414,9 @@ Begin Form
                 End
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =2835
-                    Top =570
-                    Width =2046
-                    TabIndex =6
-                    ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Product Verwijderen"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =2835
-                    LayoutCachedTop =570
-                    LayoutCachedWidth =4881
-                    LayoutCachedHeight =853
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
-                Begin CommandButton
-                    OverlapFlags =85
                     Left =566
                     Top =566
-                    TabIndex =7
+                    TabIndex =6
                     ForeColor =4210752
                     Name ="Command9"
                     Caption ="Terug"
@@ -396,40 +438,23 @@ Begin Form
                     WebImagePaddingBottom =1
                 End
                 Begin TextBox
-                    OverlapFlags =85
+                    OverlapFlags =93
                     IMESentenceMode =3
-                    Left =2844
-                    Top =7997
+                    Left =2039
+                    Top =8280
                     Width =2271
                     Height =315
-                    TabIndex =8
+                    TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtRubriek"
+                    ControlSource ="name"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2844
-                    LayoutCachedTop =7997
-                    LayoutCachedWidth =5115
-                    LayoutCachedHeight =8312
-                    Begin
-                        Begin Label
-                            OverlapFlags =85
-                            Left =574
-                            Top =7997
-                            Width =1680
-                            Height =315
-                            BorderColor =8355711
-                            ForeColor =8355711
-                            Name ="Label11"
-                            Caption ="Rubriek"
-                            GridlineColor =10921638
-                            LayoutCachedLeft =574
-                            LayoutCachedTop =7997
-                            LayoutCachedWidth =2254
-                            LayoutCachedHeight =8312
-                        End
-                    End
+                    LayoutCachedLeft =2039
+                    LayoutCachedTop =8280
+                    LayoutCachedWidth =4310
+                    LayoutCachedHeight =8595
                 End
                 Begin TextBox
                     OverlapFlags =85
@@ -437,11 +462,11 @@ Begin Form
                     Left =2838
                     Top =1140
                     Height =315
-                    TabIndex =9
+                    TabIndex =8
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtId"
-                    ControlSource ="id"
+                    ControlSource ="OBID"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2838
@@ -473,7 +498,7 @@ Begin Form
                     Left =2838
                     Top =4140
                     Height =315
-                    TabIndex =10
+                    TabIndex =9
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="seller"
@@ -509,7 +534,7 @@ Begin Form
                     Left =2838
                     Top =3630
                     Height =315
-                    TabIndex =11
+                    TabIndex =10
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="buyer"
@@ -536,6 +561,102 @@ Begin Form
                             LayoutCachedTop =3630
                             LayoutCachedWidth =1185
                             LayoutCachedHeight =3945
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =93
+                    IMESentenceMode =3
+                    Left =735
+                    Top =8280
+                    Width =1206
+                    Height =315
+                    TabIndex =11
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="CAtID"
+                    ControlSource ="CatID"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =735
+                    LayoutCachedTop =8280
+                    LayoutCachedWidth =1941
+                    LayoutCachedHeight =8595
+                End
+                Begin OptionGroup
+                    OverlapFlags =255
+                    Left =566
+                    Top =7993
+                    Width =6520
+                    Height =1871
+                    TabIndex =12
+                    BorderColor =10921638
+                    Name ="Kader23"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =566
+                    LayoutCachedTop =7993
+                    LayoutCachedWidth =7086
+                    LayoutCachedHeight =9864
+                    Begin
+                        Begin Label
+                            BackStyle =1
+                            OverlapFlags =247
+                            Left =686
+                            Top =7873
+                            Width =825
+                            Height =315
+                            BorderColor =8355711
+                            ForeColor =8355711
+                            Name ="Bijschrift24"
+                            Caption ="Rubriek"
+                            GridlineColor =10921638
+                            LayoutCachedLeft =686
+                            LayoutCachedTop =7873
+                            LayoutCachedWidth =1511
+                            LayoutCachedHeight =8188
+                        End
+                    End
+                End
+                Begin ComboBox
+                    OverlapFlags =247
+                    IMESentenceMode =3
+                    ColumnCount =2
+                    Left =2436
+                    Top =8955
+                    Width =3685
+                    Height =315
+                    TabIndex =13
+                    BorderColor =10921638
+                    ForeColor =3484194
+                    ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"128\""
+                    Name ="Keuzelijst25"
+                    ControlSource ="OCID"
+                    RowSourceType ="Table/Query"
+                    RowSource ="SELECT id, name FROM categories; "
+                    ColumnWidths ="0;567"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2436
+                    LayoutCachedTop =8955
+                    LayoutCachedWidth =6121
+                    LayoutCachedHeight =9270
+                    Begin
+                        Begin Label
+                            OverlapFlags =247
+                            Left =735
+                            Top =8955
+                            Width =1200
+                            Height =315
+                            BorderColor =8355711
+                            ForeColor =8355711
+                            Name ="Bijschrift26"
+                            Caption ="Keuzelijst25"
+                            GridlineColor =10921638
+                            LayoutCachedLeft =735
+                            LayoutCachedTop =8955
+                            LayoutCachedWidth =1935
+                            LayoutCachedHeight =9270
                         End
                     End
                 End
