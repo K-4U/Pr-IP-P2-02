@@ -6,6 +6,7 @@
 class kavelNew extends cmsPage {
 
     function parse() {
+
         $_POST = removeHTMLFromPOST($_POST);
 
         if(isset($_POST['submit'])) {
@@ -90,6 +91,16 @@ class kavelNew extends cmsPage {
                     );
                     $this->db->insert("files", $insertFileNameArray);
                     $errors['databaseErr'] = $this->db->getLastError();
+
+                    //Insert into the category that they chose:
+                    $categoryInsertArray = Array(
+                        "object_id"   => $objectId,
+                        "category_id" => $_POST['category']
+                    );
+                    $this->db->insert("object_in_category", $categoryInsertArray);
+                    $errors['databaseErr2'] = $this->db->getLastError();
+
+
                     if(sizeof($errors) > 0) {
                         header("Location: " . baseurl("Kavel/Item/" . $objectId));
                     }
