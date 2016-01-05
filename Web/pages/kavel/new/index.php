@@ -7,6 +7,8 @@ class kavelNew extends cmsPage {
 
     function parse() {
 
+        $_POST = removeHTMLFromPOST($_POST);
+
         if(isset($_POST['submit'])) {
 
 
@@ -47,8 +49,8 @@ class kavelNew extends cmsPage {
                 } else {
                     $errors['payment_methodErr'] = "Kies een betaalmethode.";
                 }
-                var_dump($_POST['start_bid']);
-                var_dump("fwsbjkfewghkfewu");
+                //var_dump($_POST['start_bid']);
+                //var_dump("fwsbjkfewghkfewu");
 
                 //var_dump($_POST);
                 $insertArray = array(
@@ -62,12 +64,13 @@ class kavelNew extends cmsPage {
                     "payment_instructions"  => $_POST['payment_instructions'],
                     "shipment_instructions" => $_POST['shipment_instructions'],
                     "shipment_costs"        => intval($_POST['shipment_costs']),
-                    "seller"                => $this->user->getName());
+                    "seller"                => $this->user->getName()
+                );
 
 
                 if($errors) {
                     $this->website->assign("errors", $errors);
-
+                    $this->website->assign("values", $_POST);
                 } else {
                     //var_dump($_FILES);
                     $target_dir = getcwd() . "/images/uploads/";
@@ -78,17 +81,28 @@ class kavelNew extends cmsPage {
                     rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file);
 
 
-                    $this->db->insert("files", $insertFileNameArray);
-                    $errors['databaseErr'] = $this->db->getLastError();
                     $this->db->insert("objects", $insertArray);
                     $errors['databaseErr1'] = $this->db->getLastError();
-                    if(!$errors) {
+
+                    $objectId = $this->db->getLastInsertedId();
+                    $insertFileNameArray = array(
+                        "filename" => $target_file,
+                        "objectid" => $objectId
+                    );
+                    $this->db->insert("files", $insertFileNameArray);
+                    $errors['databaseErr'] = $this->db->getLastError();
+
+                    //Insert into the category that they chose:
+                    $categoryInsertArray = Array(
+                        "object_id"   => $objectId,
+                        "category_id" => $_POST['category']
+                    );
+                    $this->db->insert("object_in_category", $categoryInsertArray);
+                    $errors['databaseErr2'] = $this->db->getLastError();
+
+
+                    if(sizeof($errors) > 0) {
                         header("Location: " . baseurl("Kavel/Item/" . $objectId));
-                        $objectId = $this->db->getLastInsertedId();
-                        $insertFileNameArray = array(
-                            "filename" => $target_file,
-                            "objectid" => $objectId
-                        );
                     }
                 }
             }
