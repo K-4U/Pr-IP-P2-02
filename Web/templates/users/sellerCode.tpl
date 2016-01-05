@@ -34,7 +34,7 @@
                 <div class="row">
                     <label for="authentication" class="labelsData col-md-3 col-sm-3 col-md-offset-1">Authenticatiecode:</label>
                     <div class="col-md-7 col-sm-7">
-                        <input type="text" id="authentication" name="authentication" placeholder="0000000000" class="form-control">
+                        <input type="text" id="authentication" name="authentication" class="form-control">
                     </div>
                 </div>
                 <br>
