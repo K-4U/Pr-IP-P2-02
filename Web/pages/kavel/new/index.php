@@ -47,8 +47,8 @@ class kavelNew extends cmsPage {
                 } else {
                     $errors['payment_methodErr'] = "Kies een betaalmethode.";
                 }
-                var_dump($_POST['start_bid']);
-                var_dump("fwsbjkfewghkfewu");
+                //var_dump($_POST['start_bid']);
+                //var_dump("fwsbjkfewghkfewu");
 
                 //var_dump($_POST);
                 $insertArray = array(
@@ -78,17 +78,18 @@ class kavelNew extends cmsPage {
                     rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file);
 
 
-                    $this->db->insert("files", $insertFileNameArray);
-                    $errors['databaseErr'] = $this->db->getLastError();
                     $this->db->insert("objects", $insertArray);
                     $errors['databaseErr1'] = $this->db->getLastError();
-                    if(!$errors) {
+
+                    $objectId = $this->db->getLastInsertedId();
+                    $insertFileNameArray = array(
+                        "filename" => $target_file,
+                        "objectid" => $objectId
+                    );
+                    $this->db->insert("files", $insertFileNameArray);
+                    $errors['databaseErr'] = $this->db->getLastError();
+                    if(sizeof($errors) > 0) {
                         header("Location: " . baseurl("Kavel/Item/" . $objectId));
-                        $objectId = $this->db->getLastInsertedId();
-                        $insertFileNameArray = array(
-                            "filename" => $target_file,
-                            "objectid" => $objectId
-                        );
                     }
                 }
             }
