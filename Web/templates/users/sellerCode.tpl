@@ -29,14 +29,12 @@
 {/if}
 {if $page == 0}
     <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main well">
+        <div class="col-sm-12 col-md-8 col-md-offset-2 main well">
             <form action="{$self}" method="post" class="form-inline">
                 <div class="row">
-                    <div class="col-md-2 col-sm-3 col-md-offset-1">
-                        <label for="authentication" class="labelsData">Authenticatiecode:</label>
-                    </div>
-                    <div class="cold-md-7">
-                        <input type="text" id="authentication" name="authentication" placeholder="0000000000" class="form-control">
+                    <label for="authentication" class="labelsData col-md-3 col-sm-3 col-md-offset-1">Authenticatiecode:</label>
+                    <div class="col-md-7 col-sm-7">
+                        <input type="text" id="authentication" name="authentication" class="form-control">
                     </div>
                 </div>
                 <br>

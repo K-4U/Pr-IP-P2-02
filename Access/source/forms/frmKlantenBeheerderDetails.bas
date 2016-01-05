@@ -11,7 +11,7 @@ Begin Form
     DatasheetFontHeight =11
     ItemSuffix =18
     Right =25335
-    Bottom =12480
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     Filter ="[username] = 'Ronaldo7'"
     RecSrcDt = Begin
@@ -217,8 +217,9 @@ Begin Form
                     Width =2046
                     TabIndex =3
                     ForeColor =4210752
-                    Name ="Command1"
+                    Name ="btnDeactivate"
                     Caption ="Account deactiveren"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2655
@@ -560,3 +561,29 @@ Begin Form
         End
     End
 End
+CodeBehindForm
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub btnDeactivate_Click()
+    Dim query As String
+    
+    query = "UPDATE users " & _
+            "SET firstname = 'Verwijderd', lastname = 'Verwijderd', adress_street1 = 'Verwijderd', adress_street2 = 'Verwijderd', " & _
+            "adress_number = 0, postalcode = '0000AA', city = 'Verwijderd', country = 'Verwijderd', birthdate = '1899-01-02' , email = 'verwijderd@verwijderd.nl', " & _
+            "password = 'Verwijderd', security_answer = 'Gedeactiveerd', isseller = 0 " & _
+            "WHERE username = '" & Me.username & "'"
+     
+    MsgBox query
+    
+    'On Error Resume Next
+    DoCmd.SetWarnings False
+    DoCmd.RunSQL query
+    DoCmd.SetWarnings True
+    
+    DoCmd.Close
+    
+End Sub

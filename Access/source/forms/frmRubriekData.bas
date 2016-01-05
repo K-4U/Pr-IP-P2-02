@@ -9,20 +9,22 @@ Begin Form
     GridY =10
     Width =6122
     DatasheetFontHeight =11
-    ItemSuffix =9
-    Right =25335
-    Bottom =12480
+    ItemSuffix =10
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0xd2c6116b11aee440
+        0x1f35c404b3b0e440
     End
-    RecordSource ="categories"
+    RecordSource ="SELECT C1.*, C2.name FROM categories AS C1 LEFT JOIN categories AS C2 ON C1.pare"
+        "nt = C2.id;"
     OnCurrent ="[Event Procedure]"
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -198,8 +200,8 @@ Begin Form
                     TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text7"
-                    ControlSource ="name"
+                    Name ="txtRubrieknaam"
+                    ControlSource ="C1.name"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2270
@@ -232,10 +234,10 @@ Begin Form
                     Top =2325
                     Width =891
                     Height =315
-                    TabIndex =2
+                    TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text0"
+                    Name ="txtParent"
                     ControlSource ="parent"
                     GridlineColor =10921638
 
@@ -268,8 +270,9 @@ Begin Form
                     Top =570
                     TabIndex =4
                     ForeColor =4210752
-                    Name ="Command9"
+                    Name ="btnCancel"
                     Caption ="Terug"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =570
@@ -286,29 +289,6 @@ Begin Form
                     WebImagePaddingTop =2
                     WebImagePaddingRight =1
                     WebImagePaddingBottom =1
-                End
-                Begin ComboBox
-                    OverlapFlags =85
-                    IMESentenceMode =3
-                    Left =3345
-                    Top =2325
-                    Width =2451
-                    Height =315
-                    TabIndex =3
-                    BorderColor =10921638
-                    ForeColor =4210752
-                    Name ="Tekst2"
-                    ControlSource ="Rubrieknaam"
-                    RowSourceType ="Table/Query"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =3345
-                    LayoutCachedTop =2325
-                    LayoutCachedWidth =5796
-                    LayoutCachedHeight =2640
-                    ForeThemeColorIndex =0
-                    ForeTint =75.0
-                    ForeShade =100.0
                 End
                 Begin ListBox
                     ColumnHeads = NotDefault
@@ -360,7 +340,7 @@ Begin Form
                     TabIndex =6
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst7"
+                    Name ="txtPriority"
                     ControlSource ="priority"
                     GridlineColor =10921638
 
@@ -387,6 +367,51 @@ Begin Form
                         End
                     End
                 End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =3345
+                    Top =2325
+                    Width =2451
+                    Height =315
+                    TabIndex =2
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="txtCategory"
+                    ControlSource ="C2.name"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =3345
+                    LayoutCachedTop =2325
+                    LayoutCachedWidth =5796
+                    LayoutCachedHeight =2640
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =3968
+                    Top =566
+                    TabIndex =7
+                    ForeColor =4210752
+                    Name ="btnSave"
+                    Caption ="Opslaan"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =3968
+                    LayoutCachedTop =566
+                    LayoutCachedWidth =5669
+                    LayoutCachedHeight =849
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
             End
         End
     End
@@ -398,11 +423,28 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
+Private Sub btnCancel_Click()
+    If (Me.txtRubrieknaam.OldValue <> Me.txtRubrieknaam.Value Or Me.txtParent.OldValue <> Me.txtRubrieknaam.Value Or Me.txtParent.OldValue <> Me.txtParent.Value) Then
+        DoCmd.RunCommand acCmdUndo
+    End If
+    
+    DoCmd.Close
+    
+End Sub
+
+Private Sub btnSave_Click()
+    DoCmd.Close , , acSaveYes
+End Sub
+
 Private Sub Form_Current()
-     Dim queryString As String
+    Dim queryString As String
      
     queryString = "SELECT id, name AS Rubrieknaam FROM categories WHERE Parent = " & Me.id & " ORDER BY priority"
    
     Me.lstSubCat.RowSource = queryString
     Me.lstSubCat.Requery
+End Sub
+
+Private Sub Form_Load()
+    
 End Sub

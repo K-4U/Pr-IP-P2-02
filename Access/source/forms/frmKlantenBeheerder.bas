@@ -10,19 +10,20 @@ Begin Form
     Width =7370
     DatasheetFontHeight =11
     ItemSuffix =46
-    Right =6600
-    Bottom =12435
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0x1229b93333aee440
+        0xb9e62c67b1b0e440
     End
     RecordSource ="SELECT username, firstname + ' ' + lastname AS naam, postalcode, adress_number F"
-        "ROM users; "
+        "ROM users;"
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -285,8 +286,9 @@ Begin Form
                     Top =6405
                     TabIndex =4
                     ForeColor =4210752
-                    Name ="Knop24"
+                    Name ="btnDelete"
                     Caption ="Deactiveren"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =5265
@@ -397,10 +399,6 @@ Begin Form
                     BorderColor =10921638
                     Name ="lstUsers"
                     RowSourceType ="Table/Query"
-                    RowSource ="SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.p"
-                        "ostalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE (((users.u"
-                        "sername) Like '%%') AND ((users.postalcode) Like '%5677GK%') AND ((users.adress_"
-                        "number) Like '%%')); "
                     ColumnWidths ="1701;2835;1134;851"
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
@@ -423,39 +421,31 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 
+Private Sub btnDelete_Click()
+    Dim username_selected As String
+    
+    For Each varItem In Me.lstUsers.ItemsSelected
+        username_selected = Me.lstUsers.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
+    Next varItem
+    
+    query = "UPDATE users " & _
+            "SET firstname = 'Verwijderd', lastname = 'Verwijderd', adress_street1 = 'Verwijderd', adress_street2 = 'Verwijderd', " & _
+            "adress_number = 0, postalcode = '0000AA', city = 'Verwijderd', country = 'Verwijderd', birthdate = '1899-01-02' , email = 'verwijderd@verwijderd.nl', " & _
+            "password = 'Verwijderd', security_answer = 'Gedeactiveerd', isseller = 0 " & _
+            "WHERE username = '" & username_selected & "'"
+     
+    MsgBox query
+    
+    'On Error Resume Next
+    DoCmd.SetWarnings False
+    DoCmd.RunSQL query
+    DoCmd.SetWarnings True
+    
+    
+    Me.lstUsers.Requery
+End Sub
+
 Private Sub cmdSearchUser_Click()
-'    Dim searchQuery As String
-'    Dim placeAND As Boolean
-'
-'    placeAND = False
-'
-'    If (Not IsNull(Me.txtUsername) And Not (Me.txtUsername.Value = "")) Then
-'        searchQuery = searchQuery & "[username] LIKE '%" & Me.txtUsername.Value & "%'"
-'        placeAND = True
-'    End If
-'
-'    If (Not IsNull(Me.txtPostalcode) And Not (Me.txtPostalcode.Value = "")) Then
-'        If (placeAND) Then
-'            searchQuery = searchQuery & " AND "
-'        End If
-'        searchQuery = searchQuery & "[postalcode] LIKE '%" & Me.txtPostalcode.Value & "%'"
-'        placeAND = True
-'    End If
-'
-'    If (Not IsNull(Me.txtAdressNumber) And Not (Me.txtAdressNumber.Value = "")) Then
-'        If (placeAND) Then
-'            searchQuery = searchQuery & " AND "
-'        End If
-'        searchQuery = searchQuery & "[adress_number] LIKE '%" & Me.txtAdressNumber.Value & "%'"
-'        placeAND = True
-'    End If
-'
-'
-'    Me.lstUsers.RowSource = "SELECT users.username AS Gebruikersnaam, users.firstname+' '+users.lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer FROM users WHERE " & searchQuery & " "
-'    Me.lstUsers.Requery
-
-'Koen zijn query manier:
-
 Dim searchNumber As String
     Dim searchTitle As String
     Dim searchCategory As String
@@ -479,19 +469,42 @@ Dim searchNumber As String
     Me.lstUsers.RowSource = query
     
     Me.lstUsers.Requery
+    
+    Me.cmdResetUser.Enabled = True
              
 End Sub
 
 Private Sub cmdResetUser_Click()
+    Dim query As String
+    
+    Me.txtPostalcode.Value = Null
+    Me.txtAdressNumber.Value = Null
+    Me.txtUsername.Value = Null
+    
+    Me.txtUsername.SetFocus
+    
+    Me.cmdResetUser.Enabled = False
+    
+    query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer " & _
+            "FROM Users"
+            
+    Me.lstUsers.RowSource = query
+    
+    Me.lstUsers.Requery
+            
+End Sub
 
-Dim query As String
-
-Me.txtPostalcode.Value = ""
-Me.txtAdressNumber.Value = ""
-Me.txtUsername.Value = ""
-
-cmdSearchUser_Click
-             
+Private Sub Form_Load()
+    Dim query As String
+    
+    query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer " & _
+            "FROM Users"
+            
+    Me.lstUsers.RowSource = query
+    
+    Me.lstUsers.Requery
+    
+    Me.cmdResetUser.Enabled = False
 
 End Sub
 

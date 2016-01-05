@@ -294,3 +294,7 @@ nav.headerrow{
 .breadcrumb > li + li::before {
     content: "> ";
 }
+
+select option:disabled {
+    font-weight:bold;
+}

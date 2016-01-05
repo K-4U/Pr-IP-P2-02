@@ -10,9 +10,9 @@ Begin Form
     GridY =10
     Width =5669
     DatasheetFontHeight =11
-    ItemSuffix =4
-    Right =18105
-    Bottom =12120
+    ItemSuffix =5
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x70a608eb4caee440
@@ -102,8 +102,9 @@ Begin Form
                     Height =568
                     TabIndex =1
                     ForeColor =4210752
-                    Name ="Knop2"
+                    Name ="btnSoldObjects"
                     Caption ="Verkochte objecten"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =566
@@ -128,14 +129,42 @@ Begin Form
                     Height =568
                     TabIndex =2
                     ForeColor =4210752
-                    Name ="Knop3"
+                    Name ="btnUserStats"
                     Caption ="Gebruikers statestieken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =570
                     LayoutCachedTop =2145
                     LayoutCachedWidth =2271
                     LayoutCachedHeight =2713
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =570
+                    Top =3060
+                    Height =343
+                    TabIndex =3
+                    ForeColor =4210752
+                    Name ="btnProducts"
+                    Caption ="Alle Producten"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =570
+                    LayoutCachedTop =3060
+                    LayoutCachedWidth =2271
+                    LayoutCachedHeight =3403
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -157,6 +186,19 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+
+Private Sub btnProducts_Click()
+    DoCmd.OpenForm "frmObjecten", , , , , acDialog
+End Sub
+
+Private Sub btnSoldObjects_Click()
+    DoCmd.OpenReport "rptObjectStats", acViewReport, , , acDialog
+
+End Sub
+
+Private Sub btnUserStats_Click()
+    DoCmd.OpenReport "rptUserStats", acViewReport, , , acDialog
+End Sub
 
 Private Sub cmdLetters_Click()
     DoCmd.OpenForm "frmVerifications", , , , , acDialog

@@ -2,18 +2,12 @@
 
 class searchPage extends cmsPage {
 
-    function parse($id, $query) {
-        $categoryResult = $this->db->buildQuery("SELECT * FROM categories WHERE id=%i", $id);
-        $category = $this->db->fetchAssoc($categoryResult);
-
+    function parse($query) {
         //Fetch number of objects in this category:
-        $countResult = $this->db->buildQuery("SELECT COUNT(object_id) AS c FROM object_in_category WHERE category_id=%i",$id);
+        $countResult = $this->db->buildQuery("SELECT COUNT(id) AS c FROM objects WHERE title LIKE '%%s%' OR description LIKE '%%s%'",$query, $query);
         $c = $this->db->fetchAssoc($countResult)['c'];
 
-
-
-
-        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE id IN (SELECT object_id FROM object_in_category WHERE category_id=%i) ORDER BY start_moment DESC";
+        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE title LIKE '%%s%' OR description LIKE '%%s%'";
         $result = null;
         $maxPerPage = 18;
         if($c > $maxPerPage){
@@ -24,29 +18,17 @@ class searchPage extends cmsPage {
             }
             $fe = $fo + $maxPerPage;
             $sql .= " OFFSET %i ROWS FETCH NEXT %i ROWS ONLY;";
-            $result = $this->db->buildQuery($sql, $id, $fo, $fe);
+            $result = $this->db->buildQuery($sql, $query, $query, $fo, $fe);
             $this->website->assign("paginationNeeded", true);
             $this->website->assign("maxPages", ($c / $maxPerPage)-1);
         }else{
-            $result = $this->db->buildQuery($sql, $id);
+            $result = $this->db->buildQuery($sql, $query, $query);
         }
 
         $objects = parseObjects($result);
 
-
-
-        $categoriesCrumbs = Array();
-        getCategoryFromBottom($categoriesCrumbs, $id);
-        array_pop($categoriesCrumbs);
-
         $this->addToBreadcrumbs("Home", baseurl(""));
-
-        foreach($categoriesCrumbs as $cat){
-            $this->addToBreadcrumbs($cat['name'], baseurl("Rubriek/" . $cat['id']));
-        }
-        $this->addToBreadcrumbs($category['name']);
-
-        $categories = getCategory($categoriesCrumbs);
+        $this->addToBreadcrumbs("Zoeken");
 
         $this->website->assign("category", $category);
         $this->website->assign("categories", $categories);

@@ -145,8 +145,9 @@
                         <div class="panel-body">
                         <select class="form-control" name="category" id="category" required size="6">
                             <option selected disabled hidden>Categorie</option>
-                            <option value="test">test</option>
-                            <option value="3">3</option>
+                            {foreach $categoryList as $category}
+                                <option value="{$category.id}" {if $category.disabled}disabled{/if}>{$category.name}</option>
+                            {/foreach}
                         </select>
                         </div>
                     </div>

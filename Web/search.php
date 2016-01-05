@@ -2,7 +2,7 @@
 include("header.php");
 
 //Register the variables needed from GET
-$varsToRegister = Array("id"=>"integer","query"=>"integer");
+$varsToRegister = Array("query"=>"string");
 foreach($varsToRegister as $var=>$type){
     if(array_key_exists($var,$_GET)){
         $$var = $_GET[$var];
@@ -18,6 +18,6 @@ foreach($varsToRegister as $var=>$type){
 $argsRaw = Array();
 include("pages/search/index.php");
 $tClass = new searchPage($website, $user, $argsRaw, $db);
-$tClass->parse($id, $query);
+$tClass->parse( $query);
 
 ?>

@@ -77,11 +77,12 @@ class db {
                 $connInfo = Array(
                     "Database" => $this->db,
                     "UID"      => $this->username,
-                    "PWD"      => $this->password
+                    "PWD"      => $this->password,
+                    "CharacterSet" => "UTF-8"
                 );
                 $this->dbo = sqlsrv_connect($this->host, $connInfo);
                 if ($this->dbo === false) {
-                    die($this->getLastError());
+                    die($this->getLastError(false));
                 }
                 break;
         }
