@@ -7,6 +7,7 @@ Class registerInfo extends cmsPage {
         if($this->user->isLoggedIn()) {
             header("location: " . baseurl(""));
         } else {
+            $_POST = removeHTMLFromPOST($_POST);
             if(isset($_POST['validateCode'])) {
                 if($_SESSION['emailCode'] == $_POST['emailVerificationCode']) {
 

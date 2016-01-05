@@ -6,6 +6,7 @@
 class kavelNew extends cmsPage {
 
     function parse() {
+        $_POST = removeHTMLFromPOST($_POST);
 
         if(isset($_POST['submit'])) {
 
