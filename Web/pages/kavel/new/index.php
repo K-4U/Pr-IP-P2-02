@@ -63,12 +63,13 @@ class kavelNew extends cmsPage {
                     "payment_instructions"  => $_POST['payment_instructions'],
                     "shipment_instructions" => $_POST['shipment_instructions'],
                     "shipment_costs"        => intval($_POST['shipment_costs']),
-                    "seller"                => $this->user->getName());
+                    "seller"                => $this->user->getName()
+                );
 
 
                 if($errors) {
                     $this->website->assign("errors", $errors);
-
+                    $this->website->assign("values", $_POST);
                 } else {
                     //var_dump($_FILES);
                     $target_dir = getcwd() . "/images/uploads/";
