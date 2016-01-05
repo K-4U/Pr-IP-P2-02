@@ -1,22 +1,12 @@
 <?php
 
 
-//Naming convention:
+//Naming convention:x
 //<cat><page>
 class kavelNew extends cmsPage {
 
     function parse() {
-        //print_r(getCategory(Array()));
 
-        //var_dump(getCategory(Array()));
-        //var_dump("lol");
-        $categoryList = getCategory(Array());
-        echo"<pre>";
-        var_dump($categoryList);
-echo"</pre>";
-
-
-        $categoryList
         if(isset($_POST['submit'])) {
 
 
@@ -53,7 +43,7 @@ echo"</pre>";
                 } else {
                     $errors['durationErr'] = "Looptijd niet geldig.";
                 }
-                if(!empty($_POST['payment_method']))  {
+                if(!empty($_POST['payment_method'])) {
                 } else {
                     $errors['payment_methodErr'] = "Kies een betaalmethode.";
                 }
@@ -75,29 +65,31 @@ echo"</pre>";
                     "seller"                => $this->user->getName());
 
 
-
-
                 if($errors) {
                     $this->website->assign("errors", $errors);
+
                 } else {
                     //var_dump($_FILES);
                     $target_dir = getcwd() . "/images/uploads/";
                     $imageFileType = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
-                    $target_file = md5_file(date(U) . $this->user->getName()) . '.' . $imageFileType; //md5
+                    $target_file = md5(date(U) . $this->user->getName()) . '.' . $imageFileType;; //md5
                     $uploadOk = 1;
 
-                    //var_dump(rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file));
-                    $objectId = $this->db->getLastInsertedId();
+                    rename($_FILES['fileToUpload']['tmp_name'], $target_dir . $target_file);
 
-                    $insertFileNameArray = array(
-                        "filename" => $target_file,
-                        "objectid" => $objectId
-                    );
+
                     $this->db->insert("files", $insertFileNameArray);
                     $errors['databaseErr'] = $this->db->getLastError();
                     $this->db->insert("objects", $insertArray);
                     $errors['databaseErr1'] = $this->db->getLastError();
-                    header("Location: " . baseurl("Kavel/Item/" . $objectId));
+                    if(!$errors) {
+                        header("Location: " . baseurl("Kavel/Item/" . $objectId));
+                        $objectId = $this->db->getLastInsertedId();
+                        $insertFileNameArray = array(
+                            "filename" => $target_file,
+                            "objectid" => $objectId
+                        );
+                    }
                 }
 
 
