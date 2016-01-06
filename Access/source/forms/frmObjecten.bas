@@ -142,6 +142,7 @@ Begin Form
                     Left =1817
                     Top =1485
                     Height =315
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtFromDate"
@@ -178,7 +179,7 @@ Begin Form
                     Left =1817
                     Top =1920
                     Height =315
-                    TabIndex =1
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtTillDate"
@@ -215,7 +216,6 @@ Begin Form
                     Top =690
                     Width =4422
                     Height =2263
-                    TabIndex =2
                     BorderColor =10921638
                     Name ="Kader5"
                     GridlineColor =10921638
@@ -248,7 +248,7 @@ Begin Form
                     OverlapFlags =85
                     Left =3118
                     Top =3174
-                    TabIndex =3
+                    TabIndex =4
                     ForeColor =4210752
                     Name ="btnGenerate"
                     Caption ="Genereer"
@@ -290,7 +290,7 @@ Begin Form
                     OverlapFlags =247
                     Left =566
                     Top =2457
-                    TabIndex =4
+                    TabIndex =3
                     BorderColor =10921638
                     Name ="chkSoldProducts"
                     GridlineColor =10921638

@@ -9,15 +9,15 @@ Begin Form
     GridY =10
     Width =7370
     DatasheetFontHeight =11
-    ItemSuffix =46
-    Right =25335
-    Bottom =12090
+    ItemSuffix =47
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0xb9e62c67b1b0e440
+        0x8003329cd3b0e440
     End
     RecordSource ="SELECT username, firstname + ' ' + lastname AS naam, postalcode, adress_number F"
-        "ROM users;"
+        "ROM users; "
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
@@ -145,7 +145,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =7029
+            Height =7200
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -156,9 +156,11 @@ Begin Form
                     OverlapFlags =85
                     Left =5164
                     Top =225
+                    TabIndex =7
                     ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Logout"
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =5164
@@ -179,7 +181,7 @@ Begin Form
                     Top =694
                     Width =6651
                     Height =2031
-                    TabIndex =1
+                    TabIndex =8
                     BorderColor =10921638
                     Name ="Kader13"
                     GridlineColor =10921638
@@ -215,7 +217,7 @@ Begin Form
                     Top =1422
                     Width =2271
                     Height =315
-                    TabIndex =2
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtPostalcode"
@@ -251,7 +253,7 @@ Begin Form
                     Top =1819
                     Width =1041
                     Height =315
-                    TabIndex =3
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtAdressnumber"
@@ -282,19 +284,19 @@ Begin Form
                 End
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =5265
-                    Top =6405
-                    TabIndex =4
+                    Left =5270
+                    Top =6746
+                    TabIndex =6
                     ForeColor =4210752
                     Name ="btnDelete"
                     Caption ="Deactiveren"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =5265
-                    LayoutCachedTop =6405
-                    LayoutCachedWidth =6966
-                    LayoutCachedHeight =6688
+                    LayoutCachedLeft =5270
+                    LayoutCachedTop =6746
+                    LayoutCachedWidth =6971
+                    LayoutCachedHeight =7029
                     BackColor =15123357
                     BorderColor =15123357
                     WebImagePaddingLeft =2
@@ -304,10 +306,11 @@ Begin Form
                     Overlaps =1
                 End
                 Begin CommandButton
+                    Default = NotDefault
                     OverlapFlags =215
                     Left =469
                     Top =2265
-                    TabIndex =5
+                    TabIndex =3
                     ForeColor =4210752
                     Name ="cmdSearchUser"
                     Caption ="Zoeken"
@@ -327,10 +330,11 @@ Begin Form
                     Overlaps =1
                 End
                 Begin CommandButton
+                    Cancel = NotDefault
                     OverlapFlags =215
                     Left =2434
                     Top =2265
-                    TabIndex =6
+                    TabIndex =4
                     ForeColor =4210752
                     Name ="cmdResetUser"
                     Caption ="Reset"
@@ -356,7 +360,6 @@ Begin Form
                     Top =1025
                     Width =2271
                     Height =315
-                    TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtUsername"
@@ -390,11 +393,11 @@ Begin Form
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =4
-                    Left =340
-                    Top =3004
+                    Left =345
+                    Top =3345
                     Width =6651
                     Height =3232
-                    TabIndex =8
+                    TabIndex =5
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstUsers"
@@ -404,10 +407,26 @@ Begin Form
                     GridlineColor =10921638
                     AllowValueListEdits =0
 
-                    LayoutCachedLeft =340
-                    LayoutCachedTop =3004
-                    LayoutCachedWidth =6991
-                    LayoutCachedHeight =6236
+                    LayoutCachedLeft =345
+                    LayoutCachedTop =3345
+                    LayoutCachedWidth =6996
+                    LayoutCachedHeight =6577
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =345
+                    Top =2955
+                    Width =4005
+                    Height =285
+                    BorderColor =8355711
+                    ForeColor =8355711
+                    Name ="Bijschrift46"
+                    Caption ="Dubbelklikken op naam voor meer details."
+                    GridlineColor =10921638
+                    LayoutCachedLeft =345
+                    LayoutCachedTop =2955
+                    LayoutCachedWidth =4350
+                    LayoutCachedHeight =3240
                 End
             End
         End
@@ -420,6 +439,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
+
+Private Sub btnBack_Click()
+    DoCmd.Close
+End Sub
 
 Private Sub btnDelete_Click()
     Dim username_selected As String
@@ -480,8 +503,6 @@ Private Sub cmdResetUser_Click()
     Me.txtPostalcode.Value = Null
     Me.txtAdressNumber.Value = Null
     Me.txtUsername.Value = Null
-    
-    Me.txtUsername.SetFocus
     
     Me.cmdResetUser.Enabled = False
     

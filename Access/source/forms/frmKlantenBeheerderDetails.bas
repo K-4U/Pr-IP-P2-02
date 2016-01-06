@@ -7,11 +7,11 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =6292
+    Width =6009
     DatasheetFontHeight =11
-    ItemSuffix =18
-    Right =25335
-    Bottom =12090
+    ItemSuffix =19
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     Filter ="[username] = 'Ronaldo7'"
     RecSrcDt = Begin
@@ -93,7 +93,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =8163
+            Height =8503
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -109,7 +109,7 @@ Begin Form
                     Height =315
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text1"
+                    Name ="txtUser"
                     ControlSource ="username"
                     GridlineColor =10921638
 
@@ -143,10 +143,10 @@ Begin Form
                     Top =2835
                     Width =3396
                     Height =345
-                    TabIndex =1
+                    TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text7"
+                    Name ="txtAdress1"
                     ControlSource ="adress_street1"
                     GridlineColor =10921638
 
@@ -180,10 +180,10 @@ Begin Form
                     Top =1695
                     Width =2271
                     Height =315
-                    TabIndex =2
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text0"
+                    Name ="txtFirst"
                     ControlSource ="firstname"
                     GridlineColor =10921638
 
@@ -215,7 +215,7 @@ Begin Form
                     Left =2655
                     Top =570
                     Width =2046
-                    TabIndex =3
+                    TabIndex =11
                     ForeColor =4210752
                     Name ="btnDeactivate"
                     Caption ="Account deactiveren"
@@ -244,10 +244,10 @@ Begin Form
                     Top =4485
                     Width =2271
                     Height =315
-                    TabIndex =4
+                    TabIndex =6
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text2"
+                    Name ="txtPost"
                     ControlSource ="postalcode"
                     GridlineColor =10921638
 
@@ -281,10 +281,10 @@ Begin Form
                     Top =3405
                     Width =3396
                     Height =345
-                    TabIndex =5
+                    TabIndex =4
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text4"
+                    Name ="txtAdress2"
                     ControlSource ="adress_street2"
                     GridlineColor =10921638
 
@@ -318,10 +318,10 @@ Begin Form
                     Top =2265
                     Width =2271
                     Height =315
-                    TabIndex =6
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text6"
+                    Name ="txtLast"
                     ControlSource ="lastname"
                     GridlineColor =10921638
 
@@ -358,7 +358,7 @@ Begin Form
                     TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text8"
+                    Name ="txtCity"
                     ControlSource ="city"
                     GridlineColor =10921638
 
@@ -395,7 +395,7 @@ Begin Form
                     TabIndex =8
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text10"
+                    Name ="txtCountry"
                     ControlSource ="country"
                     GridlineColor =10921638
 
@@ -432,7 +432,7 @@ Begin Form
                     TabIndex =9
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text12"
+                    Name ="txtBirth"
                     ControlSource ="birthdate"
                     GridlineColor =10921638
 
@@ -459,41 +459,16 @@ Begin Form
                         End
                     End
                 End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =566
-                    Top =566
-                    TabIndex =10
-                    ForeColor =4210752
-                    Name ="Command9"
-                    Caption ="Terug"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =566
-                    LayoutCachedTop =566
-                    LayoutCachedWidth =2267
-                    LayoutCachedHeight =849
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
                 Begin TextBox
                     OverlapFlags =85
                     IMESentenceMode =3
                     Left =2267
                     Top =3975
                     Height =315
-                    TabIndex =11
+                    TabIndex =5
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="adress_number"
+                    Name ="txtAdressN"
                     ControlSource ="adress_number"
                     GridlineColor =10921638
 
@@ -526,10 +501,10 @@ Begin Form
                     Left =2271
                     Top =6690
                     Height =315
-                    TabIndex =12
+                    TabIndex =10
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="isseller"
+                    Name ="txtSeller"
                     ControlSource ="isseller"
                     Format ="True/False"
                     GridlineColor =10921638
@@ -557,6 +532,58 @@ Begin Form
                         End
                     End
                 End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =1260
+                    Top =7530
+                    TabIndex =12
+                    ForeColor =4210752
+                    Name ="btnSave"
+                    Caption ="Opslaan"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =1260
+                    LayoutCachedTop =7530
+                    LayoutCachedWidth =2961
+                    LayoutCachedHeight =7813
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =3855
+                    Top =7540
+                    TabIndex =13
+                    ForeColor =4210752
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =3855
+                    LayoutCachedTop =7540
+                    LayoutCachedWidth =5556
+                    LayoutCachedHeight =7823
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
             End
         End
     End
@@ -567,6 +594,29 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+
+Private Sub btnBack_Click()
+    If MsgBox("Weet je zeker dat je deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
+       If _
+       Me.txtUser.OldValue <> Me.txtUser.Value Or _
+       Me.txtFirst.OldValue <> Me.txtFirst.Value Or _
+       Me.txtLast.OldValue <> Me.txtLast.Value Or _
+       Me.txtAdress1.OldValue <> Me.txtAdress1.Value Or _
+       Me.txtAdress2.OldValue <> Me.txtAdress2.Value Or _
+       Me.txtAdressN.OldValue <> Me.txtAdressN.Value Or _
+       Me.txtPost.OldValue <> Me.txtPost.Value Or _
+       Me.txtCity.OldValue <> Me.txtCity.Value Or _
+       Me.txtCountry.OldValue <> Me.txtCountry.Value Or _
+       Me.txtBirth.OldValue <> Me.txtBirth.Value Or _
+       Me.txtSeller.OldValue <> Me.txtSeller.Value _
+       Then
+        
+            DoCmd.RunCommand acCmdUndo
+        End If
+    DoCmd.Close
+    End If
+
+End Sub
 
 Private Sub btnDeactivate_Click()
     Dim query As String
@@ -586,4 +636,8 @@ Private Sub btnDeactivate_Click()
     
     DoCmd.Close
     
+End Sub
+
+Private Sub btnSave_Click()
+    DoCmd.Close , , acSavePrompt
 End Sub

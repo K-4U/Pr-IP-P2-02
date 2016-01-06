@@ -11,7 +11,7 @@ Begin Form
     DatasheetFontHeight =11
     ItemSuffix =54
     Right =25335
-    Bottom =12480
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x1584059a6dade440
@@ -200,9 +200,11 @@ Begin Form
                     OverlapFlags =85
                     Left =3401
                     Top =170
+                    TabIndex =7
                     ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Logout"
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =3401
@@ -226,7 +228,7 @@ Begin Form
                     Top =694
                     Width =4761
                     Height =786
-                    TabIndex =1
+                    TabIndex =8
                     BorderColor =10921638
                     Name ="Kader13"
                     GridlineColor =10921638
@@ -259,7 +261,7 @@ Begin Form
                     OverlapFlags =85
                     Left =3285
                     Top =4695
-                    TabIndex =2
+                    TabIndex =6
                     ForeColor =4210752
                     Name ="butInsert"
                     Caption ="Toevoegen"
@@ -282,10 +284,11 @@ Begin Form
                     WebImagePaddingBottom =1
                 End
                 Begin CommandButton
+                    Default = NotDefault
                     OverlapFlags =215
                     Left =3055
                     Top =1020
-                    TabIndex =3
+                    TabIndex =1
                     ForeColor =4210752
                     Name ="cmdSearchUser"
                     Caption ="Zoeken"
@@ -315,7 +318,6 @@ Begin Form
                     Top =1025
                     Width =2271
                     Height =315
-                    TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtUsername"
@@ -330,7 +332,7 @@ Begin Form
                     OverlapFlags =85
                     Left =450
                     Top =3825
-                    TabIndex =4
+                    TabIndex =3
                     BorderColor =10921638
                     Name ="chkCustomerService"
                     GridlineColor =10921638
@@ -362,7 +364,7 @@ Begin Form
                     OverlapFlags =85
                     Left =450
                     Top =4230
-                    TabIndex =5
+                    TabIndex =4
                     BorderColor =10921638
                     Name ="chkAdmin"
                     GridlineColor =10921638
@@ -394,7 +396,7 @@ Begin Form
                     OverlapFlags =85
                     Left =450
                     Top =4680
-                    TabIndex =6
+                    TabIndex =5
                     BorderColor =10921638
                     Name ="chkManager"
                     GridlineColor =10921638
@@ -429,7 +431,7 @@ Begin Form
                     Top =1590
                     Width =4762
                     Height =2034
-                    TabIndex =8
+                    TabIndex =2
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstUsers"
@@ -453,6 +455,10 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+
+Private Sub btnBack_Click()
+    DoCmd.Close
+End Sub
 
 Private Sub butInsert_Click()
     Dim queryString As String
@@ -479,7 +485,7 @@ Private Sub butInsert_Click()
         MsgBox "te weinig info"
     End If
     
-    Me.lstUsers.Requery
+    DoCmd.Close
     
 End Sub
 
@@ -497,13 +503,6 @@ Private Sub cmdSearchUser_Click()
              
              
     Me.lstUsers.RowSource = query
-'    "SELECT users.username AS Gebruikersnaam"
-'             FROM Users
-'             WHERE users.username NOT IN (SELECT username FROM rank"
-    
-'SELECT users.username AS Gebruikersnaam
-'FROM Users
-'WHERE users.username NOT IN (SELECT username FROM ranks)
 
 End Sub
 

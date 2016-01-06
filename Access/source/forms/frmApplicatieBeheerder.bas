@@ -7,11 +7,11 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =17612
+    Width =9127
     DatasheetFontHeight =11
     ItemSuffix =33
     Right =25335
-    Bottom =12480
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x78fd0d4bf0aae440
@@ -21,6 +21,7 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
+    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -162,7 +163,7 @@ Begin Form
         End
         Begin Section
             CanGrow = NotDefault
-            Height =4988
+            Height =4818
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -170,68 +171,46 @@ Begin Form
             BackThemeColorIndex =1
             Begin
                 Begin CommandButton
+                    Cancel = NotDefault
                     OverlapFlags =85
-                    Left =4485
-                    Top =390
-                    TabIndex =1
-                    ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Logout"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =4485
-                    LayoutCachedTop =390
-                    LayoutCachedWidth =6186
-                    LayoutCachedHeight =673
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =4480
-                    Top =4365
-                    ForeColor =4210752
-                    Name ="Knop24"
-                    Caption ="Verwijderen"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =4480
-                    LayoutCachedTop =4365
-                    LayoutCachedWidth =6181
-                    LayoutCachedHeight =4648
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =2490
-                    Top =4365
+                    Left =5955
+                    Top =285
                     TabIndex =2
+                    ForeColor =4210752
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =5955
+                    LayoutCachedTop =285
+                    LayoutCachedWidth =7656
+                    LayoutCachedHeight =568
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =5895
+                    Top =4365
+                    TabIndex =1
                     ForeColor =4210752
                     Name ="btnAdd"
                     Caption ="Toevoegen"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2490
+                    LayoutCachedLeft =5895
                     LayoutCachedTop =4365
-                    LayoutCachedWidth =4191
+                    LayoutCachedWidth =7596
                     LayoutCachedHeight =4648
                     BackColor =15123357
                     BorderColor =15123357
@@ -248,9 +227,8 @@ Begin Form
                     OverlapFlags =85
                     Left =570
                     Top =795
-                    Width =5610
+                    Width =7080
                     Height =3345
-                    TabIndex =3
                     BorderColor =10921638
                     Name ="subfrmRanks"
                     SourceObject ="Form.subfrmRanks"
@@ -258,7 +236,7 @@ Begin Form
 
                     LayoutCachedLeft =570
                     LayoutCachedTop =795
-                    LayoutCachedWidth =6180
+                    LayoutCachedWidth =7650
                     LayoutCachedHeight =4140
                 End
             End
@@ -274,4 +252,16 @@ Option Compare Database
 
 Private Sub btnAdd_Click()
     DoCmd.OpenForm "frmApplicatiebeheertoevoegen", , , , acFormAdd, acDialog
+    
+    Me.Requery
+    
+End Sub
+
+
+Private Sub btnBack_Click()
+    DoCmd.Close
+End Sub
+
+Private Sub Form_Load()
+    Me.subfrmRanks.Form.Requery
 End Sub

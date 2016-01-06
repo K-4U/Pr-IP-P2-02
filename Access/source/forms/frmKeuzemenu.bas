@@ -10,8 +10,8 @@ Begin Form
     Width =3344
     DatasheetFontHeight =11
     ItemSuffix =8
-    Right =18105
-    Bottom =12510
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x0760798412aee440
@@ -97,7 +97,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =2891
+            Height =2721
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -200,15 +200,17 @@ Private Sub btnKlantenservice_Click()
     'Forms!frmLogin.Username
 End Sub
 
+Private Sub btnManagement_Click()
+    DoCmd.OpenForm "frmManagementSwitchboard", , , , , acDialog
+End Sub
+
 Private Sub Form_Load()
     Dim rs As Recordset
     Dim queryString As String
-    
+          
     queryString = "SELECT customer_service, administrator, manager " & _
     "FROM ranks " & _
     "WHERE username = '" & Forms!frmLogin.usernameGlobal & "'"
-    
-    MsgBox queryString
 
     Set rs = CurrentDb.OpenRecordset(queryString)
     
