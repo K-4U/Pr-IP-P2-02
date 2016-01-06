@@ -337,7 +337,7 @@ class db {
                     $data[] = "'" . $value . "'";
                 }
             } else {
-                $data[] = "''";
+                $data[] = "NULL";
             }
 
         }
