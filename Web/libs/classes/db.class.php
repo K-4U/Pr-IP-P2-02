@@ -37,7 +37,7 @@ class db {
      * Object used internally to store connections
      * @var null
      */
-    private $dbo = null;
+    public $dbo = null;
 
     /**
      * db constructor.
@@ -141,13 +141,13 @@ class db {
      * @return bool|mixed|resource
      */
     public function query($sql, $die = true, $args = Array()) {
-
         $return = false;
         switch ($this->type) {
             case SQLTYPES::MSSQL:
                 $return = mssql_query($sql) or ($die ? die($this->getLastError()) : false);
                 break;
             case SQLTYPES::SQLSRV:
+                
                 $return = sqlsrv_query($this->dbo, $sql, $args) or ($die ? die($this->getLastError(false)) : "");
                 break;
         }

@@ -273,4 +273,12 @@ function removeHTMLFromPOST($POST){
     return $NPOST;
 }
 
+function vd($a,$stacktrace=false){
+    echo "<pre>";
+    if($stacktrace){
+        debug_print_backtrace();
+    }
+    var_dump($a);
+    echo "</pre>";
+}
 ?>

@@ -2,13 +2,15 @@
 
 class searchPage extends cmsPage {
 
-    function parse($query) {
+    function parse($query, $p) {
         //Fetch number of objects in this category:
-        $countResult = $this->db->buildQuery("SELECT COUNT(id) AS c FROM objects WHERE title LIKE '%%s%' OR description LIKE '%%s%'",$query, $query);
+
+        $query = "%" . $query . "%";
+        //THANK YOU SILVAN FOR FIXING THIS BUG FOR ME!
+        $countResult = $this->db->buildQuery("SELECT COUNT(id) AS c FROM objects WHERE title LIKE ? OR description LIKE ?",$query, $query);
         $c = $this->db->fetchAssoc($countResult)['c'];
 
-        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE title LIKE '%%s%' OR description LIKE '%%s%'";
-        $result = null;
+        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE title LIKE ? OR description LIKE ?";
         $maxPerPage = 18;
         if($c > $maxPerPage){
             if($p > 0){
@@ -30,8 +32,6 @@ class searchPage extends cmsPage {
         $this->addToBreadcrumbs("Home", baseurl(""));
         $this->addToBreadcrumbs("Zoeken");
 
-        $this->website->assign("category", $category);
-        $this->website->assign("categories", $categories);
         $this->website->assign("objects", $objects);
         $this->render("Categorie", 'lot/objects.tpl');
     }
