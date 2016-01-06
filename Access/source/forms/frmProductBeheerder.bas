@@ -7,7 +7,7 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =6973
+    Width =7483
     DatasheetFontHeight =11
     ItemSuffix =14
     Right =25335
@@ -135,8 +135,8 @@ Begin Form
             Begin
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =4648
-                    Top =283
+                    Left =5325
+                    Top =285
                     TabIndex =6
                     ForeColor =4210752
                     Name ="btnBack"
@@ -144,10 +144,10 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =4648
-                    LayoutCachedTop =283
-                    LayoutCachedWidth =6349
-                    LayoutCachedHeight =566
+                    LayoutCachedLeft =5325
+                    LayoutCachedTop =285
+                    LayoutCachedWidth =7026
+                    LayoutCachedHeight =568
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -163,7 +163,7 @@ Begin Form
                 Begin TextBox
                     OverlapFlags =93
                     IMESentenceMode =3
-                    Left =2374
+                    Left =2194
                     Top =1309
                     Width =2256
                     Height =315
@@ -172,14 +172,14 @@ Begin Form
                     Name ="txtNumber"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2374
+                    LayoutCachedLeft =2194
                     LayoutCachedTop =1309
-                    LayoutCachedWidth =4630
+                    LayoutCachedWidth =4450
                     LayoutCachedHeight =1624
                     Begin
                         Begin Label
                             OverlapFlags =93
-                            Left =507
+                            Left =327
                             Top =1305
                             Width =1650
                             Height =315
@@ -188,16 +188,16 @@ Begin Form
                             Name ="Bijschrift1"
                             Caption ="Productnummer:"
                             GridlineColor =10921638
-                            LayoutCachedLeft =507
+                            LayoutCachedLeft =327
                             LayoutCachedTop =1305
-                            LayoutCachedWidth =2157
+                            LayoutCachedWidth =1977
                             LayoutCachedHeight =1620
                         End
                     End
                 End
                 Begin OptionGroup
                     OverlapFlags =255
-                    Left =390
+                    Left =210
                     Top =972
                     Width =4520
                     Height =2327
@@ -206,15 +206,15 @@ Begin Form
                     Name ="Kader2"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =390
+                    LayoutCachedLeft =210
                     LayoutCachedTop =972
-                    LayoutCachedWidth =4910
+                    LayoutCachedWidth =4730
                     LayoutCachedHeight =3299
                     Begin
                         Begin Label
                             BackStyle =1
                             OverlapFlags =247
-                            Left =507
+                            Left =327
                             Top =855
                             Width =2145
                             Height =315
@@ -223,9 +223,9 @@ Begin Form
                             Name ="Bijschrift3"
                             Caption ="Zoeken van producten"
                             GridlineColor =10921638
-                            LayoutCachedLeft =507
+                            LayoutCachedLeft =327
                             LayoutCachedTop =855
-                            LayoutCachedWidth =2652
+                            LayoutCachedWidth =2472
                             LayoutCachedHeight =1170
                         End
                     End
@@ -234,7 +234,7 @@ Begin Form
                     OverlapFlags =247
                     FilterLookup =0
                     IMESentenceMode =3
-                    Left =2374
+                    Left =2194
                     Top =1774
                     Width =2256
                     Height =315
@@ -245,14 +245,14 @@ Begin Form
                     DefaultValue ="\"\""
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2374
+                    LayoutCachedLeft =2194
                     LayoutCachedTop =1774
-                    LayoutCachedWidth =4630
+                    LayoutCachedWidth =4450
                     LayoutCachedHeight =2089
                     Begin
                         Begin Label
                             OverlapFlags =247
-                            Left =507
+                            Left =327
                             Top =1770
                             Width =1590
                             Height =315
@@ -261,17 +261,18 @@ Begin Form
                             Name ="Bijschrift5"
                             Caption ="Producttitel:"
                             GridlineColor =10921638
-                            LayoutCachedLeft =507
+                            LayoutCachedLeft =327
                             LayoutCachedTop =1770
-                            LayoutCachedWidth =2097
+                            LayoutCachedWidth =1917
                             LayoutCachedHeight =2085
                         End
                     End
                 End
                 Begin CommandButton
                     Cancel = NotDefault
+                    Enabled = NotDefault
                     OverlapFlags =247
-                    Left =2945
+                    Left =2765
                     Top =2835
                     TabIndex =4
                     ForeColor =4210752
@@ -280,9 +281,9 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2945
+                    LayoutCachedLeft =2765
                     LayoutCachedTop =2835
-                    LayoutCachedWidth =4646
+                    LayoutCachedWidth =4466
                     LayoutCachedHeight =3118
                     BackColor =15123357
                     BorderColor =15123357
@@ -299,7 +300,7 @@ Begin Form
                 Begin CommandButton
                     Default = NotDefault
                     OverlapFlags =247
-                    Left =507
+                    Left =327
                     Top =2835
                     TabIndex =3
                     ForeColor =4210752
@@ -308,9 +309,9 @@ Begin Form
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =507
+                    LayoutCachedLeft =327
                     LayoutCachedTop =2835
-                    LayoutCachedWidth =2208
+                    LayoutCachedWidth =2028
                     LayoutCachedHeight =3118
                     BackColor =15123357
                     BorderColor =15123357
@@ -327,7 +328,7 @@ Begin Form
                 Begin TextBox
                     OverlapFlags =247
                     IMESentenceMode =3
-                    Left =2374
+                    Left =2194
                     Top =2269
                     Width =2256
                     Height =315
@@ -337,14 +338,14 @@ Begin Form
                     Name ="txtCategory"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2374
+                    LayoutCachedLeft =2194
                     LayoutCachedTop =2269
-                    LayoutCachedWidth =4630
+                    LayoutCachedWidth =4450
                     LayoutCachedHeight =2584
                     Begin
                         Begin Label
                             OverlapFlags =247
-                            Left =507
+                            Left =327
                             Top =2265
                             Width =1590
                             Height =315
@@ -353,9 +354,9 @@ Begin Form
                             Name ="Bijschrift10"
                             Caption ="Rubrieknaam:"
                             GridlineColor =10921638
-                            LayoutCachedLeft =507
+                            LayoutCachedLeft =327
                             LayoutCachedTop =2265
-                            LayoutCachedWidth =2097
+                            LayoutCachedWidth =1917
                             LayoutCachedHeight =2580
                         End
                     End
@@ -365,26 +366,30 @@ Begin Form
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =3
-                    Left =350
+                    Left =170
                     Top =4034
-                    Width =6407
+                    Width =7097
                     Height =3117
                     TabIndex =5
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstProducts"
                     RowSourceType ="Table/Query"
+                    RowSource ="SELECT OB.id AS Productnummer, OB.title AS Productnaam, CA.name AS Rubrieknaam F"
+                        "ROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) L"
+                        "EFT JOIN categories AS CA ON OC.category_id = CA.id"
+                    ColumnWidths ="1701;2268;2835"
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =350
+                    LayoutCachedLeft =170
                     LayoutCachedTop =4034
-                    LayoutCachedWidth =6757
+                    LayoutCachedWidth =7267
                     LayoutCachedHeight =7151
                 End
                 Begin Label
                     OverlapFlags =85
-                    Left =345
+                    Left =165
                     Top =3570
                     Width =4215
                     Height =285
@@ -393,9 +398,9 @@ Begin Form
                     Name ="Bijschrift46"
                     Caption ="Dubbelklikken op product voor meer details."
                     GridlineColor =10921638
-                    LayoutCachedLeft =345
+                    LayoutCachedLeft =165
                     LayoutCachedTop =3570
-                    LayoutCachedWidth =4560
+                    LayoutCachedWidth =4380
                     LayoutCachedHeight =3855
                 End
             End
@@ -493,7 +498,7 @@ Private Sub lstProducts_DblClick(Cancel As Integer)
         id_selected = Me.lstProducts.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
-    DoCmd.OpenForm "frmProductBeheerderDetails", , , "[OBID] = " & id_selected, acFormReadOnly, acDialog
+    DoCmd.OpenForm "frmProductBeheerderDetails", , , "[OBID] = " & id_selected, , acDialog
     
     Me.lstProducts.Requery
 End Sub

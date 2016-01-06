@@ -486,7 +486,7 @@ Begin Form
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Bijschrift16"
-                            Caption ="adress_number"
+                            Caption ="Huisnummer"
                             GridlineColor =10921638
                             LayoutCachedLeft =570
                             LayoutCachedTop =3979
@@ -518,16 +518,16 @@ Begin Form
                             OverlapFlags =85
                             Left =570
                             Top =6690
-                            Width =750
+                            Width =945
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Bijschrift17"
-                            Caption ="isseller"
+                            Caption ="Verkoper"
                             GridlineColor =10921638
                             LayoutCachedLeft =570
                             LayoutCachedTop =6690
-                            LayoutCachedWidth =1320
+                            LayoutCachedWidth =1515
                             LayoutCachedHeight =7005
                         End
                     End
@@ -596,7 +596,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnBack_Click()
-    If MsgBox("Weet je zeker dat je deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
+    If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
        If _
        Me.txtUser.OldValue <> Me.txtUser.Value Or _
        Me.txtFirst.OldValue <> Me.txtFirst.Value Or _

@@ -24,7 +24,6 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
-    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -298,7 +297,7 @@ Begin Form
                     Left =2264
                     Top =3000
                     Width =3528
-                    Height =1418
+                    Height =1913
                     TabIndex =5
                     ForeColor =4210752
                     BorderColor =10921638
@@ -310,7 +309,7 @@ Begin Form
                     LayoutCachedLeft =2264
                     LayoutCachedTop =3000
                     LayoutCachedWidth =5792
-                    LayoutCachedHeight =4418
+                    LayoutCachedHeight =4913
                     Begin
                         Begin Label
                             OverlapFlags =85
@@ -443,8 +442,4 @@ Private Sub Form_Current()
    
     Me.lstSubCat.RowSource = queryString
     Me.lstSubCat.Requery
-End Sub
-
-Private Sub Form_Load()
-    
 End Sub

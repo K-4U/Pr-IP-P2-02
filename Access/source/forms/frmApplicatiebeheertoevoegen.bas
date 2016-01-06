@@ -478,14 +478,18 @@ Private Sub butInsert_Click()
     queryString = "INSERT INTO ranks " & _
     "VALUES ('" & user_selected & "'," & IIf(cs = False, 0, 1) & "," & IIf(ad = False, 0, 1) & "," & IIf(ma = False, 0, 1) & ")"
     
-    If cs = True Or ad = True Or ma = True Then
-        MsgBox queryString
-        Application.CurrentDb.Execute (queryString)
+    If Nz(user_selected, "") <> "" And cs = True Or ad = True Or ma = True Then
+        
+        DoCmd.SetWarnings False
+        DoCmd.RunSQL queryString
+        DoCmd.SetWarnings True
+        
+        DoCmd.Close
     Else
-        MsgBox "te weinig info"
+        MsgBox "Te weinig info ingevuld!", vbCritical, "Fout"
     End If
     
-    DoCmd.Close
+    
     
 End Sub
 
