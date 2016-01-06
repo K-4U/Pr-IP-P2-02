@@ -141,7 +141,6 @@ class db {
      * @return bool|mixed|resource
      */
     public function query($sql, $die = true, $args = Array()) {
-
         $return = false;
         switch ($this->type) {
             case SQLTYPES::MSSQL:
@@ -337,7 +336,7 @@ class db {
                     $data[] = "'" . $value . "'";
                 }
             } else {
-                $data[] = "''";
+                $data[] = "NULL";
             }
 
         }
