@@ -7,17 +7,16 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =7086
+    Width =6803
     DatasheetFontHeight =11
-    ItemSuffix =19
-    Right =25335
-    Bottom =12090
+    ItemSuffix =20
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
-    Filter ="[id] = 17"
     RecSrcDt = Begin
-        0x66f3ae1e0daee440
+        0xc4099b73f1b0e440
     End
-    RecordSource ="SELECT id, name FROM categories; "
+    RecordSource ="SELECT id, name FROM categories;"
     OnCurrent ="[Event Procedure]"
     DatasheetFontName ="Calibri"
     PrtMip = Begin
@@ -136,7 +135,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =5626
+            Height =5385
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -145,68 +144,20 @@ Begin Form
             Begin
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =570
-                    Top =285
+                    Left =4478
+                    Top =1365
+                    TabIndex =4
                     ForeColor =4210752
-                    Name ="Command8"
-                    Caption ="Terug"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =570
-                    LayoutCachedTop =285
-                    LayoutCachedWidth =2271
-                    LayoutCachedHeight =568
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =4539
-                    Top =285
-                    TabIndex =1
-                    ForeColor =4210752
-                    Name ="Knop8"
+                    Name ="btnNew"
                     Caption ="Nieuw"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =4539
-                    LayoutCachedTop =285
-                    LayoutCachedWidth =6240
-                    LayoutCachedHeight =568
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =4530
-                    Top =5160
-                    TabIndex =2
-                    ForeColor =4210752
-                    Name ="btnEdit"
-                    Caption ="Edit"
                     OnClick ="[Event Procedure]"
+                    OnExit ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =4530
-                    LayoutCachedTop =5160
-                    LayoutCachedWidth =6231
-                    LayoutCachedHeight =5443
+                    LayoutCachedLeft =4478
+                    LayoutCachedTop =1365
+                    LayoutCachedWidth =6179
+                    LayoutCachedHeight =1648
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -223,11 +174,11 @@ Begin Form
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =3
-                    Left =570
-                    Top =2040
+                    Left =394
+                    Top =1753
                     Width =5783
                     Height =2892
-                    TabIndex =3
+                    TabIndex =1
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstCategory"
@@ -236,34 +187,33 @@ Begin Form
                     OnDblClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =570
-                    LayoutCachedTop =2040
-                    LayoutCachedWidth =6353
-                    LayoutCachedHeight =4932
+                    LayoutCachedLeft =394
+                    LayoutCachedTop =1753
+                    LayoutCachedWidth =6177
+                    LayoutCachedHeight =4645
                 End
                 Begin TextBox
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Left =570
-                    Top =1140
+                    Left =394
+                    Top =735
                     Width =5676
                     Height =315
-                    TabIndex =4
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtName"
                     ControlSource ="name"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =570
-                    LayoutCachedTop =1140
-                    LayoutCachedWidth =6246
-                    LayoutCachedHeight =1455
+                    LayoutCachedLeft =394
+                    LayoutCachedTop =735
+                    LayoutCachedWidth =6070
+                    LayoutCachedHeight =1050
                 End
                 Begin Label
                     OverlapFlags =85
-                    Left =570
-                    Top =795
+                    Left =394
+                    Top =390
                     Width =1380
                     Height =285
                     BorderColor =8355711
@@ -271,15 +221,15 @@ Begin Form
                     Name ="Bijschrift15"
                     Caption ="Hoofdrubriek:"
                     GridlineColor =10921638
-                    LayoutCachedLeft =570
-                    LayoutCachedTop =795
-                    LayoutCachedWidth =1950
-                    LayoutCachedHeight =1080
+                    LayoutCachedLeft =394
+                    LayoutCachedTop =390
+                    LayoutCachedWidth =1774
+                    LayoutCachedHeight =675
                 End
                 Begin Label
                     OverlapFlags =85
-                    Left =566
-                    Top =1700
+                    Left =390
+                    Top =1365
                     Width =1395
                     Height =285
                     BorderColor =8355711
@@ -287,27 +237,27 @@ Begin Form
                     Name ="Bijschrift16"
                     Caption ="Subrubrieken:"
                     GridlineColor =10921638
-                    LayoutCachedLeft =566
-                    LayoutCachedTop =1700
-                    LayoutCachedWidth =1961
-                    LayoutCachedHeight =1985
+                    LayoutCachedLeft =390
+                    LayoutCachedTop =1365
+                    LayoutCachedWidth =1785
+                    LayoutCachedHeight =1650
                 End
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =6462
-                    Top =2891
+                    Left =6286
+                    Top =2604
                     Width =291
-                    TabIndex =5
+                    TabIndex =2
                     ForeColor =4210752
                     Name ="btnUp"
                     Caption ="▲"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =6462
-                    LayoutCachedTop =2891
-                    LayoutCachedWidth =6753
-                    LayoutCachedHeight =3174
+                    LayoutCachedLeft =6286
+                    LayoutCachedTop =2604
+                    LayoutCachedWidth =6577
+                    LayoutCachedHeight =2887
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -321,20 +271,97 @@ Begin Form
                 End
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =6462
-                    Top =3746
+                    Left =6286
+                    Top =3459
                     Width =291
-                    TabIndex =6
+                    TabIndex =3
                     ForeColor =4210752
                     Name ="btnDown"
                     Caption ="▼"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =6462
-                    LayoutCachedTop =3746
-                    LayoutCachedWidth =6753
-                    LayoutCachedHeight =4029
+                    LayoutCachedLeft =6286
+                    LayoutCachedTop =3459
+                    LayoutCachedWidth =6577
+                    LayoutCachedHeight =3742
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =2434
+                    Top =4814
+                    TabIndex =5
+                    ForeColor =4210752
+                    Name ="btnEdit"
+                    Caption ="Edit"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2434
+                    LayoutCachedTop =4814
+                    LayoutCachedWidth =4135
+                    LayoutCachedHeight =5097
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =394
+                    Top =4813
+                    TabIndex =6
+                    ForeColor =4210752
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =394
+                    LayoutCachedTop =4813
+                    LayoutCachedWidth =2095
+                    LayoutCachedHeight =5096
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =4419
+                    Top =4813
+                    TabIndex =7
+                    ForeColor =4210752
+                    Name ="btnSave"
+                    Caption ="Opslaan"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =4419
+                    LayoutCachedTop =4813
+                    LayoutCachedWidth =6120
+                    LayoutCachedHeight =5096
                     BackColor =15123357
                     BorderColor =15123357
                     HoverColor =15652797
@@ -356,6 +383,35 @@ Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
+
+Private Sub btnNew_Click()
+    Dim priority As Integer
+    
+    priority = Me.lstCategory.ListCount
+
+    DoCmd.OpenForm "frmNieuweRubriek", , , , , acDialog, Me.id & "|" & priority
+    
+End Sub
+
+Private Sub btnNew_Exit(Cancel As Integer)
+    Me.lstCategory.Requery
+End Sub
+
+Private Sub btnSave_Click()
+    DoCmd.Close , , acSavePrompt
+End Sub
+
+Private Sub btnBack_Click()
+    If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
+       If _
+       Me.lstCategory.OldValue <> Me.lstCategory.Value _
+       Then
+            DoCmd.RunCommand acCmdUndo
+        End If
+    DoCmd.Close
+    End If
+
+End Sub
 
 Private Sub btnDown_Click()
     Dim id_selected As Integer

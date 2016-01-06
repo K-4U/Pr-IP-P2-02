@@ -7,25 +7,25 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =10658
+    Width =7823
     DatasheetFontHeight =11
-    ItemSuffix =27
-    Right =25335
+    ItemSuffix =30
+    Right =25080
     Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0xbf1e2654d5b0e440
+        0xefdca21eedb0e440
     End
     RecordSource ="SELECT OB.id AS OBID, OB.title, OB.description, OB.buyer, OB.seller, OB.payment_"
-        "method, OB.shipment_instructions, OB.city, OB.country, CA.id AS CatID, CA.name, "
-        "OC.category_id AS OCID FROM (objects AS OB LEFT JOIN object_in_category AS OC ON"
-        " OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id; "
+        "method, payment_instructions, shipment_costs, OB.shipment_instructions, OB.city,"
+        " OB.country, CA.id AS CatID, CA.name, OC.category_id AS OCID FROM (objects AS OB"
+        " LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categorie"
+        "s AS CA ON OC.category_id = CA.id;"
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
-    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -184,7 +184,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =10022
+            Height =12413
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -200,7 +200,7 @@ Begin Form
                     Height =315
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text1"
+                    Name ="txtTitle"
                     ControlSource ="title"
                     GridlineColor =10921638
 
@@ -237,7 +237,7 @@ Begin Form
                     TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text7"
+                    Name ="txtDesc"
                     ControlSource ="description"
                     GridlineColor =10921638
 
@@ -271,10 +271,10 @@ Begin Form
                     Top =4640
                     Width =2271
                     Height =315
-                    TabIndex =2
+                    TabIndex =4
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text0"
+                    Name ="txtPay"
                     ControlSource ="payment_method"
                     GridlineColor =10921638
 
@@ -304,63 +304,63 @@ Begin Form
                 Begin TextBox
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Left =2844
-                    Top =5162
+                    Left =2852
+                    Top =7207
                     Width =3966
                     Height =1425
-                    TabIndex =3
+                    TabIndex =7
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text2"
+                    Name ="TxtShipIns"
                     ControlSource ="shipment_instructions"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2844
-                    LayoutCachedTop =5162
-                    LayoutCachedWidth =6810
-                    LayoutCachedHeight =6587
+                    LayoutCachedLeft =2852
+                    LayoutCachedTop =7207
+                    LayoutCachedWidth =6818
+                    LayoutCachedHeight =8632
                     Begin
                         Begin Label
                             OverlapFlags =85
-                            Left =574
-                            Top =5162
+                            Left =582
+                            Top =7207
                             Width =1860
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Label3"
-                            Caption ="Betalingsinstrucitie"
+                            Caption ="Verzendinstructie"
                             GridlineColor =10921638
-                            LayoutCachedLeft =574
-                            LayoutCachedTop =5162
-                            LayoutCachedWidth =2434
-                            LayoutCachedHeight =5477
+                            LayoutCachedLeft =582
+                            LayoutCachedTop =7207
+                            LayoutCachedWidth =2442
+                            LayoutCachedHeight =7522
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Left =2844
-                    Top =6872
+                    Left =2840
+                    Top =8790
                     Width =2271
                     Height =315
-                    TabIndex =4
+                    TabIndex =8
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text4"
+                    Name ="txtCity"
                     ControlSource ="city"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2844
-                    LayoutCachedTop =6872
-                    LayoutCachedWidth =5115
-                    LayoutCachedHeight =7187
+                    LayoutCachedLeft =2840
+                    LayoutCachedTop =8790
+                    LayoutCachedWidth =5111
+                    LayoutCachedHeight =9105
                     Begin
                         Begin Label
                             OverlapFlags =85
-                            Left =574
-                            Top =6872
+                            Left =570
+                            Top =8790
                             Width =1680
                             Height =315
                             BorderColor =8355711
@@ -368,36 +368,36 @@ Begin Form
                             Name ="Label5"
                             Caption ="Plaatsnaam"
                             GridlineColor =10921638
-                            LayoutCachedLeft =574
-                            LayoutCachedTop =6872
-                            LayoutCachedWidth =2254
-                            LayoutCachedHeight =7187
+                            LayoutCachedLeft =570
+                            LayoutCachedTop =8790
+                            LayoutCachedWidth =2250
+                            LayoutCachedHeight =9105
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =85
                     IMESentenceMode =3
-                    Left =2844
-                    Top =7442
+                    Left =2840
+                    Top =9360
                     Width =2271
                     Height =315
-                    TabIndex =5
+                    TabIndex =9
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Text6"
+                    Name ="txtCountry"
                     ControlSource ="country"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2844
-                    LayoutCachedTop =7442
-                    LayoutCachedWidth =5115
-                    LayoutCachedHeight =7757
+                    LayoutCachedLeft =2840
+                    LayoutCachedTop =9360
+                    LayoutCachedWidth =5111
+                    LayoutCachedHeight =9675
                     Begin
                         Begin Label
                             OverlapFlags =85
-                            Left =574
-                            Top =7442
+                            Left =570
+                            Top =9360
                             Width =1680
                             Height =315
                             BorderColor =8355711
@@ -405,64 +405,21 @@ Begin Form
                             Name ="Label7"
                             Caption ="Land"
                             GridlineColor =10921638
-                            LayoutCachedLeft =574
-                            LayoutCachedTop =7442
-                            LayoutCachedWidth =2254
-                            LayoutCachedHeight =7757
+                            LayoutCachedLeft =570
+                            LayoutCachedTop =9360
+                            LayoutCachedWidth =2250
+                            LayoutCachedHeight =9675
                         End
                     End
                 End
-                Begin CommandButton
-                    OverlapFlags =85
-                    Left =566
-                    Top =566
-                    TabIndex =6
-                    ForeColor =4210752
-                    Name ="Command9"
-                    Caption ="Terug"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =566
-                    LayoutCachedTop =566
-                    LayoutCachedWidth =2267
-                    LayoutCachedHeight =849
-                    BackColor =15123357
-                    BorderColor =15123357
-                    HoverColor =15652797
-                    PressedColor =11957550
-                    HoverForeColor =4210752
-                    PressedForeColor =4210752
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                End
                 Begin TextBox
-                    OverlapFlags =93
-                    IMESentenceMode =3
-                    Left =2039
-                    Top =8280
-                    Width =2271
-                    Height =315
-                    TabIndex =7
-                    BorderColor =10921638
-                    ForeColor =4210752
-                    Name ="txtRubriek"
-                    ControlSource ="name"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =2039
-                    LayoutCachedTop =8280
-                    LayoutCachedWidth =4310
-                    LayoutCachedHeight =8595
-                End
-                Begin TextBox
+                    Enabled = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
                     Left =2838
                     Top =1140
                     Height =315
-                    TabIndex =8
+                    TabIndex =13
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtId"
@@ -478,16 +435,16 @@ Begin Form
                             OverlapFlags =85
                             Left =570
                             Top =1140
-                            Width =255
+                            Width =1035
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Bijschrift12"
-                            Caption ="id"
+                            Caption ="Product ID"
                             GridlineColor =10921638
                             LayoutCachedLeft =570
                             LayoutCachedTop =1140
-                            LayoutCachedWidth =825
+                            LayoutCachedWidth =1605
                             LayoutCachedHeight =1455
                         End
                     End
@@ -498,10 +455,10 @@ Begin Form
                     Left =2838
                     Top =4140
                     Height =315
-                    TabIndex =9
+                    TabIndex =3
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="seller"
+                    Name ="txtSeller"
                     ControlSource ="seller"
                     GridlineColor =10921638
 
@@ -514,16 +471,16 @@ Begin Form
                             OverlapFlags =85
                             Left =570
                             Top =4140
-                            Width =600
+                            Width =945
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Bijschrift13"
-                            Caption ="seller"
+                            Caption ="Verkoper"
                             GridlineColor =10921638
                             LayoutCachedLeft =570
                             LayoutCachedTop =4140
-                            LayoutCachedWidth =1170
+                            LayoutCachedWidth =1515
                             LayoutCachedHeight =4455
                         End
                     End
@@ -534,10 +491,10 @@ Begin Form
                     Left =2838
                     Top =3630
                     Height =315
-                    TabIndex =10
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="buyer"
+                    Name ="txtBuyer"
                     ControlSource ="buyer"
                     GridlineColor =10921638
 
@@ -550,28 +507,29 @@ Begin Form
                             OverlapFlags =85
                             Left =570
                             Top =3630
-                            Width =615
+                            Width =630
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
                             Name ="Bijschrift14"
-                            Caption ="buyer"
+                            Caption ="Koper"
                             GridlineColor =10921638
                             LayoutCachedLeft =570
                             LayoutCachedTop =3630
-                            LayoutCachedWidth =1185
+                            LayoutCachedWidth =1200
                             LayoutCachedHeight =3945
                         End
                     End
                 End
                 Begin TextBox
+                    Enabled = NotDefault
                     OverlapFlags =93
                     IMESentenceMode =3
                     Left =735
-                    Top =8280
-                    Width =1206
+                    Top =10320
+                    Width =1596
                     Height =315
-                    TabIndex =11
+                    TabIndex =14
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="CAtID"
@@ -579,31 +537,31 @@ Begin Form
                     GridlineColor =10921638
 
                     LayoutCachedLeft =735
-                    LayoutCachedTop =8280
-                    LayoutCachedWidth =1941
-                    LayoutCachedHeight =8595
+                    LayoutCachedTop =10320
+                    LayoutCachedWidth =2331
+                    LayoutCachedHeight =10635
                 End
                 Begin OptionGroup
                     OverlapFlags =255
-                    Left =566
-                    Top =7993
+                    Left =574
+                    Top =10038
                     Width =6520
-                    Height =1871
-                    TabIndex =12
+                    Height =791
+                    TabIndex =15
                     BorderColor =10921638
                     Name ="Kader23"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =566
-                    LayoutCachedTop =7993
-                    LayoutCachedWidth =7086
-                    LayoutCachedHeight =9864
+                    LayoutCachedLeft =574
+                    LayoutCachedTop =10038
+                    LayoutCachedWidth =7094
+                    LayoutCachedHeight =10829
                     Begin
                         Begin Label
                             BackStyle =1
                             OverlapFlags =247
-                            Left =686
-                            Top =7873
+                            Left =694
+                            Top =9918
                             Width =825
                             Height =315
                             BorderColor =8355711
@@ -611,10 +569,10 @@ Begin Form
                             Name ="Bijschrift24"
                             Caption ="Rubriek"
                             GridlineColor =10921638
-                            LayoutCachedLeft =686
-                            LayoutCachedTop =7873
-                            LayoutCachedWidth =1511
-                            LayoutCachedHeight =8188
+                            LayoutCachedLeft =694
+                            LayoutCachedTop =9918
+                            LayoutCachedWidth =1519
+                            LayoutCachedHeight =10233
                         End
                     End
                 End
@@ -622,41 +580,149 @@ Begin Form
                     OverlapFlags =247
                     IMESentenceMode =3
                     ColumnCount =2
-                    Left =2436
-                    Top =8955
+                    Left =2835
+                    Top =10320
                     Width =3685
                     Height =315
-                    TabIndex =13
+                    TabIndex =10
                     BorderColor =10921638
                     ForeColor =3484194
                     ColumnInfo ="\"\";\"\";\"\";\"\";\"10\";\"128\""
-                    Name ="Keuzelijst25"
+                    Name ="lstCat"
                     ControlSource ="OCID"
                     RowSourceType ="Table/Query"
-                    RowSource ="SELECT id, name FROM categories; "
+                    RowSource ="SELECT * FROM categories  WHERE id NOT IN (\011SELECT parent \011\011\011\011\011"
+                        "FROM categories \011\011\011\011\011WHERE parent IS NOT NULL)"
                     ColumnWidths ="0;567"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2436
-                    LayoutCachedTop =8955
-                    LayoutCachedWidth =6121
-                    LayoutCachedHeight =9270
+                    LayoutCachedLeft =2835
+                    LayoutCachedTop =10320
+                    LayoutCachedWidth =6520
+                    LayoutCachedHeight =10635
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =631
+                    Top =11342
+                    TabIndex =12
+                    ForeColor =4210752
+                    Name ="btnBack"
+                    Caption ="Terug"
+                    OnClick ="[Event Procedure]"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =631
+                    LayoutCachedTop =11342
+                    LayoutCachedWidth =2332
+                    LayoutCachedHeight =11625
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin CommandButton
+                    OverlapFlags =85
+                    Left =5280
+                    Top =11342
+                    TabIndex =11
+                    ForeColor =4210752
+                    Name ="btnSave"
+                    Caption ="Opslaan"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =5280
+                    LayoutCachedTop =11342
+                    LayoutCachedWidth =6981
+                    LayoutCachedHeight =11625
+                    BackColor =15123357
+                    BorderColor =15123357
+                    HoverColor =15652797
+                    PressedColor =11957550
+                    HoverForeColor =4210752
+                    PressedForeColor =4210752
+                    WebImagePaddingLeft =2
+                    WebImagePaddingTop =2
+                    WebImagePaddingRight =1
+                    WebImagePaddingBottom =1
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =2834
+                    Top =5215
+                    Width =3981
+                    Height =1305
+                    TabIndex =5
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="txtPayIns"
+                    ControlSource ="payment_instructions"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2834
+                    LayoutCachedTop =5215
+                    LayoutCachedWidth =6815
+                    LayoutCachedHeight =6520
                     Begin
                         Begin Label
-                            OverlapFlags =247
-                            Left =735
-                            Top =8955
-                            Width =1200
+                            OverlapFlags =85
+                            Left =566
+                            Top =5215
+                            Width =2100
                             Height =315
                             BorderColor =8355711
                             ForeColor =8355711
-                            Name ="Bijschrift26"
-                            Caption ="Keuzelijst25"
+                            Name ="Bijschrift28"
+                            Caption ="Betalingsinstructie"
                             GridlineColor =10921638
-                            LayoutCachedLeft =735
-                            LayoutCachedTop =8955
-                            LayoutCachedWidth =1935
-                            LayoutCachedHeight =9270
+                            LayoutCachedLeft =566
+                            LayoutCachedTop =5215
+                            LayoutCachedWidth =2666
+                            LayoutCachedHeight =5530
+                        End
+                    End
+                End
+                Begin TextBox
+                    OverlapFlags =85
+                    IMESentenceMode =3
+                    Left =2838
+                    Top =6750
+                    Width =2271
+                    Height =315
+                    TabIndex =6
+                    BorderColor =10921638
+                    ForeColor =4210752
+                    Name ="txtShip"
+                    ControlSource ="shipment_costs"
+                    GridlineColor =10921638
+
+                    LayoutCachedLeft =2838
+                    LayoutCachedTop =6750
+                    LayoutCachedWidth =5109
+                    LayoutCachedHeight =7065
+                    Begin
+                        Begin Label
+                            OverlapFlags =85
+                            Left =570
+                            Top =6750
+                            Width =1755
+                            Height =315
+                            BorderColor =8355711
+                            ForeColor =8355711
+                            Name ="Bijschrift29"
+                            Caption ="Verzendkosten"
+                            GridlineColor =10921638
+                            LayoutCachedLeft =570
+                            LayoutCachedTop =6750
+                            LayoutCachedWidth =2325
+                            LayoutCachedHeight =7065
                         End
                     End
                 End
@@ -671,17 +737,28 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Compare Database
 
-Private Sub Form_Load()
-    Dim rs As Recordset
-    Dim queryString As String
-    
-    queryString = "SELECT name " & _
-    "FROM (objects OB LEFT OUTER JOIN object_in_category OC ON OB.id = " & _
-    "OC.object_id) LEFT OUTER JOIN categories CA ON OC.category_id = CA.id " & _
-    "WHERE OB.id = " & Me.txtId.Value
-    
-    Set rs = CurrentDb.OpenRecordset(queryString)
-    
-    Me.txtRubriek = rs!name
-    
+Private Sub btnBack_Click()
+    If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
+       If _
+       Me.txtTitle.OldValue <> Me.txtTitle.Value Or _
+       Me.txtDesc.OldValue <> Me.txtDesc.Value Or _
+       Me.txtBuyer.OldValue <> Me.txtBuyer.Value Or _
+       Me.txtSeller.OldValue <> Me.txtSeller.Value Or _
+       Me.txtPay.OldValue <> Me.txtPay.Value Or _
+       Me.txtPayIns.OldValue <> Me.txtPayIns.Value Or _
+       Me.TxtShip.OldValue <> Me.TxtShip.Value Or _
+       Me.TxtShipIns.OldValue <> Me.TxtShipIns.Value Or _
+       Me.txtCity.OldValue <> Me.txtCity.Value Or _
+       Me.txtCountry.OldValue <> Me.txtCountry.Value Or _
+       Me.lstCat.OldValue <> Me.lstCat.Value _
+       Then
+            DoCmd.RunCommand acCmdUndo
+        End If
+    DoCmd.Close
+    End If
+
+End Sub
+
+Private Sub btnSave_Click()
+    DoCmd.Close , , acSavePrompt
 End Sub
