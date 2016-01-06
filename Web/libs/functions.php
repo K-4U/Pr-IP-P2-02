@@ -205,7 +205,7 @@ function parseObjects($result, $username = null) {
 
         $imageResult = $db->buildQuery("SELECT TOP 1 filename FROM files WHERE objectid=%d", $row['id']);
         if($db->getHasRows($imageResult)) {
-            $row['image'] = baseurl("images/uploads/" . $db->fetchAssoc($imageResult)['filename']);
+            $row['image'] = baseurl("uploads/" . $db->fetchAssoc($imageResult)['filename']);
         } else {
             $row['image'] = "https://placehold.it/150x110";
         }

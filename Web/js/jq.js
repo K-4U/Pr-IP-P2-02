@@ -101,11 +101,15 @@ $(document).ready(function () {
             if (v < (4 * 3600)) {
                 obj.css("color", "#ff0d00");
             }
-            var t = (v + '').toHHMMSS();
-            obj.text(t);
+            if(v < 0){
+                obj.text("Afgelopen");
+            }else {
+                var t = (v + '').toHHMMSS();
+                obj.text(t);
 
-            time += 1;
-            setTimeout(timeFunc, 1000);
+                time += 1;
+                setTimeout(timeFunc, 1000);
+            }
         };
 
         if(startTime > 0) {

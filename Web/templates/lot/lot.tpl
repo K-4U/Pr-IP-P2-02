@@ -96,12 +96,12 @@
             <ul class="nav nav-tabs info">
                 <li class="active"><a data-toggle="tab" href="#description">Beschrijving</a></li>
                 <li><a data-toggle="tab" href="#payment">Betaling</a></li>
-                <li><a data-toggle="tab" href="#shipment">Verzending</a></li>
+                {if $object.shipment_costs>0}<li><a data-toggle="tab" href="#shipment">Verzending</a></li>{/if}
             </ul>
             <div class="tab-content well-upper no-rounded-corners-top no-border-top objectDescription">
                 <div class="tab-pane fade in active" id="description">{$object.description}</div>
-                <div class="tab-pane fade in" id="payment">{$object.payment_instructions}</div>
-                <div class="tab-pane fade in" id="shipment">{$object.shipment_instructions}</div>
+                <div class="tab-pane fade in" id="payment"><b>Betaalmethode: </b>{$object.payment_method}<br />{$object.payment_instructions}</div>
+                {if $object.shipment_costs>0}<div class="tab-pane fade in" id="shipment">{$object.shipment_instructions}</div>{/if}
             </div>
         </div>
     </div>
