@@ -10,8 +10,8 @@ Begin Form
     Width =8388
     DatasheetFontHeight =11
     ItemSuffix =17
-    Right =25335
-    Bottom =12375
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x506517df50aee440
@@ -218,6 +218,7 @@ Begin Form
                     Top =120
                     Width =1941
                     Height =315
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="Text6"
@@ -237,7 +238,7 @@ Begin Form
                     Top =120
                     Width =1776
                     Height =315
-                    TabIndex =1
+                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtDateSent"
@@ -256,7 +257,6 @@ Begin Form
                     Left =225
                     Top =120
                     Height =315
-                    TabIndex =2
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtName"
