@@ -298,3 +298,7 @@ nav.headerrow{
 select option:disabled {
     font-weight:bold;
 }
+
+.categories > li > a {
+    padding: 0;
+}

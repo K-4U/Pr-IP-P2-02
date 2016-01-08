@@ -1,4 +1,4 @@
-<ul class="nav tree">
+<ul class="nav tree categories">
     {foreach $categories as $category}
         <li>
         {if $category.sub|sizeof > 0}
