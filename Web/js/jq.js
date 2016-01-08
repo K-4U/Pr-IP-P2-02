@@ -117,6 +117,7 @@ $(document).ready(function () {
             if (days == 0) {
                 timeFunc();
             } else {
+                days++;
                 obj.text(days + " dag" + (days > 1 ? "en" : ""));
             }
         }else{
