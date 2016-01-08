@@ -246,6 +246,13 @@ $(document).ready(function () {
             event.preventDefault()
         }
     });
+
+
+    var maxObjectHeight = 0;
+    $.each($(".object"), function(){
+        maxObjectHeight = (maxObjectHeight < $(this).outerHeight() ? $(this).outerHeight() : maxObjectHeight);
+    });
+    $(".object").css('min-height', maxObjectHeight);
 });
 
 
