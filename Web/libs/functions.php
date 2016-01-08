@@ -205,7 +205,11 @@ function parseObjects($result, $username = null) {
 
         $imageResult = $db->buildQuery("SELECT TOP 1 filename FROM files WHERE objectid=%d", $row['id']);
         if($db->getHasRows($imageResult)) {
-            $row['image'] = baseurl("uploads/" . $db->fetchAssoc($imageResult)['filename']);
+            if($row['city'] == 'batch'){
+                $row['image'] = "http://iproject2.icasites.nl/pics/" . $db->fetchAssoc($imageResult)['filename'];
+            }else{
+                $row['image'] = baseurl("upload/" . $db->fetchAssoc($imageResult)['filename']);
+            }
         } else {
             $row['image'] = "https://placehold.it/150x110";
         }

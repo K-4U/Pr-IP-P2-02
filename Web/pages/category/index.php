@@ -10,7 +10,7 @@ class categories extends cmsPage {
         $countResult = $this->db->buildQuery("SELECT COUNT(object_id) AS c FROM object_in_category WHERE category_id=%i",$id);
         $c = $this->db->fetchAssoc($countResult)['c'];
 
-        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE id IN (SELECT object_id FROM object_in_category WHERE category_id=%i) ORDER BY start_moment DESC";
+        $sql = "SELECT id,title,end_moment,start_bid,city FROM objects WHERE id IN (SELECT object_id FROM object_in_category WHERE category_id=%i) ORDER BY start_moment DESC";
         $result = null;
         $maxPerPage = 18;
         if($c > $maxPerPage){

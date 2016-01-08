@@ -43,7 +43,11 @@ class kavelItem extends cmsPage {
             //Fetch images:
             $imageResult = $this->db->buildQuery("SELECT filename FROM files WHERE objectid=%i", $this->argsIndexed[0]);
             if($this->db->getHasRows($imageResult)) {
-                $object['image'] = baseurl("images/uploads/" . $this->db->fetchAssoc($imageResult)['filename']);
+                if($object['city'] == 'batch'){
+                    $object['image'] = "http://iproject2.icasites.nl/pics/" . $this->db->fetchAssoc($imageResult)['filename'];
+                }else{
+                    $object['image'] = baseurl("upload/" . $this->db->fetchAssoc($imageResult)['filename']);
+                }
             } else {
                 $object['image'] = "https://placehold.it/465x465";
             }
