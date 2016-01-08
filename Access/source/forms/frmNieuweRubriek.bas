@@ -10,8 +10,8 @@ Begin Form
     Width =5272
     DatasheetFontHeight =11
     ItemSuffix =11
-    Right =19800
-    Bottom =12120
+    Right =5805
+    Bottom =1680
     DatasheetGridlinesColor =15132391
     Filter ="parentID = 1 AND priorityID = 1"
     RecSrcDt = Begin
@@ -205,6 +205,7 @@ Private Sub cmdAddCategory_Click()
     Dim query As String
     Dim parentID As Integer
     Dim priorityID As Integer
+    Dim rs As Recordset
     
     If Not IsNull(Me.OpenArgs) Then
         varSplitString = Split(Me.OpenArgs, "|")
@@ -212,16 +213,42 @@ Private Sub cmdAddCategory_Click()
         priorityID = varSplitString(1)
         
         If Nz(Me.txtParentName.Value, "") = "" Then
-        MsgBox "U heeft geen naam ingegeven. Het scherm wordt weer afgesloten.", vbCritical, "Fout"
-        DoCmd.Close
+            MsgBox "U heeft geen naam ingegeven. Het scherm wordt weer afgesloten.", vbCritical, "Fout"
+            DoCmd.Close
         Else
-        query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Me.txtParentName & "'," & parentID & " ," & priorityID & ")"
+            
+            Set rs = CurrentDb.OpenRecordset("SELECT * FROM object_in_category WHERE category_id = " & parentID)
+            
+            MsgBox rs.RecordCount
         
-        DoCmd.SetWarnings False
-        DoCmd.RunSQL query
-        DoCmd.SetWarnings True
-        
-        DoCmd.Close
+            If rs.RecordCount > 0 Then
+                'Find the max id
+                Dim maxID As Integer
+                
+                
+                'Create a new category to dump all files of current category
+                DoCmd.RunSQL ("INSERT INTO categories (name,parent,priority) VALUES ('Overig'," & parentID & " ,1)")
+                
+                maxID = DMax("id", "categories")
+                MsgBox maxID
+                
+                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Me.txtParentName & "'," & parentID & " , 2)"
+                
+                DoCmd.RunSQL query
+                
+                DoCmd.RunSQL ("UPDATE object_in_category SET category_id = " & (maxID + 1) & " WHERE category_id = " & parentID & "")
+                
+                DoCmd.Close
+            
+            Else
+                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Me.txtParentName & "'," & parentID & " ," & priorityID & ")"
+                
+                DoCmd.SetWarnings False
+                DoCmd.RunSQL query
+                DoCmd.SetWarnings True
+                
+                DoCmd.Close
+            End If
         End If
         
     Else
