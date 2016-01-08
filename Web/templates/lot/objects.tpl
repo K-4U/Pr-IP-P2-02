@@ -9,7 +9,7 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
     {if $paginationNeeded}
     <div class="row">
-        <div class="col-md-2 col-md-offset-10">
+        <div class="pull-right">
             <ul class="pagination">
                 <li>
                     <a class="pagination-prev" aria-label="Previous">
@@ -44,7 +44,7 @@
     </div>
     {if $paginationNeeded}
     <div class="row">
-        <div class="col-md-2 col-md-offset-10">
+        <div class="pull-right">
             <ul class="pagination">
                 <li>
                     <a class="pagination-prev" aria-label="Previous">
