@@ -214,7 +214,7 @@ $(document).ready(function () {
         }
     }).each(function (){
         var page = getCurrentPage();
-        if(page == parseInt($("#maxPages").val(), 10)){
+        if(page == parseInt($("#maxPages").val(), 10)+1){
             $($(this).parent()).addClass("disabled");
         }
     });
