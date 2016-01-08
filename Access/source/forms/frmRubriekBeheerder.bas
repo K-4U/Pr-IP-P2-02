@@ -341,6 +341,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     ColumnWidths ="0;3969;1134"
                     OnDblClick ="[Event Procedure]"
+                    OnGotFocus ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =450
@@ -589,8 +590,6 @@ Private Sub chkCategories_Click()
     "WHERE (((parent) Is Null)) " & _
     "ORDER BY priority"
     
-    Me.btnDown.Enabled = True
-    Me.btnUp.Enabled = True
     Me.btnAdd.Enabled = True
     Me.btnSearch.Enabled = False
     
@@ -605,6 +604,8 @@ Private Sub Form_Current()
     ' set first checkbox default checked
     Me.chkCategories.Value = False
     Me.btnSearch.Enabled = False
+    Me.btnDown.Enabled = False
+    Me.btnUp.Enabled = False
     
     query = "SELECT id, name AS Rubrieknaam, priority AS Volgnummer " & _
     "FROM categories " & _
@@ -626,4 +627,9 @@ Private Sub lstCategory_DblClick(Cancel As Integer)
     DoCmd.OpenForm "frmRubriekStructuur", , , "[id] = " & id_selected, , acDialog
     
     Me.lstCategory.Requery
+End Sub
+
+Private Sub lstCategory_GotFocus()
+    Me.btnDown.Enabled = True
+    Me.btnUp.Enabled = True
 End Sub

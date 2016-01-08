@@ -185,6 +185,7 @@ Begin Form
                     RowSourceType ="Table/Query"
                     ColumnWidths ="0;3969;567"
                     OnDblClick ="[Event Procedure]"
+                    OnGotFocus ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =394
@@ -402,13 +403,20 @@ Private Sub btnSave_Click()
 End Sub
 
 Private Sub btnBack_Click()
-    If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
-       If _
-       Me.lstCategory.OldValue <> Me.lstCategory.Value _
-       Then
+    Dim rs As Recordset
+
+    If Me.lstCategory.OldValue <> Me.lstCategory.Value Then
+        If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
             DoCmd.RunCommand acCmdUndo
         End If
-    DoCmd.Close
+    End If
+        
+    Set rs = CurrentDb.OpenRecordset("SELECT parent FROM categories WHERE id = " & Me.id)
+    
+    If IsNull(rs!parent) Then
+        DoCmd.Close
+    Else
+        DoCmd.OpenForm "frmRubriekStructuur", , , "[id] = " & rs!parent, , acDialog
     End If
 
 End Sub
@@ -488,6 +496,9 @@ Private Sub Form_Current()
    
     Me.lstCategory.RowSource = queryString
     Me.lstCategory.Requery
+    
+    Me.btnDown.Enabled = False
+    Me.btnUp.Enabled = False
 End Sub
  
 Private Sub lstCategory_DblClick(Cancel As Integer)
@@ -503,4 +514,9 @@ Private Sub lstCategory_DblClick(Cancel As Integer)
     DoCmd.OpenForm "frmRubriekStructuur", , , "[id] = " & id_selected, , acDialog
         
     Me.lstCategory.Requery
+End Sub
+
+Private Sub lstCategory_GotFocus()
+    Me.btnDown.Enabled = True
+    Me.btnUp.Enabled = True
 End Sub
