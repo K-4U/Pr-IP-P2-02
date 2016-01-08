@@ -10,7 +10,7 @@ class searchPage extends cmsPage {
         $countResult = $this->db->buildQuery("SELECT COUNT(id) AS c FROM objects WHERE title LIKE ? OR description LIKE ?",$query, $query);
         $c = $this->db->fetchAssoc($countResult)['c'];
 
-        $sql = "SELECT id,title,end_moment,start_bid FROM objects WHERE title LIKE ? OR description LIKE ? ORDER BY start_bid ASC";
+        $sql = "SELECT id,title,end_moment,start_bid,city FROM objects WHERE title LIKE ? OR description LIKE ? ORDER BY start_bid ASC";
         $maxPerPage = 18;
         if($c > $maxPerPage){
             if($p > 0){
