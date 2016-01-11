@@ -9,20 +9,18 @@ Begin Form
     GridY =10
     Width =3344
     DatasheetFontHeight =11
-    ItemSuffix =8
+    ItemSuffix =9
     Right =25335
     Bottom =12090
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
-        0x0760798412aee440
+        0xad3bb44bf0aae440
     End
-    RecordSource ="SELECT * FROM ranks; "
     DatasheetFontName ="Calibri"
     PrtMip = Begin
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
-    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -97,7 +95,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =2721
+            Height =2834
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -109,8 +107,8 @@ Begin Form
                     Left =566
                     Top =566
                     ForeColor =4210752
-                    Name ="btnKlantenservice"
-                    Caption ="Klantenservice"
+                    Name ="btnCustomer"
+                    Caption ="Klanten"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
@@ -135,8 +133,8 @@ Begin Form
                     Top =1260
                     TabIndex =1
                     ForeColor =4210752
-                    Name ="btnBeheer"
-                    Caption ="Beheerder"
+                    Name ="btnProducts"
+                    Caption ="Producten"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
@@ -161,8 +159,8 @@ Begin Form
                     Top =1920
                     TabIndex =2
                     ForeColor =4210752
-                    Name ="btnManagement"
-                    Caption ="Management"
+                    Name ="btnFeedback"
+                    Caption ="Feedback"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
@@ -190,41 +188,17 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Compare Database
 
-Private Sub btnBeheer_Click()
-    DoCmd.OpenForm "frmMenuBeheerder", , , , , acDialog
+
+Private Sub btnCustomer_Click()
+    DoCmd.OpenForm "frmKlantenKlantenservice", , , , , acDialog
 End Sub
 
-Private Sub btnKlantenservice_Click()
-    DoCmd.OpenForm "frmMenuKlatenservice", , , , , acDialog
+Private Sub btnFeedback_Click()
+    DoCmd.OpenForm "frmFeedbackManagement", , , , , acDialog
 End Sub
 
-Private Sub btnManagement_Click()
-    DoCmd.OpenForm "frmManagementSwitchboard", , , , , acDialog
-End Sub
-
-Private Sub Form_Load()
-    Dim rs As Recordset
-    Dim queryString As String
-    
-    Me.btnKlantenservice.Enabled = False
-    Me.btnBeheer.Enabled = False
-    Me.btnManagement.Enabled = False
-          
-    queryString = "SELECT customer_service, administrator, manager " & _
-    "FROM ranks " & _
-    "WHERE username = '" & Forms!frmLogin.usernameGlobal & "'"
-
-    Set rs = CurrentDb.OpenRecordset(queryString)
-    
-    If rs!customer_service = True Then
-        Me.btnKlantenservice.Enabled = True
-               
-    ElseIf rs!administrator = True Then
-        Me.btnBeheer.Enabled = True
-    
-    ElseIf rs!manager = True Then
-        Me.btnManagement.Enabled = True
-    End If
-
+Private Sub btnProducts_Click()
+    DoCmd.OpenForm "frmProductKlantenservice", , , , , acDialog
 End Sub

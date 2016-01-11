@@ -159,8 +159,9 @@ Begin Form
                     Top =1920
                     TabIndex =2
                     ForeColor =4210752
-                    Name ="Knop6"
+                    Name ="btnFeedback"
                     Caption ="Feedback"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =570
@@ -252,6 +253,10 @@ End Sub
 
 Private Sub btnCustomer_Click()
     DoCmd.OpenForm "frmKlantenBeheerder", , , , , acDialog
+End Sub
+
+Private Sub btnFeedback_Click()
+    DoCmd.OpenForm "frmFeedbackManagement", , , , , acDialog
 End Sub
 
 Private Sub btnProducts_Click()
