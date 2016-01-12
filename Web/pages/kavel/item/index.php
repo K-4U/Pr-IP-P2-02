@@ -20,12 +20,16 @@ class kavelItem extends cmsPage {
             if(isset($_POST['submit']) && isset($_POST['bid']) && $this->user->isLoggedIn()) {
                 if($_POST['bid'] >= $this->db->fetchIndex($this->db->executeFunction('dbo.fnMinimalNewBid', $object['id']))[0]) {
                     if($object['seller'] != $this->user->getName()) {
-                        $insertArray = Array(
-                            "objectid"  => $object['id'],
-                            "bidvalue"  => $_POST['bid'],
-                            "username"  => $this->user->getName(),
-                            "bidmoment" => date('Y-m-d H:i:s')
-                        );
+                        if($_POST['bid']<1000000) {
+                            $insertArray = Array(
+                                "objectid"  => $object['id'],
+                                "bidvalue"  => $_POST['bid'],
+                                "username"  => $this->user->getName(),
+                                "bidmoment" => date('Y-m-d H:i:s')
+                            );
+                        } else {
+                            $this->website->assign("bidError","Je bod overschrijd de maximale gepermitteerde bedrag.");
+                        }
 
                         $this->db->insert("bids", $insertArray);
                         $error = $this->db->getLastError();

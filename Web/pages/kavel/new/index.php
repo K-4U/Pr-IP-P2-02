@@ -34,9 +34,9 @@ class kavelNew extends cmsPage {
                     } else {
                         $errors['descriptionErr'] = "Lengte van de beschrijving bestaat niet uit 1 tot 4000 tekens.";
                     }
-                    if(number_format($_POST['start_bid'], 2) > 0 && number_format($_POST['start_bid'], 2) < 1000000) {
+                    if(number_format($_POST['start_bid'], 2) > 0 && number_format($_POST['start_bid'], 2) < 100000) {
                     } else {
-                        $errors['start_bidErr'] = "Vul een startbod in wat minimaal 1 karakter en maximaal 999999,99 is.";
+                        $errors['start_bidErr'] = "Vul een startbod in wat minimaal 1 karakter en maximaal 99999,99 is.";
                     }
                     if(trim(strlen($_POST['location'])) > 1 && trim(strlen($_POST['location'])) < 163) {
                     } else {

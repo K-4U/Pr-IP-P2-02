@@ -7,11 +7,13 @@ Begin Form
     PictureAlignment =2
     DatasheetGridlinesBehavior =3
     GridY =10
-    Width =7370
+    Width =7380
     DatasheetFontHeight =11
-    ItemSuffix =47
-    Right =19800
-    Bottom =12120
+    ItemSuffix =48
+    Left =12660
+    Top =1620
+    Right =20580
+    Bottom =10455
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x8003329cd3b0e440
@@ -145,7 +147,7 @@ Begin Form
             GridlineShade =65.0
         End
         Begin Section
-            Height =7200
+            Height =8844
             Name ="Detail"
             AlternateBackColor =15921906
             AlternateBackThemeColorIndex =1
@@ -154,19 +156,19 @@ Begin Form
             Begin
                 Begin CommandButton
                     OverlapFlags =85
-                    Left =5164
-                    Top =225
-                    TabIndex =7
+                    Left =5102
+                    Top =453
+                    TabIndex =5
                     ForeColor =4210752
                     Name ="btnBack"
                     Caption ="Terug"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =5164
-                    LayoutCachedTop =225
-                    LayoutCachedWidth =6865
-                    LayoutCachedHeight =508
+                    LayoutCachedLeft =5102
+                    LayoutCachedTop =453
+                    LayoutCachedWidth =6803
+                    LayoutCachedHeight =736
                     BackColor =15123357
                     BorderColor =15123357
                     WebImagePaddingLeft =2
@@ -178,24 +180,24 @@ Begin Form
                 Begin OptionGroup
                     OverlapFlags =93
                     Left =345
-                    Top =694
+                    Top =2899
                     Width =6651
-                    Height =2031
-                    TabIndex =8
+                    Height =1566
+                    TabIndex =6
                     BorderColor =10921638
                     Name ="Kader13"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =345
-                    LayoutCachedTop =694
+                    LayoutCachedTop =2899
                     LayoutCachedWidth =6996
-                    LayoutCachedHeight =2725
+                    LayoutCachedHeight =4465
                     Begin
                         Begin Label
                             BackStyle =1
                             OverlapFlags =215
                             Left =460
-                            Top =572
+                            Top =2777
                             Width =1275
                             Height =315
                             BorderColor =8355711
@@ -204,34 +206,33 @@ Begin Form
                             Caption ="Klant zoeken"
                             GridlineColor =10921638
                             LayoutCachedLeft =460
-                            LayoutCachedTop =572
+                            LayoutCachedTop =2777
                             LayoutCachedWidth =1735
-                            LayoutCachedHeight =887
+                            LayoutCachedHeight =3092
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =215
                     IMESentenceMode =3
-                    Left =2160
-                    Top =1422
+                    Left =2141
+                    Top =3225
                     Width =2271
                     Height =315
-                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtPostalcode"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2160
-                    LayoutCachedTop =1422
-                    LayoutCachedWidth =4431
-                    LayoutCachedHeight =1737
+                    LayoutCachedLeft =2141
+                    LayoutCachedTop =3225
+                    LayoutCachedWidth =4412
+                    LayoutCachedHeight =3540
                     Begin
                         Begin Label
                             OverlapFlags =215
-                            Left =474
-                            Top =1425
+                            Left =455
+                            Top =3228
                             Width =930
                             Height =315
                             BorderColor =8355711
@@ -239,35 +240,35 @@ Begin Form
                             Name ="Bijschrift16"
                             Caption ="Postcode"
                             GridlineColor =10921638
-                            LayoutCachedLeft =474
-                            LayoutCachedTop =1425
-                            LayoutCachedWidth =1404
-                            LayoutCachedHeight =1740
+                            LayoutCachedLeft =455
+                            LayoutCachedTop =3228
+                            LayoutCachedWidth =1385
+                            LayoutCachedHeight =3543
                         End
                     End
                 End
                 Begin TextBox
                     OverlapFlags =215
                     IMESentenceMode =3
-                    Left =2160
-                    Top =1819
+                    Left =2141
+                    Top =3622
                     Width =1041
                     Height =315
-                    TabIndex =2
+                    TabIndex =1
                     BorderColor =10921638
                     ForeColor =4210752
                     Name ="txtAdressnumber"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2160
-                    LayoutCachedTop =1819
-                    LayoutCachedWidth =3201
-                    LayoutCachedHeight =2134
+                    LayoutCachedLeft =2141
+                    LayoutCachedTop =3622
+                    LayoutCachedWidth =3182
+                    LayoutCachedHeight =3937
                     Begin
                         Begin Label
                             OverlapFlags =215
-                            Left =469
-                            Top =1819
+                            Left =450
+                            Top =3622
                             Width =1275
                             Height =315
                             BorderColor =8355711
@@ -275,52 +276,29 @@ Begin Form
                             Name ="Bijschrift18"
                             Caption ="Huisnummer"
                             GridlineColor =10921638
-                            LayoutCachedLeft =469
-                            LayoutCachedTop =1819
-                            LayoutCachedWidth =1744
-                            LayoutCachedHeight =2134
+                            LayoutCachedLeft =450
+                            LayoutCachedTop =3622
+                            LayoutCachedWidth =1725
+                            LayoutCachedHeight =3937
                         End
                     End
                 End
                 Begin CommandButton
-                    OverlapFlags =85
-                    Left =5270
-                    Top =6746
-                    TabIndex =6
-                    ForeColor =4210752
-                    Name ="btnDelete"
-                    Caption ="Deactiveren"
-                    OnClick ="[Event Procedure]"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =5270
-                    LayoutCachedTop =6746
-                    LayoutCachedWidth =6971
-                    LayoutCachedHeight =7029
-                    BackColor =15123357
-                    BorderColor =15123357
-                    WebImagePaddingLeft =2
-                    WebImagePaddingTop =2
-                    WebImagePaddingRight =1
-                    WebImagePaddingBottom =1
-                    Overlaps =1
-                End
-                Begin CommandButton
                     Default = NotDefault
                     OverlapFlags =215
-                    Left =469
-                    Top =2265
-                    TabIndex =3
+                    Left =450
+                    Top =4068
+                    TabIndex =2
                     ForeColor =4210752
                     Name ="cmdSearchUser"
                     Caption ="Zoeken"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =469
-                    LayoutCachedTop =2265
-                    LayoutCachedWidth =2170
-                    LayoutCachedHeight =2548
+                    LayoutCachedLeft =450
+                    LayoutCachedTop =4068
+                    LayoutCachedWidth =2151
+                    LayoutCachedHeight =4351
                     BackColor =15123357
                     BorderColor =15123357
                     WebImagePaddingLeft =2
@@ -332,19 +310,19 @@ Begin Form
                 Begin CommandButton
                     Cancel = NotDefault
                     OverlapFlags =215
-                    Left =2434
-                    Top =2265
-                    TabIndex =4
+                    Left =2415
+                    Top =4068
+                    TabIndex =3
                     ForeColor =4210752
                     Name ="cmdResetUser"
                     Caption ="Reset"
                     OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
-                    LayoutCachedLeft =2434
-                    LayoutCachedTop =2265
-                    LayoutCachedWidth =4135
-                    LayoutCachedHeight =2548
+                    LayoutCachedLeft =2415
+                    LayoutCachedTop =4068
+                    LayoutCachedWidth =4116
+                    LayoutCachedHeight =4351
                     BackColor =15123357
                     BorderColor =15123357
                     WebImagePaddingLeft =2
@@ -353,51 +331,16 @@ Begin Form
                     WebImagePaddingBottom =1
                     Overlaps =1
                 End
-                Begin TextBox
-                    OverlapFlags =215
-                    IMESentenceMode =3
-                    Left =2160
-                    Top =1025
-                    Width =2271
-                    Height =315
-                    BorderColor =10921638
-                    ForeColor =4210752
-                    Name ="txtUsername"
-                    GridlineColor =10921638
-
-                    LayoutCachedLeft =2160
-                    LayoutCachedTop =1025
-                    LayoutCachedWidth =4431
-                    LayoutCachedHeight =1340
-                    Begin
-                        Begin Label
-                            OverlapFlags =215
-                            Left =469
-                            Top =1035
-                            Width =1605
-                            Height =315
-                            BorderColor =8355711
-                            ForeColor =8355711
-                            Name ="Bijschrift27"
-                            Caption ="Gebruikersnaam"
-                            GridlineColor =10921638
-                            LayoutCachedLeft =469
-                            LayoutCachedTop =1035
-                            LayoutCachedWidth =2074
-                            LayoutCachedHeight =1350
-                        End
-                    End
-                End
                 Begin ListBox
                     ColumnHeads = NotDefault
                     OverlapFlags =85
                     IMESentenceMode =3
                     ColumnCount =4
                     Left =345
-                    Top =3345
+                    Top =4980
                     Width =6651
                     Height =3232
-                    TabIndex =5
+                    TabIndex =4
                     ForeColor =4210752
                     BorderColor =10921638
                     Name ="lstUsers"
@@ -408,14 +351,14 @@ Begin Form
                     AllowValueListEdits =0
 
                     LayoutCachedLeft =345
-                    LayoutCachedTop =3345
+                    LayoutCachedTop =4980
                     LayoutCachedWidth =6996
-                    LayoutCachedHeight =6577
+                    LayoutCachedHeight =8212
                 End
                 Begin Label
                     OverlapFlags =85
                     Left =345
-                    Top =2955
+                    Top =4590
                     Width =4005
                     Height =285
                     BorderColor =8355711
@@ -424,9 +367,28 @@ Begin Form
                     Caption ="Dubbelklikken op naam voor meer details."
                     GridlineColor =10921638
                     LayoutCachedLeft =345
-                    LayoutCachedTop =2955
+                    LayoutCachedTop =4590
                     LayoutCachedWidth =4350
-                    LayoutCachedHeight =3240
+                    LayoutCachedHeight =4875
+                End
+                Begin Label
+                    OverlapFlags =85
+                    Left =396
+                    Top =396
+                    Width =4635
+                    Height =2220
+                    BorderColor =8355711
+                    ForeColor =8355711
+                    Name ="Bijschrift47"
+                    Caption ="Wanneer u een klant aan de telefoon heeft doe de volgende stappen:\015\0121. Vra"
+                        "ag om postcode\015\0122. Vraag om huisnummer\015\0123. Klik op zoeken. In de lij"
+                        "st komen de klanten die hieraan matchen.\015\0124. Ter verificatie staan de gebr"
+                        "uikersnaam en naam er in de lijst bij."
+                    GridlineColor =10921638
+                    LayoutCachedLeft =396
+                    LayoutCachedTop =396
+                    LayoutCachedWidth =5031
+                    LayoutCachedHeight =2616
                 End
             End
         End
@@ -477,9 +439,6 @@ Dim searchNumber As String
     If Not IsNull(Me.txtAdressnumber.Value) Then
         searchAdressNumber = Me.txtAdressnumber.Value
     End If
-    If Not IsNull(Me.txtUsername.Value) Then
-        searchUsername = Me.txtUsername.Value
-    End If
     If Not IsNull(Me.txtPostalcode.Value) Then
         searchPostalcode = Me.txtPostalcode.Value
     End If
@@ -487,7 +446,7 @@ Dim searchNumber As String
     
     query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer" & vbCrLf & _
             "FROM users" & vbCrLf & _
-            "WHERE (((users.username) Like '%" & searchUsername & "%') AND ((users.postalcode) Like '%" & searchPostalcode & "%') AND ((users.adress_number) Like '%" & searchAdressNumber & "%'));"
+            "WHERE((users.postalcode) Like '%" & searchPostalcode & "%') AND ((users.adress_number) Like '%" & searchAdressNumber & "%'));"
     
     Me.lstUsers.RowSource = query
     
@@ -502,7 +461,6 @@ Private Sub cmdResetUser_Click()
     
     Me.txtPostalcode.Value = Null
     Me.txtAdressnumber.Value = Null
-    Me.txtUsername.Value = Null
     
     Me.cmdResetUser.Enabled = False
     
@@ -536,7 +494,7 @@ Private Sub lstUsers_DblClick(Cancel As Integer)
         username_selected = Me.lstUsers.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
-    DoCmd.OpenForm "frmKlantenBeheerderDetails", , , "[username] = '" & username_selected & "'", acFormReadOnly, acDialog
+    DoCmd.OpenForm "frmKlantenKlantenserviceDetails", , , "[username] = '" & username_selected & "'", acFormReadOnly, acDialog
     
     Me.lstUsers.Requery
     
