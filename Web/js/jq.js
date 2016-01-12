@@ -221,6 +221,7 @@ $(document).ready(function () {
 
     $('.pagination .pagination-button').click(function () {
         //Get text value
+        if($(this).text() == "..."){ return;}
         var p = parseInt($(this).text());
         p = p - 1;
         toPage(p);

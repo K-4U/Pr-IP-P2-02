@@ -23,6 +23,7 @@ class categories extends cmsPage {
             $sql .= " OFFSET %i ROWS FETCH NEXT %i ROWS ONLY;";
             $result = $this->db->buildQuery($sql, $id, $fo, $fe);
             $this->website->assign("paginationNeeded", true);
+            $this->website->assign("page", $p+1);
             $this->website->assign("maxPages", ($c / $maxPerPage)-1);
         }else{
             $result = $this->db->buildQuery($sql, $id);

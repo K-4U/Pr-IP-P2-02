@@ -12,15 +12,40 @@
         <div class="pull-right">
             <ul class="pagination">
                 <li>
-                    <a class="pagination-prev" aria-label="Previous">
+                    <a class="pagination-prev hand" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                {for $p=1 to $maxPages+1}
-                    <li><a class="pagination-button">{$p}</a></li>
-                {/for}
+                {if $maxPages > 10}
+                    {for $p=1 to 3}
+                        <li><a class="pagination-button hand">{$p}</a></li>
+                    {/for}
+                    {if $page > 4}
+                        <li><span class="pagination-button">...</span></li>
+                    {/if}
+                    {if $page > 5}
+                        <li><span class="pagination-button hand">{$page-1}</span></li>
+                    {/if}
+                    {if $page >= 3 && $page <= $maxPages-3}
+                        <li><a class="pagination-button">{$page}</a></li>
+                    {/if}
+                    {if $page < $maxPages-3}
+                        <li><span class="pagination-button hand">{$page+1}</span></li>
+                    {/if}
+                    {if $page < $maxPages-2}
+                        <li><span class="pagination-button">...</span></li>
+                    {/if}
+                    {for $p=$maxPages-1 to $maxPages+1}
+                        <li><a class="pagination-button hand">{$p|floor}</a></li>
+                    {/for}
+                {else}
+                    {for $p=1 to $maxPages+1}
+                        <li><a class="pagination-button">{$p}</a></li>
+                    {/for}
+                {/if}
+
                 <li>
-                    <a class="pagination-next" aria-label="Next">
+                    <a class="pagination-next hand" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
@@ -43,25 +68,49 @@
         </div>
     </div>
     {if $paginationNeeded}
-    <div class="row">
-        <div class="pull-right">
-            <ul class="pagination">
-                <li>
-                    <a class="pagination-prev" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                {for $p=1 to $maxPages+1}
-                    <li><a class="pagination-button">{$p}</a></li>
-                {/for}
-                <li>
-                    <a class="pagination-next" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
+        <div class="row">
+            <div class="pull-right">
+                <ul class="pagination">
+                    <li>
+                        <a class="pagination-prev" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {if $maxPages > 10}
+                        {for $p=1 to 3}
+                            <li><a class="pagination-button hand">{$p}</a></li>
+                        {/for}
+                        {if $page > 4}
+                            <li><span class="pagination-button">...</span></li>
+                        {/if}
+                        {if $page > 5}
+                            <li><span class="pagination-button hand">{$page-1}</span></li>
+                        {/if}
+                        {if $page >= 3 && $page <= $maxPages-3}
+                            <li><a class="pagination-button">{$page}</a></li>
+                        {/if}
+                        {if $page < $maxPages-3}
+                            <li><span class="pagination-button hand">{$page+1}</span></li>
+                        {/if}
+                        {if $page < $maxPages-2}
+                            <li><span class="pagination-button">...</span></li>
+                        {/if}
+                        {for $p=$maxPages-1 to $maxPages+1}
+                            <li><a class="pagination-button hand">{$p|floor}</a></li>
+                        {/for}
+                    {else}
+                        {for $p=1 to $maxPages+1}
+                            <li><a class="pagination-button">{$p}</a></li>
+                        {/for}
+                    {/if}
+                    <li>
+                        <a class="pagination-next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     {/if}
 </div>
 
