@@ -62,9 +62,17 @@
                     Deze rubriek heeft nog geen kavels!
                 </div>
             {/if}
+            <div class="row">
+            {assign "r" 0}
             {foreach $objects as $object}
+                {if $r == 3}
+                    </div><div class="row row-objects">
+                    {assign "r" 0}
+                {/if}
+                {assign var="r" value=$r+1}
                 {include file="entries/object.tpl"}
             {/foreach}
+            </div>
         </div>
     </div>
     {if $paginationNeeded}

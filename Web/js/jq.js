@@ -249,11 +249,21 @@ $(document).ready(function () {
     });
 
 
-    var maxObjectHeight = 0;
-    $.each($(".object"), function(){
-        maxObjectHeight = (maxObjectHeight < $(this).outerHeight() ? $(this).outerHeight() : maxObjectHeight);
+
+    $.each($(".row-objects"), function(){
+        var maxObjectHeight = 0;
+        $.each($(this).children(), function(){
+            maxObjectHeight = (maxObjectHeight < $(this).outerHeight() ? $(this).outerHeight() : maxObjectHeight);
+        });
+        $.each($(this).children(), function(){
+            $(this).css('min-height', maxObjectHeight);
+        });
     });
-    $(".object").css('min-height', maxObjectHeight);
+
+    /*$.each($(".object"), function(){
+
+    });
+    $(".object").css('min-height', maxObjectHeight);*/
 });
 
 
