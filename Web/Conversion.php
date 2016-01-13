@@ -10,10 +10,15 @@ $dbIn->setType($config['SQL']['type']);
 
 $dbIn->connect();
 
-$dbOut = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling");
+$dbOut = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_batch");
 $dbOut->setType($config['SQL']['type']);
 
 $dbOut->connect();
+
+$dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling");
+$dbVeiling->setType($config['SQL']['type']);
+
+$dbVeiling->connect();
 
 $result = $dbIn->query("SELECT ID, Name, Parent FROM Categorieen");
 
@@ -74,6 +79,34 @@ foreach($getCategories as $category) {// root categories
 $categoryInsertTime = (date('U') - $beginTime);
 echo "Done inserting. (took " . $categoryInsertTime . " seconds)\r\n\r\n";
 
+echo "Fetching security questions.\r\n";
+function getSecQuestions() {
+    global $dbVeiling;
+
+    $result = $dbVeiling->query("SELECT * FROM security_questions ");
+    $securityQuestions = $dbVeiling->fetchAllAssoc($result);
+
+    return $securityQuestions;
+}
+$secQuestionsVar = getSecQuestions();
+echo "Done fetching questions. \r\n";
+function setSecQuestions($secQuestionsArr){
+    global $dbOut;
+
+    $secArr = Array(
+//        "id" => $secQuestionsArr['id'],
+        "question" => $secQuestionsArr['question']
+    );
+    $dbOut->insert("security_questions", $secArr);
+
+}
+echo "Inserting security questions. \r\n";
+foreach($secQuestionsVar as $question){
+    setSecQuestions($question);
+}
+$secQuestionsInsertTime = (date('U')- ($beginTime + $categoryInsertTime));
+echo "Done inserting security questions. (took ". $secQuestionsInsertTime . " seconds) \r\n\r\n";
+
 echo "Fetching users.\r\n";
 
 function getUsers() {
@@ -104,10 +137,10 @@ function setUsers($usersArr) {
         "password"          => "batch",
         "security_question" => "1",
         "security_answer"   => "batch",
-        "isseller"          => "1",
+        "isseller"          => "0",
         "username"          => substr(strlen($usersArr['Username']) < 4 ? "FILL" . $usersArr['Username'] : $usersArr['Username'], 0, 12),
         "postalcode"        => substr($usersArr['Postalcode'] == null ? "0000AB" : $usersArr['Postalcode'], 0, 6),
-        "country"           => $usersArr['Country'],
+        "country"           => $usersArr['Country'] == null ? "NL" : $usersArr['Country'],
         "birthdate"         => "01-01-1990"
     );
     $resultUsername = $dbOut->buildQuery("SELECT Username FROM Users WHERE Username=%s", $newFormat['username']);
@@ -129,18 +162,18 @@ $adminUserArr = Array(
     "security_question" => "1",
     "security_answer"   => "batch",
     "isseller"          => "1",
-    "username"          => substr(strlen($usersArr['Username']) < 4 ? "FILL" . $usersArr['Username'] : $usersArr['Username'], 0, 12),
-    "postalcode"        => substr($usersArr['Postalcode'] == null ? "0000AB" : $usersArr['Postalcode'], 0, 6),
-    "country"           => $usersArr['Country'],
+    "username"          => "Admin",
+    "postalcode"        => "0000AB",
+    "country"           => "NL",
     "birthdate"         => "01-01-1990"
 );
 
-setUsers($adminUserArr);
+$dbOut->insert("users", $adminUserArr);
 
 foreach($usersVar as $user) {
     setUsers($user);
 }
-$usersInsertTime = ((date('U') - ($beginTime + $categoryInsertTime)));
+$usersInsertTime = ((date('U') - ($beginTime + $categoryInsertTime + $secQuestionsInsertTime)));
 echo "Done inserting users. (took " . $usersInsertTime . " seconds )\r\n\r\n";
 
 echo "Fetching objects\r\n";
@@ -183,7 +216,7 @@ function setObjects($objectArr) {
     );
 
     $userSeller = Array(
-      "username" => substr(strlen($usersArr['Username']) < 4 ? "FILL" . $usersArr['Username'] : $usersArr['Username'], 0, 12),
+      "username" => substr(strlen($objectArr['Verkoper']) < 4 ? "FILL" . $objectArr['Verkoper'] : $objectArr['Verkoper'], 0, 12),
       "bank_number" => "NL67RABO0186654979",
       "security_type" => "0",
       "creditcard_number" => "5529420350615465"
@@ -193,7 +226,11 @@ function setObjects($objectArr) {
     $dbOut->insert("objects", $newFormat);
     $lastInsertedObject = $dbOut->getLastInsertedId();
 
-    dbOut->insert("sellers", $userSeller);
+    $resultUsername = $dbOut->buildQuery("SELECT Username FROM sellers WHERE Username=%s", $userSeller['username']);
+    $usernameExist = $dbOut->getHasRows($resultUsername);
+    if(!$usernameExist) {
+        $dbOut->insert("sellers", $userSeller);
+    }
     $newFormatCatObj = Array(
         "object_id"   => $lastInsertedObject,
         "category_id" => $categoryIds[$objectArr['Categorie']]
@@ -219,46 +256,13 @@ foreach($objectVar as $object) {
     setObjects($object);
 }
 
-$objectsInsertTime = (date('U') - ($beginTime + $usersInsertTime));
+$objectsInsertTime = (date('U') - ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime));
 echo "Done inserting objects. (took " . $objectsInsertTime . " seconds)\r\n\r\n";
 
-echo "Fetching security questions.\r\n";
-function getSecQuestions() {
-
-    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
-    $dbVeiling->setType($config['SQL']['type']);
-
-    $dbVeiling->connect();
-    $result = $dbVeiling->query("SELECT * FROM security_questions ");
-    $securityQuestions = $dbVeiling->fetchAllAssoc($result);
-
-    return $securityQuestions;
-}
-$secQuestionsVar = getSecQuestions();
-echo "Done fetching questions. \r\n";
-function setSecQuestions($secQuestionsArr){
-    global $dbOut;
-
-    $secArr = Array(
-        "id" => $secQuestionsArr['id'],
-        "question" => $secQuestionsArr['question']
-    );
-    $dbOut->insert("security_questions", $secArr);
-
-}
-echo "Inserting security questions. \r\n";
-foreach($secQuestionsVar as $questions){
-    setSecQuestions($question);
-}
-$secQuestionsInsertTime = (date('U')- ($beginTime + $objectsInsertTime));
-echo "Done inserting security questions. (took ". $secQuestionsInsertTime . " seconds) \r\n\r\n";
-
-echo "Fetching minimal bids.\r\n"
+echo "Fetching minimal bids.\r\n";
 function getMinimalBids(){
-    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
-    $dbVeiling->setType($config['SQL']['type']);
+    global $dbVeiling;
 
-    $dbVeiling->connect();
     $result = $dbVeiling->query("SELECT * FROM minimal_bids ");
     $minimalBids = $dbVeiling->fetchAllAssoc($result);
 
@@ -281,15 +285,13 @@ echo "Inserting minimal bids.\r\n";
 foreach($minBidVar as $bid){
     setMinimalBids($bid);
 }
-$minBidInsertTime = (date('U')- ($beginTime + $secQuestionsInsertTime));
+$minBidInsertTime = (date('U')- ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime));
 echo "Done inserting minimal bids. (took " . $minBidInsertTime . " seconds)\r\n\r\n";
 
 echo "Fetching ranks.\r\n";
 function getRanks(){
-    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
-    $dbVeiling->setType($config['SQL']['type']);
+    global $dbVeiling;
 
-    $dbVeiling->connect();
     $result = $dbVeiling->query("SELECT * FROM ranks ");
     $ranks = $dbVeiling->fetchAllAssoc($result);
 
@@ -301,7 +303,7 @@ function setRanks($ranksArr){
     global $dbOut;
 
     $ranksArr = Array(
-        "username" => $ranksArr['Username'],
+        "username" => $ranksArr['username'],
         "customer_service" => $ranksArr['customer_service'],
         "administrator" => $ranksArr['administrator'],
         "manager" => $ranksArr['manager']
@@ -313,7 +315,7 @@ echo "Inserting ranks.\r\n";
 foreach($ranksVar as $rank){
     setRanks($rank);
 }
-$ranksInsertTime = $minBidInsertTime = (date('U')- ($beginTime + $minBidInsertTime));
+$ranksInsertTime = (date('U')- ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime + $minBidInsertTime));
 echo "Done inserting ranks. (took " . $ranksInsertTime . " seconds )\r\n\r\n";
 $endTime = date('U');
 
