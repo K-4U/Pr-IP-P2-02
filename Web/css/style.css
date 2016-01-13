@@ -188,7 +188,7 @@ nav.headerrow{
     padding:5px;
 }
 
-.clickable {
+.hand, .tree-toggler, .clickable {
     cursor: pointer;
     cursor: hand;
 }
