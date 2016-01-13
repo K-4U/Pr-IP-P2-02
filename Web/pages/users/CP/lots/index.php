@@ -24,7 +24,7 @@ Class usersCPLots extends cmsPage {
 
             $this->website->assign("objects", $objects);
 
-            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
             $this->addToBreadcrumbs("Mijn kavels");
 

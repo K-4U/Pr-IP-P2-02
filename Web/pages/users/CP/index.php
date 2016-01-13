@@ -111,8 +111,7 @@ Class usersCP extends cmsPage {
 
             $this->website->assign("updateComplete", $updateComplete);
             $this->website->assign("errorMsg", $errorMsg);
-//            $this->addToBreadcrumbs("naampagina", baseurl("/") )
-            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("UCP");
             $this->render("UCP", "users/UCP.tpl");
         } else {
