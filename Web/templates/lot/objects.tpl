@@ -91,13 +91,13 @@
                         {if $page > 4}
                             <li><span class="pagination-button">...</span></li>
                         {/if}
-                        {if $page > 5}
+                        {if $page >= 5 && $page <= $maxPages-3}
                             <li><span class="pagination-button hand">{$page-1}</span></li>
                         {/if}
-                        {if $page >= 3 && $page <= $maxPages-3}
+                        {if $page > 3 && $page <= $maxPages-3}
                             <li><a class="pagination-button">{$page}</a></li>
                         {/if}
-                        {if $page < $maxPages-3}
+                        {if $page >= 3 && $page < $maxPages-3}
                             <li><span class="pagination-button hand">{$page+1}</span></li>
                         {/if}
                         {if $page < $maxPages-2}
