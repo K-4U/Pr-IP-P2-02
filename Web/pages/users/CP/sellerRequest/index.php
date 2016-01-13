@@ -15,21 +15,29 @@ class usersCPsellerRequest extends cmsPage {
                 $errorMsg = "U bent al een verkoper.";
                 $pageToShow = -2;
             } else {
-                //$pageToShow = 0;
                 //Page 0 is default.
                 if(isset($_POST ['submit_1'])) {
-                    if(strlen($_POST['banknumber']) > 0) {
-                        $_SESSION['bank_number'] = $_POST['banknumber'];
-                    } else {
-                        $errorMsg = 'Uw banknummer klopt niet';
-                        $pageToShow = 0;
+                    if ($_POST['verificationType'] == 1){
+                        if(strlen($_POST['banknumber']) > 0)  {
+                            $_SESSION['bank_number'] = $_POST['banknumber'];
+                        } else {
+                            $errorMsg = 'Uw banknummer klopt niet';
+                            $pageToShow = 0;
+                        }
                     }
                     $_SESSION['security_type'] = $_POST['verificationType'];
-                    if(isset($_SESSION['bank_number']) AND isset($_SESSION['security_type'])) {
-                        if(($_POST['verificationType']) == 0)
+                    if(isset($_SESSION['security_type'])) {
+                        if(($_POST['verificationType']) == 0) {
                             $pageToShow = 1;
+                        }
                         else {
-                            $pageToShow = 2;
+                            if(isset($_SESSION['bank_number'])) {
+                                $pageToShow = 2;
+                            }
+                            else {
+                                $pageToShow = 0;
+                                $errorMsg = "Schijt";
+                            }
                         }
                     } else {
                         $errorMsg = "U bent vergeten een verificatie optie te kiezen.";
@@ -46,7 +54,6 @@ class usersCPsellerRequest extends cmsPage {
                     if(isset($_POST['submit_2'])) {
                         if(preg_match('/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/', $_POST['creditcard'])) {
                             $userInfoArray['username'] = $this->user->getName();
-                            $userInfoArray['bank_number'] = str_replace(" ", "", $_SESSION['bank_number']);
                             $userInfoArray['security_type'] = (boolean)$_SESSION['security_type'];
                             $userInfoArray['creditcard_number'] = $_POST['creditcard'];
                             $pageToShow = 3;
@@ -54,7 +61,12 @@ class usersCPsellerRequest extends cmsPage {
                             unset($_SESSION['security_type']);
                             unset($_SESSION['bank_number']);
 
+                            $userSellerUpdate = array();
+
+                            $userSellerUpdate['isseller'] = 1;
+
                             $this->db->insert("sellers", $userInfoArray);
+                            $this->db->update("users", $userSellerUpdate, "username", $this->user->getName());
                         } else {
                             $errorMsg = "Uw creditcard nummer klopt niet.";
                             $pageToShow = 1;
@@ -73,7 +85,6 @@ class usersCPsellerRequest extends cmsPage {
 
                         $this->db->insert("sellers", $userInfoArray);
                         $this->db->insert("verifications", $userLetterInfo);
-                        var_dump($this->db->getLastError());
                     }
                 }
             }
@@ -81,7 +92,7 @@ class usersCPsellerRequest extends cmsPage {
             $this->website->assign("page", $pageToShow);
             $this->website->assign("errorMsg", $errorMsg);
 
-            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
             $this->addToBreadcrumbs("Verkopersaccount aanmaken");
 

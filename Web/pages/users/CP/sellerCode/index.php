@@ -36,7 +36,7 @@ Class usersCPSellerCode extends cmsPage {
             $this->website->assign("page", $pageToShow);
             $this->website->assign("errorMsg", $errorMsg);
 
-            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
             $this->addToBreadcrumbs("Authenticatiecode invoeren");
 

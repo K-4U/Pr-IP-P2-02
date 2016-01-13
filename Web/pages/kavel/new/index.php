@@ -74,7 +74,7 @@ class kavelNew extends cmsPage {
                         $this->website->assign("values", $_POST);
                     } else {
                         //var_dump($_FILES);
-                        $target_dir = getcwd() . "/images/uploads/";
+                        $target_dir = getcwd() . "/upload/";
                         $imageFileType = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
                         $target_file = md5(date(U) . $this->user->getName()) . '.' . $imageFileType;; //md5
                         $uploadOk = 1;
@@ -130,7 +130,7 @@ class kavelNew extends cmsPage {
                 $this->render($displayName, 'lot/newlot.tpl');
             }
         } else {
-            $this->website->assign("error", "U moet een verkopers account aanmaken voordat u een kavel kan aanbieden.");
+            $this->website->assign("error", "U moet een verkopers account aanmaken voordat u een kavel kan aanbieden. <br> Klik <a href=https://veiling.k-4u.nl/Users/CP/SellerRequest>hier</a> om een aacount aan te maken.");
             $this->render("", "error.tpl");
         }
     }

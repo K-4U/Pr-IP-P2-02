@@ -103,15 +103,7 @@
                                        class="form-control">
                             </div>
                         </div>
-                        <div class="row">
-                            <label for="country" class="col-md-4 col-sm-4 labelsGegevens">Land:</label>
-
-                            <div class="col-md-8 col-sm-8">
-                                <input type="text" id="country" name="country" value="{$previousInfo.country}"
-                                       class="form-control">
-                            </div>
-                        </div>
-                        <br>
+                        <br />
 
                         <div class="panel panel-default">
                             <div class="panel-heading">

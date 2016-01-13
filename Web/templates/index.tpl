@@ -18,7 +18,7 @@
                 <div class="panel-heading">
                     <div class="panel-title">Bijna aflopende veilingen</div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body row-objects">
                     {foreach $soonEndingObjects as $object}
                         {include file="entries/object.tpl"}
                     {/foreach}
@@ -30,7 +30,7 @@
                 <div class="panel-heading">
                     <div class="panel-title">Nieuw!</div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body row-objects">
                     {foreach $newObjects as $object}
                         {include file="entries/object.tpl"}
                     {/foreach}

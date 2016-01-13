@@ -15,7 +15,7 @@ Class usersCPfeedback extends cmsPage {
             $this->website->assign("feedbackItemsSel", $feedbackItemsSel);
             $this->website->assign("feedbackItemsBuy", $feedbackItemsBuy);
 
-            $this->addToBreadcrumbs("Home", baseurl("/"));
+            $this->addToBreadcrumbs("Home", baseurl(""));
             $this->addToBreadcrumbs("UCP", baseurl("Users/CP"));
             $this->addToBreadcrumbs("Mijn feedback");
 
