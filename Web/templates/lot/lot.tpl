@@ -113,7 +113,7 @@
                 <div class="panel-heading">
                     <div class="panel-title">Gerelateerde producten</div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body row-objects">
                     {foreach $object.related as $related}
                         {include file="entries/object.tpl" object=$related}
                     {/foreach}
