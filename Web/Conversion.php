@@ -15,11 +15,6 @@ $dbOut->setType($config['SQL']['type']);
 
 $dbOut->connect();
 
-$dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling");
-$dbVeiling->setType($config['SQL']['type']);
-
-$dbVeiling->connect();
-
 $result = $dbIn->query("SELECT ID, Name, Parent FROM Categorieen");
 
 echo "<pre>";
