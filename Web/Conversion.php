@@ -81,12 +81,16 @@ echo "Done inserting. (took " . $categoryInsertTime . " seconds)\r\n\r\n";
 
 echo "Fetching security questions.\r\n";
 function getSecQuestions() {
-    global $dbVeiling;
+    $secQuestionsArray = array();
+    $secQuestionsArray ['question'] = 'In welke stad bent u opgegroeid?';
+    $secQuestionsArray ['question'] = 'Wat is uw favoriete film?';
+    $secQuestionsArray ['question'] = 'Wat is de meisjesnaam van uw moeder?';
+    $secQuestionsArray ['question'] = 'Wat is de jongensnaam van uw vader?';
+    $secQuestionsArray ['question'] = 'Wat is de meisjesnaam van uw moeder?';
+    $secQuestionsArray ['question'] = 'Wat is de geboortestad van uw vader?';
+    $secQuestionsArray ['question'] = 'Wat is de geboortestad van uw moeder?';
 
-    $result = $dbVeiling->query("SELECT * FROM security_questions ");
-    $securityQuestions = $dbVeiling->fetchAllAssoc($result);
-
-    return $securityQuestions;
+    return $secQuestionsArray;
 }
 $secQuestionsVar = getSecQuestions();
 echo "Done fetching questions. \r\n";
@@ -261,10 +265,20 @@ echo "Done inserting objects. (took " . $objectsInsertTime . " seconds)\r\n\r\n"
 
 echo "Fetching minimal bids.\r\n";
 function getMinimalBids(){
-    global $dbVeiling;
+    //Create array with minimal bids
+    $minimalBids = array();
+    $minimalBids['upper_limit'] = 50;
+    $minimalBids['upper_limit'] = 500;
+    $minimalBids['upper_limit'] = 1000;
+    $minimalBids['upper_limit'] = 5000;
+    $minimalBids['upper_limit'] = 1000000;
 
-    $result = $dbVeiling->query("SELECT * FROM minimal_bids ");
-    $minimalBids = $dbVeiling->fetchAllAssoc($result);
+
+    $minimalBids['raise'] = 0.50;
+    $minimalBids['raise'] = 1;
+    $minimalBids['raise'] = 5;
+    $minimalBids['raise'] = 10;
+    $minimalBids['raise'] = 50;
 
     return $minimalBids;
 }
@@ -290,10 +304,12 @@ echo "Done inserting minimal bids. (took " . $minBidInsertTime . " seconds)\r\n\
 
 echo "Fetching ranks.\r\n";
 function getRanks(){
-    global $dbVeiling;
 
-    $result = $dbVeiling->query("SELECT * FROM ranks ");
-    $ranks = $dbVeiling->fetchAllAssoc($result);
+    $ranks = array();
+    $ranks['username'] = 'admin';
+    $ranks['customer_service'] = 1;
+    $ranks['administrator'] = 1;
+    $ranks['administrator'] = 1;
 
     return $ranks;
 }
