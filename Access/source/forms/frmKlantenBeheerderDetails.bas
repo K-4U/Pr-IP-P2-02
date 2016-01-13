@@ -10,7 +10,7 @@ Begin Form
     Width =6009
     DatasheetFontHeight =11
     ItemSuffix =19
-    Right =19800
+    Right =25080
     Bottom =12120
     DatasheetGridlinesColor =15132391
     Filter ="[username] = 'Ronaldo7'"
@@ -19,6 +19,10 @@ Begin Form
     End
     RecordSource ="users"
     DatasheetFontName ="Calibri"
+    PrtMip = Begin
+        0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
+        0x010000006801000000000000a10700000100000001000000
+    End
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -596,6 +600,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnBack_Click()
+    'Check if any changes happened. If happened execute undo. If not just close form.
     If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
        If _
        Me.txtUser.OldValue <> Me.txtUser.Value Or _
@@ -619,6 +624,7 @@ Private Sub btnBack_Click()
 End Sub
 
 Private Sub btnDeactivate_Click()
+    'Deactivate function
     Dim query As String
     
     query = "UPDATE users " & _
@@ -626,8 +632,6 @@ Private Sub btnDeactivate_Click()
             "adress_number = 0, postalcode = '0000AA', city = 'Verwijderd', country = 'Verwijderd', birthdate = '1899-01-02' , email = 'verwijderd@verwijderd.nl', " & _
             "password = 'Verwijderd', security_answer = 'Gedeactiveerd', isseller = 0 " & _
             "WHERE username = '" & Me.username & "'"
-     
-    MsgBox query
     
     'On Error Resume Next
     DoCmd.SetWarnings False

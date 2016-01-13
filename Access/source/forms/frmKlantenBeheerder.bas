@@ -10,7 +10,7 @@ Begin Form
     Width =7370
     DatasheetFontHeight =11
     ItemSuffix =47
-    Right =19800
+    Right =25080
     Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
@@ -445,19 +445,20 @@ Private Sub btnBack_Click()
 End Sub
 
 Private Sub btnDelete_Click()
+    'Function to disable user. Current database doesn't allow deletion.
     Dim username_selected As String
     
+    'Get username from list
     For Each varItem In Me.lstUsers.ItemsSelected
         username_selected = Me.lstUsers.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
+    'Query to change all fields to same disabled value.
     query = "UPDATE users " & _
             "SET firstname = 'Verwijderd', lastname = 'Verwijderd', adress_street1 = 'Verwijderd', adress_street2 = 'Verwijderd', " & _
             "adress_number = 0, postalcode = '0000AA', city = 'Verwijderd', country = 'Verwijderd', birthdate = '1899-01-02' , email = 'verwijderd@verwijderd.nl', " & _
             "password = 'Verwijderd', security_answer = 'Gedeactiveerd', isseller = 0 " & _
             "WHERE username = '" & username_selected & "'"
-     
-    MsgBox query
     
     'On Error Resume Next
     DoCmd.SetWarnings False
@@ -469,7 +470,8 @@ Private Sub btnDelete_Click()
 End Sub
 
 Private Sub cmdSearchUser_Click()
-Dim searchNumber As String
+    'Search function
+    Dim searchNumber As String
     Dim searchTitle As String
     Dim searchCategory As String
     Dim query As String
@@ -484,7 +486,7 @@ Dim searchNumber As String
         searchPostalcode = Me.txtPostalcode.Value
     End If
     
-    
+    'Query to execute for searching
     query = "SELECT users.username AS Gebruikersnaam, firstname+' '+lastname AS Naam, users.postalcode AS Postcode, users.adress_number AS Nummer" & vbCrLf & _
             "FROM users" & vbCrLf & _
             "WHERE (((users.username) Like '%" & searchUsername & "%') AND ((users.postalcode) Like '%" & searchPostalcode & "%') AND ((users.adress_number) Like '%" & searchAdressNumber & "%'));"
@@ -500,6 +502,7 @@ End Sub
 Private Sub cmdResetUser_Click()
     Dim query As String
     
+    'Reset search input fields.
     Me.txtPostalcode.Value = Null
     Me.txtAdressnumber.Value = Null
     Me.txtUsername.Value = Null

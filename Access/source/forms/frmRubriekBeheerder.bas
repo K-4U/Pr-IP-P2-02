@@ -152,6 +152,7 @@ Begin Form
                     ForeColor =4210752
                     Name ="btnSearch"
                     Caption ="Zoeken"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =4308
@@ -211,7 +212,7 @@ Begin Form
                     Height =315
                     BorderColor =10921638
                     ForeColor =4210752
-                    Name ="Tekst4"
+                    Name ="txtCatName"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2040
@@ -544,6 +545,17 @@ Private Sub btnBack_Click()
     DoCmd.Close
     End If
 
+End Sub
+
+Private Sub btnSearch_Click()
+    Dim query As String
+    
+    query = "SELECT id, name AS Rubrieknaam, priority AS Volgnummer " & _
+            "FROM categories " & _
+            "WHERE name LIKE '" & Me.txtCatName & "' " & _
+            "ORDER BY priority"
+             
+    Me.lstCategory.RowSource = query
 End Sub
 
 Private Sub btnUp_Click()

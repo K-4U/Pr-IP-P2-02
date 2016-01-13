@@ -10,8 +10,8 @@ Begin Form
     Width =3344
     DatasheetFontHeight =11
     ItemSuffix =8
-    Right =25335
-    Bottom =12090
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x0760798412aee440
@@ -207,23 +207,28 @@ Private Sub Form_Load()
     Dim rs As Recordset
     Dim queryString As String
     
+    'Disable all buttons per default.
     Me.btnKlantenservice.Enabled = False
     Me.btnBeheer.Enabled = False
     Me.btnManagement.Enabled = False
           
+    'Query to check the rights of a certain user.
     queryString = "SELECT customer_service, administrator, manager " & _
     "FROM ranks " & _
     "WHERE username = '" & Forms!frmLogin.usernameGlobal & "'"
 
     Set rs = CurrentDb.OpenRecordset(queryString)
     
+    'Enable buttons if user has certain rights.
     If rs!customer_service = True Then
         Me.btnKlantenservice.Enabled = True
+    End If
                
-    ElseIf rs!administrator = True Then
+    If rs!administrator = True Then
         Me.btnBeheer.Enabled = True
+    End If
     
-    ElseIf rs!manager = True Then
+    If rs!manager = True Then
         Me.btnManagement.Enabled = True
     End If
 

@@ -10,8 +10,8 @@ Begin Form
     Width =7483
     DatasheetFontHeight =11
     ItemSuffix =14
-    Right =25335
-    Bottom =12090
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x22e5009733ade440
@@ -419,25 +419,10 @@ Private Sub btnBack_Click()
     DoCmd.Close
 End Sub
 
-Private Sub btnDelete_Click()
-    Dim objectid_selected As Integer
-    
-    For Each varItem In Me.lstProducts.ItemsSelected
-        objectid_selected = Me.lstProducts.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
-    Next varItem
-    
-    query = "DELETE FROM Objects WHERE id=" & objectid_selected
-          
-    'DoCmd.SetWarnings False
-    DoCmd.RunSQL query
-    'DoCmd.SetWarnings True
-    
-    Me.lstProducts.Requery
-End Sub
-
 Private Sub cmdReset_Click()
     Dim query As String
 
+    'Reset search input fields
     Me.txtNumber.Value = Null
     Me.txtCategory.Value = Null
     Me.txtTitle.Value = Null
@@ -467,7 +452,7 @@ Private Sub cmdSearch_Click()
         searchCategory = Me.txtCategory.Value
     End If
     
-    
+    'Search query
     query = "SELECT OB.id AS Productnummer, OB.title AS Productnaam, CA.name AS Rubrieknaam" & vbCrLf & _
             "FROM (objects AS OB LEFT JOIN object_in_category AS OC ON OB.id = OC.object_id) LEFT JOIN categories AS CA ON OC.category_id = CA.id" & vbCrLf & _
             "GROUP BY OB.title, OB.id, CA.name" & vbCrLf & _

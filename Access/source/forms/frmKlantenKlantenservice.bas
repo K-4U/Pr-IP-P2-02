@@ -10,10 +10,8 @@ Begin Form
     Width =7380
     DatasheetFontHeight =11
     ItemSuffix =48
-    Left =12660
-    Top =1620
-    Right =20580
-    Bottom =10455
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x8003329cd3b0e440
@@ -418,8 +416,6 @@ Private Sub btnDelete_Click()
             "adress_number = 0, postalcode = '0000AA', city = 'Verwijderd', country = 'Verwijderd', birthdate = '1899-01-02' , email = 'verwijderd@verwijderd.nl', " & _
             "password = 'Verwijderd', security_answer = 'Gedeactiveerd', isseller = 0 " & _
             "WHERE username = '" & username_selected & "'"
-     
-    MsgBox query
     
     'On Error Resume Next
     DoCmd.SetWarnings False

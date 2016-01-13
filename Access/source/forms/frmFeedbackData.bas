@@ -10,8 +10,8 @@ Begin Form
     Width =6462
     DatasheetFontHeight =11
     ItemSuffix =14
-    Right =25335
-    Bottom =12090
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     Filter ="[isseller] = 0 AND [objectid] = 1"
     RecSrcDt = Begin
@@ -395,6 +395,7 @@ Private Sub btnBack_Click()
 End Sub
 
 Private Sub btnDelete_Click()
+    'delete query
     query = "DELETE FROM Feedback WHERE objectid=" & Me.objectid & " AND isseller= " & IIf(Me.isseller = -1, 1, 0)
      
     DoCmd.SetWarnings False

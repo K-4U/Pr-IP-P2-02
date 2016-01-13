@@ -10,8 +10,8 @@ Begin Form
     Width =5272
     DatasheetFontHeight =11
     ItemSuffix =11
-    Right =5805
-    Bottom =1680
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     Filter ="parentID = 1 AND priorityID = 1"
     RecSrcDt = Begin
@@ -23,7 +23,6 @@ Begin Form
         0x6801000068010000680100006801000000000000201c0000e010000001000000 ,
         0x010000006801000000000000a10700000100000001000000
     End
-    OnLoad ="[Event Procedure]"
     FilterOnLoad =0
     ShowPageMargins =0
     DisplayOnSharePointSite =1
@@ -202,46 +201,53 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub cmdAddCategory_Click()
+    'Function to add new category
     Dim query As String
     Dim parentID As Integer
     Dim priorityID As Integer
     Dim rs As Recordset
     
+    'Check if values from previous forms are passed on.
     If Not IsNull(Me.OpenArgs) Then
+        'Split previous arguments.
         varSplitString = Split(Me.OpenArgs, "|")
+        'Set parent and priority of previous form. This is needed for insert query
         parentID = varSplitString(0)
         priorityID = varSplitString(1)
         
+        'Trigger if no name is filled in. To make sure no issue can happen form gets closed.
         If Nz(Me.txtParentName.Value, "") = "" Then
             MsgBox "U heeft geen naam ingegeven. Het scherm wordt weer afgesloten.", vbCritical, "Fout"
             DoCmd.Close
         Else
-            
+            'Check if category is lowest.
             Set rs = CurrentDb.OpenRecordset("SELECT * FROM object_in_category WHERE category_id = " & parentID)
             
-            MsgBox rs.RecordCount
-        
+            'Triggered if category is lowest.
             If rs.RecordCount > 0 Then
-                'Find the max id
                 Dim maxID As Integer
-                
                 
                 'Create a new category to dump all files of current category
                 DoCmd.RunSQL ("INSERT INTO categories (name,parent,priority) VALUES ('Overig'," & parentID & " ,1)")
                 
+                'Find the max id. Should be the id that came after the above insert.
                 maxID = DMax("id", "categories")
-                MsgBox maxID
                 
-                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Me.txtParentName & "'," & parentID & " , 2)"
-                
+                'Insert new category
+                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Replace(Me.txtParentName, "'", "''") & "'," & parentID & " , 2)"
+                DoCmd.SetWarnings False
                 DoCmd.RunSQL query
                 
+                'Update all items to new dump category
                 DoCmd.RunSQL ("UPDATE object_in_category SET category_id = " & (maxID + 1) & " WHERE category_id = " & parentID & "")
+                DoCmd.SetWarnings True
                 
+                'close form
                 DoCmd.Close
             
             Else
-                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Me.txtParentName & "'," & parentID & " ," & priorityID & ")"
+                'Insert new category
+                query = "INSERT INTO categories (name,parent,priority) VALUES ('" & Replace(Me.txtParentName, "'", "''") & "'," & parentID & " ," & priorityID & ")"
                 
                 DoCmd.SetWarnings False
                 DoCmd.RunSQL query
@@ -261,11 +267,6 @@ Private Sub cmdAddCategory_Click()
 End Sub
 
 Private Sub cmdBack_Click()
-
     DoCmd.Close
-
-End Sub
-
-Private Sub Form_Load()
 
 End Sub

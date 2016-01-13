@@ -423,6 +423,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnCancel_Click()
+    'Check if there are any changes. If there are undo, else close.
     If (Me.txtRubrieknaam.OldValue <> Me.txtRubrieknaam.Value Or Me.txtParent.OldValue <> Me.txtRubrieknaam.Value Or Me.txtParent.OldValue <> Me.txtParent.Value) Then
         DoCmd.RunCommand acCmdUndo
     End If

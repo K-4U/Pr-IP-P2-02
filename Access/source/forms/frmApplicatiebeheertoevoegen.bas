@@ -10,8 +10,8 @@ Begin Form
     Width =5385
     DatasheetFontHeight =11
     ItemSuffix =54
-    Right =25335
-    Bottom =12090
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x1584059a6dade440
@@ -462,22 +462,24 @@ End Sub
 
 Private Sub butInsert_Click()
     Dim queryString As String
-    
     Dim user_selected As String
     
+    'Get usrename of selected user
     For Each varItem In Me.lstUsers.ItemsSelected
         user_selected = Me.lstUsers.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
+    'Get state of checkboxes
     Dim cs As Boolean: cs = Me.chkCustomerService.Value
     Dim ad As Boolean: ad = Me.chkAdmin.Value
     Dim ma As Boolean: ma = Me.chkManager.Value
     
     
-    
+    'Create query for inserting into ranks
     queryString = "INSERT INTO ranks " & _
     "VALUES ('" & user_selected & "'," & IIf(cs = False, 0, 1) & "," & IIf(ad = False, 0, 1) & "," & IIf(ma = False, 0, 1) & ")"
     
+    'Execute if everything is correct. Else display msgbox
     If Nz(user_selected, "") <> "" And cs = True Or ad = True Or ma = True Then
         
         DoCmd.SetWarnings False

@@ -10,8 +10,8 @@ Begin Form
     Width =4535
     DatasheetFontHeight =11
     ItemSuffix =6
-    Right =25335
-    Bottom =12090
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0xad3bb44bf0aae440
@@ -218,7 +218,7 @@ Private Sub btnLogin_Click()
     
     'Execute the post request
     Set objHTTP = CreateObject("MSXML2.ServerXMLHTTP")
-    URL = "https://veiling.k-4u.nl/db-login.php"
+    URL = "https://iproject2.icasites.nl/db-login.php"
     objHTTP.Open "POST", URL, False
     objHTTP.setRequestHeader "User-Agent", "eenmaalAndermaal-database"
     objHTTP.setRequestHeader "Content-Type", "application/x-www-form-urlencoded"

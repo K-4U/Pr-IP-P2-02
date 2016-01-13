@@ -10,8 +10,8 @@ Begin Form
     Width =7823
     DatasheetFontHeight =11
     ItemSuffix =30
-    Right =25080
-    Bottom =12090
+    Right =19800
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0xefdca21eedb0e440
@@ -738,6 +738,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnBack_Click()
+    'Check if there are any changes. If there are undo, else close.
     If MsgBox("Weet u zeker dat u deze pagina wilt verlaten? De veranderingen worden NIET opgeslagen?", vbQuestion + vbYesNo + vbDefaultButton2, "Afsluiten?") = vbYes Then
        If _
        Me.txtTitle.OldValue <> Me.txtTitle.Value Or _

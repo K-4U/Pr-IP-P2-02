@@ -10,8 +10,8 @@ Begin Form
     Width =9921
     DatasheetFontHeight =11
     ItemSuffix =16
-    Right =25335
-    Bottom =12090
+    Right =25080
+    Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
         0x458493ec55aee440
@@ -466,11 +466,13 @@ Private Sub btnDelete_Click()
     Dim isseller_selected As Integer
     Dim objectid_selected As Integer
     
+    'Get values from list
     For Each varItem In Me.lstFeedback.ItemsSelected
         objectid_selected = Me.lstFeedback.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
         isseller_selected = Me.lstFeedback.Column(1, varItem) 'Change index for different locations e.g. the end of the line.
     Next varItem
     
+    'Build query
     query = "DELETE FROM Feedback WHERE objectid=" & objectid_selected & " AND isseller= " & IIf(isseller_selected = -1, 1, 0)
      
           
@@ -484,15 +486,14 @@ Private Sub btnDelete_Click()
 End Sub
 
 Private Sub btnReset_Click()
+    'Reset input fields.
     Me.txtUsername.Value = Null
     Me.txtComment.Value = Null
-    
-    Me.txtUsername.SetFocus
-    
     Me.btnReset.Enabled = False
     
     Dim query As String
     
+    'Query for list
     query = "SELECT objectid, isseller, IIf(F.isseller,O.seller,O.Buyer) AS Gebruiker, F.rating, F.Date, F.comment " & _
     "FROM feedback AS F INNER JOIN objects AS O ON F.objectid = O.id"
     
@@ -509,7 +510,7 @@ Private Sub btnSearch_Click()
     Dim searchComment As String
     Dim searchDate As String
 
-
+    'Check if is null. Enter value if it isn't
     If Not IsNull(Me.txtUsername.Value) Then
         searchUsername = Me.txtUsername.Value
     End If
@@ -519,7 +520,8 @@ Private Sub btnSearch_Click()
     If Not IsNull(Me.txtDate.Value) Then
         searchDate = Me.txtDate.Value
     End If
-
+    
+    'Exec search query
     query = "SELECT objectid, isseller, iif(isseller, seller, buyer) AS Gebruiker, rating AS Beoordeling, date AS Datum, comment AS Commentaar " & _
     "FROM feedback LEFT JOIN objects " & _
     "ON feedback.objectid=objects.id " & _

@@ -10,9 +10,10 @@ Begin Form
     Width =6803
     DatasheetFontHeight =11
     ItemSuffix =20
-    Right =19800
-    Bottom =12120
+    Right =25335
+    Bottom =12090
     DatasheetGridlinesColor =15132391
+    Filter ="[id] = 307"
     RecSrcDt = Begin
         0xc4099b73f1b0e440
     End
@@ -305,6 +306,7 @@ Begin Form
                     ForeColor =4210752
                     Name ="btnEdit"
                     Caption ="Edit"
+                    OnClick ="[Event Procedure]"
                     GridlineColor =10921638
 
                     LayoutCachedLeft =2434
@@ -386,6 +388,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnNew_Click()
+    'Open window to create new category
     Dim priority As Integer
     
     priority = Me.lstCategory.ListCount
@@ -411,10 +414,13 @@ Private Sub btnBack_Click()
         End If
     End If
         
+    'Check if there is a parent.
     Set rs = CurrentDb.OpenRecordset("SELECT parent FROM categories WHERE id = " & Me.id)
     
+    'If there is no parent close form
     If IsNull(rs!parent) Then
         DoCmd.Close
+    'If there is a parent use parent to pen same form
     Else
         DoCmd.OpenForm "frmRubriekStructuur", , , "[id] = " & rs!parent, , acDialog
     End If
@@ -425,13 +431,17 @@ Private Sub btnDown_Click()
     Dim id_selected As Integer
     Dim priority_selected As Integer
         
+    'Get id of selected item
     For Each varItem In Me.lstCategory.ItemsSelected
         id_selected = Me.lstCategory.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
+        'Check if it is the last. If not, you can change priority. Else not.
         If Not varItem = Me.lstCategory.ListCount - 1 Then
-           priority_selected = Me.lstCategory.Column(2, varItem + 1)
-           query = "UPDATE categories " & _
+            priority_selected = Me.lstCategory.Column(2, varItem + 1)
+            'Query to change priority
+            query = "UPDATE categories " & _
             "Set priority = " & Me.lstCategory.Column(2, varItem) & " + 1 WHERE id = " & id_selected
-           fixQuery = "UPDATE categories " & _
+            'Query to make sure that priority is fixed
+            fixQuery = "UPDATE categories " & _
             "Set priority = " & Me.lstCategory.Column(2, varItem + 1) & " - 1 WHERE id = " & Me.lstCategory.Column(0, varItem + 1)
 
             On Error Resume Next
@@ -439,7 +449,6 @@ Private Sub btnDown_Click()
             DoCmd.RunSQL query
             DoCmd.RunSQL fixQuery
             DoCmd.SetWarnings True
-            
         End If
     Next varItem
     
@@ -464,13 +473,17 @@ Private Sub btnUp_Click()
     Dim id_selected As Integer
     Dim priority_selected As Integer
         
+    'Get id of selected item
     For Each varItem In Me.lstCategory.ItemsSelected
         id_selected = Me.lstCategory.Column(0, varItem) 'Change index for different locations e.g. the end of the line.
+        'Check if it is the first. If not, you can change priority. Else not.
         If Not varItem = 1 Then
-           priority_selected = Me.lstCategory.Column(2, varItem - 1)
-           query = "UPDATE categories " & _
+            priority_selected = Me.lstCategory.Column(2, varItem - 1)
+           'Query to change priority
+            query = "UPDATE categories " & _
             "Set priority = " & Me.lstCategory.Column(2, varItem) & " - 1 WHERE id = " & id_selected
-           fixQuery = "UPDATE categories " & _
+            'Query to make sure that priority is fixed
+            fixQuery = "UPDATE categories " & _
             "Set priority = " & Me.lstCategory.Column(2, varItem - 1) & " + 1 WHERE id = " & Me.lstCategory.Column(0, varItem - 1)
    
             On Error Resume Next

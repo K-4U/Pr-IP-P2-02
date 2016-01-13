@@ -10,7 +10,7 @@ Begin Form
     Width =5045
     DatasheetFontHeight =11
     ItemSuffix =11
-    Right =19800
+    Right =25080
     Bottom =12120
     DatasheetGridlinesColor =15132391
     RecSrcDt = Begin
@@ -332,8 +332,9 @@ Attribute VB_Exposed = False
 Option Compare Database
 
 Private Sub btnGenerate_Click()
+    'Check if dates are given.
     If IsNull(Me.txtFromDate) Or IsNull(Me.txtTillDate) Then
-    MsgBox "no"
+    MsgBox "U bent vergeten de datums in te voeren."
     
     Else
         If Me.chkSoldProducts.Value = False Then
