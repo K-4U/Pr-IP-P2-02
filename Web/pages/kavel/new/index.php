@@ -130,7 +130,7 @@ class kavelNew extends cmsPage {
                 $this->render($displayName, 'lot/newlot.tpl');
             }
         } else {
-            $this->website->assign("error", "U moet een verkopers account aanmaken voordat u een kavel kan aanbieden.");
+            $this->website->assign("error", "U moet een verkopers account aanmaken voordat u een kavel kan aanbieden. <br> Klik <a href=https://veiling.k-4u.nl/Users/CP/SellerRequest>hier</a> om een aacount aan te maken.");
             $this->render("", "error.tpl");
         }
     }
