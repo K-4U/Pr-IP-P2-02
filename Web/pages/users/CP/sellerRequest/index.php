@@ -85,7 +85,6 @@ class usersCPsellerRequest extends cmsPage {
 
                         $this->db->insert("sellers", $userInfoArray);
                         $this->db->insert("verifications", $userLetterInfo);
-                        var_dump($this->db->getLastError());
                     }
                 }
             }
