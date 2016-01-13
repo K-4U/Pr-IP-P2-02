@@ -76,35 +76,39 @@ echo "Done inserting. (took " . $categoryInsertTime . " seconds)\r\n\r\n";
 
 echo "Fetching security questions.\r\n";
 function getSecQuestions() {
+
     $secQuestionsArray = array();
-    $secQuestionsArray ['question'] = 'In welke stad bent u opgegroeid?';
-    $secQuestionsArray ['question'] = 'Wat is uw favoriete film?';
-    $secQuestionsArray ['question'] = 'Wat is de meisjesnaam van uw moeder?';
-    $secQuestionsArray ['question'] = 'Wat is de jongensnaam van uw vader?';
-    $secQuestionsArray ['question'] = 'Wat is de meisjesnaam van uw moeder?';
-    $secQuestionsArray ['question'] = 'Wat is de geboortestad van uw vader?';
-    $secQuestionsArray ['question'] = 'Wat is de geboortestad van uw moeder?';
+    $secQuestionsArray [] = 'In welke stad bent u opgegroeid?';
+    $secQuestionsArray [] = 'Wat is uw favoriete film?';
+    $secQuestionsArray [] = 'Wat is de meisjesnaam van uw moeder?';
+    $secQuestionsArray [] = 'Wat is de jongensnaam van uw vader?';
+    $secQuestionsArray [] = 'Wat is de meisjesnaam van uw moeder?';
+    $secQuestionsArray [] = 'Wat is de geboortestad van uw vader?';
+    $secQuestionsArray [] = 'Wat is de geboortestad van uw moeder?';
 
     return $secQuestionsArray;
 }
+
 $secQuestionsVar = getSecQuestions();
 echo "Done fetching questions. \r\n";
-function setSecQuestions($secQuestionsArr){
+function setSecQuestions($secQuestionsArr) {
+
     global $dbOut;
 
     $secArr = Array(
 //        "id" => $secQuestionsArr['id'],
-        "question" => $secQuestionsArr['question']
+        "question" => $secQuestionsArr
     );
     $dbOut->insert("security_questions", $secArr);
 
 }
+
 echo "Inserting security questions. \r\n";
-foreach($secQuestionsVar as $question){
+foreach($secQuestionsVar as $question) {
     setSecQuestions($question);
 }
-$secQuestionsInsertTime = (date('U')- ($beginTime + $categoryInsertTime));
-echo "Done inserting security questions. (took ". $secQuestionsInsertTime . " seconds) \r\n\r\n";
+$secQuestionsInsertTime = (date('U') - ($beginTime + $categoryInsertTime));
+echo "Done inserting security questions. (took " . $secQuestionsInsertTime . " seconds) \r\n\r\n";
 
 echo "Fetching users.\r\n";
 
@@ -215,13 +219,13 @@ function setObjects($objectArr) {
     );
 
     $userSeller = Array(
-      "username" => substr(strlen($objectArr['Verkoper']) < 4 ? "FILL" . $objectArr['Verkoper'] : $objectArr['Verkoper'], 0, 12),
-      "bank_number" => "NL67RABO0186654979",
-      "security_type" => "0",
-      "creditcard_number" => "5529420350615465"
+        "username"          => substr(strlen($objectArr['Verkoper']) < 4 ? "FILL" . $objectArr['Verkoper'] : $objectArr['Verkoper'], 0, 12),
+        "bank_number"       => "NL67RABO0186654979",
+        "security_type"     => "0",
+        "creditcard_number" => "5529420350615465"
     );
 
-    $dbOut->update("users",$userIsSeller, "username", $newFormat['seller']);
+    $dbOut->update("users", $userIsSeller, "username", $newFormat['seller']);
     $dbOut->insert("objects", $newFormat);
     $lastInsertedObject = $dbOut->getLastInsertedId();
 
@@ -259,74 +263,90 @@ $objectsInsertTime = (date('U') - ($beginTime + $categoryInsertTime + $secQuesti
 echo "Done inserting objects. (took " . $objectsInsertTime . " seconds)\r\n\r\n";
 
 echo "Fetching minimal bids.\r\n";
-function getMinimalBids(){
+function getMinimalBids() {
+
     //Create array with minimal bids
-    $minimalBids = array();
-    $minimalBids['upper_limit'] = 50;
-    $minimalBids['upper_limit'] = 500;
-    $minimalBids['upper_limit'] = 1000;
-    $minimalBids['upper_limit'] = 5000;
-    $minimalBids['upper_limit'] = 1000000;
-
-
-    $minimalBids['raise'] = 0.50;
-    $minimalBids['raise'] = 1;
-    $minimalBids['raise'] = 5;
-    $minimalBids['raise'] = 10;
-    $minimalBids['raise'] = 50;
+    $minimalBids = array(
+        Array(
+            "upper_limit" => 50,
+            "raise"       => 0.5
+        ),
+        Array(
+            "upper_limit" => 500,
+            "raise"       => 1
+        ),
+        Array(
+            "upper_limit" => 1000,
+            "raise"       => 5
+        ),
+        Array(
+            "upper_limit" => 5000,
+            "raise"       => 10
+        ),
+        Array(
+            "upper_limit" => 1000000,
+            "raise"       => 50
+        )
+    );
 
     return $minimalBids;
 }
+
 $minBidVar = getMinimalBids();
 echo "Done fetching minimal bids.\r\n";
 
-function setMinimalBids($minBidArr){
+function setMinimalBids($minBidArr) {
+
     global $dbOut;
 
     $bidArr = Array(
         "upper_limit" => $minBidArr['upper_limit'],
-        "raise" => $minBidArr['raise']
+        "raise"       => $minBidArr['raise']
     );
 
     $dbOut->insert("minimal_bids", $bidArr);
 }
+
 echo "Inserting minimal bids.\r\n";
-foreach($minBidVar as $bid){
+foreach($minBidVar as $bid) {
     setMinimalBids($bid);
 }
-$minBidInsertTime = (date('U')- ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime));
+$minBidInsertTime = (date('U') - ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime));
 echo "Done inserting minimal bids. (took " . $minBidInsertTime . " seconds)\r\n\r\n";
 
 echo "Fetching ranks.\r\n";
-function getRanks(){
+function getRanks() {
 
     $ranks = array();
-    $ranks['username'] = 'admin';
+    $ranks['username'] = 'Admin';
     $ranks['customer_service'] = 1;
     $ranks['administrator'] = 1;
-    $ranks['administrator'] = 1;
+    $ranks['manager'] = 1;
 
     return $ranks;
 }
+
 $ranksVar = getRanks();
 echo "Done fetching ranks.\r\n";
-function setRanks($ranksArr){
+function setRanks($ranksArr) {
+
     global $dbOut;
 
     $ranksArr = Array(
-        "username" => $ranksArr['username'],
-        "customer_service" => $ranksArr['customer_service'],
-        "administrator" => $ranksArr['administrator'],
-        "manager" => $ranksArr['manager']
+        "username"         => "Admin",
+        "customer_service" => 1,
+        "administrator"    => 1,
+        "manager"          => 1
     );
 
     $dbOut->insert("ranks", $ranksArr);
 }
 echo "Inserting ranks.\r\n";
-foreach($ranksVar as $rank){
+setRanks(null);
+/*foreach($ranksVar as $rank) {
     setRanks($rank);
-}
-$ranksInsertTime = (date('U')- ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime + $minBidInsertTime));
+}*/
+$ranksInsertTime = (date('U') - ($beginTime + $categoryInsertTime + $secQuestionsInsertTime + $usersInsertTime + $objectsInsertTime + $minBidInsertTime));
 echo "Done inserting ranks. (took " . $ranksInsertTime . " seconds )\r\n\r\n";
 $endTime = date('U');
 
