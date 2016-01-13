@@ -49,7 +49,7 @@ function setCategory($category) {
         "parent"   => $category['Parent'],
         "priority" => $category['priority']
     );
-    $dbOut->insert("categories", $newFormat); //uncomment this to get the categories insert running again!
+    $dbOut->insert("categories", $newFormat);
 
     $lastInsert = $dbOut->getLastInsertedId();
     $categoryIds[$category['ID']] = $lastInsert;
@@ -113,9 +113,29 @@ function setUsers($usersArr) {
     $resultUsername = $dbOut->buildQuery("SELECT Username FROM Users WHERE Username=%s", $newFormat['username']);
     $usernameExist = $dbOut->getHasRows($resultUsername);
     if(!$usernameExist) {
-        $dbOut->insert("users", $newFormat); //uncomment this to get the users insert running again!
+        $dbOut->insert("users", $newFormat);
     }
 }
+
+$adminUserArr = Array(
+    "firstname"         => "Ad",
+    "lastname"          => "Ministrator",
+    "adress_street1"    => "unknown address",
+    "adress_street2"    => null,
+    "adress_number"     => "123",
+    "city"              => "unknown city",
+    "email"             => "admin@admin.admin",
+    "password"          => "ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff" /*test is admin password (deze is ssh512 gehashed en kan veranderd worden)*/,
+    "security_question" => "1",
+    "security_answer"   => "batch",
+    "isseller"          => "1",
+    "username"          => substr(strlen($usersArr['Username']) < 4 ? "FILL" . $usersArr['Username'] : $usersArr['Username'], 0, 12),
+    "postalcode"        => substr($usersArr['Postalcode'] == null ? "0000AB" : $usersArr['Postalcode'], 0, 6),
+    "country"           => $usersArr['Country'],
+    "birthdate"         => "01-01-1990"
+);
+
+setUsers($adminUserArr);
 
 foreach($usersVar as $user) {
     setUsers($user);
@@ -158,14 +178,22 @@ function setObjects($objectArr) {
         "duration"       => $durationDays[rand(0, 4)]
     );
 
-    $userIsSeller= Array(
+    $userIsSeller = Array(
         "isseller" => "1"
+    );
+
+    $userSeller = Array(
+      "username" => substr(strlen($usersArr['Username']) < 4 ? "FILL" . $usersArr['Username'] : $usersArr['Username'], 0, 12),
+      "bank_number" => "NL67RABO0186654979",
+      "security_type" => "0",
+      "creditcard_number" => "5529420350615465"
     );
 
     $dbOut->update("users",$userIsSeller, "username", $newFormat['seller']);
     $dbOut->insert("objects", $newFormat);
     $lastInsertedObject = $dbOut->getLastInsertedId();
 
+    dbOut->insert("sellers", $userSeller);
     $newFormatCatObj = Array(
         "object_id"   => $lastInsertedObject,
         "category_id" => $categoryIds[$objectArr['Categorie']]
@@ -190,9 +218,103 @@ echo "Inserting objects\r\n";
 foreach($objectVar as $object) {
     setObjects($object);
 }
-$objectsInsertTime = ((date('U') - ($beginTime + $usersInsertTime)));
+
+$objectsInsertTime = (date('U') - ($beginTime + $usersInsertTime));
 echo "Done inserting objects. (took " . $objectsInsertTime . " seconds)\r\n\r\n";
 
+echo "Fetching security questions.\r\n";
+function getSecQuestions() {
+
+    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
+    $dbVeiling->setType($config['SQL']['type']);
+
+    $dbVeiling->connect();
+    $result = $dbVeiling->query("SELECT * FROM security_questions ");
+    $securityQuestions = $dbVeiling->fetchAllAssoc($result);
+
+    return $securityQuestions;
+}
+$secQuestionsVar = getSecQuestions();
+echo "Done fetching questions. \r\n";
+function setSecQuestions($secQuestionsArr){
+    global $dbOut;
+
+    $secArr = Array(
+        "id" => $secQuestionsArr['id'],
+        "question" => $secQuestionsArr['question']
+    );
+    $dbOut->insert("security_questions", $secArr);
+
+}
+echo "Inserting security questions. \r\n";
+foreach($secQuestionsVar as $questions){
+    setSecQuestions($question);
+}
+$secQuestionsInsertTime = (date('U')- ($beginTime + $objectsInsertTime));
+echo "Done inserting security questions. (took ". $secQuestionsInsertTime . " seconds) \r\n\r\n";
+
+echo "Fetching minimal bids.\r\n"
+function getMinimalBids(){
+    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
+    $dbVeiling->setType($config['SQL']['type']);
+
+    $dbVeiling->connect();
+    $result = $dbVeiling->query("SELECT * FROM minimal_bids ");
+    $minimalBids = $dbVeiling->fetchAllAssoc($result);
+
+    return $minimalBids;
+}
+$minBidVar = getMinimalBids();
+echo "Done fetching minimal bids.\r\n";
+
+function setMinimalBids($minBidArr){
+    global $dbOut;
+
+    $bidArr = Array(
+        "upper_limit" => $minBidArr['upper_limit'],
+        "raise" => $minBidArr['raise']
+    );
+
+    $dbOut->insert("minimal_bids", $bidArr);
+}
+echo "Inserting minimal bids.\r\n";
+foreach($minBidVar as $bid){
+    setMinimalBids($bid);
+}
+$minBidInsertTime = (date('U')- ($beginTime + $secQuestionsInsertTime));
+echo "Done inserting minimal bids. (took " . $minBidInsertTime . " seconds)\r\n\r\n";
+
+echo "Fetching ranks.\r\n";
+function getRanks(){
+    $dbVeiling = new db($config['SQL']['host'], $config['SQL']['user'], $config['SQL']['pass'], "veiling_other");
+    $dbVeiling->setType($config['SQL']['type']);
+
+    $dbVeiling->connect();
+    $result = $dbVeiling->query("SELECT * FROM ranks ");
+    $ranks = $dbVeiling->fetchAllAssoc($result);
+
+    return $ranks;
+}
+$ranksVar = getRanks();
+echo "Done fetching ranks.\r\n";
+function setRanks($ranksArr){
+    global $dbOut;
+
+    $ranksArr = Array(
+        "username" => $ranksArr['Username'],
+        "customer_service" => $ranksArr['customer_service'],
+        "administrator" => $ranksArr['administrator'],
+        "manager" => $ranksArr['manager']
+    );
+
+    $dbOut->insert("ranks", $ranksArr);
+}
+echo "Inserting ranks.\r\n";
+foreach($ranksVar as $rank){
+    setRanks($rank);
+}
+$ranksInsertTime = $minBidInsertTime = (date('U')- ($beginTime + $minBidInsertTime));
+echo "Done inserting ranks. (took " . $ranksInsertTime . " seconds )\r\n\r\n";
 $endTime = date('U');
 
 echo "Took " . ($endTime - $beginTime) . " seconds.";
