@@ -58,7 +58,8 @@ class kavelItem extends cmsPage {
 
             $object['timeRemaining'] = $object['end_moment']->getTimeStamp() - time();
 
-            $object['description'] = bb2html(nl2br(htmlentities(str_replace('\n', "\n", $object['description']))));
+            $object['description'] = nl2br(htmlentities(str_replace("&nbsp;", chr(1), str_replace('\n', "\n", $object['description']))));
+            $object['description'] = bb2html(str_replace(chr(1), "&nbsp;", $object['description']));
 
             //Fetch bids
             $bidsResult = $this->db->buildQuery("SELECT * FROM bids WHERE objectid=%i ORDER BY bidmoment DESC", $this->argsIndexed[0]);
